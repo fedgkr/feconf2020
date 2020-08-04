@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/views/components/*"]
+      "@components/*": ["src/views/components/*"],
+      "@svgs/*": ["src/views/svg-components/*"],
+      "@styles/*": ["src/styles/*"]
     },
     "target": "es5",
     "lib": [
