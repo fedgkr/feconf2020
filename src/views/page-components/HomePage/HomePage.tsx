@@ -6,6 +6,9 @@ import AboutSection from "@components/AboutSection/AboutSection";
 import PreRegistrationSection from "@components/PreRegistrationSection/PreRegistrationSection";
 import CallForSpeakerSection from "@components/CallForSpeakerSection/CallForSpeakerSection";
 import CallForSponsorSection from "@components/CallForSponsorSection/CallForSponsorSection";
+import NoticeSection from "@components/NoticeSection/NoticeSection";
+import RegisterSection from "@components/RegisterSection/RegisterSection";
+import Footer from "@components/Footer/Footer";
 
 interface HomePageProps {}
 
@@ -18,6 +21,9 @@ const HomePage: React.FC<HomePageProps> = () => {
       <PreRegistrationSection/>
       <CallForSpeakerSection/>
       <CallForSponsorSection/>
+      <NoticeSection/>
+      <RegisterSection/>
+      <Footer/>
     </div>
   );
 }

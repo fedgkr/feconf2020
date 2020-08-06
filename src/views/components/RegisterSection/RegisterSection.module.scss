@@ -1,0 +1,41 @@
+.RegisterSection {
+  margin-top: 200px;
+  padding-bottom: 200px;
+  .container {
+    position: relative;
+    padding: 194px 0 78px 0;
+    h2 {
+      position: relative;
+      right: 50%;
+      margin-right: -70px;
+      font-size: 80px;
+      font-weight: 900;
+      text-align: right;
+      span {
+        position: absolute;
+        margin-left: 20px;
+      }
+    }
+    h4 {
+      margin-top: 4px;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
+    }
+    .buttonWrap {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .circle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 486px;
+      height: 486px;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+  }
+}
