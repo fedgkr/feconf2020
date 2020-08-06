@@ -10,7 +10,6 @@
     p {
       display: flex;
       align-items: center;
-      color: white;
       font-size: 24px;
       font-weight: bold;
       margin: 45px 0 0;
@@ -24,7 +23,7 @@
     left: 50%;
     width: 572px;
     height: 572px;
-    background-color: #ddd;
+    background-color: rgba(220, 220, 220, .85);
     border-radius: 50%;
     z-index: -1;
   }

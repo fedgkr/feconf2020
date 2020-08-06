@@ -1,11 +1,8 @@
 .AboutSection {
-  padding-top: 212px;
+  margin-top: 212px;
   .container {
     display: flex;
     justify-content: center;
-    p, h2, h3, h4 {
-      margin: 0;
-    }
     .titleContainer {
       position: relative;
       margin-right: 101px;
@@ -21,13 +18,11 @@
       }
       h2 {
         font-size: 60px;
-        color: white;
       }
     }
     .aboutContainer {
       font-size: 16px;
       line-height: 24px;
-      color: white;
       max-width: 470px;
       h4 {
         font-weight: bold;

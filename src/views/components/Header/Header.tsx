@@ -1,6 +1,7 @@
 import React from 'react';
 import css from './Header.module.scss';
 import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
+import RegisterButton from "@components/RegisterButton/RegisterButton";
 
 interface HeaderProps {}
 
@@ -14,7 +15,7 @@ const Header: React.FC<HeaderProps> = () => {
         <a href="#">About</a>
         <a href="#">Speakers</a>
         <a href="#">Sponsors</a>
-        <a className={css.register} href="#">사전 등록하기</a>
+        <RegisterButton/>
       </div>
     </div>
   );

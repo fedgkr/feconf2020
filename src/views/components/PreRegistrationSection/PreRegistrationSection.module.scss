@@ -1,0 +1,65 @@
+.PreRegistrationSection {
+  margin-top: 200px;
+  .titleContainer {
+    position: relative;
+    .textContainer {
+      position: absolute;
+      top: 248px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      h2 {
+        font-size: 80px;
+      }
+      h4 {
+        font-size: 24px;
+      }
+    }
+    .circle {
+      width: 486px;
+      height: 486px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+    }
+  }
+  .contentContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    .registerContainer {
+      max-width: 430px;
+      margin-right: 110px;
+      font-size: 16px;
+      .messageNumberWrap {
+        padding: 18px 0 24px 1px;
+        font-size: 80px;
+        font-weight: 900;
+      }
+      p:nth-child(3) {
+        margin-bottom: 40px;
+      }
+    }
+    .messageContainer {
+      position: relative;
+      width: 400px;
+      height: 326px;
+      overflow: hidden;
+      .dimmed {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 66px;
+        z-index: 1;
+        background: linear-gradient(rgba(18, 18, 18, 0), #121212);
+      }
+      .messageItem {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}
