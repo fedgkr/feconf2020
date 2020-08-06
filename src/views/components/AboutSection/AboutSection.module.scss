@@ -1,0 +1,42 @@
+.AboutSection {
+  padding-top: 212px;
+  .container {
+    display: flex;
+    justify-content: center;
+    p, h2, h3, h4 {
+      margin: 0;
+    }
+    .titleContainer {
+      position: relative;
+      margin-right: 101px;
+      h3 {
+        position: absolute;
+        font-size: 24px;
+        font-weight: bold;
+        transform: translateY(-100%);
+        margin-top: -17px;
+        background: linear-gradient(to right, #4c9ae4, #fc638c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      h2 {
+        font-size: 60px;
+        color: white;
+      }
+    }
+    .aboutContainer {
+      font-size: 16px;
+      line-height: 24px;
+      color: white;
+      max-width: 470px;
+      h4 {
+        font-weight: bold;
+      }
+      a {
+        color: #ffaba3;
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
