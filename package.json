@@ -5,6 +5,7 @@
   "author": "codemilli <codemilli@webtoonscorp.com>",
   "license": "MIT",
   "dependencies": {
+    "classcat": "^4.1.0",
     "intersection-observer": "^0.11.0",
     "next": "^9.5.1",
     "normalize.css": "^8.0.1",

@@ -1,0 +1,98 @@
+.CallForSponsorSection {
+  margin-top: 200px;
+  .titleContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 480px;
+    text-align: center;
+    h2 {
+      position: relative;
+      font-size: 80px;
+      font-weight: 900;
+      p {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-top: 16px;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 32px;
+      }
+    }
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+      z-index: -1;
+    }
+    .circle1 {
+      top: 79px;
+      right: 50%;
+      width: 225px;
+      height: 225px;
+      margin-right: 326px;
+    }
+    .circle2 {
+      top: 0;
+      width: 479px;
+      height: 479px;
+      left: 50%;
+      margin-left: 74px;
+    }
+  }
+  .contentContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 59px;
+    .registerContainer {
+      margin-right: 200px;
+      h4 {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 32px;
+        margin-bottom: 16px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 440px;
+        margin-bottom: 22px;
+      }
+    }
+    .sponsorContainer {
+      position: relative;
+      width: 240px;
+      h4 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .sponsorList {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 206px;
+        overflow: hidden;
+        .sponsor {
+          font-size: 30px;
+          font-weight: 900;
+          &:not(:last-child) {
+            margin-bottom: 24px;
+          }
+        }
+      }
+      .dimmed {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 66px;
+        z-index: 1;
+        background: linear-gradient(rgba(18, 18, 18, 0), #121212);
+      }
+    }
+  }
+}
