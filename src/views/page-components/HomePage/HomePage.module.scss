@@ -1,3 +1,6 @@
-.HomePage {
+@import "variables";
 
+.HomePage {
+  max-width: $page-max-width;
+  margin: 0 auto;
 }
