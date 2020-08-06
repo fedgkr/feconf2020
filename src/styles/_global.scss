@@ -1,12 +1,18 @@
 @import '_variables.scss';
 
 body {
+  color: $page-text-color;
   background-color: $page-bg-color;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin: 0;
+  word-break: keep-all;
 }
 
 .stretch {

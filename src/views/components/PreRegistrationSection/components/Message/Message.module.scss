@@ -1,0 +1,42 @@
+.Message {
+  width: 400px;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, .1);
+  .profileContainer {
+    display: flex;
+    justify-content: space-between;
+    .profile {
+      display: flex;
+      align-items: center;
+      .image {
+        width: 48px;
+        height: 48px;
+        margin-right: 16px;
+        border-radius: 50%;
+      }
+      .name {
+        font-size: 20px;
+      }
+    }
+    .sns {
+      display: flex;
+      align-items: center;
+      a {
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        background-color: white;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+  .textWrap {
+    margin-top: 11px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
