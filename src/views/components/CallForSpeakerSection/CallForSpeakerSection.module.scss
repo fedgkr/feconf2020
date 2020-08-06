@@ -1,0 +1,41 @@
+.CallForSpeakerSection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 447px;
+  .titleContainer {
+    position: relative;
+    margin-right: 107px;
+    h2 {
+      width: 420px;
+      font-size: 80px;
+      line-height: 80px;
+    }
+    .circle {
+      position: absolute;
+      top: -219px;
+      left: 113px;
+      width: 430px;
+      height: 430px;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+      z-index: -1;
+    }
+  }
+  .descriptionContainer {
+    max-width: 430px;
+    padding-top: 191px;
+    font-size: 16px;
+    line-height: 24px;
+    h4 {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+  }
+}
