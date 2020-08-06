@@ -1,0 +1,74 @@
+.NoticeSection {
+  margin-top: 235px;
+  .titleContainer {
+    position: relative;
+    padding: 213px 0 84px 0;
+    .title {
+      position: relative;
+      left: 50%;
+      margin-left: -357px;
+      h2 {
+        font-size: 80px;
+        font-weight: 900;
+      }
+      h4 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 16px;
+      }
+    }
+    .circle {
+      position: absolute;
+      top: 0;
+      right: 50%;
+      margin-right: 175px;
+      width: 425px;
+      height: 425px;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+      z-index: -1;
+    }
+  }
+  .socialPlatformContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    .platform {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 245px;
+      padding: 24px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.07);
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+      .icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: white;
+      }
+      h3 {
+        margin-top: 16px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      p {
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 24px;
+        width: 44px;
+        height: 44px;
+      }
+    }
+  }
+}
