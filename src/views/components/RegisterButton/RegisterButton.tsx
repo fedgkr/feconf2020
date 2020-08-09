@@ -8,7 +8,7 @@ interface RegisterButtonProps {
 
 const RegisterButton: React.FC<RegisterButtonProps> = ({ link, text }) => {
   return (
-    <a className={css.RegisterButton} target="_blank" href={link}>
+    <a className={css.RegisterButton} target="_blank" rel="noopener noreferrer" href={link}>
       { text || '사전 등록하기' }
     </a>
   );
