@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
-import ArrowDownLogo from "@svgs/ArrowDownLogo/ArrowDownLogo";
+import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
 
 interface HeroSectionProps {}
 
@@ -14,7 +14,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
       </div>
       <div className={css.circle}/>
       <div className={css.arrowDownWrap}>
-        <ArrowDownLogo/>
+        <ArrowDownIcon/>
       </div>
     </div>
   );

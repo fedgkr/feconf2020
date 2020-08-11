@@ -12,8 +12,9 @@ const Message: React.FC<MessageProps> = () => {
           <span className={css.name}>Jooyoung Moon</span>
         </div>
         <div className={css.sns}>
-          <a href=""></a>
-          <a href=""></a>
+          <a href="">
+            <img src="/images/icons/github@2x.png" alt="GitHub"/>
+          </a>
         </div>
       </div>
       <p className={css.textWrap}>

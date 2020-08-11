@@ -1,5 +1,6 @@
+@import 'mixin';
+
 .Message {
-  width: 400px;
   padding: 24px 32px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -23,13 +24,14 @@
     .sns {
       display: flex;
       align-items: center;
+      font-size: 0;
       a {
         width: 19px;
         height: 19px;
         border-radius: 50%;
-        background-color: white;
-        &:not(:last-child) {
-          margin-right: 8px;
+        overflow: hidden;
+        img {
+          width: 100%;
         }
       }
     }
@@ -38,5 +40,16 @@
     margin-top: 11px;
     font-size: 16px;
     line-height: 24px;
+  }
+  @include mobile {
+    padding: 24px;
+    .profileContainer {
+      .sns {
+        a {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
   }
 }

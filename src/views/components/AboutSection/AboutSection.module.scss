@@ -1,7 +1,10 @@
+@import 'mixin';
+
 .AboutSection {
   margin-top: 212px;
   .container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     .titleContainer {
       position: relative;
@@ -24,6 +27,7 @@
       font-size: 16px;
       line-height: 24px;
       max-width: 470px;
+      margin-top: 0;
       h4 {
         font-weight: bold;
       }
@@ -33,5 +37,27 @@
       }
     }
   }
-
+  @include mobile {
+    margin-top: 90px;
+    padding: 0 20px;
+    .container {
+      flex-direction: column;
+      .titleContainer {
+        position: relative;
+        margin-right: 0;
+        h3 {
+          font-size: 20px;
+          margin-top: -14px;
+        }
+        h2 {
+          font-size: 40px;
+        }
+      }
+      .aboutContainer {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 32px;
+      }
+    }
+  }
 }

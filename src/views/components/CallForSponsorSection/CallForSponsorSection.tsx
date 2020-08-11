@@ -10,7 +10,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
     <div className={css.CallForSponsorSection}>
       <div className={css.titleContainer}>
         <h2>
-          BECOME A SPONSOR
+          BECOME<br/> A SPONSOR
           <p>FEConf를 후원해주세요</p>
         </h2>
         <div className={cc([css.circle, css.circle1])}/>

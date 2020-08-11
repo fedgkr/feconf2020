@@ -1,8 +1,8 @@
 import React from 'react';
 
-interface ArrowDownLogoProps {}
+interface ArrowDownIconProps {}
 
-const ArrowDownLogo: React.FC<ArrowDownLogoProps> = () => {
+const ArrowDownIcon: React.FC<ArrowDownIconProps> = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g fill="none" fillRule="evenodd">
@@ -13,4 +13,4 @@ const ArrowDownLogo: React.FC<ArrowDownLogoProps> = () => {
   );
 }
 
-export default ArrowDownLogo;
+export default ArrowDownIcon;

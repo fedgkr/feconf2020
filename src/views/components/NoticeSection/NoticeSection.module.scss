@@ -1,9 +1,10 @@
+@import 'mixin';
+
 .NoticeSection {
   margin-top: 235px;
   .titleContainer {
     position: relative;
     padding: 213px 0 84px 0;
-    overflow: hidden;
     .title {
       position: relative;
       left: 50%;
@@ -32,9 +33,11 @@
   }
   .socialPlatformContainer {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     margin-top: 60px;
     .platform {
+      position: relative;
       display: flex;
       flex-direction: column;
       width: 300px;
@@ -57,6 +60,9 @@
         font-size: 24px;
         font-weight: bold;
       }
+      .mobileTitleWrap {
+        display: none;
+      }
       p {
         margin-top: 8px;
         font-size: 14px;
@@ -69,6 +75,75 @@
         margin-top: 24px;
         width: 44px;
         height: 44px;
+        transform: rotate(270deg);
+      }
+    }
+  }
+  @include mobile {
+    margin-top: 137px;
+    padding: 0 20px;
+    .titleContainer {
+      padding: 130px 0 84px 0;
+      .title {
+        position: relative;
+        left: 0;
+        margin-left: 0;
+        h2 {
+          font-size: 36px;
+        }
+        h4 {
+          font-size: 20px;
+          line-height: 24px;
+          margin-top: 8px;
+        }
+      }
+      .circle {
+        left: -91px;
+        width: 260px;
+        height: 260px;
+      }
+    }
+    .socialPlatformContainer {
+      flex-direction: column;
+      margin-top: 22px;
+      .platform {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 22px;
+        }
+        .icon {
+          display: none;
+        }
+        h3 {
+          display: none;
+        }
+        .mobileTitleWrap {
+          display: flex;
+          align-items: center;
+          .icon {
+            display: block;
+          }
+          h3 {
+            display: block;
+            margin: 0 0 0 12px;
+          }
+        }
+        p {
+          margin-top: 12px;
+          padding-right: 42px;
+        }
+        a {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 12px;
+          margin: auto 0;
+          width: 32px;
+          height: 32px;
+        }
       }
     }
   }
