@@ -1,3 +1,5 @@
+@import "mixin";
+
 .CallForSponsorSection {
   margin-top: 200px;
   .titleContainer {
@@ -11,6 +13,9 @@
       position: relative;
       font-size: 80px;
       font-weight: 900;
+      br {
+        display: none;
+      }
       p {
         position: absolute;
         left: 0;
@@ -44,6 +49,7 @@
   }
   .contentContainer {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     margin-top: 59px;
     .registerContainer {
@@ -92,6 +98,84 @@
         height: 66px;
         z-index: 1;
         background: linear-gradient(rgba(18, 18, 18, 0), #121212);
+      }
+    }
+  }
+  @include mobile {
+    margin-top: 260px;
+    padding: 0 20px;
+    .titleContainer {
+      height: auto;
+      text-align: start;
+      h2 {
+        position: relative;
+        font-size: 36px;
+        line-height: 40px;
+        br {
+          display: inline-block;
+        }
+        p {
+          display: none;
+        }
+      }
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(220, 220, 220, .85);
+        z-index: -1;
+      }
+      .circle1 {
+        top: -96px;
+        left: -70px;
+        right: auto;
+        width: 140px;
+        height: 140px;
+        margin-right: 0;
+      }
+      .circle2 {
+        top: -58px;
+        width: 260px;
+        height: 260px;
+        right: -93px;
+        margin-left: 0;
+      }
+    }
+    .contentContainer {
+      flex-direction: column;
+      margin-top: 48px;
+      .registerContainer {
+        margin-right: 0;
+        h4 {
+          font-size: 20px;
+          line-height: 28px;
+          margin-bottom: 8px;
+        }
+        p {
+          font-size: 14px;
+          line-height: 22px;
+          max-width: none;
+          margin-bottom: 16px;
+        }
+      }
+      .sponsorContainer {
+        position: relative;
+        width: 240px;
+        margin: 64px auto 0 auto;
+        h4 {
+          font-size: 16px;
+          margin-bottom: 32px;
+        }
+        .sponsorList {
+          height: 234px;
+          overflow: hidden;
+          .sponsor {
+            font-size: 30px;
+            font-weight: 900;
+            &:not(:last-child) {
+              margin-bottom: 32px;
+            }
+          }
+        }
       }
     }
   }

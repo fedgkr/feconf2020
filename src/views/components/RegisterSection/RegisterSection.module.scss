@@ -1,3 +1,5 @@
+@import "mixin";
+
 .RegisterSection {
   margin-top: 200px;
   padding-bottom: 200px;
@@ -11,10 +13,6 @@
       font-size: 80px;
       font-weight: 900;
       text-align: right;
-      span {
-        position: absolute;
-        margin-left: 20px;
-      }
     }
     h4 {
       margin-top: 4px;
@@ -36,6 +34,32 @@
       background-color: rgba(220, 220, 220, .85);
       transform: translateX(-50%);
       z-index: -1;
+    }
+  }
+  @include mobile {
+    margin-top: 100px;
+    padding-bottom: 0;
+    .container {
+      position: relative;
+      padding: 148px 55px 80px 55px;
+      h2 {
+        right: 0;
+        margin-right: 0;
+        font-size: 36px;
+        text-align: left;
+      }
+      h4 {
+        margin-top: 8px;
+        font-size: 20px;
+        line-height: 22px;
+      }
+      .buttonWrap {
+        margin-top: 80px;
+      }
+      .circle {
+        width: 280px;
+        height: 280px;
+      }
     }
   }
 }
