@@ -25,7 +25,7 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
             FEConf 2020에 관심있으시다면 사전 등록해주세요. 여러분들의 응원으로 더 알찬 세미나를 준비할 수 있습니다.
             등록하신 이메일로 소식을 전달해드릴게요!
           </p>
-          <RegisterButton/>
+          <RegisterButton>사전 등록하기</RegisterButton>
         </div>
         <div className={css.messageContainer}>
           <div className={css.messageItem}>

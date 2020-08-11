@@ -1,0 +1,14 @@
+@keyframes breatheDown {
+  0% {
+    transform: translateY(0) scale(1.1);
+  }
+  40% {
+    transform: translateY(14px) scale(.8);
+  }
+  55% {
+    transform: translateY(14px) scale(.8);
+  }
+  100% {
+    transform: translateY(0) scale(1.1);
+  }
+}

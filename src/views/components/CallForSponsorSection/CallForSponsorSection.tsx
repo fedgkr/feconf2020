@@ -25,7 +25,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
           <p>
             국내 최대 프론트엔드 개발 컨퍼런스 FEconf 2020에 관심 있으시다면 사전 등록해주세요. 여러분들의 응원으로 더 알찬 세미나를 준비할 수 있습니다. 등록하신 이메일로 소식을 전달해드릴게요!
           </p>
-          <RegisterButton text="후원사 신청하기"/>
+          <RegisterButton>후원사 신청하기</RegisterButton>
         </div>
         <div className={css.sponsorContainer}>
           <h4>지난 후원사</h4>
