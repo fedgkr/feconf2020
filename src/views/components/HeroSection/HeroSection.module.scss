@@ -1,24 +1,30 @@
+@import 'keyframes';
+@import 'mixin';
+
 .HeroSection {
   position: relative;
-  padding: 98px 0 0;
   .mainLogoWrap {
     position: relative;
-    display: inline-block;
-    margin: 140px 0 0 -16px;
-    transform: translateX(-100%);
     left: 50%;
+    display: inline-block;
+    margin: 238px 0 0 -16px;
+    width: 340px;
+    transform: translateX(-100%);
     p {
       display: flex;
       align-items: center;
       font-size: 24px;
       font-weight: bold;
       margin: 45px 0 0;
+      img {
+        width: 43px;
+        margin-right: 16px;
+      }
     }
   }
   .circle {
     position: absolute;
     margin-left: -130px;
-    margin-bottom: 223px;
     top: 98px;
     left: 50%;
     width: 572px;
@@ -27,11 +33,42 @@
     border-radius: 50%;
     z-index: -1;
   }
-  .arrowDown {
+  .arrowDownWrap {
     display: block;
     width: 32px;
     height: 32px;
     margin: 223px auto 0 auto;
-    background-color: #ddd;
+    svg {
+      animation: breatheDown 3.2s infinite;
+    }
+  }
+  @include mobile {
+    padding: 0 40px;
+    .mainLogoWrap {
+      margin: 140px 0 0 0;
+      width: 53.3333vw;
+      transform: none;
+      left: 0;
+      p {
+        font-size: 16px;
+        margin: 25px 0 0;
+        img {
+          width: 27px;
+          margin-right: 8px;
+        }
+      }
+    }
+    .circle {
+      margin-left: -12px;
+      top: 124px;
+      width: 343px;
+      height: 343px;
+    }
+    .arrowDownWrap {
+      margin: 162px auto 0 auto;
+      svg {
+        animation: breatheDown 3.2s infinite;
+      }
+    }
   }
 }
