@@ -1,13 +1,36 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import css from './Header.module.scss';
 import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
+import {motion, useViewportScroll} from "framer-motion";
+import classcat from "classcat";
 
 interface HeaderProps {}
 
+const useAnimatedHeader = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const { scrollY } = useViewportScroll();
+  const latestScrollYRef = useRef<number>();
+  useEffect(() => {
+    scrollY.onChange((value) => {
+      const shouldHide = value > 100 && latestScrollYRef.current < value;
+      setIsVisible(!shouldHide);
+      latestScrollYRef.current = value;
+    });
+    return () => {
+      scrollY.clearListeners();
+    };
+  }, []);
+  return { isVisible };
+}
+
 const Header: React.FC<HeaderProps> = () => {
+  const { isVisible } = useAnimatedHeader();
   return (
-    <div className={css.Header}>
+    <motion.div
+      className={classcat([css.Header, isVisible && css.isVisible])}
+      animate={{ y: isVisible ? '0%' : '-100%' }}
+    >
       <a className={css.logo} href="/">
         <HeaderLogo/>
       </a>
@@ -21,7 +44,7 @@ const Header: React.FC<HeaderProps> = () => {
         <div className={css.bar}/>
         <div className={css.bar}/>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

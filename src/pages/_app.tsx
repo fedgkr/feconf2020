@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '@styles/main.scss';
 import Head from "next/head";
+import {useViewportScroll} from "framer-motion";
 
 function App({ Component, pageProps }) {
   return (
