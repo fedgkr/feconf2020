@@ -1,12 +1,22 @@
 @import "variables.scss";
 @import "mixin.scss";
 
+$offset-y: 50px;
+
 .Header {
+  position: fixed;
+  top: -$offset-y;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 104px;
-  padding: 0 48px;
+  max-width: $page-max-width;
+  height: $pc-header-height;
+  margin: 0 auto;
+  padding: $offset-y 48px 0 48px;
+  background-color: $page-bg-color;
+  z-index: 1101;
   .logo {
     width: 69px;
     font-size: 0;
@@ -25,8 +35,9 @@
     display: none;
   }
   @include mobile {
-    height: 72px;
-    padding: 0 20px;
+    top: -$offset-y;
+    height: $mobile-header-height;
+    padding: $offset-y 20px 0 20px;
     .logo {
       width: 55px;
     }
