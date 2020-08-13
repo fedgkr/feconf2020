@@ -8,6 +8,25 @@ interface MenuModalProps {
   active: boolean;
 }
 
+const animationSet = {
+  variants: {
+    open: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 },
+      }
+    },
+    closed: {
+      y: -50,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 1000 },
+      }
+    }
+  },
+};
+
 const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
   return (
     <Portal>
@@ -15,15 +34,36 @@ const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
         { active && (
           <motion.div
             className={css.MenuModal}
-            initial={{ y: '-100%', opacity: .4 }}
-            animate={{ y: '0%', opacity: 1 }}
-            exit={{ y: '-100%', opacity: 0 }}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={{
+              open: {
+                y: '0%',
+                opacity: 1,
+                transition: {
+                  type: 'tween',
+                  staggerChildren: .07,
+                  delayChildren: .25,
+                },
+              },
+              closed: {
+                y: '-100%',
+                opacity: 1,
+                transition: {
+                  type: 'spring',
+                  delay: .3,
+                  staggerChildren: .05,
+                  staggerDirection: -1,
+                },
+              },
+            }}
           >
-            <motion.a className={css.item}>About</motion.a>
-            <motion.a className={css.item}>Speakers</motion.a>
-            <motion.a className={css.item}>Sponsors</motion.a>
-            <motion.a className={css.item}>Notice</motion.a>
-            <motion.div className={css.btnWrap}>
+            <motion.a className={css.item} {...animationSet}>About</motion.a>
+            <motion.a className={css.item} {...animationSet}>Speakers</motion.a>
+            <motion.a className={css.item} {...animationSet}>Sponsors</motion.a>
+            <motion.a className={css.item} {...animationSet}>Notice</motion.a>
+            <motion.div className={css.btnWrap} {...animationSet}>
               <RegisterButton>사전 등록하기</RegisterButton>
             </motion.div>
           </motion.div>

@@ -260,6 +260,7 @@ fabric.properties
 
 ### Project files
 dist
+.vercel
 
 ### Temp
 temp
