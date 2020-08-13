@@ -5,6 +5,7 @@
       "@components/*": ["src/views/components/*"],
       "@svgs/*": ["src/views/svg-components/*"],
       "@motions/*": ["src/motions/*"],
+      "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"]
     },
     "target": "es5",

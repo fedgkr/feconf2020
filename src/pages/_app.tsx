@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
-import '@styles/main.scss';
+import React from 'react';
 import Head from "next/head";
-import {useViewportScroll} from "framer-motion";
+import {Provider} from "react-redux";
+import store from "@store/index";
+import '@styles/main.scss';
 
 function App({ Component, pageProps }) {
   return (
@@ -10,7 +11,9 @@ function App({ Component, pageProps }) {
         <meta charSet="UTF-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
       </Head>
-      <Component {...pageProps}/>
+      <Provider store={store}>
+        <Component {...pageProps}/>
+      </Provider>
     </>
   );
 }
