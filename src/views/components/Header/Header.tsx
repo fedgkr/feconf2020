@@ -7,6 +7,8 @@ import classcat from "classcat";
 import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
 import {useDispatch} from "react-redux";
+import Portal from "@components/Portal/Portal";
+import MenuModal from "@components/MenuModal/MenuModal";
 
 interface HeaderProps {}
 
@@ -34,7 +36,7 @@ const Header: React.FC<HeaderProps> = () => {
   return (
     <motion.div
       className={classcat([css.Header, isVisible && css.isVisible])}
-      animate={{ y: isVisible ? '0%' : '-100%' }}
+      animate={{ y: isVisible || menuOpen ? '0%' : '-100%' }}
     >
       <a className={css.logo} href="/">
         <HeaderLogo/>
@@ -46,9 +48,10 @@ const Header: React.FC<HeaderProps> = () => {
         <RegisterButton>사전 등록하기</RegisterButton>
       </div>
       <div className={css.menuBtn} onClick={() => dispatch(setMenuState(!menuOpen))}>
-        <div className={css.bar}/>
-        <div className={css.bar}/>
+        {[...Array(2).keys()].map(key =>
+          <motion.div key={key} className={css.bar}/>)}
       </div>
+      <MenuModal active={menuOpen}/>
     </motion.div>
   );
 }

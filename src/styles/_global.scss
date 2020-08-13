@@ -3,6 +3,9 @@
 body {
   color: $page-text-color;
   background-color: $page-bg-color;
+  &.fixed {
+    overflow: hidden;
+  }
 }
 
 a {

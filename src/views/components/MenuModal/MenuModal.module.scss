@@ -1,0 +1,28 @@
+@import "variables.scss";
+@import "mixin.scss";
+
+.MenuModal {
+  position: fixed;
+  top: $mobile-header-height - 50px;
+  left: 0;
+  right: 0;
+  padding-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  background-color: $page-bg-color;
+  display: none;
+  .item {
+    padding: 24px 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: white;
+  }
+  .btnWrap {
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+  @include mobile {
+    display: flex;
+  }
+}
