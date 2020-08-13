@@ -1,0 +1,10 @@
+.Portal {
+  background: rgba(0, 0, 0, .4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  touch-action: none;
+  z-index: 1100;
+}

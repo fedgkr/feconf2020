@@ -1,5 +1,7 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {createPortal} from "react-dom";
+import css from './Portal.module.scss';
+import classcat from "classcat";
 
 interface PortalProps {}
 
@@ -15,6 +17,14 @@ const Portal: React.FC<PortalProps> = ({ children }) => {
     return createPortal(children, element);
   }
   return null;
+}
+
+export const PortalWrap = ({ children, className, ...rest }) => {
+  return (
+    <div className={classcat([css.Portal, className || '']) } {...rest}>
+      {children}
+    </div>
+  );
 }
 
 export default Portal;
