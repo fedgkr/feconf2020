@@ -13,6 +13,7 @@ function App({ Component, pageProps }) {
       </Head>
       <Provider store={store}>
         <Component {...pageProps}/>
+        <div id="modal-root"/>
       </Provider>
     </>
   );
