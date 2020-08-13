@@ -1,61 +1,68 @@
+@import "variables";
 @import "mixin";
 
 .Footer {
   position: absolute;
   left: 0;
   right: 0;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 120px;
   border-top: 1px solid rgba(255, 255, 255, .5);
-  ul {
+  .container {
     display: flex;
     flex-direction: row;
-    margin: 0;
-    padding: 0;
-    li {
-      list-style: none;
-      &:not(:last-child) {
-        margin-right: 32px;
-      }
-      a {
-        font-size: 16px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, .7);
-      }
-    }
-  }
-  span {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    color: rgba(255, 255, 255, .5);
-  }
-  @include mobile {
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    height: 210px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $page-max-width;
+    height: 120px;
+    padding: 0 24px;
+    margin: 0 auto;
     ul {
-      flex-direction: column;
-      margin-top: 40px;
+      display: flex;
+      flex-direction: row;
+      margin: 0;
+      padding: 0;
       li {
+        list-style: none;
         &:not(:last-child) {
-          margin-right: 0;
-          margin-bottom: 16px;
+          margin-right: 32px;
         }
         a {
-          font-size: 14px;
+          font-size: 16px;
+          font-weight: 600;
+          color: rgba(255, 255, 255, .7);
         }
       }
     }
     span {
-      margin-top: 32px;
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      color: rgba(255, 255, 255, .5);
+    }
+  }
+  @include mobile {
+    .container {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+      height: 210px;
+      ul {
+        flex-direction: column;
+        margin-top: 40px;
+        li {
+          &:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: 16px;
+          }
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+      span {
+        margin-top: 32px;
+        font-size: 14px;
+        line-height: 18px;
+      }
     }
   }
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import css from './MenuModal.module.scss';
-import Portal from "@components/Portal/Portal";
+import Portal, {PortalWrap} from "@components/Portal/Portal";
 import {AnimatePresence, motion} from "framer-motion";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
+import classcat from "classcat";
 
 interface MenuModalProps {
   active: boolean;
@@ -30,45 +31,47 @@ const animationSet = {
 const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
   return (
     <Portal>
-      <AnimatePresence>
-        { active && (
-          <motion.div
-            className={css.MenuModal}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={{
-              open: {
-                y: '0%',
-                opacity: 1,
-                transition: {
-                  type: 'tween',
-                  staggerChildren: .07,
-                  delayChildren: .25,
+      <PortalWrap className={classcat([css.container, active ? css.active : ''])}>
+        <AnimatePresence>
+          { active && (
+            <motion.div
+              className={css.MenuModal}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: {
+                  y: '0%',
+                  opacity: 1,
+                  transition: {
+                    type: 'tween',
+                    staggerChildren: .07,
+                    delayChildren: .15,
+                  },
                 },
-              },
-              closed: {
-                y: '-100%',
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  delay: .3,
-                  staggerChildren: .05,
-                  staggerDirection: -1,
+                closed: {
+                  y: '-100%',
+                  opacity: 1,
+                  transition: {
+                    type: 'spring',
+                    delay: .3,
+                    staggerChildren: .05,
+                    staggerDirection: -1,
+                  },
                 },
-              },
-            }}
-          >
-            <motion.a className={css.item} {...animationSet}>About</motion.a>
-            <motion.a className={css.item} {...animationSet}>Speakers</motion.a>
-            <motion.a className={css.item} {...animationSet}>Sponsors</motion.a>
-            <motion.a className={css.item} {...animationSet}>Notice</motion.a>
-            <motion.div className={css.btnWrap} {...animationSet}>
-              <RegisterButton>사전 등록하기</RegisterButton>
+              }}
+            >
+              <motion.a className={css.item} {...animationSet}>About</motion.a>
+              <motion.a className={css.item} {...animationSet}>Speakers</motion.a>
+              <motion.a className={css.item} {...animationSet}>Sponsors</motion.a>
+              <motion.a className={css.item} {...animationSet}>Notice</motion.a>
+              <motion.div className={css.btnWrap} {...animationSet}>
+                <RegisterButton>사전 등록하기</RegisterButton>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        ) }
-      </AnimatePresence>
+          ) }
+        </AnimatePresence>
+      </PortalWrap>
     </Portal>
   );
 }
