@@ -4,6 +4,9 @@ import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {motion, useViewportScroll} from "framer-motion";
 import classcat from "classcat";
+import {useAppState} from "@store/index";
+import {setMenuState} from "@store/slices/appSlice";
+import {useDispatch} from "react-redux";
 
 interface HeaderProps {}
 
@@ -25,6 +28,8 @@ const useAnimatedHeader = () => {
 }
 
 const Header: React.FC<HeaderProps> = () => {
+  const dispatch = useDispatch();
+  const { menuOpen } = useAppState();
   const { isVisible } = useAnimatedHeader();
   return (
     <motion.div
@@ -40,7 +45,7 @@ const Header: React.FC<HeaderProps> = () => {
         <a href="#">Sponsors</a>
         <RegisterButton>사전 등록하기</RegisterButton>
       </div>
-      <div className={css.menuBtn}>
+      <div className={css.menuBtn} onClick={() => dispatch(setMenuState(!menuOpen))}>
         <div className={css.bar}/>
         <div className={css.bar}/>
       </div>
