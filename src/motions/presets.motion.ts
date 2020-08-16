@@ -1,8 +1,8 @@
-import {Variant} from "framer-motion";
+import {Transition, Variant} from "framer-motion";
 
 export interface VariantSet {
-  before: Variant;
-  after: Variant;
+  before: Variant & { transition: Transition };
+  after: Variant & { transition: Transition };
 }
 
 export interface Motions {
