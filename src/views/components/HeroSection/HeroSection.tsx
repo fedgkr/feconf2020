@@ -1,8 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
 import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
-import {motion, useViewportScroll} from "framer-motion";
+import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import heroMotions from "@motions/hero.motion";
 
@@ -10,7 +10,7 @@ interface HeroSectionProps {}
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
   const sectionRef = useRef();
-  const { visible } = useIntersection(sectionRef, { bottom: false });
+  const { visible } = useIntersection(sectionRef);
   return (
     <motion.div
       ref={sectionRef}
@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
       </div>
       <motion.div className={css.circle} variants={heroMotions.circle}/>
       <motion.div className={css.smallCircle} variants={heroMotions.smallCircle}/>
-      <motion.div className={css.dashedCircle} variants={heroMotions.smallCircle}/>
+      <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}/>
       <motion.div className={css.dashedSmallCircle} variants={heroMotions.circle}/>
       <div className={css.arrowDownWrap}>
         <ArrowDownIcon/>

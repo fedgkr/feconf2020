@@ -19,8 +19,13 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      h2 {
-        font-size: 60px;
+      .mask {
+        height: 66px;
+        overflow: hidden;
+        h2 {
+          line-height: 66px;
+          font-size: 60px;
+        }
       }
     }
     .aboutContainer {
@@ -49,8 +54,12 @@
           font-size: 20px;
           margin-top: -14px;
         }
-        h2 {
-          font-size: 40px;
+        .mask {
+          height: 44px;
+          h2 {
+            line-height: 44px;
+            font-size: 40px;
+          }
         }
       }
       .aboutContainer {
