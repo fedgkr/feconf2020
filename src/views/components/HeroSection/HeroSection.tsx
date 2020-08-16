@@ -17,6 +17,9 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
         </div>
       </motion.div>
       <div className={css.circle}/>
+      <div className={css.smallCircle}/>
+      <div className={css.dashedCircle}/>
+      <div className={css.dashedSmallCircle}/>
       <div className={css.arrowDownWrap}>
         <ArrowDownIcon/>
       </div>

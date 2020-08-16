@@ -1,12 +1,12 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
+import {motion, useCycle, useViewportScroll} from "framer-motion";
+import {useDispatch} from "react-redux";
+import classcat from "classcat";
 import css from './Header.module.scss';
 import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
-import {motion, useCycle, useViewportScroll} from "framer-motion";
-import classcat from "classcat";
 import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
-import {useDispatch} from "react-redux";
 import Portal from "@components/Portal/Portal";
 import MenuModal from "@components/MenuModal/MenuModal";
 

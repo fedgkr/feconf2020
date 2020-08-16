@@ -6,6 +6,7 @@
       "@svgs/*": ["src/views/svg-components/*"],
       "@motions/*": ["src/motions/*"],
       "@store/*": ["src/store/*"],
+      "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]
     },
     "target": "es5",

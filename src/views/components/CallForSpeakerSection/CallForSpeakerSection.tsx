@@ -10,6 +10,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
       <div className={css.titleContainer}>
         <h2>BECOME<br/>A SPEAKER</h2>
         <div className={css.circle}/>
+        <div className={css.dashedCircle}/>
       </div>
       <div className={css.descriptionContainer}>
         <h4>

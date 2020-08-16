@@ -15,6 +15,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
         </h2>
         <div className={cc([css.circle, css.circle1])}/>
         <div className={cc([css.circle, css.circle2])}/>
+        <div className={cc([css.circle, css.dashedCircle])}/>
       </div>
       <div className={css.contentContainer}>
         <div className={css.registerContainer}>

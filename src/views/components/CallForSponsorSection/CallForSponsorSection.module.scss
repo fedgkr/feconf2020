@@ -46,6 +46,15 @@
       left: 50%;
       margin-left: 74px;
     }
+    .dashedCircle {
+      top: 20px;
+      right: 50%;
+      margin-right: 265px;
+      width: 136px;
+      height: 136px;
+      border: 2px dashed #979797;
+      background-color: transparent;
+    }
   }
   .contentContainer {
     display: flex;
@@ -118,12 +127,6 @@
           display: none;
         }
       }
-      .circle {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(220, 220, 220, .85);
-        z-index: -1;
-      }
       .circle1 {
         top: -96px;
         left: -70px;
@@ -138,6 +141,14 @@
         height: 260px;
         right: -93px;
         margin-left: 0;
+      }
+      .dashedCircle {
+        top: -144px;
+        right: 50%;
+        margin-right: 48px;
+        width: 100px;
+        height: 100px;
+        border: dashed 2px rgba(255, 255, 255, .3);
       }
     }
     .contentContainer {

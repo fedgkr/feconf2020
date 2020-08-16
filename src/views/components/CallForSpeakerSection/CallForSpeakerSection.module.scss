@@ -15,15 +15,25 @@
       font-weight: 900;
       line-height: 80px;
     }
-    .circle {
+    .circle, .dashedCircle {
       position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    .circle {
       top: -219px;
       left: 113px;
       width: 430px;
       height: 430px;
-      border-radius: 50%;
       background-color: rgba(220, 220, 220, .85);
-      z-index: -1;
+    }
+    .dashedCircle {
+      top: -247px;
+      left: 19px;
+      width: 188px;
+      height: 188px;
+      border: 2px dashed #979797;
+      background-color: transparent;
     }
   }
   .descriptionContainer {
@@ -53,11 +63,17 @@
         letter-spacing: -.2px;
       }
       .circle {
-        position: absolute;
         top: -140px;
-        left: 55px;
+        left: 35px;
         width: 240px;
         height: 240px;
+      }
+      .dashedCircle {
+        top: -164px;
+        left: 12px;
+        width: 100px;
+        height: 100px;
+        border: dashed 2px rgba(255, 255, 255, .3);
       }
     }
     .descriptionContainer {

@@ -13,6 +13,7 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
           <h4>FEConf 2020의 소식을 전해드립니다</h4>
         </div>
         <div className={css.circle}/>
+        <div className={css.dashedCircle}/>
       </div>
       <div className={css.socialPlatformContainer}>
         {[...Array(3).keys()].map((i) =>
