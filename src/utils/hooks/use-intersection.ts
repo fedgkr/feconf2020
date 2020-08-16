@@ -34,7 +34,7 @@ export const useIntersection = (
             }
           });
         },
-        { threshold }
+        { threshold },
       );
       observer.observe(ref.current);
       return () => {

@@ -1,29 +1,41 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
 import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
 import {motion, useViewportScroll} from "framer-motion";
-import {FramerMotions} from "@motions/variants";
+import {useIntersection} from "@utils/hooks/use-intersection";
+import heroMotions from "@motions/hero.motion";
 
 interface HeroSectionProps {}
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
+  const sectionRef = useRef();
+  const { visible } = useIntersection(sectionRef, { bottom: false });
   return (
-    <div className={css.HeroSection}>
-      <motion.div {...FramerMotions.fadeIn}>
+    <motion.div
+      ref={sectionRef}
+      className={css.HeroSection}
+      initial="hidden"
+      animate={visible ? 'visible' : ''}
+    >
+      <div>
         <div className={css.mainLogoWrap}>
-          <MainLogo/>
-          <p><img src="/images/icons/youtube@2x.png" alt="YouTube"/>2020. 10. Coming Soon</p>
+          <motion.div variants={heroMotions.logo}>
+            <MainLogo/>
+          </motion.div>
+          <motion.p variants={heroMotions.text}>
+            <img src="/images/icons/youtube@2x.png" alt="YouTube"/>2020. 10. Coming Soon
+          </motion.p>
         </div>
-      </motion.div>
-      <div className={css.circle}/>
-      <div className={css.smallCircle}/>
-      <div className={css.dashedCircle}/>
-      <div className={css.dashedSmallCircle}/>
+      </div>
+      <motion.div className={css.circle} variants={heroMotions.circle}/>
+      <motion.div className={css.smallCircle} variants={heroMotions.smallCircle}/>
+      <motion.div className={css.dashedCircle} variants={heroMotions.smallCircle}/>
+      <motion.div className={css.dashedSmallCircle} variants={heroMotions.circle}/>
       <div className={css.arrowDownWrap}>
         <ArrowDownIcon/>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
