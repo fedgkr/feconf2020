@@ -22,16 +22,43 @@
       }
     }
   }
-  .circle {
+  .circle, .smallCircle, .dashedCircle, .dashedSmallCircle {
     position: absolute;
+    background-color: rgba(220, 220, 220, .85);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  .dashedCircle, .dashedSmallCircle {
+    border: 2px dashed #979797;
+    background-color: transparent;
+  }
+  .circle {
     margin-left: -130px;
     top: 98px;
     left: 50%;
     width: 572px;
     height: 572px;
-    background-color: rgba(220, 220, 220, .85);
-    border-radius: 50%;
-    z-index: -1;
+  }
+  .smallCircle {
+    margin-right: 429px;
+    top: 177px;
+    right: 50%;
+    width: 122px;
+    height: 122px;
+  }
+  .dashedCircle {
+    top: 205px;
+    margin-left: 369px;
+    left: 50%;
+    width: 188px;
+    height: 188px;
+  }
+  .dashedSmallCircle {
+    top: 142px;
+    right: 50%;
+    margin-right: 409px;
+    width: 72px;
+    height: 72px;
   }
   .arrowDownWrap {
     display: block;
@@ -47,7 +74,6 @@
     .mainLogoWrap {
       margin: 140px 0 0 0;
       width: 53.3333vw;
-      min-width: 216px;
       transform: none;
       left: 0;
       p {
@@ -64,6 +90,22 @@
       top: 124px;
       width: 343px;
       height: 343px;
+    }
+    .smallCircle {
+      margin-right: 119px;
+      top: 81px;
+      width: 85px;
+      height: 85px;
+    }
+    .dashedCircle {
+      display: none;
+    }
+    .dashedSmallCircle {
+      top: 56px;
+      margin-right: 105px;
+      width: 50px;
+      height: 50px;
+      border: dashed 2px rgba(255, 255, 255, .3);
     }
     .arrowDownWrap {
       margin: 162px auto 0 auto;

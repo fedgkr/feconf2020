@@ -19,16 +19,27 @@
         margin-top: 16px;
       }
     }
-    .circle {
+    .circle, .dashedCircle {
       position: absolute;
+      border-radius: 50%;
+      background-color: rgba(220, 220, 220, .85);
+      z-index: -1;
+    }
+    .circle {
       top: 0;
       right: 50%;
       margin-right: 175px;
       width: 425px;
       height: 425px;
-      border-radius: 50%;
-      background-color: rgba(220, 220, 220, .85);
-      z-index: -1;
+    }
+    .dashedCircle {
+      top: -35px;
+      right: 50%;
+      margin-right: 98px;
+      width: 188px;
+      height: 188px;
+      border: 2px dashed #979797;
+      background-color: transparent;
     }
   }
   .socialPlatformContainer {
@@ -101,6 +112,13 @@
         left: -91px;
         width: 260px;
         height: 260px;
+      }
+      .dashedCircle {
+        top: -33px;
+        margin-right: -48px;
+        width: 120px;
+        height: 120px;
+        border: dashed 2px rgba(255, 255, 255, .3);
       }
     }
     .socialPlatformContainer {
