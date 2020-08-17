@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {motion, useCycle, useViewportScroll} from "framer-motion";
+import {motion, useViewportScroll} from "framer-motion";
 import {useDispatch} from "react-redux";
 import classcat from "classcat";
 import css from './Header.module.scss';
@@ -7,7 +7,6 @@ import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
-import Portal from "@components/Portal/Portal";
 import MenuModal from "@components/MenuModal/MenuModal";
 
 interface HeaderProps {}
