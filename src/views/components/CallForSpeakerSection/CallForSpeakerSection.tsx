@@ -28,7 +28,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
           <motion.h2 variants={callForSpeakerMotions.titleText}>A SPEAKER</motion.h2>
         </div>
         <motion.div className={css.circle} variants={callForSpeakerMotions.circle}/>
-        <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.dashedCircle}/>
+        <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}/>
       </div>
       <div className={css.descriptionContainer}>
         <motion.h4 variants={callForSpeakerMotions.text}>
