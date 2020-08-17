@@ -13,12 +13,15 @@
     p {
       display: flex;
       align-items: center;
-      font-size: 24px;
-      font-weight: bold;
-      margin: 45px 0 0;
+      margin: 42px 0 0;
+      font-size: 0;
       img {
         width: 43px;
         margin-right: 16px;
+      }
+      span {
+        font-size: 24px;
+        font-weight: bold;
       }
     }
   }
@@ -88,15 +91,18 @@
     padding: 0 40px;
     .mainLogoWrap {
       margin: 140px 0 0 0;
-      width: 53.3333vw;
+      width: 54vw;
       transform: none;
       left: 0;
       p {
-        font-size: 16px;
+        font-size: 0;
         margin: 25px 0 0;
         img {
-          width: 27px;
-          margin-right: 8px;
+          width: 7vw;
+          margin-right: 2vw;
+        }
+        span {
+          font-size: 3.8vw;
         }
       }
     }
