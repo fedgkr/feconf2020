@@ -46,7 +46,8 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             <MainLogo/>
           </motion.div>
           <motion.p variants={heroMotions.text}>
-            <img src="/images/icons/youtube@2x.png" alt="YouTube"/>2020. 10. Coming Soon
+            <img src="/images/icons/youtube@2x.png" alt="YouTube"/>
+            <span>2020. 10. Coming Soon</span>
           </motion.p>
         </div>
       </div>
