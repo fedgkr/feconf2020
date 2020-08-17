@@ -6,7 +6,10 @@ export interface VariantSet {
 }
 
 export interface Motions {
+  fadeIn: VariantSet;
   fadeInUp: VariantSet;
+  fadeInRight: VariantSet;
+  fadeInLeft: VariantSet;
 }
 
 const defaultTransition = {
@@ -14,11 +17,27 @@ const defaultTransition = {
   duration: .4,
 };
 
+const defaultOffset = 40;
+
 export const motionPresets: Motions = {
+  fadeIn: {
+    before: {
+      opacity: 0,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+    after: {
+      opacity: 1,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+  },
   fadeInUp: {
     before: {
       opacity: 0,
-      y: 40,
+      y: defaultOffset,
       transition: {
         ...defaultTransition,
       },
@@ -30,5 +49,37 @@ export const motionPresets: Motions = {
         ...defaultTransition,
       },
     },
-  }
+  },
+  fadeInRight: {
+    before: {
+      opacity: 0,
+      x: -defaultOffset,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+    after: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+  },
+  fadeInLeft: {
+    before: {
+      opacity: 0,
+      x: defaultOffset,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+    after: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        ...defaultTransition,
+      },
+    },
+  },
 };
