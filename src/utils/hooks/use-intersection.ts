@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useState } from 'react';
+import {MutableRefObject, useEffect, useRef, useState} from 'react';
 
 interface IntersectionOption {
   threshold?: number;
@@ -14,6 +14,7 @@ export const useIntersection = (
     bottom: true,
   }
 ) => {
+  const firstRender = useRef(true);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (ref.current) {
@@ -27,11 +28,15 @@ export const useIntersection = (
             } = entry;
             const responseToTop = top && y >= 0;
             const responseToBottom = bottom && y <= 0;
+            const scrollBottomWhenFirstRendered = firstRender.current && y <= 0;
             if (responseToTop) {
               setVisible(isIntersecting);
             } else if (responseToBottom) {
               setVisible(isIntersecting);
+            } else if (scrollBottomWhenFirstRendered) {
+              setVisible(true);
             }
+            firstRender.current = false;
           });
         },
         { threshold },
