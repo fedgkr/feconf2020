@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'mixin';
 
 .PreRegistrationSection {
@@ -12,6 +13,7 @@
       text-align: center;
       h2 {
         font-size: 80px;
+        font-family: $gilroy-font;
       }
       h4 {
         font-size: 24px;
