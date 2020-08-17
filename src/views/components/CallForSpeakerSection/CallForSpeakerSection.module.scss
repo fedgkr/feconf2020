@@ -9,16 +9,21 @@
   .titleContainer {
     position: relative;
     margin-right: 107px;
-    h2 {
-      width: 450px;
-      font-size: 80px;
-      font-weight: 900;
-      line-height: 80px;
+    .mask {
+      height: 84px;
+      overflow: hidden;
+      h2 {
+        width: 450px;
+        font-size: 80px;
+        font-weight: 900;
+        line-height: 84px;
+      }
     }
     .circle, .dashedCircle {
       position: absolute;
       border-radius: 50%;
       z-index: -1;
+      transform-origin: 200% 200%;
     }
     .circle {
       top: -219px;
@@ -56,11 +61,14 @@
     padding: 0 20px;
     .titleContainer {
       margin-right: 0;
-      h2 {
-        width: auto;
-        font-size: 36px;
-        line-height: 40px;
-        letter-spacing: -.2px;
+      .mask {
+        height: 40px;
+        h2 {
+          width: auto;
+          font-size: 36px;
+          line-height: 40px;
+          letter-spacing: -.2px;
+        }
       }
       .circle {
         top: -140px;
