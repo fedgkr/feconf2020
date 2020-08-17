@@ -1,3 +1,4 @@
+@import "variables";
 @import "mixin";
 
 .RegisterSection {
@@ -11,6 +12,7 @@
       right: 50%;
       margin-right: -70px;
       font-size: 80px;
+      font-family: $gilroy-font;
       font-weight: 900;
       text-align: right;
     }

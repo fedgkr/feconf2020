@@ -1,3 +1,4 @@
+@import 'variables';
 @import 'mixin';
 
 .CallForSpeakerSection {
@@ -10,13 +11,14 @@
     position: relative;
     margin-right: 107px;
     .mask {
-      height: 84px;
+      height: 82px;
       overflow: hidden;
       h2 {
         width: 450px;
         font-size: 80px;
+        font-family: $gilroy-font;
         font-weight: 900;
-        line-height: 84px;
+        line-height: 82px;
       }
     }
     .circle, .dashedCircle {

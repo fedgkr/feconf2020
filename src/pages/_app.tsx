@@ -11,7 +11,7 @@ function App({Component, pageProps}) {
         <meta charSet="UTF-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
-        <title>FEConf2020</title>
+        <title>FEConf 2020</title>
         <meta
           name="description"
           content="2020 FEConf Korea 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
