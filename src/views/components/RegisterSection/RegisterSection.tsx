@@ -1,21 +1,32 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import css from './RegisterSection.module.scss';
 import RegisterButton from "@components/RegisterButton/RegisterButton";
+import {useIntersection} from "@utils/hooks/use-intersection";
+import {motion} from "framer-motion";
+import registerMotions from "@motions/register.motion";
 
 interface RegisterSectionProps {}
 
 const RegisterSection: React.FC<RegisterSectionProps> = () => {
+  const titleRef = useRef();
+  const { visible: titleVisible } = useIntersection(titleRef, { threshold: .5, bottom: false });
   return (
-    <div className={css.RegisterSection}>
+    <motion.div
+      className={css.RegisterSection}
+      ref={titleRef}
+      initial="hidden"
+      animate={titleVisible ? 'visible' : 'hidden'}
+      variants={registerMotions.container}
+    >
       <div className={css.container}>
-        <h2>REGISTER</h2>
-        <h4>지금, 바로 등록하세요</h4>
-        <div className={css.buttonWrap}>
+        <motion.h2 variants={registerMotions.text}>REGISTER</motion.h2>
+        <motion.h4 variants={registerMotions.text}>지금, 바로 등록하세요</motion.h4>
+        <motion.div className={css.buttonWrap} variants={registerMotions.text}>
           <RegisterButton>사전 등록하기</RegisterButton>
-        </div>
-        <div className={css.circle}/>
+        </motion.div>
+        <motion.div className={css.circle} variants={registerMotions.circle}/>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

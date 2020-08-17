@@ -38,6 +38,7 @@
       width: 225px;
       height: 225px;
       margin-right: 326px;
+      transform-origin: 300% 300%;
     }
     .circle2 {
       top: 0;
@@ -45,6 +46,7 @@
       height: 479px;
       left: 50%;
       margin-left: 74px;
+      transform-origin: -300% 300%;
     }
     .dashedCircle {
       top: 20px;
@@ -52,6 +54,7 @@
       margin-right: 265px;
       width: 136px;
       height: 136px;
+      transform-origin: 300% 300%;
       border: 2px dashed #979797;
       background-color: transparent;
     }
