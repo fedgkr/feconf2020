@@ -38,6 +38,7 @@
     left: 50%;
     width: 572px;
     height: 572px;
+    overflow: hidden;
 
     .circleBackground {
       position: absolute;
@@ -70,10 +71,8 @@
     margin-right: 409px;
     width: 72px;
     height: 72px;
-    background-color: rgba(220, 220, 220, .85);
     border-radius: 50%;
     z-index: -1;
-    overflow: hidden;
   }
   .arrowDownWrap {
     display: block;
