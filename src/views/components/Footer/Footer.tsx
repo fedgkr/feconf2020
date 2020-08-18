@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Footer.module.scss';
+import SafeLink from "@components/SafeLink/SafeLink";
 
 interface FooterProps {}
 
@@ -8,9 +9,9 @@ const Footer: React.FC<FooterProps> = () => {
     <div className={css.Footer}>
       <div className={css.container}>
         <ul>
-          <li><a rel="noopener noreferrer" target="_blank" href="https://2019.feconf.kr/">FEConf 2019</a></li>
-          <li><a rel="noopener noreferrer" target="_blank" href="https://github.com/fedgkr/feconf-notice/blob/master/CODE_OF_CONDUCT.md">Code of conduct</a></li>
-          <li><a rel="noopener noreferrer" target="_blank" href="https://www.facebook.com/groups/webfrontend">프론트엔드개발그룹</a></li>
+          <li><SafeLink href="https://2019.feconf.kr/">FEConf 2019</SafeLink></li>
+          <li><SafeLink href="https://github.com/fedgkr/feconf-notice/blob/master/CODE_OF_CONDUCT.md">Code of conduct</SafeLink></li>
+          <li><SafeLink href="https://www.facebook.com/groups/webfrontend">프론트엔드개발그룹</SafeLink></li>
         </ul>
         <span>© FEconf. 2020 All rights reserved</span>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './RegisterButton.module.scss';
+import SafeLink from "@components/SafeLink/SafeLink";
 
 interface RegisterButtonProps {
   link?: string;
@@ -7,9 +8,9 @@ interface RegisterButtonProps {
 
 const RegisterButton: React.FC<RegisterButtonProps> = ({ link = '#', children }) => {
   return (
-    <a className={css.RegisterButton} target="_blank" rel="noopener noreferrer" href={link}>
+    <SafeLink className={css.RegisterButton} href={link}>
       { children }
-    </a>
+    </SafeLink>
   );
 }
 

@@ -14,7 +14,7 @@ const useMotionNumber = (targetNumber: number, visible: boolean) => {
       animation = tween({
         from: 0,
         to: targetNumber,
-        duration: 1050,
+        duration: 1200,
       }).start({
         update: (value) => setNumber(value),
       });
