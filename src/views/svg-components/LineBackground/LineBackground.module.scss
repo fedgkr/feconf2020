@@ -1,0 +1,28 @@
+@import "mixin";
+
+.LineBackground {
+  position: absolute;
+  width: 100%;
+  max-width: 768px;
+  left: 50%;
+  top: 450px;
+  transform: translate(-600px);
+  pointer-events: none;
+  svg {
+    width: 1300px;
+    height: auto;
+  }
+  @include mobile {
+    top: calc(212px + 20vw);
+    // left: 40px;
+    transform: translate(-57%);
+
+    svg {
+      width: 140%;
+
+      path {
+        stroke-width: 3.5px;
+      }
+    }
+  }
+}
