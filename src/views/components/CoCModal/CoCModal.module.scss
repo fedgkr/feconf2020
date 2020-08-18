@@ -1,0 +1,80 @@
+@import 'variables';
+@import 'mixin';
+
+.CoCModal {
+  position: relative;
+  max-width: 880px;
+  margin: 96px auto;
+  padding: 64px 140px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: #232323;
+  .title {
+    font-size: 48px;
+    font-family: $gilroy-font;
+    font-weight: 900;
+    text-align: center;
+  }
+  .subTitle {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 62px;
+  }
+  .block {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+    h3 {
+      font-size: 20px;
+      line-height: 24px;
+    }
+    p {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  @include mobile {
+    width: 100%;
+    margin: 60px 0 0 0;
+    padding: 20px;
+    .title {
+      font-size: 32px;
+    }
+    .subTitle {
+      font-size: 17px;
+      line-height: 22px;
+      margin-bottom: 32px;
+    }
+    .block {
+      &:not(:last-child) {
+        margin-bottom: 28px;
+      }
+      h3 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      p {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+.container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s .4s ease-out;
+  overflow: scroll;
+  z-index: 2201;
+  touch-action: none;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity .1s ease-out;
+  }
+}
