@@ -1,0 +1,11 @@
+@import "mixin";
+
+.LinePath, .LineStrokePath {
+  transform-origin: 23px 23px;
+  stroke-dasharray: 0 100000;
+
+  &.LinePathGray {
+    stroke: #fff;
+    opacity: 0.3;
+  }
+}

@@ -9,6 +9,7 @@ import CallForSponsorSection from "@components/CallForSponsorSection/CallForSpon
 import NoticeSection from "@components/NoticeSection/NoticeSection";
 import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
+import LineBackground from '@svgs/LineBackground/LineBackground';
 
 interface HomePageProps {}
 
@@ -16,6 +17,7 @@ const HomePage: React.FC<HomePageProps> = () => {
   return (
     <div className={css.HomePage}>
       <Header/>
+      <LineBackground/>
       <HeroSection/>
       <AboutSection/>
       <PreRegistrationSection/>
