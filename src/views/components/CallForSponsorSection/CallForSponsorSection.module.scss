@@ -81,39 +81,6 @@
         margin-bottom: 22px;
       }
     }
-    .sponsorContainer {
-      position: relative;
-      width: 240px;
-      h4 {
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .sponsorList {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 206px;
-        overflow: hidden;
-        .sponsor {
-          font-size: 30px;
-          font-weight: 900;
-          &:not(:last-child) {
-            margin-bottom: 24px;
-          }
-        }
-      }
-      .dimmed {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 66px;
-        z-index: 1;
-        background: linear-gradient(rgba(18, 18, 18, 0), #121212);
-      }
-    }
   }
   @include mobile {
     margin-top: 260px;
@@ -171,26 +138,6 @@
           line-height: 22px;
           max-width: none;
           margin-bottom: 16px;
-        }
-      }
-      .sponsorContainer {
-        position: relative;
-        width: 240px;
-        margin: 64px auto 0 auto;
-        h4 {
-          font-size: 16px;
-          margin-bottom: 32px;
-        }
-        .sponsorList {
-          height: 234px;
-          overflow: hidden;
-          .sponsor {
-            font-size: 30px;
-            font-weight: 900;
-            &:not(:last-child) {
-              margin-bottom: 32px;
-            }
-          }
         }
       }
     }

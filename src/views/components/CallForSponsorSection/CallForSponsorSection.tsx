@@ -5,16 +5,15 @@ import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSponsorMotions from "@motions/callforsponsor.motion";
+import SponsorList from "@components/SponsorList/SponsorList";
 
 interface CallForSponsorSectionProps {}
 
 const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
   const titleRef = useRef();
   const textContainerRef = useRef();
-  const sponsorRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .6, bottom: false });
   const { visible: textContainerVisible } = useIntersection(textContainerRef, { threshold: .5, bottom: false });
-  const { visible: sponsorVisible } = useIntersection(sponsorRef, { threshold: .5, bottom: false });
   return (
     <div className={css.CallForSponsorSection}>
       <motion.div
@@ -51,22 +50,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
             <RegisterButton>후원사 신청하기</RegisterButton>
           </motion.div>
         </motion.div>
-        <motion.div
-          className={css.sponsorContainer}
-          ref={sponsorRef}
-          initial="hidden"
-          animate={sponsorVisible ? 'visible' : 'hidden'}
-          variants={callForSponsorMotions.sponsorContainer}
-        >
-          <motion.h4 variants={callForSponsorMotions.sponsorTitle}>지난 후원사</motion.h4>
-          <div className={css.sponsorList}>
-            <motion.a className={css.sponsor} href="" variants={callForSponsorMotions.sponsor}>NAVER</motion.a>
-            <motion.a className={css.sponsor} href="" variants={callForSponsorMotions.sponsor}>Toss</motion.a>
-            <motion.a className={css.sponsor} href="" variants={callForSponsorMotions.sponsor}>당근마켓</motion.a>
-            <motion.a className={css.sponsor} href="" variants={callForSponsorMotions.sponsor}>킹씨소프트</motion.a>
-          </div>
-          <div className={css.dimmed}></div>
-        </motion.div>
+        <SponsorList/>
       </div>
     </div>
   );
