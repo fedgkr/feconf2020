@@ -6,6 +6,7 @@ import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import preRegistrationMotions from "@motions/pre-registration.motion";
 import MotionNumber from "@components/MotionNumber/MotionNumber";
+import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 
 interface PreRegistrationSectionProps {}
 
@@ -23,11 +24,13 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
         animate={titleVisible ? 'visible' : 'hidden'}
         variants={preRegistrationMotions.titleContainer}
       >
+        <motion.div className={css.circle} variants={preRegistrationMotions.circle}>
+          <AwesomeCircle type={1} />
+        </motion.div>
         <div className={css.textContainer}>
           <motion.h2 variants={preRegistrationMotions.text}>PRE-REGISTRATION</motion.h2>
           <motion.h4 variants={preRegistrationMotions.text}>FEConf 2020을 응원해주세요</motion.h4>
         </div>
-        <motion.div className={css.circle} variants={preRegistrationMotions.circle}/>
       </motion.div>
       <motion.div
         className={css.contentContainer}

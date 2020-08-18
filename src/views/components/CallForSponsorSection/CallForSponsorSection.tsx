@@ -6,6 +6,7 @@ import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSponsorMotions from "@motions/callforsponsor.motion";
 import SponsorList from "@components/SponsorList/SponsorList";
+import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 
 interface CallForSponsorSectionProps {}
 
@@ -27,8 +28,12 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
           BECOME<br/> A SPONSOR
           <p>FEConf를 후원해주세요</p>
         </motion.h2>
-        <motion.div className={cc([css.circle, css.circle1])} variants={callForSponsorMotions.circle1}/>
-        <motion.div className={cc([css.circle, css.circle2])} variants={callForSponsorMotions.circle2}/>
+        <motion.div className={cc([css.circle, css.circle1])} variants={callForSponsorMotions.circle1}>
+          <AwesomeCircle type={1} />
+        </motion.div>
+        <motion.div className={cc([css.circle, css.circle2])} variants={callForSponsorMotions.circle2}>
+        <AwesomeCircle type={2} />
+        </motion.div>
         <motion.div className={cc([css.circle, css.dashedCircle])} variants={callForSponsorMotions.dashedCircle}/>
       </motion.div>
       <div className={css.contentContainer}>

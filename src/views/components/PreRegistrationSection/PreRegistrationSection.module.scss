@@ -5,6 +5,7 @@
   margin-top: 200px;
   .titleContainer {
     position: relative;
+    z-index: -1;
     .textContainer {
       position: absolute;
       top: 248px;

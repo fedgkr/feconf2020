@@ -4,6 +4,7 @@ import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSpeakerMotions from "@motions/callforspeaker.motion";
+import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 
 interface CallForSpeakerSectionProps {}
 
@@ -27,7 +28,9 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
         <div className={css.mask}>
           <motion.h2 variants={callForSpeakerMotions.titleText}>A SPEAKER</motion.h2>
         </div>
-        <motion.div className={css.circle} variants={callForSpeakerMotions.circle}/>
+        <motion.div className={css.circle} variants={callForSpeakerMotions.circle}>
+          <AwesomeCircle type={3} />
+        </motion.div>
         <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}/>
       </div>
       <div className={css.descriptionContainer}>
