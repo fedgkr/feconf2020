@@ -27,7 +27,7 @@ function App({Component, pageProps}) {
           property="og:description"
           content="2020 FEConf Korea 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
-        <meta property="og:image" content="https://fedgkr.github.io/feconf2020/images/og-image.jpg" />
+        <meta property="og:image" content="https://feconf2020web.vercel.app/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="2020 FEConf Korea" />
         <meta
