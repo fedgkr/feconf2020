@@ -16,6 +16,8 @@ export const useIntersection = (
 ) => {
   const firstRender = useRef(true);
   const [visible, setVisible] = useState(false);
+  const [firstVisible, setFirstVisible] = useState(false);
+
   useEffect(() => {
     if (ref.current) {
       const { threshold = 0, top = true, bottom = true } = option;
@@ -31,10 +33,19 @@ export const useIntersection = (
             const scrollBottomWhenFirstRendered = firstRender.current && y <= 0;
             if (responseToTop) {
               setVisible(isIntersecting);
+              if (!firstVisible && isIntersecting) {
+                setFirstVisible(true);
+              }
             } else if (responseToBottom) {
               setVisible(isIntersecting);
+              if (!firstVisible && isIntersecting) {
+                setFirstVisible(true);
+              }
             } else if (scrollBottomWhenFirstRendered) {
               setVisible(true);
+              if (!firstVisible) {
+                setFirstVisible(true);
+              }
             }
             firstRender.current = false;
           });
@@ -49,5 +60,6 @@ export const useIntersection = (
   }, [option, ref]);
   return {
     visible,
+    firstVisible,
   };
 };

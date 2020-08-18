@@ -4,6 +4,7 @@ import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import {motion} from "framer-motion";
 import registerMotions from "@motions/register.motion";
+import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 
 interface RegisterSectionProps {}
 
@@ -24,7 +25,9 @@ const RegisterSection: React.FC<RegisterSectionProps> = () => {
         <motion.div className={css.buttonWrap} variants={registerMotions.text}>
           <RegisterButton>사전 등록하기</RegisterButton>
         </motion.div>
-        <motion.div className={css.circle} variants={registerMotions.circle}/>
+        <motion.div className={css.circle} variants={registerMotions.circle}>
+          <AwesomeCircle type={5} />
+        </motion.div>
       </div>
     </motion.div>
   );

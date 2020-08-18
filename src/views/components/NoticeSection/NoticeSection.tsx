@@ -6,6 +6,7 @@ import {motion} from "framer-motion";
 import noticeMotions from "@motions/notice.motion";
 import SafeLink from "@components/SafeLink/SafeLink";
 import PlatformList from "@components/PlatformList/PlatformList";
+import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 
 interface NoticeSectionProps {}
 
@@ -25,7 +26,9 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
           <motion.h2 variants={noticeMotions.titleText}>NOTICE</motion.h2>
           <motion.h4 variants={noticeMotions.titleText}>FEConf 2020의 소식을 전해드립니다</motion.h4>
         </div>
-        <motion.div className={css.circle} variants={noticeMotions.circle}/>
+        <motion.div className={css.circle} variants={noticeMotions.circle}>
+          <AwesomeCircle type={6} />
+        </motion.div>
         <motion.div className={css.dashedCircle} variants={noticeMotions.dashedCircle}/>
       </motion.div>
       <PlatformList/>

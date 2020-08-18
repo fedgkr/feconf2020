@@ -41,19 +41,6 @@
     left: 50%;
     width: 572px;
     height: 572px;
-    overflow: hidden;
-
-    .circleBackground {
-      position: absolute;
-      will-change: transform;
-      background: url("/images/backgrounds/img-gradient-1.png");
-      width: 1200px;
-      height: 1200px;
-      background-size: 100% 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-25%, -25%);
-    }
   }
   .smallCircle {
     margin-right: 429px;
