@@ -1,0 +1,56 @@
+@import "variables";
+@import "mixin";
+
+.SponsorList {
+  position: relative;
+  width: 240px;
+  h4 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .sponsorList {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 340px;
+    overflow: hidden;
+    font-size: 0;
+    .sponsor {
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+      img {
+        width: 220px;
+        height: 60px;
+      }
+    }
+  }
+  .dimmed {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 66px;
+    z-index: 1;
+    background: linear-gradient(rgba(18, 18, 18, 0), #121212);
+  }
+  @include mobile {
+    position: relative;
+    width: 240px;
+    margin: 64px auto 0 auto;
+    h4 {
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+    .sponsorList {
+      overflow: hidden;
+      .sponsor {
+        &:not(:last-child) {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+}
