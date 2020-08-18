@@ -76,6 +76,8 @@ const LineBackground: React.FC = () => {
       { pos: 21400, speed: 1.5 },
     ]
     function scroll() {
+      clearTimeout(playTimer);
+
       const innerWidth = window.innerWidth;
       const inenrHeight = window.innerHeight;
       const backgroundTop = innerWidth > 768 ? 450 : 212 + innerWidth * 0.2;
@@ -87,7 +89,6 @@ const LineBackground: React.FC = () => {
       let length = athomeLength + totalTime;
 
       if (time > 0 && !scene.isPaused()) {
-        console.log("??");
         scene.pause();
         scene.setTime(2);
       }
@@ -110,7 +111,6 @@ const LineBackground: React.FC = () => {
       airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad)`;
 
       if (time === 0) {
-        clearTimeout(playTimer);
         playTimer = window.setTimeout(() => {
           scene.play();
         }, 2000);
