@@ -82,20 +82,18 @@ const SponsorList: React.FC<SponsorListProps> = () => {
     >
       <motion.h4 variants={callForSponsorMotions.sponsorTitle}>지난 후원사</motion.h4>
       <div className={css.sponsorList}>
-        {sponsorList.map((sponsor) => {
-          return (
-            <motion.a
-              key={sponsor.name}
-              className={css.sponsor}
-              target="_blank"
-              rel="noopener noreferrer"
-              href={sponsor.link}
-              variants={callForSponsorMotions.sponsor}
-            >
-              <img src={`/images/sponsors/${sponsor.image}`} alt={sponsor.name}/>
-            </motion.a>
-          );
-        })}
+        {sponsorList.map((sponsor) => (
+          <motion.a
+            key={sponsor.name}
+            className={css.sponsor}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={sponsor.link}
+            variants={callForSponsorMotions.sponsor}
+          >
+            <img src={`/images/sponsors/${sponsor.image}`} alt={sponsor.name}/>
+          </motion.a>
+        ))}
       </div>
       <div className={css.dimmed}></div>
     </motion.div>

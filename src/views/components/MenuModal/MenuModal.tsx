@@ -5,15 +5,21 @@ import {AnimatePresence, motion} from "framer-motion";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import classcat from "classcat";
 import headerMotions from "@motions/header.motion";
+import {useDispatch} from "react-redux";
+import {setMenuState} from "@store/slices/appSlice";
 
 interface MenuModalProps {
   active: boolean;
 }
 
 const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
+  const dispatch = useDispatch();
+  function onClose() {
+    dispatch(setMenuState(false));
+  }
   return (
     <Portal>
-      <PortalWrap className={classcat([css.container, active ? css.active : ''])}>
+      <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
         <AnimatePresence>
           { active && (
             <motion.div
@@ -22,6 +28,7 @@ const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
               animate="open"
               exit="closed"
               variants={headerMotions.menu}
+              onClick={evt => evt.stopPropagation()}
             >
               <motion.a className={css.item} variants={headerMotions.menuItem}>About</motion.a>
               <motion.a className={css.item} variants={headerMotions.menuItem}>Speakers</motion.a>
