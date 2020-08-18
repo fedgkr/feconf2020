@@ -38,6 +38,17 @@
     left: 50%;
     width: 572px;
     height: 572px;
+
+    .circleBackground {
+      position: absolute;
+      will-change: transform;
+      background: url("/images/backgrounds/img-gradient-1.png");
+      transform-origin: 1800px 600px;
+      width: 2400px;
+      height: 2400px;
+      top: -600px;
+      right: -600px;
+    }
   }
   .smallCircle {
     margin-right: 429px;
@@ -59,6 +70,10 @@
     margin-right: 409px;
     width: 72px;
     height: 72px;
+    background-color: rgba(220, 220, 220, .85);
+    border-radius: 50%;
+    z-index: -1;
+    overflow: hidden;
   }
   .arrowDownWrap {
     display: block;
