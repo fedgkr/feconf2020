@@ -17,26 +17,17 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
     const scene = new Scene({
       [`.${css.circleBackground}`]: {
         0: {
-          "transform": "translate(0px, 0px) rotate(0deg)",
-          "transform-origin": "1800px 600px",
-        },
-        10: {
-          "transform": "translate(1200px, -1200px)",
-          "transform-origin": "600px 1800px",
-        },
-        "10>": {
-          "transform": "translate(0px, 0px) rotate(180deg)",
-          "transform-origin": "1800px 600px",
+          "transform": "translate(-35%, -35%) rotate(0deg)",
         },
         20: {
-          "transform": "translate(1200px, -1200px) rotate(360deg)",
-          "transform-origin": "600px 1800px",
+          "transform": "rotate(360deg)",
         },
       },
     }, {
       selector: true,
       iterationCount: "infinite",
-    }).playCSS();
+    });
+    scene.playCSS();
 
     return () => {
       scene.clear();

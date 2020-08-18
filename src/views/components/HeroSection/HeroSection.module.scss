@@ -44,11 +44,12 @@
       position: absolute;
       will-change: transform;
       background: url("/images/backgrounds/img-gradient-1.png");
-      transform-origin: 1800px 600px;
-      width: 2400px;
-      height: 2400px;
-      top: -600px;
-      right: -600px;
+      width: 1200px;
+      height: 1200px;
+      background-size: 100% 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-25%, -25%);
     }
   }
   .smallCircle {
