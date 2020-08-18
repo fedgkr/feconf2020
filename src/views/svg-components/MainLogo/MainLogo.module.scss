@@ -1,0 +1,15 @@
+@import "mixin";
+
+.MainLogo {
+  .circle {
+    opacity: 0.6;
+    transform-origin: 200px 490px;
+    fill: #fff;
+  }
+  .circle.circle2 {
+    fill: rgb(255,128,0);
+  }
+  .circle.circle3 {
+    fill: rgb(62,35,255);
+  }
+}
