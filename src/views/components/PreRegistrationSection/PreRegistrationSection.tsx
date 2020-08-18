@@ -63,10 +63,18 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
           variants={preRegistrationMotions.messageList}
         >
           <motion.div className={css.messageItem} variants={preRegistrationMotions.message}>
-            <Message/>
+            <Message
+              name="Jooyoung Moon"
+              username="codemilli"
+              text="네 번째 FEconf! 좋은 컨퍼런스 준비해주셔서 감사합니다. 응원합니다💪"
+            />
           </motion.div>
           <motion.div className={css.messageItem} variants={preRegistrationMotions.message}>
-            <Message/>
+            <Message
+              name="Jooyoung Moon"
+              username="codemilli"
+              text="네 번째 FEconf! 좋은 컨퍼런스 준비해주셔서 감사합니다. 응원합니다💪"
+            />
           </motion.div>
           <div className={css.dimmed}/>
         </motion.div>
