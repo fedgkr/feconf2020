@@ -11,10 +11,10 @@ function App({Component, pageProps}) {
         <meta charSet="UTF-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
-        <title>FEConf 2020</title>
+        <title>FEConf 2020 at Home</title>
         <meta
           name="description"
-          content="2020 FEConf Korea 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="2020 FEConf Korea at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
         <meta
           name="keywords"
@@ -22,17 +22,17 @@ function App({Component, pageProps}) {
         />
         <meta property="og:url" content="https://2020.feconf.kr/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="2020 FEConf Korea" />
+        <meta property="og:title" content="2020 FEConf Korea at Home" />
         <meta
           property="og:description"
-          content="2020 FEConf Korea 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="2020 FEConf Korea at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
         <meta property="og:image" content="https://feconf2020web.vercel.app/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="2020 FEConf Korea" />
         <meta
           name="twitter:description"
-          content="2020 FEConf Korea 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="2020 FEConf Korea at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
         <meta name="twitter:creator" content="@codemilli" />
         <meta name="twitter:image" content="https://fedgkr.github.io/feconf2020/images/og-image.jpg" />
