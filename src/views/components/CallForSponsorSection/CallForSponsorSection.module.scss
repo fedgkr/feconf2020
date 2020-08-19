@@ -2,7 +2,8 @@
 @import "mixin";
 
 .CallForSponsorSection {
-  margin-top: 200px;
+  max-width: $page-content-width;
+  margin: 200px auto 0 auto;
   .titleContainer {
     position: relative;
     display: flex;
@@ -64,10 +65,9 @@
   .contentContainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 59px;
     .registerContainer {
-      margin-right: 200px;
       h4 {
         font-size: 24px;
         font-weight: bold;

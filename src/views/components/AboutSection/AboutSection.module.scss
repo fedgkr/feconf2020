@@ -1,7 +1,8 @@
 @import 'mixin';
 
 .AboutSection {
-  margin-top: 212px;
+  max-width: $page-content-width;
+  margin: 212px auto 0 auto;
   .container {
     display: flex;
     flex-direction: row;
