@@ -2,7 +2,8 @@
 @import 'mixin';
 
 .NoticeSection {
-  margin-top: 235px;
+  max-width: $page-content-width;
+  margin: 235px auto 0 auto;
   .titleContainer {
     position: relative;
     padding: 213px 0 84px 0;

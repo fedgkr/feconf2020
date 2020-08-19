@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 447px;
+  max-width: $page-content-width;
+  // LineBackground 컴포넌트 위치를 맞추기 위해서 마진값 수정함.
+  margin: 430px auto 0 auto;
   .titleContainer {
     position: relative;
     margin-right: 107px;
