@@ -3,21 +3,22 @@
 .LineBackground {
   position: absolute;
   width: 100%;
-  max-width: 768px;
-  left: 50%;
   top: 450px;
-  transform: translate(-600px);
   pointer-events: none;
+  overflow: hidden;
   svg {
+    position: relative;
+    left: 50%;
+    transform: translate(-600px);
     width: 1300px;
     height: auto;
   }
   @include mobile {
     top: calc(212px + 20vw);
-    // left: 40px;
-    transform: translate(-57%);
 
     svg {
+      left: -5%;
+      transform: none;
       width: 140%;
 
       path {
