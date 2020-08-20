@@ -1,18 +1,24 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import css from './NoticeSection.module.scss';
-import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import {motion} from "framer-motion";
 import noticeMotions from "@motions/notice.motion";
-import SafeLink from "@components/SafeLink/SafeLink";
-import PlatformList from "@components/PlatformList/PlatformList";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
+import dynamic from "next/dynamic";
+
+const PlatformList = dynamic(() => import("@components/PlatformList/PlatformList"));
 
 interface NoticeSectionProps {}
 
 const NoticeSection: React.FC<NoticeSectionProps> = () => {
   const titleRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .5, bottom: false });
+  const [renderDynamicComponent, setRenderDynamicComponent] = useState(false);
+  useEffect(() => {
+    if (!renderDynamicComponent && titleVisible) {
+      setRenderDynamicComponent(true);
+    }
+  }, [titleVisible]);
   return (
     <div className={css.NoticeSection}>
       <motion.div
@@ -31,7 +37,7 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
         </motion.div>
         <motion.div className={css.dashedCircle} variants={noticeMotions.dashedCircle}/>
       </motion.div>
-      <PlatformList/>
+      { renderDynamicComponent ? <PlatformList/> : null }
     </div>
   );
 }

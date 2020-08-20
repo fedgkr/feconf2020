@@ -17,7 +17,6 @@ const HomePage: React.FC<HomePageProps> = () => {
   return (
     <div className={css.HomePage}>
       <Header/>
-      <LineBackground/>
       <HeroSection/>
       <AboutSection/>
       <PreRegistrationSection/>

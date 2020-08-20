@@ -28,60 +28,12 @@
       margin: 0 auto;
       border-radius: 50%;
       background-color: rgba(220, 220, 220, .85);
+      transform: translateZ(0);
     }
   }
   .contentContainer {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     margin-top: 110px;
-    .registerContainer {
-      max-width: 430px;
-      margin-right: 110px;
-      font-size: 16px;
-      .messageNumberWrap {
-        display: flex;
-        align-items: flex-end;
-        padding: 12px 0 16px 1px;
-        h2 {
-          font-size: 80px;
-          font-weight: 900;
-        }
-        span {
-          display: inline-block;
-          margin-bottom: 8px;
-          margin-left: 16px;
-          font-size: 24px;
-          font-weight: 600;
-        }
-      }
-      p:nth-child(3) {
-        margin-bottom: 40px;
-        line-height: 24px;
-      }
-    }
-    .messageContainer {
-      position: relative;
-      width: 400px;
-      height: 326px;
-      margin-top: 0;
-      overflow: hidden;
-      .dimmed {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 66px;
-        z-index: 1;
-        background: linear-gradient(rgba(18, 18, 18, 0), #121212);
-      }
-      .messageItem {
-        &:not(:last-child) {
-          margin-bottom: 16px;
-        }
-      }
-    }
   }
   @include mobile {
     margin-top: 102px;
@@ -102,27 +54,7 @@
       }
     }
     .contentContainer {
-      flex-direction: column;
       margin-top: 64px;
-      padding: 0 20px;
-      .registerContainer {
-        max-width: none;
-        margin-right: 0;
-        font-size: 14px;
-        .messageNumberWrap {
-          padding: 8px 0 16px 0;
-          font-size: 64px;
-        }
-        p:nth-child(3) {
-          margin-bottom: 14px;
-          line-height: 22px;
-        }
-      }
-      .messageContainer {
-        width: 100%;
-        height: 316px;
-        margin-top: 40px;
-      }
     }
   }
 }
