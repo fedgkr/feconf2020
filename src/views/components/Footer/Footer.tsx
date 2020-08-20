@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import css from './Footer.module.scss';
 import SafeLink from "@components/SafeLink/SafeLink";
 import {useDispatch} from "react-redux";
 import {setCocState} from "@store/slices/appSlice";
-import CoCModal from "@components/CoCModal/CoCModal";
 import {useAppState} from "@store/index";
+import dynamic from "next/dynamic";
+
+const CoCModal = dynamic(() => import('@components/CoCModal/CoCModal'));
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   const dispatch = useDispatch();
   const store = useAppState();
+  const [cocRendered, setCocRendered] = useState(false);
   function openCocModal(evt) {
     evt.preventDefault();
     dispatch(setCocState(true));
   }
+  useEffect(() => {
+    if (store.cocOpen) {
+      setCocRendered(true);
+    }
+  }, [store.cocOpen]);
   return (
     <div className={css.Footer}>
       <div className={css.container}>
@@ -40,7 +48,7 @@ const Footer: React.FC<FooterProps> = () => {
         </ul>
         <span>© FEconf. 2020 All rights reserved</span>
       </div>
-      <CoCModal active={store.cocOpen}/>
+      {cocRendered ? <CoCModal active={store.cocOpen}/> : null}
     </div>
   );
 }

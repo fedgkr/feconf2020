@@ -7,7 +7,9 @@ import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
-import MenuModal from "@components/MenuModal/MenuModal";
+import dynamic from "next/dynamic";
+
+const MenuModal = dynamic(() => import("@components/MenuModal/MenuModal"));
 
 interface HeaderProps {}
 

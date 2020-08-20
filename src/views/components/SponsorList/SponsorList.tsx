@@ -3,10 +3,11 @@ import css from './SponsorList.module.scss';
 import callForSponsorMotions from "@motions/callforsponsor.motion";
 import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
+import {shuffle} from "@utils/suffle";
 
 interface SponsorListProps {}
 
-const sponsorList = [
+const sponsorList = shuffle([
   {
     name: 'Programmers',
     link: 'https://programmers.co.kr',
@@ -67,7 +68,7 @@ const sponsorList = [
     link: 'https://www.robertwalters.co.kr',
     image: 'robert@2x.png',
   },
-];
+]);
 
 const SponsorList: React.FC<SponsorListProps> = () => {
   const sponsorRef = useRef();

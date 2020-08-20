@@ -1,12 +1,14 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import cc from 'classcat';
 import css from './CallForSponsorSection.module.scss';
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSponsorMotions from "@motions/callforsponsor.motion";
-import SponsorList from "@components/SponsorList/SponsorList";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
+import dynamic from "next/dynamic";
+
+const SponsorList = dynamic(() => import("@components/SponsorList/SponsorList"));
 
 interface CallForSponsorSectionProps {}
 
@@ -15,6 +17,12 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
   const textContainerRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .6, bottom: false });
   const { visible: textContainerVisible } = useIntersection(textContainerRef, { threshold: .5, bottom: false });
+  const [renderDynamicComponent, setRenderDynamicComponent] = useState(false);
+  useEffect(() => {
+    if (!renderDynamicComponent && (titleVisible || textContainerVisible)) {
+      setRenderDynamicComponent(true);
+    }
+  }, [titleVisible, textContainerVisible]);
   return (
     <div className={css.CallForSponsorSection}>
       <motion.div
@@ -55,7 +63,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
             <RegisterButton>후원사 신청하기</RegisterButton>
           </motion.div>
         </motion.div>
-        <SponsorList/>
+        {renderDynamicComponent ? <SponsorList/> : null}
       </div>
     </div>
   );
