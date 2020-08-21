@@ -5,8 +5,7 @@ import {motion} from "framer-motion";
 import noticeMotions from "@motions/notice.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import dynamic from "next/dynamic";
-
-const PlatformList = dynamic(() => import("@components/PlatformList/PlatformList"));
+import PlatformList from "@components/PlatformList/PlatformList";
 
 interface NoticeSectionProps {}
 
@@ -37,7 +36,7 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
         </motion.div>
         <motion.div className={css.dashedCircle} variants={noticeMotions.dashedCircle}/>
       </motion.div>
-      { renderDynamicComponent ? <PlatformList/> : null }
+      <PlatformList/>
     </div>
   );
 }
