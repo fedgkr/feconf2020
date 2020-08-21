@@ -2,7 +2,8 @@
 
 .AboutSection {
   max-width: $page-content-width;
-  margin: 212px auto 0 auto;
+  padding-top: 100px;
+  margin: 112px auto 0 auto;
   .container {
     display: flex;
     flex-direction: row;
@@ -43,8 +44,8 @@
     }
   }
   @include mobile {
-    margin-top: 90px;
-    padding: 0 20px;
+    margin-top: 30px;
+    padding: 60px 20px 0 20px;
     .container {
       flex-direction: column;
       .titleContainer {

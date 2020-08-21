@@ -10,10 +10,13 @@ import NoticeSection from "@components/NoticeSection/NoticeSection";
 import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
+import {useAppState} from "@store/index";
+import SupportFormModal from "@components/SupportFormModal/SupportFormModal";
 
 interface HomePageProps {}
 
 const HomePage: React.FC<HomePageProps> = () => {
+  const { supportFormOpen } = useAppState();
   return (
     <div className={css.HomePage}>
       <Header/>
@@ -28,6 +31,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <LineBackground />
       </div>
       <Footer/>
+      <SupportFormModal active={supportFormOpen}/>
     </div>
   );
 }

@@ -8,7 +8,8 @@
   justify-content: center;
   max-width: $page-content-width;
   // LineBackground 컴포넌트 위치를 맞추기 위해서 마진값 수정함.
-  margin: 430px auto 0 auto;
+  padding-top: 180px;
+  margin: 250px auto 0 auto;
   .titleContainer {
     position: relative;
     margin-right: 107px;
@@ -61,8 +62,8 @@
   }
   @include mobile {
     flex-direction: column;
-    margin-top: 260px;
-    padding: 0 20px;
+    margin-top: 100px;
+    padding: 160px 20px 0 20px;
     .titleContainer {
       margin-right: 0;
       .mask {

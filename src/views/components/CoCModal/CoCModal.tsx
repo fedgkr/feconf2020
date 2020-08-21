@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import css from './CoCModal.module.scss';
 import Portal, {PortalWrap} from "@components/Portal/Portal";
 import classcat from "classcat";
@@ -6,6 +6,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import {useDispatch} from "react-redux";
 import {setCocState} from "@store/slices/appSlice";
 import cocMotions from "@motions/coc.motion";
+import {useModal} from "@utils/hooks/use-modal";
 
 interface CoCModalProps {
   active: boolean;
@@ -16,13 +17,7 @@ const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
   function onClose() {
     dispatch(setCocState(false));
   }
-  useEffect(() => {
-    if (active) {
-      document.body.classList.add('fixed');
-    } else {
-      document.body.classList.remove('fixed');
-    }
-  }, [active]);
+  useModal(active);
   return (
     <Portal>
       <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>

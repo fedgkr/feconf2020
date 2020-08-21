@@ -10,5 +10,6 @@
   }
   @include mobile {
     margin: $mobile-header-height auto 0 auto;
+    overflow: hidden;
   }
 }

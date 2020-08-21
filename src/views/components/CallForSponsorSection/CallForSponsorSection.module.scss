@@ -3,7 +3,8 @@
 
 .CallForSponsorSection {
   max-width: $page-content-width;
-  margin: 200px auto 0 auto;
+  padding-top: 180px;
+  margin: 20px auto 0 auto;
   .titleContainer {
     position: relative;
     display: flex;
@@ -83,8 +84,8 @@
     }
   }
   @include mobile {
-    margin-top: 260px;
-    padding: 0 20px;
+    margin-top: 100px;
+    padding: 160px 20px 0 20px;
     .titleContainer {
       height: auto;
       text-align: start;

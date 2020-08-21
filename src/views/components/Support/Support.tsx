@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import css from './Support.module.scss';
 import {motion} from "framer-motion";
 import preRegistrationMotions from "@motions/pre-registration.motion";
@@ -6,10 +6,15 @@ import MotionNumber from "@components/MotionNumber/MotionNumber";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import Message from "@components/PreRegistrationSection/components/Message/Message";
 import {useIntersection} from "@utils/hooks/use-intersection";
+import {useFirebase} from "@store/firebase";
+import {useDispatch} from "react-redux";
+import {setSupportForm} from "@store/slices/appSlice";
 
 interface SupportProps {}
 
 const Support: React.FC<SupportProps> = () => {
+  const dispatch = useDispatch();
+  const { fireStore } = useFirebase();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   return (
@@ -42,7 +47,14 @@ const Support: React.FC<SupportProps> = () => {
           등록한 이메일로 FEConf 소식을 받을 수 있어요.
         </motion.p>
         <motion.div variants={preRegistrationMotions.contentText}>
-          <RegisterButton>사전 등록하기</RegisterButton>
+          <RegisterButton onClick={async evt => {
+            evt.preventDefault();
+            if (!await fireStore.hasPost()) {
+              dispatch(setSupportForm(true));
+            }
+          }}>
+            사전 등록하기
+          </RegisterButton>
         </motion.div>
       </div>
       <motion.div

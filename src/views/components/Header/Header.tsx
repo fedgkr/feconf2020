@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {motion, useViewportScroll} from "framer-motion";
 import {useDispatch} from "react-redux";
 import classcat from "classcat";
@@ -51,9 +51,13 @@ const useChangedMenuState = (menuOpen: boolean) => {
 
 const Header: React.FC<HeaderProps> = () => {
   const dispatch = useDispatch();
+  const [menuInitialized, initMenu] = useState(false);
   const { menuOpen } = useAppState();
   const { isVisible } = useAnimatedHeader();
   const hasMenuStateChanged = useChangedMenuState(menuOpen);
+  useEffect(() => {
+    setTimeout(() => initMenu(true));
+  }, []);
   return (
     <motion.div
       className={classcat([css.Header, isVisible && css.isVisible])}
@@ -63,9 +67,9 @@ const Header: React.FC<HeaderProps> = () => {
         <HeaderLogo/>
       </a>
       <div className={css.menu}>
-        <a href="#">About</a>
-        <a href="#">Speakers</a>
-        <a href="#">Sponsors</a>
+        <a href="#about">About</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#sponsors">Sponsors</a>
         <RegisterButton>사전 등록하기</RegisterButton>
       </div>
       <motion.div
@@ -88,7 +92,7 @@ const Header: React.FC<HeaderProps> = () => {
           }}
         />
       </motion.div>
-      <MenuModal active={menuOpen}/>
+      { menuInitialized ? <MenuModal active={menuOpen}/> : null }
     </motion.div>
   );
 }

@@ -12,6 +12,7 @@ const AboutSection: React.FC<AboutSectionProps> = () => {
   const { visible } = useIntersection(sectionRef, { threshold: .5, bottom: false });
   return (
     <motion.div
+      id="about"
       ref={sectionRef}
       className={css.AboutSection}
     >

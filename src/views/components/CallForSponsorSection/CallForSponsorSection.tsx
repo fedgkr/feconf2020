@@ -24,7 +24,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
     }
   }, [titleVisible, textContainerVisible]);
   return (
-    <div className={css.CallForSponsorSection}>
+    <div id="sponsors" className={css.CallForSponsorSection}>
       <motion.div
         className={css.titleContainer}
         ref={titleRef}
