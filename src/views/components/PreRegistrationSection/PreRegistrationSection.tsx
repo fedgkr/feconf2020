@@ -4,9 +4,7 @@ import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import preRegistrationMotions from "@motions/pre-registration.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
-import dynamic from "next/dynamic";
-
-const Support = dynamic(() => import("@components/Support/Support"));
+import Support from "@components/Support/Support";
 
 interface PreRegistrationSectionProps {}
 
@@ -37,7 +35,7 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
         </div>
       </motion.div>
       <div className={css.contentContainer}>
-        { titleVisible ? <Support/> : null }
+        <Support/>
       </div>
     </div>
   );

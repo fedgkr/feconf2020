@@ -7,8 +7,7 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSponsorMotions from "@motions/callforsponsor.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import dynamic from "next/dynamic";
-
-const SponsorList = dynamic(() => import("@components/SponsorList/SponsorList"));
+import SponsorList from "@components/SponsorList/SponsorList";
 
 interface CallForSponsorSectionProps {}
 
@@ -63,7 +62,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
             <RegisterButton>후원사 신청하기</RegisterButton>
           </motion.div>
         </motion.div>
-        {renderDynamicComponent ? <SponsorList/> : null}
+        <SponsorList/>
       </div>
     </div>
   );

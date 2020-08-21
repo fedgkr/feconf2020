@@ -7,7 +7,7 @@ import {shuffle} from "@utils/suffle";
 
 interface SponsorListProps {}
 
-const sponsorList = shuffle([
+const sponsorList = [
   {
     name: 'Programmers',
     link: 'https://programmers.co.kr',
@@ -68,7 +68,7 @@ const sponsorList = shuffle([
     link: 'https://www.robertwalters.co.kr',
     image: 'robert@2x.png',
   },
-]);
+];
 
 const SponsorList: React.FC<SponsorListProps> = () => {
   const sponsorRef = useRef();
