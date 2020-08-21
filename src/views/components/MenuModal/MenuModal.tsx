@@ -30,10 +30,10 @@ const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
               variants={headerMotions.menu}
               onClick={evt => evt.stopPropagation()}
             >
-              <motion.a className={css.item} variants={headerMotions.menuItem}>About</motion.a>
-              <motion.a className={css.item} variants={headerMotions.menuItem}>Speakers</motion.a>
-              <motion.a className={css.item} variants={headerMotions.menuItem}>Sponsors</motion.a>
-              <motion.a className={css.item} variants={headerMotions.menuItem}>Notice</motion.a>
+              <motion.a href="#about" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>About</motion.a>
+              <motion.a href="#speakers" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Speakers</motion.a>
+              <motion.a href="#sponsors" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Sponsors</motion.a>
+              <motion.a href="#notice" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Notice</motion.a>
               <motion.div className={css.btnWrap} variants={headerMotions.menuItem}>
                 <RegisterButton>사전 등록하기</RegisterButton>
               </motion.div>

@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from "react";
 
 class FEConf2020Document extends Document {
   static async getInitialProps(ctx) {
@@ -9,7 +10,7 @@ class FEConf2020Document extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head />
+        <Head title="FEConf 2020 at Home" />
         <body>
         <Main />
         <NextScript />

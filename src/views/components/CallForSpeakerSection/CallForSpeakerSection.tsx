@@ -16,6 +16,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   return (
     <motion.div
+      id="speakers"
       className={css.CallForSpeakerSection}
       ref={titleRef}
       initial="hidden"

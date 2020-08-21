@@ -1,22 +1,23 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import css from './PreRegistrationSection.module.scss';
 import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import preRegistrationMotions from "@motions/pre-registration.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import Support from "@components/Support/Support";
+import {useFirebase} from "@store/firebase";
 
 interface PreRegistrationSectionProps {}
 
 const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
   const titleRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .7, bottom: false });
-  const [renderDynamicComponent, setRenderDynamicComponent] = useState(false);
+  const { fireStore } = useFirebase();
   useEffect(() => {
-    if (!renderDynamicComponent && titleVisible) {
-      setRenderDynamicComponent(true);
-    }
-  }, [titleVisible]);
+    fireStore.hasPost().then(result => {
+      console.log('result : ', result);
+    });
+  }, []);
   return (
     <div className={css.PreRegistrationSection}>
       <motion.div
