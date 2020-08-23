@@ -3,20 +3,20 @@ import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {setSupportForm} from "@store/slices/supportSlice";
 import {useDispatch} from "react-redux";
 import {useSupportState} from "@store/index";
-import {useFirebase} from "@store/firebase";
+import {useFirebase} from "@utils/hooks/use-firebase";
 
 interface RegisterSupportButtonProps {}
 
 const RegisterSupportButton: React.FC<RegisterSupportButtonProps> = React.memo(() => {
   const dispatch = useDispatch();
-  const { fireStore } = useFirebase();
+  const { fireStoreRef } = useFirebase();
   const { currentUser } = useSupportState();
   const onRegister = useCallback((evt) => {
     evt.preventDefault();
     if (currentUser) {
       dispatch(setSupportForm(true));
     } else {
-      fireStore.signIn();
+      fireStoreRef.current.fireStore?.signIn();
     }
   }, [currentUser]);
   return (

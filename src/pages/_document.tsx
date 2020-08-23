@@ -10,14 +10,11 @@ class FEConf2020Document extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head title="FEConf 2020 at Home" />
+        <Head title="FEConf 2020 at Home"/>
         <body>
           <Main />
           <NextScript />
           <div id="modal-root"/>
-          <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"/>
-          <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"/>
-          <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"/>
         </body>
       </Html>
     )

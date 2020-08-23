@@ -6,7 +6,6 @@ import MotionNumber from "@components/MotionNumber/MotionNumber";
 import RegisterButton from "@components/RegisterButton/RegisterButton";
 import Message from "@components/PreRegistrationSection/components/Message/Message";
 import {useIntersection} from "@utils/hooks/use-intersection";
-import {useFirebase} from "@store/firebase";
 import {useDispatch} from "react-redux";
 import {setSupportForm} from "@store/slices/supportSlice";
 import {useSupportState} from "@store/index";
