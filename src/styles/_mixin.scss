@@ -5,3 +5,8 @@
     @content;
   }
 }
+@mixin iphone {
+  @media (max-width: $iphone) {
+    @content;
+  }
+}

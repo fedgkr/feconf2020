@@ -17,13 +17,16 @@ const HomePage: React.FC<HomePageProps> = () => {
   return (
     <div className={css.HomePage}>
       <Header/>
-      <HeroSection/>
-      <AboutSection/>
-      <PreRegistrationSection/>
-      <CallForSpeakerSection/>
-      <CallForSponsorSection/>
-      <NoticeSection/>
-      <RegisterSection/>
+      <div className={css.sections}>
+        <LineBackground />
+        <HeroSection/>
+        <AboutSection/>
+        <PreRegistrationSection/>
+        <CallForSpeakerSection/>
+        <CallForSponsorSection/>
+        <NoticeSection/>
+        <RegisterSection/>
+      </div>
       <Footer/>
     </div>
   );
