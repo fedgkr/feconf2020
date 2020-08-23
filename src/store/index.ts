@@ -10,5 +10,6 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useRootState = () => useSelector<RootState>(state => state);
 export const useAppState = () => useSelector<RootState, RootState['app']>(state => state.app);
+export const useSupportState = () => useSelector<RootState, RootState['support']>(state => state.support);
 
 export default store;

@@ -13,11 +13,6 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
   const titleRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .7, bottom: false });
   const { fireStore } = useFirebase();
-  useEffect(() => {
-    fireStore.hasPost().then(result => {
-      console.log('result : ', result);
-    });
-  }, []);
   return (
     <div className={css.PreRegistrationSection}>
       <motion.div

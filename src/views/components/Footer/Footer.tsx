@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {setCocState} from "@store/slices/appSlice";
 import {useAppState} from "@store/index";
 import dynamic from "next/dynamic";
+import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
 
 const CoCModal = dynamic(() => import('@components/CoCModal/CoCModal'));
 
@@ -13,16 +14,11 @@ interface FooterProps {}
 const Footer: React.FC<FooterProps> = () => {
   const dispatch = useDispatch();
   const store = useAppState();
-  const [cocRendered, setCocRendered] = useState(false);
+  const renderState = useDynamicRender(store.cocOpen);
   function openCocModal(evt) {
     evt.preventDefault();
     dispatch(setCocState(true));
   }
-  useEffect(() => {
-    if (store.cocOpen) {
-      setCocRendered(true);
-    }
-  }, [store.cocOpen]);
   return (
     <div className={css.Footer}>
       <div className={css.container}>
@@ -48,7 +44,7 @@ const Footer: React.FC<FooterProps> = () => {
         </ul>
         <span>© FEconf 2020 All rights reserved</span>
       </div>
-      {cocRendered ? <CoCModal active={store.cocOpen}/> : null}
+      {renderState ? <CoCModal active={store.cocOpen}/> : null}
     </div>
   );
 }
