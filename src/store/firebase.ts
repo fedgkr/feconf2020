@@ -1,5 +1,7 @@
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 import {FirebaseOptions} from "@firebase/app-types";
-import {useStore} from "react-redux";
 import {setCurrentUser, setSupportForm, setMyMessage, setMessageList} from "@store/slices/supportSlice";
 import {Store} from "redux";
 import {User} from "./interfaces";
@@ -18,10 +20,8 @@ class FireStore {
   private provider;
 
   constructor(private store: Store) {
-    this.base = window.firebase;
-    if (!this.base.apps.length) {
-      this.base.initializeApp(this.config);
-    }
+    this.base = firebase;
+    this.base.initializeApp(this.config);
     this.db = this.base.firestore();
     this.supportsCollectionRef = this.db.collection('supports');
     this.registerListeners();
@@ -106,14 +106,4 @@ class FireStore {
   };
 }
 
-let fireStore: FireStore;
-
-export const useFirebase = () => {
-  const store = useStore();
-  if (typeof window === 'object' && !fireStore) {
-    fireStore = new FireStore(store);
-  }
-  return {
-    fireStore,
-  };
-}
+export default FireStore;

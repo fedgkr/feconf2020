@@ -7,9 +7,9 @@ import {useDispatch} from "react-redux";
 import {setSupportForm} from "@store/slices/supportSlice";
 import {useModal} from "@utils/hooks/use-modal";
 import cocMotions from "@motions/coc.motion";
-import {useFirebase} from "@store/firebase";
 import {useSupportState} from "@store/index";
 import CloseButton from "@components/CloseButton/CloseButton";
+import {useFirebase} from "@utils/hooks/use-firebase";
 
 interface SupportFormModalProps {
   active: boolean;
@@ -18,7 +18,7 @@ interface SupportFormModalProps {
 const useSubmit = (active: boolean) => {
   const postableRef = useRef(true);
   const textRef = useRef<HTMLTextAreaElement>();
-  const { fireStore } = useFirebase();
+  const { fireStoreRef } = useFirebase();
   const onSubmit = useCallback((evt) => {
     evt.preventDefault();
     if (postableRef.current) {
@@ -27,7 +27,7 @@ const useSubmit = (active: boolean) => {
       if (text.length > 140) {
         return alert('응원 메세지는 140자 이내로 입력 가능합니다.')
       }
-      fireStore.post(text);
+      fireStoreRef.current.fireStore?.post(text);
     }
   }, []);
   useEffect(() => {
