@@ -53,10 +53,6 @@ function App({Component, pageProps}) {
       </Head>
       <Provider store={store}>
         <Component {...pageProps}/>
-        <div id="modal-root"/>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"/>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"/>
-        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"/>
       </Provider>
     </>
   );

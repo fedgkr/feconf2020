@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'mixin';
+
+.CloseButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  @include mobile {
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+  }
+}

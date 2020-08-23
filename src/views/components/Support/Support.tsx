@@ -61,11 +61,7 @@ const Support: React.FC<SupportProps> = () => {
             className={css.messageItem}
             variants={preRegistrationMotions.message}
           >
-            <Message
-              name={message.user.displayName}
-              username={message.user.username}
-              text={message.message}
-            />
+            <Message message={message}/>
           </motion.div>
         ))}
         <div className={css.dimmed}/>

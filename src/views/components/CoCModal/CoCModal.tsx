@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import {setCocState} from "@store/slices/appSlice";
 import cocMotions from "@motions/coc.motion";
 import {useModal} from "@utils/hooks/use-modal";
+import CloseButton from "@components/CloseButton/CloseButton";
 
 interface CoCModalProps {
   active: boolean;
@@ -31,6 +32,7 @@ const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
               variants={cocMotions.menu}
               onClick={evt => evt.stopPropagation()}
             >
+              <CloseButton onClick={onClose}/>
               <motion.h2 className={css.title}>
                 Code of Conduct
               </motion.h2>
