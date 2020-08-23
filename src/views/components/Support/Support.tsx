@@ -8,7 +8,7 @@ import Message from "@components/PreRegistrationSection/components/Message/Messa
 import {useIntersection} from "@utils/hooks/use-intersection";
 import {useFirebase} from "@store/firebase";
 import {useDispatch} from "react-redux";
-import {setSupportForm} from "@store/slices/appSlice";
+import {setSupportForm} from "@store/slices/supportSlice";
 
 interface SupportProps {}
 
@@ -49,7 +49,9 @@ const Support: React.FC<SupportProps> = () => {
         <motion.div variants={preRegistrationMotions.contentText}>
           <RegisterButton onClick={async evt => {
             evt.preventDefault();
-            if (!await fireStore.hasPost()) {
+            const isSignedIn = await fireStore.signIn();
+            console.log('isSignedIn : ', isSignedIn);
+            if (isSignedIn) {
               dispatch(setSupportForm(true));
             }
           }}>

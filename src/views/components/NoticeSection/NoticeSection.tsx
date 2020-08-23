@@ -4,7 +4,6 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import {motion} from "framer-motion";
 import noticeMotions from "@motions/notice.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
-import dynamic from "next/dynamic";
 import PlatformList from "@components/PlatformList/PlatformList";
 
 interface NoticeSectionProps {}

@@ -1,20 +1,21 @@
 import {FirebaseOptions} from "@firebase/app-types";
-import {useDispatch} from "react-redux";
+import {useDispatch, useStore} from "react-redux";
 import {useAppState} from "@store/index";
-import {setSupportForm} from "@store/slices/appSlice";
-import {useState} from "react";
+import {setSupportForm, setMyMessage} from "@store/slices/supportSlice";
+import {useEffect, useState} from "react";
+import {Store} from "redux";
+import {User} from "./interfaces";
+
 
 class FireStore {
   private readonly base: any;
   private readonly db: any;
   private readonly config: FirebaseOptions = {
-    apiKey: "AIzaSyCDjMreMj7AriQT1q2pnmNinv1KU67tfEk",
-    authDomain: "feconf2020.firebaseapp.com",
-    databaseURL: "https://feconf2020.firebaseio.com",
-    projectId: "feconf2020",
-    storageBucket: "feconf2020.appspot.com",
-    messagingSenderId: "864172035891",
-    appId: "1:864172035891:web:453b23d9d729d47ea57846",
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    appId: process.env.APP_ID,
   };
   private supportsCollectionRef;
   private provider;
@@ -22,7 +23,7 @@ class FireStore {
   private dbReady: Promise<boolean>;
   private dbReadyResolver;
 
-  constructor() {
+  constructor(private store: Store) {
     this.dbReady = new Promise((resolve) => this.dbReadyResolver = resolve);
     this.base = window.firebase;
     if (!this.base.apps.length) {
@@ -34,12 +35,13 @@ class FireStore {
     this.base.auth().getRedirectResult().then(this.afterLogin);
   }
 
-  private getCurrentUser() {
-    return this.base.auth().currentUser && {
-      id: this.base.auth().currentUser.uid,
-      email: this.base.auth().currentUser.email,
-      displayName: this.base.auth().currentUser.displayName,
-      photoURL: this.base.auth().currentUser.photoURL,
+  public getCurrentUser(): User {
+    const currentUser = this.base.auth().currentUser;
+    return currentUser && {
+      id: currentUser.uid,
+      email: currentUser.email,
+      displayName: currentUser.displayName,
+      photoURL: currentUser.photoURL,
     };
   }
 
@@ -56,8 +58,8 @@ class FireStore {
   public async signIn() {
     await this.dbReady;
     if (!this.getCurrentUser()) {
-      this.provider = new (this.base as any).auth.GithubAuthProvider();
-      this.provider.addScope('support');
+      this.provider = new this.base.auth.GithubAuthProvider();
+      this.provider.addScope('email');
       this.base.auth().signInWithRedirect(this.provider);
     }
     return this.getCurrentUser();
@@ -80,7 +82,7 @@ class FireStore {
     await this.dbReady;
     const currentUser = this.getCurrentUser();
     if (currentUser) {
-      const response = await this.supportsCollectionRef.doc(currentUser.id).set({
+      await this.supportsCollectionRef.doc(currentUser.id).set({
         message,
         user: currentUser,
         createdAt: Date.now(),
@@ -93,32 +95,40 @@ class FireStore {
   }
 
   private afterLogin = (result) => {
-
     if (result.user && this.afterLoginCallback) {
       this.afterLoginCallback();
     }
   };
 
-  private onAuthChanged = () => {
+  private onAuthChanged = (user) => {
     this.dbReadyResolver();
-    this.getSupportList().then(result => {
-      console.log('result : ', result);
-    });
+    if (user) {
+      this.supportsCollectionRef.doc(user.uid).onSnapshot((doc) => {
+        this.store.dispatch(setMyMessage(doc.data()));
+      });
+    }
+
+    // this.getSupportList().then(result => {
+    //   console.log('result : ', result);
+    // });
   };
 }
 
 let fireStore: FireStore;
 
 export const useFirebase = () => {
+  const store = useStore();
   const dispatch = useDispatch();
   if (typeof window === 'object' && !fireStore) {
-    fireStore = new FireStore();
+    fireStore = new FireStore(store);
     fireStore.onAfterLogin(() => {
       dispatch(setSupportForm(true));
     });
   }
-  const { supportFormOpen } = useAppState();
   const [fireState, setFireState] = useState({});
+  useEffect(() => {
+
+  }, []);
   return {
     fireStore,
   };
