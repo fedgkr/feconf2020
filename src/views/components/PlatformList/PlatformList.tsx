@@ -10,12 +10,12 @@ interface PlatformListProps {}
 
 const platformData = [{
   name: 'facebook',
-  title: 'FEConf 페이스북',
-  desc: '프론트엔드개발그룹의 공식 페이스북 그룹입니다. 최신 공지사항을 확인할 수 있습니다.',
+  title: 'Facebook Page',
+  desc: 'FEConf의 공식 페이스북 페이지입니다. 최신 공지사항을 확인할 수 있습니다.',
   link: 'https://www.facebook.com/feconf.kr/',
 }, {
   name: 'youtube',
-  title: 'FEConf 유튜브',
+  title: 'Youtube Channel',
   desc: 'FEConf의 유튜브 채널입니다. 지난 행사 영상들을 시청할 수 있습니다.',
   link: 'https://www.youtube.com/channel/UCWEzfYIpFBIG5jh6laXC6hA',
 }, {
