@@ -18,7 +18,6 @@ const HomePage: React.FC<HomePageProps> = () => {
     <div className={css.HomePage}>
       <Header/>
       <div className={css.sections}>
-        <LineBackground />
         <HeroSection/>
         <AboutSection/>
         <PreRegistrationSection/>
@@ -26,6 +25,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <CallForSponsorSection/>
         <NoticeSection/>
         <RegisterSection/>
+        <LineBackground />
       </div>
       <Footer/>
     </div>
