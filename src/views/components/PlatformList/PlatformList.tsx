@@ -37,27 +37,29 @@ const PlatformList: React.FC<PlatformListProps> = () => {
       variants={noticeMotions.titleContainer}
     >
       {platformData.map((platform, i) =>
-        <motion.div key={i} className={css.platform} variants={noticeMotions.platform}>
-          <div className={css.icon}>
-            <img src={`/images/icons/${platform.name}@2x.png`} alt={platform.name}/>
-          </div>
-          <h3>{platform.title}</h3>
-          <div className={css.mobileTitleWrap}>
+        <SafeLink key={i} className={css.platform} href={platform.link}>
+          <motion.div variants={noticeMotions.platform}>
             <div className={css.icon}>
               <img src={`/images/icons/${platform.name}@2x.png`} alt={platform.name}/>
             </div>
             <h3>{platform.title}</h3>
-          </div>
-          <p>
-            {platform.desc}
-          </p>
-          <SafeLink className={css.mobile} href={platform.link}>
-            <ArrowDownIcon/>
-          </SafeLink>
-          <SafeLink className={css.pc} href={platform.link}>
-            <img src="/images/icons/arrow-right@2x.png" alt="link"/>
-          </SafeLink>
-        </motion.div>
+            <div className={css.mobileTitleWrap}>
+              <div className={css.icon}>
+                <img src={`/images/icons/${platform.name}@2x.png`} alt={platform.name}/>
+              </div>
+              <h3>{platform.title}</h3>
+            </div>
+            <p>
+              {platform.desc}
+            </p>
+            <span className={css.mobile}>
+              <ArrowDownIcon/>
+            </span>
+            <span className={css.pc}>
+              <img src="/images/icons/arrow-right@2x.png" alt="link"/>
+            </span>
+          </motion.div>
+        </SafeLink>
       )}
     </motion.div>
   );
