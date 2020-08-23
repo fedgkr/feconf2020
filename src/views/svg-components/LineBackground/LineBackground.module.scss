@@ -2,10 +2,10 @@
 
 .LineBackground {
   position: absolute;
-  width: 100%;
-  top: 450px;
+  left: 40px;
+  right: 40px;
+  top: 300px;
   pointer-events: none;
-  overflow: hidden;
   svg {
     position: relative;
     left: 50%;
@@ -14,16 +14,20 @@
     height: auto;
   }
   @include mobile {
-    top: calc(212px + 20vw);
+    top: calc(140px + 25vw);
 
     svg {
-      left: -5%;
+      left: -37vw;
       transform: none;
-      width: 140%;
-
-      path {
-        stroke-width: 3.5px;
-      }
+      width: 179vw;
+    }
+    svg path {
+      stroke-width: 1.5px;
+    }
+  }
+  @include iphone {
+    svg path {
+      stroke-width: 2.5px;
     }
   }
 }

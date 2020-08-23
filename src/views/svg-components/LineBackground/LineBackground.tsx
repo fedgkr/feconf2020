@@ -1,14 +1,46 @@
 import React from 'react';
-import LinePath from './LinePath';
 import css from './LineBackground.module.scss';
 import LinePathCSS from './LinePath.module.scss';
 import AirPlaneCSS from './AirPlanePath.module.scss';
 import Scene from 'scenejs';
+import LinePathPC from './pc/LinePathPC';
+import LinePathMobile from './mobile/LinePathMobile';
 import AirPlanePath from './AirPlanePath';
 
-function getSaceShipInfo(linePath: SVGPathElement, length: number, totalLength: number) {
-  const { x, y } = linePath.getPointAtLength(totalLength - length);
-  const { x: x2, y: y2 } = linePath.getPointAtLength(totalLength - length - 2);
+const LINE_BACKGROUND_INFOS = {
+  pc: {
+    athomeLength: 1550,
+    speeds: [
+      { pos: 12100, speed: 0.8 },
+      { pos: 21400, speed: 1.5 },
+    ],
+    stopLength: 27500,
+    LinePath: LinePathPC,
+    width: 1278,
+    height: 5874,
+    sign: -1,
+    scale: 1,
+  },
+  mobile: {
+    athomeLength: 670,
+    speeds: [
+      { pos: 12100, speed: 0.8 },
+      { pos: 21400, speed: 1.5 },
+    ],
+    stopLength: 12500,
+    LinePath: LinePathMobile,
+    width: 673,
+    height: 4661,
+    sign: 1,
+    scale: 0.6,
+  }
+} as const;
+
+function getSaceShipInfo(linePath: SVGPathElement, length: number, totalLength: number, sign: number,) {
+  const length1 = sign > 0 ? length : totalLength - length;
+  const length2 = sign > 0 ? length1 + 2 : length1 - 2;
+  const { x, y } = linePath.getPointAtLength(length1);
+  const { x: x2, y: y2 } = linePath.getPointAtLength(length2);
   const rad = Math.atan2(y2 - y, x2 - x);
 
   return {
@@ -18,15 +50,32 @@ function getSaceShipInfo(linePath: SVGPathElement, length: number, totalLength: 
   };
 }
 
-const LineBackground: React.FC = () => {
+interface LineBackgroundProps {
+  isMobile?: number;
+}
+
+
+const LineBackground: React.FC<LineBackgroundProps> = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+  const {
+    athomeLength,
+    sign,
+    speeds,
+    width,
+    height,
+    stopLength,
+    LinePath,
+    scale,
+  } = LINE_BACKGROUND_INFOS[isMobile ? "mobile" : "pc"];
   React.useEffect(() => {
     const linePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}:not(.${LinePathCSS.LinePathGray})`);
     const lineStrokePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LineStrokePath}:not(.${LinePathCSS.LinePathGray})`);
     const grayPath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}.${LinePathCSS.LinePathGray}`);
     const airplanePath = document.querySelector<SVGPathElement>(`.${AirPlaneCSS.AirPlanePath}`);
     const totalLength = linePath.getTotalLength();
-    const athomeLength = 1550;
     let playTimer = 0;
+    let innerWidth = 0;
+    let innerHeight = 0;
 
     const scene = new Scene({
       [`.${LinePathCSS.LinePath}`]: {
@@ -35,7 +84,7 @@ const LineBackground: React.FC = () => {
           'stroke-dasharray': `0 ${totalLength}`
         },
         2: {
-          'stroke-dashoffset': `${athomeLength * 2}`,
+          'stroke-dashoffset': `${athomeLength - sign * athomeLength}`,
           'stroke-dasharray': `${athomeLength} ${totalLength}`
         },
       },
@@ -53,10 +102,11 @@ const LineBackground: React.FC = () => {
           transform: {
             translate: () => {
               const time = Math.max(1.6, scene.getTime());
-              const info = getSaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength);
+              const info = getSaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength, sign);
 
               return `${info.x}px, ${info.y}px`;
             },
+            scale,
           },
         },
         2: {
@@ -71,17 +121,11 @@ const LineBackground: React.FC = () => {
       selector: true,
     }).play();
 
-    const speeds = [
-      { pos: 12100, speed: 0.8 },
-      { pos: 21400, speed: 1.5 },
-    ]
-    function scroll() {
+    function onScroll() {
       clearTimeout(playTimer);
 
-      const innerWidth = window.innerWidth;
-      const inenrHeight = window.innerHeight;
       const backgroundTop = innerWidth > 768 ? 450 : 212 + innerWidth * 0.2;
-      const height = document.body.scrollHeight - inenrHeight;
+      const height = document.body.scrollHeight - innerHeight;
       const scrollTop = document.documentElement.scrollTop;
       const time = height ? Math.max(0, scrollTop - backgroundTop * 0.8) / (height - backgroundTop) * 100 : 0;
 
@@ -99,32 +143,48 @@ const LineBackground: React.FC = () => {
       });
       let lineWidth = Math.max(500, athomeLength - totalTime * totalLength / 10000);
 
-      if (length >= 27500) {
-        lineWidth += (length - 27500);
+      if (length >= stopLength) {
+        lineWidth += (length - stopLength);
       }
-      const { x, y, rad } = getSaceShipInfo(linePath, length, totalLength);
-
+      const { x, y, rad } = getSaceShipInfo(linePath, length, totalLength, sign);
 
       lineStrokePath.style.cssText += `stroke-dashoffset: ${-totalTime}`;
-      grayPath.style.cssText += `stroke-dashoffset: ${length * 2};stroke-dasharray: ${length} ${totalLength}`
-      linePath.style.cssText += `stroke-dashoffset: ${lineWidth + length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
-      airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad)`;
+      grayPath.style.cssText += `stroke-dashoffset: ${length - sign * length};stroke-dasharray: ${length} ${totalLength}`
+      linePath.style.cssText += `stroke-dashoffset: ${lineWidth - sign * length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
+      airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad) scale(${scale})`;
 
-      if (time === 0) {
+      if (time === 0 && scene.isPaused()) {
         playTimer = window.setTimeout(() => {
           scene.play();
         }, 2000);
       }
     }
-    window.addEventListener("scroll", scroll);
+    function onResize() {
+      innerWidth = window.innerWidth;
+      innerHeight = window.innerHeight;
 
+      if (!isMobile && innerWidth < 768) {
+        setIsMobile(true);
+      } else if (isMobile && innerWidth > 768) {
+        setIsMobile(false);
+      }
+    }
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize);
+
+    onResize();
+    onScroll();
     return () => {
-      window.removeEventListener("scroll", scroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
       scene.clear();
     };
-  }, []);
+  }, [isMobile]);
   return <div className={css.LineBackground}>
-    <svg xmlns='http://www.w3.org/2000/svg' width='1278' height='5874' viewBox='0 0 1278 5874'>
+    <svg xmlns='http://www.w3.org/2000/svg'
+      width={width + 20}
+      height={height + 20}
+      viewBox={`-10 -10 ${width + 10} ${height + 10}`}>
       <AirPlanePath></AirPlanePath>
       <LinePath isGray={true}></LinePath>
       <LinePath isGray={false}></LinePath>
