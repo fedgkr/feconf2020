@@ -18,6 +18,7 @@
   .subTitle {
     font-size: 24px;
     font-weight: 600;
+    font-family: $appleSD-font;
     text-align: center;
     margin-top: 8px;
     margin-bottom: 32px;
@@ -115,15 +116,42 @@
   }
   @include mobile {
     width: 100%;
-    margin: 60px 0 0 0;
-    padding: 20px 20px 32px 20px;
+    margin: 0;
+    padding: 70px 20px 32px 20px;
+    border-radius: 0;
+    touch-action: none;
     .title {
-      font-size: 32px;
+      font-size: 36px;
     }
     .subTitle {
-      font-size: 17px;
-      line-height: 22px;
+      font-size: 20px;
+      margin-top: 8px;
       margin-bottom: 32px;
+    }
+    .desc {
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .form {
+      margin-top: 32px;
+      .textInput {
+        margin-top: 34px;
+      }
+      .buttonWrap {
+        justify-content: space-evenly;
+        margin-top: 16px;
+        width: 100%;
+        button {
+          width: 100%;
+          border-radius: 4px;
+          &.register {
+            background-color: #fff;
+          }
+          &.reregister {
+            background-color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
     }
   }
 }
