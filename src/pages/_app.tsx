@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Head from "next/head";
 import {Provider} from "react-redux";
 import store from "@store/index";
@@ -50,13 +50,13 @@ function App({Component, pageProps}) {
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
         <link rel="manifest" href="/manifest.json"/>
-        <script defer src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"/>
-        <script defer src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"/>
-        <script defer src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"/>
       </Head>
       <Provider store={store}>
         <Component {...pageProps}/>
         <div id="modal-root"/>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"/>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"/>
+        <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"/>
       </Provider>
     </>
   );

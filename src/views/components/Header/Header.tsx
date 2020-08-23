@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {motion, useViewportScroll} from "framer-motion";
 import {useDispatch} from "react-redux";
 import classcat from "classcat";
 import css from './Header.module.scss';
 import HeaderLogo from "@svgs/HeaderLogo/HeaderLogo";
-import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
 import dynamic from "next/dynamic";
+import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
 
 const MenuModal = dynamic(() => import("@components/MenuModal/MenuModal"));
 
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = () => {
         <a href="#about">About</a>
         <a href="#speakers">Speakers</a>
         <a href="#sponsors">Sponsors</a>
-        <RegisterButton>사전 등록하기</RegisterButton>
+        <RegisterSupportButton/>
       </div>
       <motion.div
         className={css.menuBtn}

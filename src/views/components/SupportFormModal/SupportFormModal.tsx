@@ -18,9 +18,8 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
   const dispatch = useDispatch();
   const postableRef = useRef(true);
   const textRef = useRef<HTMLTextAreaElement>();
-  const { myMessage } = useSupportState();
+  const { currentUser, myMessage } = useSupportState();
   const { fireStore } = useFirebase();
-  const currentUser = fireStore.getCurrentUser();
   function onSubmit(evt) {
     evt.preventDefault();
     if (postableRef.current) {
@@ -58,7 +57,11 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                 <motion.form className={css.form} onSubmit={onSubmit}>
                   <img className={css.profileImage} src={currentUser.photoURL} alt={currentUser.displayName}/>
                   <strong className={css.displayName}>{currentUser.displayName}</strong>
-                  <span className={css.username}>username</span>
+                  {currentUser.username ?
+                    <span className={css.username}>
+                      {currentUser.username}
+                    </span> : null
+                  }
                   <div className={css.email}>
                     <img src="/images/icons/email@2x.png" alt="Email"/>
                     <span>{currentUser.email}</span>
@@ -68,7 +71,7 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                     <textarea
                       ref={textRef}
                       placeholder="FEConf 2020 응원합니다!"
-                      value={myMessage ? myMessage.message : ''}
+                      defaultValue={myMessage ? myMessage.message : ''}
                       disabled={!!myMessage}
                     />
                   </div>
