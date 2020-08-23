@@ -9,12 +9,13 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import {useFirebase} from "@store/firebase";
 import {useDispatch} from "react-redux";
 import {setSupportForm} from "@store/slices/supportSlice";
+import {useSupportState} from "@store/index";
+import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
 
 interface SupportProps {}
 
 const Support: React.FC<SupportProps> = () => {
-  const dispatch = useDispatch();
-  const { fireStore } = useFirebase();
+  const { currentUser, messageList } = useSupportState();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   return (
@@ -33,7 +34,7 @@ const Support: React.FC<SupportProps> = () => {
         >
           <h2>
             <MotionNumber
-              targetNumber={13752}
+              targetNumber={messageList.length}
               active={contentVisible}
             />
           </h2>
@@ -47,36 +48,26 @@ const Support: React.FC<SupportProps> = () => {
           등록한 이메일로 FEConf 소식을 받을 수 있어요.
         </motion.p>
         <motion.div variants={preRegistrationMotions.contentText}>
-          <RegisterButton onClick={async evt => {
-            evt.preventDefault();
-            const isSignedIn = await fireStore.signIn();
-            console.log('isSignedIn : ', isSignedIn);
-            if (isSignedIn) {
-              dispatch(setSupportForm(true));
-            }
-          }}>
-            사전 등록하기
-          </RegisterButton>
+          <RegisterSupportButton/>
         </motion.div>
       </div>
       <motion.div
         className={css.messageContainer}
         variants={preRegistrationMotions.messageList}
       >
-        <motion.div className={css.messageItem} variants={preRegistrationMotions.message}>
-          <Message
-            name="Jooyoung Moon"
-            username="codemilli"
-            text="네 번째 FEconf! 좋은 컨퍼런스 준비해주셔서 감사합니다. 응원합니다💪"
-          />
-        </motion.div>
-        <motion.div className={css.messageItem} variants={preRegistrationMotions.message}>
-          <Message
-            name="Jooyoung Moon"
-            username="codemilli"
-            text="네 번째 FEconf! 좋은 컨퍼런스 준비해주셔서 감사합니다. 응원합니다💪"
-          />
-        </motion.div>
+        {messageList.map((message) => (
+          <motion.div
+            key={message.user.id}
+            className={css.messageItem}
+            variants={preRegistrationMotions.message}
+          >
+            <Message
+              name={message.user.displayName}
+              username={message.user.username}
+              text={message.message}
+            />
+          </motion.div>
+        ))}
         <div className={css.dimmed}/>
       </motion.div>
     </motion.div>

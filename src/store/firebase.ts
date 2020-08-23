@@ -1,11 +1,8 @@
 import {FirebaseOptions} from "@firebase/app-types";
-import {useDispatch, useStore} from "react-redux";
-import {useAppState} from "@store/index";
-import {setSupportForm, setMyMessage} from "@store/slices/supportSlice";
-import {useEffect, useState} from "react";
+import {useStore} from "react-redux";
+import {setCurrentUser, setSupportForm, setMyMessage, setMessageList} from "@store/slices/supportSlice";
 import {Store} from "redux";
 import {User} from "./interfaces";
-
 
 class FireStore {
   private readonly base: any;
@@ -19,98 +16,88 @@ class FireStore {
   };
   private supportsCollectionRef;
   private provider;
-  private afterLoginCallback: Function;
-  private dbReady: Promise<boolean>;
-  private dbReadyResolver;
 
   constructor(private store: Store) {
-    this.dbReady = new Promise((resolve) => this.dbReadyResolver = resolve);
     this.base = window.firebase;
     if (!this.base.apps.length) {
       this.base.initializeApp(this.config);
     }
     this.db = this.base.firestore();
     this.supportsCollectionRef = this.db.collection('supports');
-    this.base.auth().onAuthStateChanged(this.onAuthChanged);
-    this.base.auth().getRedirectResult().then(this.afterLogin);
+    this.registerListeners();
   }
 
-  public getCurrentUser(): User {
-    const currentUser = this.base.auth().currentUser;
-    return currentUser && {
-      id: currentUser.uid,
-      email: currentUser.email,
-      displayName: currentUser.displayName,
-      photoURL: currentUser.photoURL,
-    };
-  }
-
-  public async hasPost() {
-    await this.dbReady;
-    const currentUser = this.getCurrentUser();
-    if (currentUser) {
-      const response = await this.supportsCollectionRef.doc(currentUser.id).get();
-      return response.exists;
-    }
-    return false;
-  }
-
-  public async signIn() {
-    await this.dbReady;
-    if (!this.getCurrentUser()) {
+  public signIn() {
+    if (!this.base.auth().currentUser) {
       this.provider = new this.base.auth.GithubAuthProvider();
       this.provider.addScope('email');
       this.base.auth().signInWithRedirect(this.provider);
     }
-    return this.getCurrentUser();
-  }
-
-  public async getSupportList() {
-    await this.dbReady;
-    const snapshot = await this.supportsCollectionRef.get();
-    const result = [];
-    snapshot.forEach((doc) => {
-      result.push({
-        userId: doc.id,
-        ...doc.data(),
-      });
-    });
-    return result;
   }
 
   public async post(message: string) {
-    await this.dbReady;
-    const currentUser = this.getCurrentUser();
+    const currentUser = await this.getCurrentUser();
     if (currentUser) {
-      await this.supportsCollectionRef.doc(currentUser.id).set({
-        message,
-        user: currentUser,
-        createdAt: Date.now(),
-      });
+      try {
+        await this.supportsCollectionRef.doc(currentUser.id).set({
+          message,
+          user: currentUser,
+          createdAt: Date.now(),
+        });
+        this.store.dispatch(setSupportForm(false));
+      } catch(err) {
+        alert('등록에 실패했습니다.');
+      }
     }
   }
 
-  public onAfterLogin(callback) {
-    this.afterLoginCallback = callback;
-  }
+  private registerListeners = () => {
+    this.base.auth().onAuthStateChanged(this.onAuthChanged);
+    this.base.auth().getRedirectResult().then(this.afterLogin);
+    this.listenSupportMessageList();
+  };
+
+  private getCurrentUser = async (): Promise<User> => {
+    const currentUser = this.base.auth().currentUser;
+    const { fetch } = await import('whatwg-fetch');
+    const response = await fetch('https://api.github.com/user/13933210').then(res => res.json());
+    return currentUser && {
+      githubId: currentUser.providerData[0]?.uid,
+      id: currentUser.uid,
+      email: currentUser.email,
+      displayName: currentUser.displayName,
+      photoURL: currentUser.photoURL,
+      username: response.login,
+    };
+  };
+
+  private listenSupportMessageList = () => {
+    this.supportsCollectionRef.onSnapshot((snapshot) => {
+      const result = [];
+      snapshot.docs.forEach((doc) => {
+        result.push({
+          userId: doc.id,
+          ...doc.data(),
+        });
+      });
+      this.store.dispatch(setMessageList(result));
+    });
+  };
 
   private afterLogin = (result) => {
-    if (result.user && this.afterLoginCallback) {
-      this.afterLoginCallback();
+    if (result.user) {
+      this.store.dispatch(setSupportForm(true));
     }
   };
 
-  private onAuthChanged = (user) => {
-    this.dbReadyResolver();
+  private onAuthChanged = async (user) => {
     if (user) {
+      const currentUser = await this.getCurrentUser();
+      this.store.dispatch(setCurrentUser(currentUser));
       this.supportsCollectionRef.doc(user.uid).onSnapshot((doc) => {
         this.store.dispatch(setMyMessage(doc.data()));
       });
     }
-
-    // this.getSupportList().then(result => {
-    //   console.log('result : ', result);
-    // });
   };
 }
 
@@ -118,17 +105,9 @@ let fireStore: FireStore;
 
 export const useFirebase = () => {
   const store = useStore();
-  const dispatch = useDispatch();
   if (typeof window === 'object' && !fireStore) {
     fireStore = new FireStore(store);
-    fireStore.onAfterLogin(() => {
-      dispatch(setSupportForm(true));
-    });
   }
-  const [fireState, setFireState] = useState({});
-  useEffect(() => {
-
-  }, []);
   return {
     fireStore,
   };
