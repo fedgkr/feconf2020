@@ -4,6 +4,10 @@
 .HomePage {
   max-width: $page-max-width;
   margin: $pc-header-height auto 0 auto;
+  .sections {
+    position: relative;
+    overflow: hidden;
+  }
   @include mobile {
     margin: $mobile-header-height auto 0 auto;
   }
