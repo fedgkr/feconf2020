@@ -5,6 +5,7 @@ import {motion} from "framer-motion";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSpeakerMotions from "@motions/callforspeaker.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
+import { PAGE } from 'src/constants/page';
 
 interface CallForSpeakerSectionProps {}
 
@@ -35,14 +36,20 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
       </div>
       <div className={css.descriptionContainer}>
         <motion.h4 variants={callForSpeakerMotions.text}>
-          국내 최고의 프론트엔드 개발 컨퍼런스 <br/>
-          FEConf 2020의 연사자를 모집합니다
+          FEConf2020 연사자가 되어주세요
         </motion.h4>
         <motion.p variants={callForSpeakerMotions.text}>
-          국내 최대 프론트엔드 개발 컨퍼런스 FEconf 2020에 관심있으시다면 사전 등록해주세요. 여러분들의 응원으로 더 알찬 세미나를 준비할 수 있습니다. 등록하신 이메일로 소식을 전달해드릴게요!
+          소중한 경험을 나누어주실 발표자를 모십니다.
+          <br />
+          현장의 치열했던 고민과 성장했던 경험을 공유해주세요.
+          <br />
+          <br />
+          FEConf2020은 <strong>사전 녹화</strong>로 진행됩니다.
+          <br />
+          자세한 내용은 신청 링크에서 확인할 수 있습니다.
         </motion.p>
         <motion.div variants={callForSpeakerMotions.text}>
-          <RegisterButton>연사자 신청하기</RegisterButton>
+          <RegisterButton link={PAGE.연사자모집_구글폼}>연사자 신청하기</RegisterButton>
         </motion.div>
       </div>
     </motion.div>

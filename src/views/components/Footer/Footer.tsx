@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = () => {
               href="https://github.com/fedgkr/feconf-notice/blob/master/CODE_OF_CONDUCT.md"
               onClick={openCocModal}
             >
-              Code of conduct
+              Code of Conduct
             </SafeLink>
           </li>
           <li>

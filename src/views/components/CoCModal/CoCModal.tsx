@@ -37,10 +37,10 @@ const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
               onClick={evt => evt.stopPropagation()}
             >
               <motion.h2 className={css.title}>
-                Code of conduct
+                Code of Conduct
               </motion.h2>
               <motion.h3 className={css.subTitle}>
-                FEConf 2020에 참여하는 모든 분은 다음 사항을 준수해주세요.
+                FEConf2020에 참여하는 모든 분은 다음 사항을 준수해주세요.
               </motion.h3>
               <div className={css.content}>
                 <div className={css.block}>

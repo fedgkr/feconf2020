@@ -9,9 +9,9 @@ interface SponsorListProps {}
 
 const sponsorList = [
   {
-    name: 'Programmers',
-    link: 'https://programmers.co.kr',
-    image: 'programmers@2x.png',
+    name: '비바리퍼블리카',
+    link: 'https://toss.im',
+    image: 'toss@2x.png',
   },
   {
     name: '우아한형제들',
@@ -34,11 +34,6 @@ const sponsorList = [
     image: 'marpple@2x.png',
   },
   {
-    name: '비바리퍼블리카',
-    link: 'https://toss.im',
-    image: 'toss@2x.png',
-  },
-  {
     name: 'ncsoft',
     link: 'http://ncsoft.com',
     image: 'nc@2x.png',
@@ -47,6 +42,11 @@ const sponsorList = [
     name: 'jetbrains',
     link: 'https://jetbrains.com',
     image: 'jetbrains@2x.png',
+  },
+  {
+    name: 'Programmers',
+    link: 'https://programmers.co.kr',
+    image: 'programmers@2x.png',
   },
   {
     name: 'peoplefund',

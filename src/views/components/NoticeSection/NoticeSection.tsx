@@ -29,7 +29,7 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
       >
         <div className={css.title}>
           <motion.h2 variants={noticeMotions.titleText}>NOTICE</motion.h2>
-          <motion.h4 variants={noticeMotions.titleText}>FEConf 2020의 소식을 전해드립니다</motion.h4>
+          <motion.h4 variants={noticeMotions.titleText}>FEConf2020 소식을 전해드립니다</motion.h4>
         </div>
         <motion.div className={css.circle} variants={noticeMotions.circle}>
           <AwesomeCircle type={6} />

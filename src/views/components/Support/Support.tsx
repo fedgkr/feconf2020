@@ -35,8 +35,11 @@ const Support: React.FC<SupportProps> = () => {
           <span>명</span>
         </motion.div>
         <motion.p variants={preRegistrationMotions.contentText}>
-          FEConf 2020에 관심있으시다면 사전 등록해주세요. 여러분들의 응원으로 더 알찬 세미나를 준비할 수 있습니다.
-          등록하신 이메일로 소식을 전달해드릴게요!
+          사전 등록으로 FEConf2020을 응원해주세요!
+          <br />
+          여러분들의 응원에 힘입어 더 알찬 FEConf가 찾아갑니다.
+          <br />
+          등록하신 이메일로 FEConf 소식을 받을 수 있어요.
         </motion.p>
         <motion.div variants={preRegistrationMotions.contentText}>
           <RegisterButton>사전 등록하기</RegisterButton>
