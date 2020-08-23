@@ -102,6 +102,8 @@
         color: black;
         border-radius: 24px;
         border: none;
+        cursor: pointer;
+        outline: none;
         &.register {
           background-color: #fff;
         }

@@ -14,11 +14,11 @@ const RegisterSupportButton: React.FC<RegisterSupportButtonProps> = React.memo((
   const onRegister = useCallback((evt) => {
     evt.preventDefault();
     if (currentUser) {
-      fireStore.signIn();
-    } else {
       dispatch(setSupportForm(true));
+    } else {
+      fireStore.signIn();
     }
-  }, []);
+  }, [currentUser]);
   return (
     <RegisterButton onClick={onRegister}>
       사전 등록하기

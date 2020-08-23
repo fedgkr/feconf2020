@@ -18,48 +18,60 @@
   .subTitle {
     font-size: 24px;
     font-weight: 600;
+    font-family: $appleSD-font;
     text-align: center;
     margin-top: 8px;
     margin-bottom: 62px;
   }
-  .block {
-    &:not(:last-child) {
-      margin-bottom: 32px;
-    }
-    h3 {
-      font-size: 20px;
-      line-height: 24px;
-    }
-    p {
-      margin-top: 8px;
-      font-size: 16px;
-      line-height: 24px;
-    }
-  }
-  @include mobile {
-    width: 100%;
-    margin: 60px 0 0 0;
-    padding: 20px 20px 32px 20px;
-    .title {
-      font-size: 32px;
-    }
-    .subTitle {
-      font-size: 17px;
-      line-height: 22px;
-      margin-bottom: 32px;
-    }
+  .content {
     .block {
       &:not(:last-child) {
-        margin-bottom: 28px;
+        margin-bottom: 32px;
       }
       h3 {
         font-size: 20px;
         line-height: 24px;
       }
       p {
-        margin-top: 10px;
-        font-size: 14px;
-        line-height: 20px;
+        margin-top: 8px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+  @include mobile {
+    width: 100%;
+    margin: 0;
+    padding: 70px 20px 32px 20px;
+    border-radius: 0;
+    .title {
+      font-size: 36px;
+    }
+    .subTitle {
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 22px;
+      margin-bottom: 32px;
+    }
+    .content {
+      max-height: calc(100vh - 202px);
+      overflow-y: auto;
+      margin: 0 -20px;
+      padding: 0 20px 40px 20px;
+      -webkit-overflow-scrolling: touch;
+      .block {
+        &:not(:last-child) {
+          margin-bottom: 32px;
+        }
+        h3 {
+          font-size: 20px;
+          line-height: 24px;
+        }
+        p {
+          margin-top: 8px;
+          font-size: 16px;
+          line-height: 24px;
+        }
       }
     }
   }
@@ -76,5 +88,8 @@
     opacity: 1;
     pointer-events: all;
     transition: opacity .6s ease-out;
+  }
+  @include mobile {
+    overflow: hidden;
   }
 }

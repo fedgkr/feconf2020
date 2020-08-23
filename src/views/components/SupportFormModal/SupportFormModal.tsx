@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import css from './SupportFormModal.module.scss';
 import Portal, {PortalWrap} from "@components/Portal/Portal";
 import classcat from "classcat";
@@ -9,28 +9,66 @@ import {useModal} from "@utils/hooks/use-modal";
 import cocMotions from "@motions/coc.motion";
 import {useFirebase} from "@store/firebase";
 import {useSupportState} from "@store/index";
+import {Message} from "@store/interfaces";
+import CloseButton from "@components/CloseButton/CloseButton";
 
 interface SupportFormModalProps {
   active: boolean;
 }
 
-const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
-  const dispatch = useDispatch();
+const useSubmit = (active: boolean) => {
   const postableRef = useRef(true);
   const textRef = useRef<HTMLTextAreaElement>();
-  const { currentUser, myMessage } = useSupportState();
   const { fireStore } = useFirebase();
-  function onSubmit(evt) {
+  const onSubmit = useCallback((evt) => {
     evt.preventDefault();
     if (postableRef.current) {
       postableRef.current = false;
-      fireStore.post(textRef.current.value.trim());
+      const text = textRef.current.value.trim();
+      if (text.length > 140) {
+        return alert('응원 메세지는 140자 이내로 입력 가능합니다.')
+      }
+      fireStore.post(text);
     }
-  }
-  function onClose() {
-    dispatch(setSupportForm(false));
-  }
+  }, []);
+  useEffect(() => {
+    if (!active) {
+      postableRef.current = true;
+    }
+  }, [active]);
+  return {
+    textRef,
+    onSubmit,
+  };
+}
+
+const useReregister = (textRef, active: boolean) => {
+  const [reregisterState, setReregisterState] = useState(false);
+  const onReregister = useCallback((evt) => {
+    evt.preventDefault();
+    setReregisterState(true);
+    setTimeout(() => textRef.current.focus(), 100);
+  }, []);
+  useEffect(() => {
+    if (!active) {
+      setReregisterState(false);
+    }
+  }, [active]);
+  return {
+    reregisterState,
+    onReregister,
+  };
+}
+
+const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
   useModal(active);
+  const dispatch = useDispatch();
+  const { currentUser, myMessage } = useSupportState();
+  const { textRef, onSubmit } = useSubmit(active);
+  const { reregisterState, onReregister } = useReregister(textRef, active);
+  const onClose = useCallback(() => {
+    dispatch(setSupportForm(false));
+  }, []);
   return (
     <Portal>
       <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
@@ -44,6 +82,7 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
               variants={cocMotions.menu}
               onClick={evt => evt.stopPropagation()}
             >
+              <CloseButton onClick={onClose}/>
               <motion.h2 className={css.title}>
                 PRE-REGISTRATION
               </motion.h2>
@@ -72,13 +111,15 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                       ref={textRef}
                       placeholder="FEConf 2020 응원합니다!"
                       defaultValue={myMessage ? myMessage.message : ''}
-                      disabled={!!myMessage}
+                      disabled={myMessage && !reregisterState}
                     />
                   </div>
                   <div className={css.buttonWrap}>
-                    { myMessage ?
-                      <button className={css.reregister} type="submit">다시 등록하기</button> :
-                      <button className={css.register} type="submit">사전 등록하기</button>
+                    { !myMessage || reregisterState ?
+                      <button className={css.register} type="submit">사전 등록하기</button> :
+                      <button className={css.reregister} onClick={onReregister}>
+                        다시 등록하기
+                      </button>
                     }
                   </div>
                 </motion.form> : null

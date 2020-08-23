@@ -58,16 +58,21 @@ class FireStore {
   };
 
   private getCurrentUser = async (): Promise<User> => {
+    let username;
     const currentUser = this.base.auth().currentUser;
     const { fetch } = await import('whatwg-fetch');
-    const response = await fetch('https://api.github.com/user/13933210').then(res => res.json());
+    const githubId = currentUser.providerData[0]?.uid;
+    if (githubId) {
+      const { login } = await fetch(`https://api.github.com/user/${githubId}`).then(res => res.json());
+      username = login;
+    }
     return currentUser && {
       githubId: currentUser.providerData[0]?.uid,
       id: currentUser.uid,
       email: currentUser.email,
       displayName: currentUser.displayName,
       photoURL: currentUser.photoURL,
-      username: response.login,
+      username,
     };
   };
 

@@ -1,29 +1,28 @@
 import React from 'react';
 import css from './Message.module.scss';
 import SafeLink from "@components/SafeLink/SafeLink";
+import {Message as IMessage} from "@store/interfaces";
 
 interface MessageProps {
-  name: string;
-  username: string;
-  text: string;
+  message: IMessage;
 }
 
-const Message: React.FC<MessageProps> = ({ name, username, text }) => {
+const Message: React.FC<MessageProps> = ({ message: { user, message } }) => {
   return (
     <div className={css.Message}>
       <div className={css.profileContainer}>
         <div className={css.profile}>
-          <img className={css.image} src="https://avatars0.githubusercontent.com/u/13933210?s=200" alt="Jooyoung Moon"/>
-          <span className={css.name}>{name}</span>
+          <img className={css.image} src={user.photoURL} alt={user.displayName}/>
+          <span className={css.name}>{user.displayName}</span>
         </div>
         <div className={css.sns}>
-          <SafeLink href={`https://github.com/${username}`}>
+          <SafeLink href={`https://github.com/${user.username}`}>
             <img src="/images/icons/github@2x.png" alt="GitHub"/>
           </SafeLink>
         </div>
       </div>
       <p className={css.textWrap}>
-        {text}
+        {message}
       </p>
     </div>
   );

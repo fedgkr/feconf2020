@@ -10,7 +10,7 @@ import NoticeSection from "@components/NoticeSection/NoticeSection";
 import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
-import {useAppState, useSupportState} from "@store/index";
+import {useSupportState} from "@store/index";
 import dynamic from "next/dynamic";
 import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
 
