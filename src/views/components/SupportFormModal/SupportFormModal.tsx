@@ -9,7 +9,6 @@ import {useModal} from "@utils/hooks/use-modal";
 import cocMotions from "@motions/coc.motion";
 import {useFirebase} from "@store/firebase";
 import {useSupportState} from "@store/index";
-import {Message} from "@store/interfaces";
 import CloseButton from "@components/CloseButton/CloseButton";
 
 interface SupportFormModalProps {
