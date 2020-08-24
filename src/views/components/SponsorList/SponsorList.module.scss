@@ -23,7 +23,7 @@
     .sponsorWrap {
       opacity: .7;
       transform: scale(.8);
-      transition: opacity .4s $easeOutCirc, transform .4s $easeOutCirc;
+      transition: opacity .5s $easeOutCirc, transform .5s $easeOutCirc;
       &:not(:last-child) {
         margin-bottom: 32px;
       }

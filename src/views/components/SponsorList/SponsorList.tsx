@@ -113,8 +113,10 @@ const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
         <div
           className={css.sponsorList}
           style={{
+            WebkitTransform: `translateY(-${currentIdx * 92}px)`,
+            WebkitTransition: currentIdx === 0 ? 'none' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
             transform: `translateY(-${currentIdx * 92}px)`,
-            transition: currentIdx === 0 ? 'none' : 'transform .4s cubic-bezier(0, 0.55, 0.45, 1)',
+            transition: currentIdx === 0 ? 'none' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
           }}>
           {sponsors.map((sponsor, idx) => (
             <div
