@@ -21,17 +21,18 @@
     flex-direction: column;
     align-items: center;
     .sponsorWrap {
-      opacity: .8;
-      transform: scale(1);
-      transition: opacity .3s ease-out, transform .3s ease-out;
+      opacity: .7;
+      transform: scale(.8);
+      transition: opacity .4s $easeOutCirc, transform .4s $easeOutCirc;
       &:not(:last-child) {
         margin-bottom: 32px;
       }
       &.active {
         opacity: 1;
-        transform: scale(1.15);
+        transform: scale(1.05);
       }
       .sponsor {
+        display: block;
         img {
           width: 220px;
           height: 60px;

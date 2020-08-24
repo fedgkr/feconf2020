@@ -6,7 +6,9 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import {shuffle} from "@utils/suffle";
 import classcat from "classcat";
 
-interface SponsorListProps {}
+interface SponsorListProps {
+  playable: boolean;
+}
 
 const sponsorList = [
   {
@@ -71,33 +73,33 @@ const sponsorList = [
   },
 ];
 
-const SponsorList: React.FC<SponsorListProps> = () => {
+const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
   const sponsorRef = useRef();
   const { visible: sponsorVisible } = useIntersection(sponsorRef, { threshold: .5, bottom: false });
   const [sponsors, setSponsors] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
-  const intervalTime = 1400;
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIdx(idx => idx + 1);
-    }, intervalTime);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    if (playable) {
+      let timeout;
+      const intervalTime = currentIdx ? 1500 : 50;
+      const turnPoint = Math.floor(sponsorList.length / 2);
+      const callNext = () => {
+        if (currentIdx > turnPoint) {
+          const head = sponsors.splice(0, currentIdx);
+          setSponsors([...sponsors, ...head]);
+          return setCurrentIdx(0);
+        }
+        setCurrentIdx(currentIdx + 1);
+      };
+      timeout = setTimeout(callNext, intervalTime);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [currentIdx, playable]);
   useEffect(() => {
     setSponsors(shuffle(sponsorList));
   }, []);
-  useEffect(() => {
-    if (currentIdx === 5) {
-      const head = sponsors.splice(0, currentIdx - 1);
-      setSponsors([...sponsors, ...head]);
-      setCurrentIdx(0);
-    }
-    if (currentIdx === 0) {
-      setCurrentIdx(1);
-    }
-  }, [currentIdx]);
   return (
     <motion.div
       className={css.SponsorList}
@@ -112,7 +114,7 @@ const SponsorList: React.FC<SponsorListProps> = () => {
           className={css.sponsorList}
           style={{
             transform: `translateY(-${currentIdx * 92}px)`,
-            transition: currentIdx === 0 ? 'none' : 'transform .3s ease-out',
+            transition: currentIdx === 0 ? 'none' : 'transform .4s cubic-bezier(0, 0.55, 0.45, 1)',
           }}>
           {sponsors.map((sponsor, idx) => (
             <div

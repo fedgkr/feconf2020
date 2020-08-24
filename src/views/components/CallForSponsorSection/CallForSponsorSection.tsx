@@ -68,7 +68,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
             <RegisterButton link={PAGE.후원사모집_구글폼}>후원사 신청하기</RegisterButton>
           </motion.div>
         </motion.div>
-        <SponsorList/>
+        <SponsorList playable={textContainerVisible}/>
       </div>
     </div>
   );
