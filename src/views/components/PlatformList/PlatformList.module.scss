@@ -7,15 +7,18 @@
   justify-content: center;
   margin-top: 60px;
   .platform {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 245px;
-    padding: 24px;
-    border-radius: 8px;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.07);
+    display: block;
+    & > div {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 245px;
+      padding: 24px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.07);
+    }
     &:not(:last-child) {
       margin-right: 20px;
     }
@@ -62,9 +65,11 @@
     flex-direction: column;
     margin-top: 22px;
     .platform {
-      flex-direction: column;
-      width: 100%;
-      height: auto;
+      & > div {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+      }
       &:not(:last-child) {
         margin-right: 0;
         margin-bottom: 22px;
