@@ -16,7 +16,7 @@ const RegisterSupportButton: React.FC<RegisterSupportButtonProps> = React.memo((
     if (currentUser) {
       dispatch(setSupportForm(true));
     } else {
-      fireStoreRef.current.fireStore?.signIn();
+      fireStoreRef.fireStore?.signIn();
     }
   }, [currentUser]);
   return (

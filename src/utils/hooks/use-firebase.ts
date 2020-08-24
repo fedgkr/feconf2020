@@ -10,7 +10,6 @@ const dynamicLoad = async (store) => {
 }
 
 export const useFirebase = () => {
-  const fireStoreRef = useRef(ref);
   const store = useStore();
   useEffect(() => {
     if (!loadRequested) {
@@ -23,6 +22,6 @@ export const useFirebase = () => {
     }
   }, []);
   return {
-    fireStoreRef,
+    fireStoreRef: ref,
   };
 }
