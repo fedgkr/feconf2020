@@ -27,7 +27,7 @@ const useSubmit = (active: boolean) => {
       if (text.length > 140) {
         return alert('응원 메세지는 140자 이내로 입력 가능합니다.')
       }
-      fireStoreRef.current.fireStore?.post(text);
+      fireStoreRef.fireStore?.post(text);
     }
   }, []);
   useEffect(() => {
