@@ -85,6 +85,7 @@ class FireStore {
           ...doc.data(),
         });
       });
+      result.sort((a, b) => b.createdAt - a.createdAt);
       this.store.dispatch(setMessageList(result));
     });
   };
