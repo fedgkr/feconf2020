@@ -60,7 +60,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
             컨퍼런스 후원을 통해 프런트엔드 개발자 문화를 함께 만들고, 기업 홍보 및 채용 활동 등을 계획해 보세요!
             <br />
             <br />
-            FEConf2020은 <strong>온라인</strong>으로 진행됩니다.
+            FEConf2020은 <strong>온라인</strong>으로 진행합니다.
             <br />
             자세한 내용은 신청 링크에서 확인할 수 있습니다.
           </motion.p>

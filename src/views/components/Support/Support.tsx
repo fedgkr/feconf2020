@@ -39,7 +39,7 @@ const Support: React.FC<SupportProps> = () => {
           <br />
           여러분들의 응원에 힘입어 더 알찬 FEConf가 찾아갑니다.
           <br />
-          등록하신 이메일로 FEConf 소식을 받을 수 있어요.
+          등록한 이메일로 FEConf 소식을 받을 수 있어요.
         </motion.p>
         <motion.div variants={preRegistrationMotions.contentText}>
           <RegisterButton>사전 등록하기</RegisterButton>
