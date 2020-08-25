@@ -17,6 +17,7 @@ class FireStore {
     appId: process.env.APP_ID,
   };
   private supportsCollectionRef;
+  private usersCollectionRef;
   private provider;
 
   constructor(private store: Store) {
@@ -24,6 +25,7 @@ class FireStore {
     this.base.initializeApp(this.config);
     this.db = this.base.firestore();
     this.supportsCollectionRef = this.db.collection('supports');
+    this.usersCollectionRef = this.db.collection('users');
     this.registerListeners();
   }
 
@@ -39,11 +41,22 @@ class FireStore {
     const currentUser = await this.getCurrentUser();
     if (currentUser) {
       try {
-        await this.supportsCollectionRef.doc(currentUser.id).set({
+        const supportCreation = this.supportsCollectionRef.doc(currentUser.id).set({
           message,
-          user: currentUser,
+          user: {
+            id: currentUser.id,
+            githubId: currentUser.githubId,
+            username: currentUser.username,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
           createdAt: Date.now(),
         });
+        const userCreation = this.usersCollectionRef.doc(currentUser.id).set({
+          ...currentUser,
+          createdAt: Date.now(),
+        });
+        await Promise.all([supportCreation, userCreation]);
         this.store.dispatch(setSupportForm(false));
       } catch(err) {
         alert('등록에 실패했습니다.');
@@ -93,7 +106,6 @@ class FireStore {
             result.push({
               userId: doc.id,
               ...data,
-              user: { ...data.user, email: undefined },
             });
           }
         });

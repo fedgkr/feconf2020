@@ -16,7 +16,8 @@ interface SupportProps {}
 const Support: React.FC<SupportProps> = () => {
   const { currentUser, metadata, messageList } = useSupportState();
   const contentRef = useRef();
-  const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
+  let { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
+  contentVisible = contentVisible && !!metadata.count;
   return (
     <motion.div
       className={css.Support}
