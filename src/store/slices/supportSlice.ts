@@ -5,10 +5,18 @@ interface SupportState {
   currentUser: User,
   myMessage: Message;
   messageList: Message[];
+  metadata: SupportMetadata;
   supportFormOpen: boolean;
 }
 
+interface SupportMetadata {
+  count: number;
+}
+
 const initialState: SupportState = {
+  metadata: {
+    count: 0,
+  },
   currentUser: null,
   myMessage: null,
   messageList: [],
@@ -19,6 +27,9 @@ export const supportSlice = createSlice({
   name: 'support',
   initialState,
   reducers: {
+    setMetaData(state, action: PayloadAction<SupportMetadata>) {
+      state.metadata = action.payload;
+    },
     setCurrentUser(state, action: PayloadAction<User>) {
       state.currentUser = action.payload;
     },
@@ -35,6 +46,7 @@ export const supportSlice = createSlice({
 });
 
 export const {
+  setMetaData,
   setCurrentUser,
   setMyMessage,
   setMessageList,
