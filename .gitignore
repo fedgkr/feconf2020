@@ -257,7 +257,6 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
-
 ### Project files
 dist
 .vercel
@@ -265,4 +264,7 @@ dist
 ### Temp
 temp
 config/*.now-secrets.json
-functions/lib
+
+## Compiled JavaScript files
+functions/**/*.js
+functions/**/*.js.map

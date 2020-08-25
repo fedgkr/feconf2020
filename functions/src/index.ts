@@ -3,51 +3,48 @@ import * as admin from 'firebase-admin';
 import * as sgMail from '@sendgrid/mail';
 
 require('dotenv').config({ path: '.env' });
-admin.initializeApp();
 const { SENDGRID_API, WELCOME_MAIL_TEMPLATE_ID } = process.env as { [key: string]: string };
+admin.initializeApp();
+sgMail.setApiKey(SENDGRID_API);
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions
-  .https.onRequest((request, response) => {
-    functions.logger.info("Hello logs!", {structuredData: true});
-    response.send("Hello from Firebase!" + process.env.SENDGRID_API);
-  });
-
-export const onSupportAdded = functions
-  .firestore.document('supports/{supportsId}')
+export const onUserCreated = functions
+  .firestore.document('users/{userId}')
   .onCreate(async (snapshot, context) => {
-    const { user } = snapshot.data();
-    if (snapshot.id === 'metadata') {
-      return;
-    }
-    const metadataRef = admin.firestore().collection('supports').doc('metadata');
-    const count = admin.firestore.FieldValue.increment(1);
-    metadataRef.update({ count });
-    if (user && user.email && user.displayName) {
-      try {
-        await sendMail(user.email, user.displayName);
-        functions.logger.info(`Email sent to ${user.email}`, { structuredData: true });
-      } catch (err) {
-        functions.logger.error(`
-          Email send Failed to ${user.email},
-          error message : ${err.message},
-          SENDGRID_API: ${SENDGRID_API},
-          WELCOME_MAIL_TEMPLATE_ID: ${WELCOME_MAIL_TEMPLATE_ID},
-          `, { structuredData: true });
-      }
+    const { email, displayName } = snapshot.data();
+    try {
+      const response = await sendMail(email, displayName);
+      functions.logger.info(`Email sent to ${email}`, response);
+    } catch (err) {
+      functions.logger.error(`
+        Email send Failed to ${email},
+        error message : ${err.message},
+        SENDGRID_API: ${SENDGRID_API},
+        WELCOME_MAIL_TEMPLATE_ID: ${WELCOME_MAIL_TEMPLATE_ID},
+      `);
     }
   });
+
+export const onSupportCreated = functions
+  .firestore.document('supports/{supportId}')
+  .onCreate(async (snapshot, context) => incrementCount());
 
 async function sendMail(to: string, displayName: string) {
+  const subject = 'FEConf 2020을 응원해주셔서 감사합니다.';
   const msg = {
     to,
-    subject: 'FEConf 2020을 응원해주셔서 감사합니다.',
-    from: 'feconf@googlegroups.com',
+    subject,
+    from: 'FEConf <feconf@googlegroups.com>',
     templateId: WELCOME_MAIL_TEMPLATE_ID,
-    dynamicTemplateData: { displayName },
+    dynamicTemplateData: { subject, displayName },
   };
-  sgMail.setApiKey(SENDGRID_API);
+  functions.logger.info(`message`, msg);
   return sgMail.send(msg);
+}
+
+async function incrementCount() {
+  const start = Date.now();
+  const metadataRef = admin.firestore().collection('supports').doc('metadata');
+  const count = admin.firestore.FieldValue.increment(1);
+  await metadataRef.update({ count });
+  functions.logger.info(`increment duration`, Date.now() - start);
 }
