@@ -265,3 +265,4 @@ dist
 ### Temp
 temp
 config/*.now-secrets.json
+functions/lib

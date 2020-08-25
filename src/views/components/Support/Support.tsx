@@ -14,7 +14,7 @@ import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSup
 interface SupportProps {}
 
 const Support: React.FC<SupportProps> = () => {
-  const { currentUser, messageList } = useSupportState();
+  const { currentUser, metadata, messageList } = useSupportState();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   return (
@@ -33,7 +33,7 @@ const Support: React.FC<SupportProps> = () => {
         >
           <h2>
             <MotionNumber
-              targetNumber={messageList.length}
+              targetNumber={metadata.count}
               active={contentVisible}
             />
           </h2>

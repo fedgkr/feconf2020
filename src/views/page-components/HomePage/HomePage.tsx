@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import css from './HomePage.module.scss';
 import Header from "@components/Header/Header";
 import HeroSection from "@components/HeroSection/HeroSection";
@@ -19,7 +19,7 @@ const SupportFormModal = dynamic(() => import("@components/SupportFormModal/Supp
 interface HomePageProps {}
 
 const HomePage: React.FC<HomePageProps> = () => {
-  const { supportFormOpen } = useSupportState();
+  const { currentUser, supportFormOpen } = useSupportState();
   const renderState = useDynamicRender(supportFormOpen);
   return (
     <div className={css.HomePage}>
@@ -35,7 +35,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <LineBackground />
       </div>
       <Footer/>
-      { renderState ? <SupportFormModal active={supportFormOpen}/> : null }
+      { renderState ? <SupportFormModal active={currentUser && supportFormOpen}/> : null }
     </div>
   );
 }
