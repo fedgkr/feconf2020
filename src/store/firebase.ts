@@ -2,7 +2,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import {FirebaseOptions} from "@firebase/app-types";
-import {setCurrentUser, setSupportForm, setMyMessage, setMessageList} from "@store/slices/supportSlice";
+import {setMetaData, setCurrentUser, setSupportForm, setMyMessage, setMessageList} from "@store/slices/supportSlice";
 import {Store} from "redux";
 import {User} from "./interfaces";
 
@@ -76,14 +76,23 @@ class FireStore {
     };
   };
 
+  private listenSupportMetadata = () => {
+    this.supportsCollectionRef.docs('metadata').onSnapshot((doc) => {
+      console.log('docs : ', doc.data());
+      // this.store.dispatch(setMetaData(doc.data()));
+    });
+  }
+
   private listenSupportMessageList = () => {
     this.supportsCollectionRef.onSnapshot((snapshot) => {
       const result = [];
       snapshot.docs.forEach((doc) => {
-        result.push({
-          userId: doc.id,
-          ...doc.data(),
-        });
+        if (doc.id !== 'metadata') {
+          result.push({
+            userId: doc.id,
+            ...doc.data(),
+          });
+        }
       });
       result.sort((a, b) => b.createdAt - a.createdAt);
       this.store.dispatch(setMessageList(result));
