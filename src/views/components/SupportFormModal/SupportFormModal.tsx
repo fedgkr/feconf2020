@@ -15,6 +15,8 @@ interface SupportFormModalProps {
   active: boolean;
 }
 
+const defaultSupportMessage = 'FEConf 2020 응원합니다!';
+
 const useSubmit = (active: boolean) => {
   const postableRef = useRef(true);
   const textRef = useRef<HTMLTextAreaElement>();
@@ -27,7 +29,7 @@ const useSubmit = (active: boolean) => {
       if (text.length > 140) {
         return alert('응원 메세지는 140자 이내로 입력 가능합니다.')
       }
-      fireStoreRef.fireStore?.post(text);
+      fireStoreRef.fireStore?.post(text || defaultSupportMessage);
     }
   }, []);
   useEffect(() => {
@@ -108,7 +110,7 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                     <h4>한 줄 응원</h4>
                     <textarea
                       ref={textRef}
-                      placeholder="FEConf 2020 응원합니다!"
+                      placeholder={defaultSupportMessage}
                       defaultValue={myMessage ? myMessage.message : ''}
                       disabled={myMessage && !reregisterState}
                     />

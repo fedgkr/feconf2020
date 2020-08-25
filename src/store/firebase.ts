@@ -7,8 +7,8 @@ import {Store} from "redux";
 import {User} from "./interfaces";
 
 class FireStore {
-  private readonly base: any;
-  private readonly db: any;
+  private readonly base;
+  private readonly db;
   private readonly config: FirebaseOptions = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -54,6 +54,7 @@ class FireStore {
   private registerListeners = () => {
     this.base.auth().onAuthStateChanged(this.onAuthChanged);
     this.base.auth().getRedirectResult().then(this.afterLogin);
+    this.listenSupportMetadata();
     this.listenSupportMessageList();
   };
 
@@ -77,23 +78,25 @@ class FireStore {
   };
 
   private listenSupportMetadata = () => {
-    this.supportsCollectionRef.docs('metadata').onSnapshot((doc) => {
-      console.log('docs : ', doc.data());
-      // this.store.dispatch(setMetaData(doc.data()));
+    this.supportsCollectionRef.doc('metadata').onSnapshot((doc) => {
+      this.store.dispatch(setMetaData(doc.data()));
     });
   }
 
   private listenSupportMessageList = () => {
-    this.supportsCollectionRef.onSnapshot((snapshot) => {
-      const result = [];
-      snapshot.docs.forEach((doc) => {
-        if (doc.id !== 'metadata') {
-          result.push({
-            userId: doc.id,
-            ...doc.data(),
-          });
-        }
-      });
+    this.supportsCollectionRef
+      .onSnapshot((snapshot) => {
+        const result = [];
+        snapshot.docs.forEach((doc) => {
+          if (doc.id !== 'metadata') {
+            const data = doc.data();
+            result.push({
+              userId: doc.id,
+              ...data,
+              user: { ...data.user, email: undefined },
+            });
+          }
+        });
       result.sort((a, b) => b.createdAt - a.createdAt);
       this.store.dispatch(setMessageList(result));
     });
