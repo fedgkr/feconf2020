@@ -10,6 +10,7 @@
   // LineBackground 컴포넌트 위치를 맞추기 위해서 마진값 수정함.
   padding-top: 180px;
   margin: 250px auto 0 auto;
+  height: 439px;
   .titleContainer {
     position: relative;
     margin-right: 107px;
@@ -64,6 +65,7 @@
     flex-direction: column;
     margin-top: 100px;
     padding: 160px 20px 0 20px;
+    height: 346px;
     .titleContainer {
       margin-right: 0;
       .mask {
