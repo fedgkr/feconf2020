@@ -14,11 +14,7 @@ export const useFirebase = () => {
   useEffect(() => {
     if (!loadRequested) {
       loadRequested = true;
-      const onLoad = () => dynamicLoad(store);
-      window.addEventListener('load', onLoad);
-      return () => {
-        window.removeEventListener('load', onLoad);
-      };
+      dynamicLoad(store);
     }
   }, []);
   return {

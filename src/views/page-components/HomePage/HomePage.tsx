@@ -33,7 +33,7 @@ const useSupportModal = () => {
 }
 
 const HomePage: React.FC<HomePageProps> = () => {
-  const { currentUser, supportFormOpen } = useSupportState();
+  const { supportFormOpen } = useSupportState();
   const renderState = useDynamicRender(supportFormOpen);
   useSupportModal();
   return (
