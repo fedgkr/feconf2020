@@ -33,38 +33,50 @@
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
-    .profileImage {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      overflow: hidden;
+    .userInfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .profileImage {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .displayName {
+        margin-top: 8px;
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 700;
+      }
+      .username {
+        margin-top: 4px;
+        font-size: 16px;
+        line-height: 16px;
+      }
+      .email {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 16px;
+        font-size: 0;
+        img {
+          display: inline-block;
+          width: 16px;
+          margin-right: 8px;
+        }
+        span {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
     }
-    .displayName {
-      margin-top: 8px;
-      font-size: 20px;
-      line-height: 20px;
-      font-weight: 700;
-    }
-    .username {
-      margin-top: 4px;
-      font-size: 16px;
-      line-height: 16px;
-    }
-    .email {
+    .loading {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 16px;
-      font-size: 0;
-      img {
-        display: inline-block;
-        width: 16px;
-        margin-right: 8px;
-      }
-      span {
-        font-size: 16px;
-        line-height: 20px;
-      }
+      width: 100%;
+      height: 156px;
     }
     .textInput {
       display: flex;
@@ -95,6 +107,7 @@
       justify-content: flex-end;
       margin-top: 48px;
       width: 340px;
+      height: 46px;
       button {
         padding: 13px 38px;
         font-size: 16px;

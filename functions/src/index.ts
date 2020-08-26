@@ -9,7 +9,7 @@ sgMail.setApiKey(SENDGRID_API);
 
 export const onUserCreated = functions
   .firestore.document('users/{userId}')
-  .onCreate(async (snapshot, context) => {
+  .onCreate(async (snapshot) => {
     const { email, displayName } = snapshot.data();
     try {
       const response = await sendMail(email, displayName);
@@ -26,7 +26,7 @@ export const onUserCreated = functions
 
 export const onSupportCreated = functions
   .firestore.document('supports/{supportId}')
-  .onCreate(async (snapshot, context) => incrementCount());
+  .onCreate(() => incrementCount());
 
 async function sendMail(to: string, displayName: string) {
   const subject = 'FEConf2020을 응원해주셔서 감사합니다.';

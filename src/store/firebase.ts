@@ -66,7 +66,6 @@ class FireStore {
 
   private registerListeners = () => {
     this.base.auth().onAuthStateChanged(this.onAuthChanged);
-    // this.base.auth().getRedirectResult().then(this.afterLogin);
     this.listenSupportMetadata();
     this.listenSupportMessageList();
   };
@@ -97,27 +96,22 @@ class FireStore {
   }
 
   private listenSupportMessageList = () => {
-    this.supportsCollectionRef
-      .onSnapshot((snapshot) => {
-        const result = [];
-        snapshot.docs.forEach((doc) => {
-          if (doc.id !== 'metadata') {
-            const data = doc.data();
-            result.push({
-              userId: doc.id,
-              ...data,
-            });
-          }
-        });
-      result.sort((a, b) => b.createdAt - a.createdAt);
-      this.store.dispatch(setMessageList(result));
-    });
+    this.supportsCollectionRef.onSnapshot(this.updateMessageList);
   };
 
-  private afterLogin = (result) => {
-    if (result.user) {
-      this.store.dispatch(setSupportForm(true));
-    }
+  private updateMessageList = (snapshot) => {
+    const result = [];
+    snapshot.docs.forEach((doc) => {
+      if (doc.id !== 'metadata') {
+        const data = doc.data();
+        result.push({
+          userId: doc.id,
+          ...data,
+        });
+      }
+    });
+    result.sort((a, b) => b.createdAt - a.createdAt);
+    this.store.dispatch(setMessageList(result));
   };
 
   private onAuthChanged = async (user) => {
