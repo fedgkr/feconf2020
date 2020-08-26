@@ -66,7 +66,7 @@ class FireStore {
 
   private registerListeners = () => {
     this.base.auth().onAuthStateChanged(this.onAuthChanged);
-    this.base.auth().getRedirectResult().then(this.afterLogin);
+    // this.base.auth().getRedirectResult().then(this.afterLogin);
     this.listenSupportMetadata();
     this.listenSupportMessageList();
   };

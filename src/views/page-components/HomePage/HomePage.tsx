@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import css from './HomePage.module.scss';
 import Header from "@components/Header/Header";
 import HeroSection from "@components/HeroSection/HeroSection";
@@ -11,16 +11,31 @@ import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
 import {useSupportState} from "@store/index";
+import {setSupportForm} from "@store/slices/supportSlice";
 import dynamic from "next/dynamic";
 import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
+import {useRouter} from "next/router";
+import {useDispatch} from "react-redux";
 
 const SupportFormModal = dynamic(() => import("@components/SupportFormModal/SupportFormModal"));
 
 interface HomePageProps {}
 
+const useSupportModal = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (router.query.loginRedirect) {
+      router.replace('/', '/');
+      dispatch(setSupportForm(true));
+    }
+  }, [router.query]);
+}
+
 const HomePage: React.FC<HomePageProps> = () => {
   const { currentUser, supportFormOpen } = useSupportState();
   const renderState = useDynamicRender(supportFormOpen);
+  useSupportModal();
   return (
     <div className={css.HomePage}>
       <Header/>
@@ -35,7 +50,7 @@ const HomePage: React.FC<HomePageProps> = () => {
         <LineBackground />
       </div>
       <Footer/>
-      { renderState ? <SupportFormModal active={currentUser && supportFormOpen}/> : null }
+      { renderState ? <SupportFormModal active={supportFormOpen}/> : null }
     </div>
   );
 }
