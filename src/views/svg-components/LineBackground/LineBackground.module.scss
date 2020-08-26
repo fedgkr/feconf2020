@@ -15,12 +15,11 @@
     height: auto;
   }
   @include mobile {
-    top: calc(140px + 25vw);
+    top: 220px;
 
     svg {
-      left: -37vw;
-      transform: none;
-      width: 179vw;
+      transform: translate(-270px);
+      width: 675px;
     }
     svg path {
       stroke-width: 1.5px;
