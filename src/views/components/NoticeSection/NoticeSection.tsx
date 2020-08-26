@@ -18,7 +18,7 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
     }
   }, [titleVisible]);
   return (
-    <div className={css.NoticeSection}>
+    <div id="notice" className={css.NoticeSection}>
       <motion.div
         className={css.titleContainer}
         ref={titleRef}

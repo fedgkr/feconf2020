@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {motion, useViewportScroll} from "framer-motion";
 import {useDispatch} from "react-redux";
 import classcat from "classcat";
@@ -55,6 +55,11 @@ const Header: React.FC<HeaderProps> = () => {
   const { menuOpen } = useAppState();
   const { isVisible } = useAnimatedHeader();
   const hasMenuStateChanged = useChangedMenuState(menuOpen);
+  const onNavigateTo = useCallback((evt, target: string) => {
+    evt.preventDefault();
+    const element = document.getElementById(target);
+    element?.scrollIntoView({ block: 'center' });
+  }, []);
   useEffect(() => {
     setTimeout(() => initMenu(true));
   }, []);
@@ -67,9 +72,10 @@ const Header: React.FC<HeaderProps> = () => {
         <HeaderLogo/>
       </a>
       <div className={css.menu}>
-        <a href="#about">About</a>
-        <a href="#speakers">Speakers</a>
-        <a href="#sponsors">Sponsors</a>
+        <a href="#" onClick={(evt) => onNavigateTo(evt, 'about')}>About</a>
+        <a href="#" onClick={(evt) => onNavigateTo(evt, 'speakers')}>Speakers</a>
+        <a href="#" onClick={(evt) => onNavigateTo(evt, 'sponsors')}>Sponsors</a>
+        <a href="#" onClick={(evt) => onNavigateTo(evt, 'notice')}>Notice</a>
         <RegisterSupportButton/>
       </div>
       <motion.div
