@@ -4,7 +4,7 @@
   position: absolute;
   left: 40px;
   right: 40px;
-  top: 300px;
+  top: 340px;
   pointer-events: none;
   z-index: 1;
   svg {
@@ -15,10 +15,10 @@
     height: auto;
   }
   @include mobile {
-    top: 220px;
+    top: 244px;
 
     svg {
-      transform: translate(-270px);
+      transform: translate(-295px);
       width: 675px;
     }
     svg path {

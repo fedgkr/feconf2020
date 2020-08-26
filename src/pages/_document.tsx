@@ -12,7 +12,9 @@ class FEConf2020Document extends Document {
       <Html lang="ko">
         <Head title="FEConf2020 at Home"/>
         <body>
-          <Main />
+          <div className="container">
+            <Main />
+          </div>
           <NextScript />
           <div id="modal-root"/>
         </body>

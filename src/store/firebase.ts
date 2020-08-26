@@ -33,7 +33,9 @@ class FireStore {
     if (!this.base.auth().currentUser) {
       this.provider = new this.base.auth.GithubAuthProvider();
       this.provider.addScope('email');
-      this.base.auth().signInWithRedirect(this.provider);
+      this.base.auth().signInWithRedirect(this.provider).catch(err => {
+        console.log('err : ', err.message);
+      });
     }
   }
 

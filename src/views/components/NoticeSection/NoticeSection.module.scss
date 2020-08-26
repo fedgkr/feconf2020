@@ -3,11 +3,11 @@
 
 .NoticeSection {
   max-width: $page-content-width;
-  margin: 235px auto 0 auto;
-  height: 742px;
+  margin: 221px auto 0 auto;
+  height: 730px;
   .titleContainer {
     position: relative;
-    padding: 213px 0 84px 0;
+    padding: 213px 0 73px 0;
     .title {
       position: relative;
       left: 50%;
@@ -51,8 +51,9 @@
   @include mobile {
     margin-top: 74px;
     padding: 0 20px;
+    height: 734px;
     .titleContainer {
-      padding: 130px 0 84px 0;
+      padding: 130px 0 58px 0;
       .title {
         position: relative;
         left: 0;

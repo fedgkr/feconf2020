@@ -45,8 +45,9 @@
     }
   }
   @include mobile {
-    margin-top: 30px;
+    margin-top: 26px;
     padding: 60px 20px 0 20px;
+    height: 396px;
     .container {
       flex-direction: column;
       .titleContainer {

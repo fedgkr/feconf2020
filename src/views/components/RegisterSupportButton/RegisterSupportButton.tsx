@@ -18,8 +18,13 @@ const RegisterSupportButton: React.FC<RegisterSupportButtonProps> = React.memo((
     if (currentUser) {
       dispatch(setSupportForm(true));
     } else {
-      router.replace('/', '/?loginRedirect=github');
-      fireStoreRef.fireStore?.signIn();
+      try {
+        router.replace('/', '/?loginRedirect=github');
+        fireStoreRef.fireStore?.signIn();
+      } catch(err) {
+        console.log('err : ', err.message);
+        router.replace('/', '/');
+      }
     }
   }, [currentUser]);
   return (

@@ -1,9 +1,12 @@
 @import '_variables.scss';
 
+.container {
+  overflow: hidden;
+}
+
 body {
   color: $page-text-color;
   background-color: $page-bg-color;
-  overflow-x: hidden;
   &.fixed {
     overflow: hidden;
   }

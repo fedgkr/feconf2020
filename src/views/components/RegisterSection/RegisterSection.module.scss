@@ -2,6 +2,7 @@
 @import "mixin";
 
 .RegisterSection {
+  height: 486px;
   margin-top: 200px;
   padding-bottom: 200px;
   .container {
@@ -41,6 +42,7 @@
   @include mobile {
     margin-top: 100px;
     padding-bottom: 0;
+    height: 432px;
     .container {
       position: relative;
       padding: 148px 55px 80px 55px;
