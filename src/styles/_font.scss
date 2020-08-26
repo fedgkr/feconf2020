@@ -7,6 +7,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: Gilroy;
+  src: local(Gilroy), url("/fonts/gilroy/Gilroy-ExtraBold.woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }

@@ -29,7 +29,7 @@
       position: absolute;
       border-radius: 50%;
       z-index: -1;
-      transform-origin: 200% 200%;
+      transform-origin: 120% 120%;
     }
     .circle {
       top: -219px;
@@ -43,8 +43,6 @@
       left: 19px;
       width: 188px;
       height: 188px;
-      border: 2px dashed #979797;
-      background-color: transparent;
     }
   }
   .descriptionContainer {
