@@ -5,6 +5,7 @@ import {motion} from "framer-motion";
 import noticeMotions from "@motions/notice.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import PlatformList from "@components/PlatformList/PlatformList";
+import DashedCircle from "@components/DashedCircle/DashedCircle";
 
 interface NoticeSectionProps {}
 
@@ -33,7 +34,9 @@ const NoticeSection: React.FC<NoticeSectionProps> = () => {
         <motion.div className={css.circle} variants={noticeMotions.circle}>
           <AwesomeCircle type={6} />
         </motion.div>
-        <motion.div className={css.dashedCircle} variants={noticeMotions.dashedCircle}/>
+        <motion.div className={css.dashedCircle} variants={noticeMotions.dashedCircle}>
+          <DashedCircle/>
+        </motion.div>
       </motion.div>
       <PlatformList/>
     </div>

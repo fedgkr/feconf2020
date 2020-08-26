@@ -10,13 +10,15 @@ const callForSpeakerMotions = {
   },
   titleText: {
     hidden: {
-      ...motionPresets.fadeInRight.before,
+      ...motionPresets.fadeInUp.before,
       opacity: 1,
-      x: '-100%',
+      y: '100%',
     },
     visible: {
-      ...motionPresets.fadeInRight.after,
-      x: '0%',
+      ...motionPresets.fadeInUp.after,
+      opacity: 1,
+      y: '0%',
+      transition: motionPresets.fadeInUp.after.transition,
     },
   },
   circle: {

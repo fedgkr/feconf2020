@@ -7,8 +7,10 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSponsorMotions from "@motions/callforsponsor.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import dynamic from "next/dynamic";
-import SponsorList from "@components/SponsorList/SponsorList";
 import { PAGE } from 'src/constants/page';
+import DashedCircle from "@components/DashedCircle/DashedCircle";
+
+const SponsorList = dynamic(() => import("@components/SponsorList/SponsorList"));
 
 interface CallForSponsorSectionProps {}
 
@@ -41,7 +43,9 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
         <motion.div className={cc([css.circle, css.circle2])} variants={callForSponsorMotions.circle2}>
         <AwesomeCircle type={2} />
         </motion.div>
-        <motion.div className={cc([css.circle, css.dashedCircle])} variants={callForSponsorMotions.dashedCircle}/>
+        <motion.div className={cc([css.circle, css.dashedCircle])} variants={callForSponsorMotions.dashedCircle}>
+          <DashedCircle/>
+        </motion.div>
       </motion.div>
       <div className={css.contentContainer}>
         <motion.div

@@ -15,7 +15,7 @@ const callForSponsorMotions = {
   circle1: {
     hidden: {
       opacity: 0,
-      rotate: -40,
+      rotate: -30,
     },
     visible: {
       opacity: 1,
@@ -29,7 +29,7 @@ const callForSponsorMotions = {
   circle2: {
     hidden: {
       opacity: 0,
-      rotate: 45,
+      rotate: 35,
     },
     visible: {
       opacity: 1,

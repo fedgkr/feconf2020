@@ -6,6 +6,7 @@ import {useIntersection} from "@utils/hooks/use-intersection";
 import callForSpeakerMotions from "@motions/callforspeaker.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import { PAGE } from 'src/constants/page';
+import DashedCircle from "@components/DashedCircle/DashedCircle";
 
 interface CallForSpeakerSectionProps {}
 
@@ -33,7 +34,9 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
         <motion.div className={css.circle} variants={callForSpeakerMotions.circle}>
           <AwesomeCircle type={3} />
         </motion.div>
-        <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}/>
+        <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}>
+          <DashedCircle/>
+        </motion.div>
       </div>
       <div className={css.descriptionContainer}>
         <motion.h4 variants={callForSpeakerMotions.text}>

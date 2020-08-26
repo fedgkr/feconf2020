@@ -16,11 +16,13 @@
       padding: 12px 0 16px 1px;
       h2 {
         font-size: 80px;
+        line-height: 80px;
+        font-family: $gilroy-font;
         font-weight: 900;
       }
       span {
         display: inline-block;
-        margin-bottom: 8px;
+        margin-bottom: 14px;
         margin-left: 16px;
         font-size: 24px;
         font-weight: 600;

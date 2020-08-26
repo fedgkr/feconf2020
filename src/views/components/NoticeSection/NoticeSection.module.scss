@@ -29,7 +29,7 @@
       border-radius: 50%;
       background-color: rgba(220, 220, 220, .85);
       z-index: -1;
-      transform-origin: 300% 300%;
+      transform-origin: 250% 250%;
     }
     .circle {
       top: 0;
@@ -44,7 +44,6 @@
       margin-right: 98px;
       width: 188px;
       height: 188px;
-      border: 2px dashed #979797;
       background-color: transparent;
     }
   }

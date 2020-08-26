@@ -1,0 +1,19 @@
+@import "variables";
+
+.DashedCircle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: dashed 2px rgba(255, 255, 255, 0.3);
+  animation: rotate 16s forwards $easeOutCirc infinite;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useIntersection } from "@utils/hooks/use-intersection";
 import heroMotions from "@motions/hero.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
+import DashedCircle from "@components/DashedCircle/DashedCircle";
 
 interface HeroSectionProps { }
 
@@ -37,8 +38,12 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
       <motion.div className={css.smallCircle} variants={heroMotions.smallCircle}>
         <AwesomeCircle type={9} />
       </motion.div>
-      <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle} />
-      <motion.div className={css.dashedSmallCircle} variants={heroMotions.circle} />
+      <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}>
+        <DashedCircle/>
+      </motion.div>
+      <motion.div className={css.dashedSmallCircle} variants={heroMotions.circle}>
+        <DashedCircle/>
+      </motion.div>
       <div className={css.arrowDownWrap}>
         <ArrowDownIcon />
       </div>
