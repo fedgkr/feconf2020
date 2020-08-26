@@ -1,29 +1,26 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import css from './Support.module.scss';
 import {motion} from "framer-motion";
 import preRegistrationMotions from "@motions/pre-registration.motion";
 import MotionNumber from "@components/MotionNumber/MotionNumber";
-import RegisterButton from "@components/RegisterButton/RegisterButton";
 import Message from "@components/PreRegistrationSection/components/Message/Message";
 import {useIntersection} from "@utils/hooks/use-intersection";
-import {useDispatch} from "react-redux";
-import {setSupportForm} from "@store/slices/supportSlice";
 import {useSupportState} from "@store/index";
 import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
 
 interface SupportProps {}
 
 const Support: React.FC<SupportProps> = () => {
-  const { currentUser, metadata, messageList } = useSupportState();
+  const { metadata, messageList } = useSupportState();
   const contentRef = useRef();
-  let { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
-  contentVisible = contentVisible && !!metadata.count;
+  const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
+  const renderable = contentVisible && !!metadata.count;
   return (
     <motion.div
       className={css.Support}
       ref={contentRef}
       initial="hidden"
-      animate={contentVisible ? 'visible' : 'hidden'}
+      animate={renderable ? 'visible' : 'hidden'}
       variants={preRegistrationMotions.contentContainer}
     >
       <div className={css.registerContainer}>
@@ -35,7 +32,7 @@ const Support: React.FC<SupportProps> = () => {
           <h2>
             <MotionNumber
               targetNumber={metadata.count}
-              active={contentVisible}
+              active={renderable}
             />
           </h2>
           <span>명</span>
