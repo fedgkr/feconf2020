@@ -5,6 +5,7 @@
   max-width: $page-content-width;
   padding-top: 180px;
   margin: 20px auto 0 auto;
+  height: 946px;
   .titleContainer {
     position: relative;
     display: flex;
@@ -86,6 +87,7 @@
   @include mobile {
     margin-top: 100px;
     padding: 160px 20px 0 20px;
+    height: 769px;
     .titleContainer {
       height: auto;
       text-align: start;

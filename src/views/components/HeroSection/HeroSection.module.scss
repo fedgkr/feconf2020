@@ -3,6 +3,7 @@
 
 .HeroSection {
   position: relative;
+  height: 879px;
   .mainLogoWrap {
     position: relative;
     left: 50%;
@@ -76,6 +77,7 @@
   }
   @include mobile {
     padding: 0 40px;
+    height: 562px;
     .mainLogoWrap {
       margin: 140px 0 0 0;
       width: 54vw;

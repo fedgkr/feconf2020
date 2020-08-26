@@ -4,6 +4,7 @@
 .PreRegistrationSection {
   max-width: $page-content-width;
   margin: 200px auto 0 auto;
+  height: 922px;
   .titleContainer {
     position: relative;
     z-index: -1;
@@ -37,6 +38,7 @@
   }
   @include mobile {
     margin-top: 102px;
+    height: 936px;
     .titleContainer {
       .textContainer {
         top: 158px;
