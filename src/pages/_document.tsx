@@ -10,7 +10,7 @@ class FEConf2020Document extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head title="FEConf 2020 at Home"/>
+        <Head title="FEConf2020 at Home"/>
         <body>
           <Main />
           <NextScript />

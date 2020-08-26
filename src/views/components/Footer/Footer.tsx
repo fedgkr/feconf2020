@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = () => {
             </SafeLink>
           </li>
         </ul>
-        <span>© FEconf 2020 All rights reserved</span>
+        <span>© FEConf2020 All rights reserved</span>
       </div>
       {renderState ? <CoCModal active={store.cocOpen}/> : null}
     </div>

@@ -29,7 +29,7 @@ export const onSupportCreated = functions
   .onCreate(async (snapshot, context) => incrementCount());
 
 async function sendMail(to: string, displayName: string) {
-  const subject = 'FEConf 2020을 응원해주셔서 감사합니다.';
+  const subject = 'FEConf2020을 응원해주셔서 감사합니다.';
   const msg = {
     to,
     subject,

@@ -88,7 +88,7 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                 PRE-REGISTRATION
               </motion.h2>
               <motion.h3 className={css.subTitle}>
-                FEConf 2020을 응원해주세요
+                FEConf2020을 응원해주세요
               </motion.h3>
               <motion.p className={css.desc}>
                 등록하신 아이디를 통해 프로필 사진과 이름을 수집하며, 응원 메세지와 함께 웹사이트에 게시됩니다. 이메일을 통해 FEConf의 소식을 전달해드립니다.
