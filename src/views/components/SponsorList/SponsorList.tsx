@@ -73,20 +73,19 @@ const sponsorList = [
   },
 ];
 
-const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
-  const sponsorRef = useRef();
-  const { visible: sponsorVisible } = useIntersection(sponsorRef, { threshold: .5, bottom: false });
+const useRotateList = (active: boolean) => {
   const [sponsors, setSponsors] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   useEffect(() => {
-    if (playable) {
+    if (active) {
       let timeout;
-      const intervalTime = currentIdx ? 1500 : 50;
       const turnPoint = Math.floor(sponsorList.length / 2);
+      const intervalTime = currentIdx ? 1500 : 50;
       const callNext = () => {
         if (currentIdx > turnPoint) {
-          const head = sponsors.splice(0, currentIdx);
-          setSponsors([...sponsors, ...head]);
+          const origin = sponsors.concat([]);
+          const head = origin.splice(0, currentIdx);
+          setSponsors([...origin, ...head]);
           return setCurrentIdx(0);
         }
         setCurrentIdx(currentIdx + 1);
@@ -96,10 +95,21 @@ const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
         clearTimeout(timeout);
       };
     }
-  }, [currentIdx, playable]);
+  }, [currentIdx, active, sponsors]);
   useEffect(() => {
     setSponsors(shuffle(sponsorList));
   }, []);
+  return { sponsors, currentIdx };
+}
+
+const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
+  const sponsorRef = useRef();
+  const { visible: sponsorVisible } = useIntersection(sponsorRef, { threshold: .5, bottom: false });
+  const { sponsors, currentIdx } = useRotateList(playable);
+  const listStyle = {
+    transform: `translateY(-${currentIdx * 92}px)`,
+    transition: currentIdx === 0 ? '' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
+  };
   return (
     <motion.div
       className={css.SponsorList}
@@ -112,12 +122,7 @@ const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
       <div className={css.overflowWrap}>
         <div
           className={css.sponsorList}
-          style={{
-            WebkitTransform: `translateY(-${currentIdx * 92}px)`,
-            WebkitTransition: currentIdx === 0 ? 'none' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
-            transform: `translateY(-${currentIdx * 92}px)`,
-            transition: currentIdx === 0 ? 'none' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
-          }}>
+          style={listStyle}>
           {sponsors.map((sponsor, idx) => (
             <div
               key={sponsor.name}
