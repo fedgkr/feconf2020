@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
+    "body-scroll-lock": "^3.0.3",
     "classcat": "^4.1.0",
     "firebase": "^7.19.0",
     "framer-motion": "^2.3.0",

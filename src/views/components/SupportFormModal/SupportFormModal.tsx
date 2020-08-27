@@ -64,7 +64,8 @@ const useReregister = (textRef, active: boolean) => {
 }
 
 const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
-  useModal(active);
+  const ref = useRef();
+  useModal(active, ref);
   const dispatch = useDispatch();
   const { currentUser, myMessage } = useSupportState();
   const { textRef, onSubmit } = useSubmit(active);
@@ -75,7 +76,7 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
   }, []);
   return (
     <Portal>
-      <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
+      <PortalWrap forwardRef={ref} className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
         <AnimatePresence>
           { active && (
             <motion.div

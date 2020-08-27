@@ -19,9 +19,9 @@ const Portal: React.FC<PortalProps> = ({ children }) => {
   return null;
 }
 
-export const PortalWrap = ({ children, className, ...rest }) => {
+export const PortalWrap = ({ children, className, forwardRef = null, ...rest }) => {
   return (
-    <div className={classcat([css.Portal, className || '']) } {...rest}>
+    <div ref={forwardRef} className={classcat([css.Portal, className || '']) } {...rest}>
       {children}
     </div>
   );
