@@ -11,7 +11,7 @@ import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
 import { useSupportState } from "@store/index";
-import { setSupportForm } from "@store/slices/supportSlice";
+import {setAuthentication, setSupportForm} from "@store/slices/supportSlice";
 import dynamic from "next/dynamic";
 import { useDynamicRender } from "@utils/hooks/use-dynamic-render";
 import { useRouter } from "next/router";
@@ -27,6 +27,7 @@ const useSupportModal = () => {
   useEffect(() => {
     if (router.query.loginRedirect) {
       router.replace('/', '/');
+      dispatch(setAuthentication(true));
       dispatch(setSupportForm(true));
     }
   }, [router.query]);

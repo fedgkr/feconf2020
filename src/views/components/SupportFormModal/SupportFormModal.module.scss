@@ -21,6 +21,82 @@
     line-height: 24px;
     text-align: center;
   }
+  button {
+    padding: 13px 38px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: black;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .infoConfirm {
+    padding: 32px;
+    margin-top: 80px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 18px;
+    font-family: $appleSD-font;
+    line-height: 26px;
+    .confirmTitle {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .confirmContent {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: normal;
+    }
+    .checkWrap {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      font-size: 0;
+      input {
+        display: none;
+        background-color: transparent;
+        border: none;
+        & + label {
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          border: 1px solid white;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        &:checked + label {
+          border: 1px solid #999;
+          background-color: #282828;
+          &:after {
+            width: 18px;
+            height: 15px;
+            content: "✓";
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+      span {
+        font-size: 16px;
+        font-weight: normal;
+        margin-left: 8px;
+      }
+    }
+  }
+  .signInBtn {
+    display: block;
+    margin: 80px auto 0 auto;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: #121212;
+    &.checked {
+      color: black;
+      background-color: #ffffff;
+    }
+  }
   .form {
     display: flex;
     flex-direction: column;
@@ -102,15 +178,6 @@
       width: 340px;
       height: 46px;
       button {
-        padding: 13px 38px;
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 20px;
-        color: black;
-        border-radius: 24px;
-        border: none;
-        cursor: pointer;
-        outline: none;
         &.register {
           background-color: #fff;
         }
@@ -132,6 +199,32 @@
     .desc {
       font-size: 16px;
       line-height: 24px;
+    }
+    .infoConfirm {
+      padding: 24px;
+      margin-top: 32px;
+      .confirmTitle {
+        font-size: 16px;
+        line-height: 26px;
+      }
+      .confirmContent {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: normal;
+      }
+      .checkWrap {
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+    .signInBtn {
+      margin: 62px auto 0 auto;
+      width: 100%;
+      &.checked {
+        color: black;
+        background-color: #ffffff;
+      }
     }
     .form {
       margin-top: 32px;

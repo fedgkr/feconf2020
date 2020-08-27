@@ -2,7 +2,14 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import {FirebaseOptions} from "@firebase/app-types";
-import {setMetaData, setCurrentUser, setSupportForm, setMyMessage, setMessageList} from "@store/slices/supportSlice";
+import {
+  setMetaData,
+  setCurrentUser,
+  setSupportForm,
+  setMyMessage,
+  setMessageList,
+  setAuthentication,
+} from "@store/slices/supportSlice";
 import {Store} from "redux";
 import {User} from "./interfaces";
 
@@ -119,6 +126,7 @@ class FireStore {
   private onAuthChanged = async (user) => {
     if (user) {
       const currentUser = await this.getCurrentUser();
+      this.store.dispatch(setAuthentication(false));
       this.store.dispatch(setCurrentUser(currentUser));
       this.supportsCollectionRef.doc(user.uid).onSnapshot((doc) => {
         this.store.dispatch(setMyMessage(doc.data()));

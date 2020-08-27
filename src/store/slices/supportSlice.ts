@@ -56,6 +56,7 @@ export const {
   setMyMessage,
   setMessageList,
   setSupportForm,
+  setAuthentication,
 } = supportSlice.actions;
 
 export default supportSlice.reducer;
