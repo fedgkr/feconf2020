@@ -11,26 +11,26 @@ const LINE_BACKGROUND_INFOS = {
   pc: {
     athomeLength: 1550,
     speeds: [
-      { pos: 12100, speed: 0.8 },
+      { pos: 10100, speed: 0.8 },
       { pos: 21400, speed: 1.5 },
     ],
     stopLength: 28500,
     LinePath: LinePathPC,
-    width: 1278,
-    height: 5874,
+    width: 1448,
+    height: 5823,
     sign: -1,
     scale: 1,
   },
   mobile: {
     athomeLength: 670,
     speeds: [
-      { pos: 12100, speed: 0.8 },
-      { pos: 21400, speed: 1.5 },
+      { pos: 5000, speed: 0.8 },
+      { pos: 12000, speed: 1.4 },
     ],
-    stopLength: 13200,
+    stopLength: 13400,
     LinePath: LinePathMobile,
-    width: 673,
-    height: 4661,
+    width: 736,
+    height: 4744,
     sign: 1,
     scale: 0.6,
   }
@@ -124,7 +124,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     function onScroll() {
       clearTimeout(playTimer);
 
-      const backgroundTop = innerWidth > 768 ? 450 : 212 + innerWidth * 0.2;
+      const backgroundTop = innerWidth > 768 ? 450 : 212;
       const height = document.body.scrollHeight - innerHeight;
       const scrollTop = document.documentElement.scrollTop;
       const time = height ? Math.max(0, scrollTop - backgroundTop * 0.8) / (height - backgroundTop) * 100 : 0;
@@ -182,8 +182,8 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
   }, [isMobile]);
   return <div className={css.LineBackground}>
     <svg xmlns='http://www.w3.org/2000/svg'
-      width={width + 20}
-      height={height + 20}
+      width={width}
+      height={height}
       viewBox={`-10 -10 ${width + 10} ${height + 10}`}>
       <AirPlanePath></AirPlanePath>
       <LinePath isGray={true}></LinePath>
