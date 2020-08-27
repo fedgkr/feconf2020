@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import css from './Support.module.scss';
 import {motion} from "framer-motion";
 import preRegistrationMotions from "@motions/pre-registration.motion";
@@ -7,14 +7,57 @@ import Message from "@components/PreRegistrationSection/components/Message/Messa
 import {useIntersection} from "@utils/hooks/use-intersection";
 import {useSupportState} from "@store/index";
 import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
+import classcat from "classcat";
 
 interface SupportProps {}
+
+const useRotateList = (messageList, active: boolean) => {
+  const listRef = useRef<HTMLDivElement>();
+  const [messages, setMessages] = useState(messageList);
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [yOffset, setYOffset] = useState(0);
+  useEffect(() => {
+    if (active) {
+      let timeout;
+      const turnPoint = Math.floor(messageList.length / 2);
+      const intervalTime = currentIdx ? 1700 : 50;
+      const callNext = () => {
+        if (currentIdx > turnPoint) {
+          const origin = messages.concat([]);
+          const head = origin.splice(0, currentIdx);
+          setMessages([...origin, ...head]);
+          setYOffset(0);
+          return setCurrentIdx(0);
+        }
+        const currentEl = listRef.current.children[currentIdx];
+        const { height } = currentEl.getBoundingClientRect();
+        const offset = height + 16;
+        setYOffset(val => val + offset);
+        setCurrentIdx(currentIdx + 1);
+      };
+      timeout = setTimeout(callNext, intervalTime);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [currentIdx, active, messages]);
+  useEffect(() => {
+    setMessages(messageList);
+    setCurrentIdx(0);
+  }, [messageList]);
+  return { listRef, yOffset, messages, currentIdx };
+}
 
 const Support: React.FC<SupportProps> = () => {
   const { metadata, messageList } = useSupportState();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   const renderable = contentVisible && !!metadata.count;
+  const { listRef, yOffset, messages, currentIdx } = useRotateList(messageList, renderable);
+  const listStyle = {
+    transform: `translateY(-${yOffset}px)`,
+    transition: currentIdx === 0 ? '' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
+  };
   return (
     <motion.div
       className={css.Support}
@@ -52,15 +95,22 @@ const Support: React.FC<SupportProps> = () => {
         className={css.messageContainer}
         variants={preRegistrationMotions.messageList}
       >
-        {messageList.map((message) => (
-          <motion.div
-            key={message.user.id}
-            className={css.messageItem}
-            variants={preRegistrationMotions.message}
-          >
-            <Message message={message}/>
-          </motion.div>
-        ))}
+        <div className={css.overflowWrap}>
+          <div ref={listRef} style={listStyle}>
+            {messages.map((message, idx) => (
+              <motion.div
+                key={message.user.id}
+                className={classcat({
+                  [css.messageItem]: true,
+                  [css.active]: idx === currentIdx,
+                })}
+                variants={preRegistrationMotions.message}
+              >
+                <Message message={message}/>
+              </motion.div>
+            ))}
+          </div>
+        </div>
         <div className={css.dimmed}/>
       </motion.div>
     </motion.div>

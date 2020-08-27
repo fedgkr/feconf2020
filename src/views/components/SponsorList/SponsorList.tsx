@@ -80,7 +80,7 @@ const useRotateList = (active: boolean) => {
     if (active) {
       let timeout;
       const turnPoint = Math.floor(sponsorList.length / 2);
-      const intervalTime = currentIdx ? 1500 : 50;
+      const intervalTime = currentIdx ? 900 : 50;
       const callNext = () => {
         if (currentIdx > turnPoint) {
           const origin = sponsors.concat([]);

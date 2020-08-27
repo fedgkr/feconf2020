@@ -40,6 +40,25 @@
     height: 302px;
     margin-top: 0;
     overflow: hidden;
+    .overflowWrap {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      transform: translateZ(0);
+      font-size: 0;
+      .messageItem {
+        opacity: .6;
+        transform: scale(.8);
+        transition: opacity .5s $easeOutCirc, transform .5s $easeOutCirc;
+        &.active {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
     .dimmed {
       position: absolute;
       left: 0;
@@ -48,11 +67,6 @@
       height: 66px;
       z-index: 1;
       background: linear-gradient(rgba(18, 18, 18, 0), #121212);
-    }
-    .messageItem {
-      &:not(:last-child) {
-        margin-bottom: 16px;
-      }
     }
   }
   @include mobile {
