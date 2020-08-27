@@ -1,4 +1,4 @@
-import {MutableRefObject, useEffect, useRef, useState} from 'react';
+import {MutableRefObject, useEffect, useMemo, useRef, useState} from 'react';
 
 interface IntersectionOption {
   threshold?: number;
@@ -58,8 +58,5 @@ export const useIntersection = (
       };
     }
   }, [option, ref]);
-  return {
-    visible,
-    firstVisible,
-  };
+  return useMemo(() => ({ visible, firstVisible }), [visible, firstVisible]);
 };

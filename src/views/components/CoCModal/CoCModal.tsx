@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import css from './CoCModal.module.scss';
 import Portal, {PortalWrap} from "@components/Portal/Portal";
 import classcat from "classcat";
@@ -14,6 +14,7 @@ interface CoCModalProps {
 }
 
 const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
+  const ref = useRef();
   const dispatch = useDispatch();
   function onClose() {
     dispatch(setCocState(false));
@@ -21,7 +22,7 @@ const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
   useModal(active);
   return (
     <Portal>
-      <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
+      <PortalWrap forwardRef={ref} className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
         <AnimatePresence>
           { active && (
             <motion.div

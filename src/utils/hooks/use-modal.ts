@@ -1,11 +1,21 @@
 import {useEffect} from "react";
+import * as bodyScrollLock from 'body-scroll-lock';
 
-export const useModal = (active: boolean) => {
+export const useModal = (active: boolean, ref?) => {
   useEffect(() => {
     if (active) {
-      document.body.classList.add('fixed');
+      if (ref && ref.current) {
+        bodyScrollLock.disableBodyScroll(ref.current);
+      }
     } else {
-      document.body.classList.remove('fixed');
+      if (ref && ref.current) {
+        bodyScrollLock.enableBodyScroll(ref.current);
+      }
     }
+    return () => {
+      if (ref && ref.current) {
+        bodyScrollLock.enableBodyScroll(ref.current);
+      }
+    };
   }, [active]);
 }
