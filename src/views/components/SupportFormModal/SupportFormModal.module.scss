@@ -128,11 +128,11 @@
     }
   }
   @include mobile {
-    width: 100%;
-    height: 100%;
+    position: unset;
     margin: 0;
-    padding: 70px 20px 32px 20px;
+    padding: 0 20px 32px 20px;
     border-radius: 0;
+    background-color: transparent;
     .title {
       font-size: 36px;
     }
@@ -169,6 +169,39 @@
   }
 }
 
+.wrapper {
+  .closeBtn {
+    display: none;
+  }
+  @include mobile {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 70px;
+    background-color: #232323;
+    overflow: hidden;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    transform: translate3d(0, 0, 0);
+    .closeBtn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: block;
+      background: #232323;
+    }
+    .overflowWrap {
+      height: 100%;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
 .container {
   opacity: 0;
   pointer-events: none;
@@ -181,7 +214,7 @@
     transition: opacity .6s ease-out;
   }
   @include mobile {
+    overflow: hidden;
     touch-action: auto;
-    background-color: #232323;
   }
 }

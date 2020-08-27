@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {forwardRef, HTMLAttributes, useEffect, useMemo, useState} from 'react';
 import {createPortal} from "react-dom";
 import css from './Portal.module.scss';
 import classcat from "classcat";
@@ -19,12 +19,12 @@ const Portal: React.FC<PortalProps> = ({ children }) => {
   return null;
 }
 
-export const PortalWrap = ({ children, className, forwardRef = null, ...rest }) => {
+export const PortalWrap = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ children, className, ...rest }, ref) => {
   return (
-    <div ref={forwardRef} className={classcat([css.Portal, className || '']) } {...rest}>
+    <div ref={ref} className={classcat([css.Portal, className || '']) } {...rest}>
       {children}
     </div>
   );
-}
+});
 
 export default Portal;

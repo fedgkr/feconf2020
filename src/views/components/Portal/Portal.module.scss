@@ -1,10 +1,16 @@
+@import "variables";
+@import "mixin";
+
 .Portal {
   background: rgba(0, 0, 0, .4);
   position: fixed;
-  left: 0;
   top: 0;
-  height: 100%;
-  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   touch-action: none;
   z-index: 1100;
+  @include mobile {
+
+  }
 }

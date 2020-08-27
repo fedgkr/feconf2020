@@ -1,21 +1,16 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import * as bodyScrollLock from 'body-scroll-lock';
 
 export const useModal = (active: boolean, ref?) => {
+  const [, forceRender] = useState();
   useEffect(() => {
-    if (active) {
-      if (ref && ref.current) {
-        bodyScrollLock.disableBodyScroll(ref.current);
-      }
-    } else {
-      if (ref && ref.current) {
-        bodyScrollLock.enableBodyScroll(ref.current);
-      }
+    if (active && ref?.current) {
+      bodyScrollLock.disableBodyScroll(ref.current);
+    } else if (!active && ref?.current) {
+      bodyScrollLock.enableBodyScroll(ref.current);
     }
-    return () => {
-      if (ref && ref.current) {
-        bodyScrollLock.enableBodyScroll(ref.current);
-      }
-    };
-  }, [active]);
+  }, [active, ref?.current]);
+  useEffect(() => {
+    setTimeout(() => forceRender(null), 20);
+  }, []);
 }

@@ -6,6 +6,7 @@ interface SupportState {
   myMessage: Message;
   messageList: Message[];
   metadata: SupportMetadata;
+  authenticating: boolean;
   supportFormOpen: boolean;
 }
 
@@ -20,6 +21,7 @@ const initialState: SupportState = {
   currentUser: null,
   myMessage: null,
   messageList: [],
+  authenticating: false,
   supportFormOpen: false,
 };
 
@@ -41,6 +43,9 @@ export const supportSlice = createSlice({
     },
     setSupportForm(state, action: PayloadAction<boolean>) {
       state.supportFormOpen = action.payload;
+    },
+    setAuthentication(state, action: PayloadAction<boolean>) {
+      state.authenticating = action.payload;
     },
   },
 });

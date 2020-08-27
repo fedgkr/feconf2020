@@ -22,7 +22,7 @@ const CoCModal: React.FC<CoCModalProps> = ({ active }) => {
   useModal(active);
   return (
     <Portal>
-      <PortalWrap forwardRef={ref} className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
+      <PortalWrap ref={ref} className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
         <AnimatePresence>
           { active && (
             <motion.div
