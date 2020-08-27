@@ -38,10 +38,10 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
           BECOME<br/> A SPONSOR
         </motion.h2>
         <motion.div className={cc([css.circle, css.circle1])} variants={callForSponsorMotions.circle1}>
-          <AwesomeCircle type={1} />
+          <AwesomeCircle index={8} size={1} />
         </motion.div>
         <motion.div className={cc([css.circle, css.circle2])} variants={callForSponsorMotions.circle2}>
-        <AwesomeCircle type={2} />
+        <AwesomeCircle index={10} size={2} />
         </motion.div>
         <motion.div className={cc([css.circle, css.dashedCircle])} variants={callForSponsorMotions.dashedCircle}>
           <DashedCircle/>

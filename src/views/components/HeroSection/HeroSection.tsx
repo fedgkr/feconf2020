@@ -33,10 +33,10 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
         </div>
       </div>
       <motion.div className={css.circle} variants={heroMotions.circle}>
-        <AwesomeCircle type={5} />
+        <AwesomeCircle index={8} size={3} />
       </motion.div>
       <motion.div className={css.smallCircle} variants={heroMotions.smallCircle}>
-        <AwesomeCircle type={9} />
+        <AwesomeCircle index={1} size={1} />
       </motion.div>
       <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}>
         <DashedCircle/>

@@ -32,7 +32,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
           <motion.h2 variants={callForSpeakerMotions.titleText}>A SPEAKER</motion.h2>
         </div>
         <motion.div className={css.circle} variants={callForSpeakerMotions.circle}>
-          <AwesomeCircle type={3} />
+          <AwesomeCircle index={3} size={2} />
         </motion.div>
         <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}>
           <DashedCircle/>

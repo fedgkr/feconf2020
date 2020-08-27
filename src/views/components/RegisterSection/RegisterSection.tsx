@@ -27,7 +27,7 @@ const RegisterSection: React.FC<RegisterSectionProps> = () => {
           <RegisterSupportButton/>
         </motion.div>
         <motion.div className={css.circle} variants={registerMotions.circle}>
-          <AwesomeCircle type={5} />
+          <AwesomeCircle index={5} size={2} />
         </motion.div>
       </div>
     </motion.div>

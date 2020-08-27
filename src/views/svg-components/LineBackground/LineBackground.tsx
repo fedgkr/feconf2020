@@ -67,6 +67,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     LinePath,
     scale,
   } = LINE_BACKGROUND_INFOS[isMobile ? "mobile" : "pc"];
+
   React.useEffect(() => {
     const linePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}:not(.${LinePathCSS.LinePathGray})`);
     const lineStrokePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LineStrokePath}:not(.${LinePathCSS.LinePathGray})`);
@@ -87,6 +88,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           'stroke-dashoffset': `${athomeLength - sign * athomeLength}`,
           'stroke-dasharray': `${athomeLength} ${totalLength}`
         },
+        10: {},
       },
       [`.${LinePathCSS.LineStrokePath}`]: {
         0.7: {
@@ -101,7 +103,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           opacity: 0,
           transform: {
             translate: () => {
-              const time = Math.max(1.6, scene.getTime());
+              const time = Math.min(2, Math.max(1.6, scene.getIterationTime()));
               const info = getSaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength, sign);
 
               return `${info.x}px, ${info.y}px`;
@@ -117,6 +119,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
         }
       },
     }, {
+      iterationCount: "infinite",
       easing: 'ease-in-out',
       selector: true,
     }).play();
@@ -134,7 +137,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
 
       if (time > 0 && !scene.isPaused()) {
         scene.pause();
-        scene.setTime(2);
+        scene.setTime(9.5);
       }
       speeds.forEach(info => {
         if (length > info.pos) {
