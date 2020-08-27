@@ -34,7 +34,7 @@
     .circle {
       position: absolute;
       border-radius: 50%;
-      background-color: rgba(220, 220, 220, .85);
+      background-color: rgba(220, 220, 220, 0.85);
       z-index: -1;
     }
     .circle1 {
@@ -43,7 +43,7 @@
       width: 225px;
       height: 225px;
       margin-right: 326px;
-      transform-origin: 250% 250%;
+      transform-origin: 120% 120%;
     }
     .circle2 {
       top: 0;
@@ -51,7 +51,7 @@
       height: 479px;
       left: 50%;
       margin-left: 74px;
-      transform-origin: -250% 250%;
+      transform-origin: 0 120%;
     }
     .dashedCircle {
       top: 20px;

@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixin';
+@import "variables";
+@import "mixin";
 
 .NoticeSection {
   max-width: $page-content-width;
@@ -24,12 +24,13 @@
         margin-top: 16px;
       }
     }
-    .circle, .dashedCircle {
+    .circle,
+    .dashedCircle {
       position: absolute;
       border-radius: 50%;
-      background-color: rgba(220, 220, 220, .85);
+      background-color: rgba(220, 220, 220, 0.85);
       z-index: -1;
-      transform-origin: 250% 250%;
+      transform-origin: 70% 100%;
     }
     .circle {
       top: 0;

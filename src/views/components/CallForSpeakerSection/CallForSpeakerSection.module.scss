@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixin';
+@import "variables";
+@import "mixin";
 
 .CallForSpeakerSection {
   position: relative;
@@ -16,7 +16,6 @@
     margin-right: 107px;
     .mask {
       height: 82px;
-      overflow: hidden;
       h2 {
         width: 450px;
         font-size: 80px;
@@ -25,7 +24,8 @@
         line-height: 82px;
       }
     }
-    .circle, .dashedCircle {
+    .circle,
+    .dashedCircle {
       position: absolute;
       border-radius: 50%;
       z-index: -1;
@@ -36,7 +36,7 @@
       left: 113px;
       width: 430px;
       height: 430px;
-      background-color: rgba(220, 220, 220, .85);
+      background-color: rgba(220, 220, 220, 0.85);
     }
     .dashedCircle {
       top: -247px;
@@ -72,7 +72,7 @@
           width: auto;
           font-size: 36px;
           line-height: 40px;
-          letter-spacing: -.2px;
+          letter-spacing: -0.2px;
         }
       }
       .circle {
