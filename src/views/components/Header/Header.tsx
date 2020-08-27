@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = () => {
   const onNavigateTo = useCallback((evt, target: string) => {
     evt.preventDefault();
     const element = document.getElementById(target);
-    element?.scrollIntoView({ block: 'center' });
+    element?.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }, []);
   useEffect(() => {
     setTimeout(() => initMenu(true));
@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = () => {
           }}
         />
       </motion.div>
-      { menuInitialized ? <MenuModal active={menuOpen}/> : null }
+      { menuInitialized ? <MenuModal active={menuOpen} onNavigateTo={onNavigateTo}/> : null }
     </motion.div>
   );
 }

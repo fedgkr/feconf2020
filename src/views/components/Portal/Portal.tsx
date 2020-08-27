@@ -19,12 +19,13 @@ const Portal: React.FC<PortalProps> = ({ children }) => {
   return null;
 }
 
-export const PortalWrap = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({ children, className, ...rest }, ref) => {
+export const PortalWrap = ({ children, className, ...rest }) => {
   return (
-    <div ref={ref} className={classcat([css.Portal, className || '']) } {...rest}>
+    <div className={classcat([css.Portal, className || '']) } {...rest}>
       {children}
+      <div className={css.dimmed}/>
     </div>
   );
-});
+};
 
 export default Portal;

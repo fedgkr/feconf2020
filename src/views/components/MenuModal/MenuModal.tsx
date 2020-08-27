@@ -10,16 +10,22 @@ import {setMenuState} from "@store/slices/appSlice";
 
 interface MenuModalProps {
   active: boolean;
+  onNavigateTo: Function;
 }
 
-const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
+const MenuModal: React.FC<MenuModalProps> = ({ active, onNavigateTo }) => {
   const dispatch = useDispatch();
   function onClose() {
     dispatch(setMenuState(false));
   }
+  function onNavigateAndClose(evt, target: string) {
+    onClose();
+    onNavigateTo(evt, target);
+  }
   return (
     <Portal>
       <PortalWrap className={classcat([css.container, active ? css.active : ''])} onClick={onClose}>
+        <motion.div className={css.dimmed}/>
         <AnimatePresence>
           { active && (
             <motion.div
@@ -30,10 +36,10 @@ const MenuModal: React.FC<MenuModalProps> = ({ active }) => {
               variants={headerMotions.menu}
               onClick={evt => evt.stopPropagation()}
             >
-              <motion.a href="#about" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>About</motion.a>
-              <motion.a href="#speakers" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Speakers</motion.a>
-              <motion.a href="#sponsors" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Sponsors</motion.a>
-              <motion.a href="#notice" className={css.item} variants={headerMotions.menuItem} onClick={() => onClose()}>Notice</motion.a>
+              <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'about')}>About</motion.a>
+              <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'speakers')}>Speakers</motion.a>
+              <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'sponsors')}>Sponsors</motion.a>
+              <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'notice')}>Notice</motion.a>
               <motion.div className={css.btnWrap} variants={headerMotions.menuItem}>
                 <RegisterButton>사전 등록하기</RegisterButton>
               </motion.div>

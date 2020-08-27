@@ -2,13 +2,6 @@
 @import 'mixin';
 
 .CoCModal {
-  position: relative;
-  max-width: 880px;
-  margin: 96px auto;
-  padding: 64px 140px;
-  box-sizing: border-box;
-  border-radius: 16px;
-  background-color: #232323;
   .title {
     font-size: 48px;
     font-family: $gilroy-font;
@@ -17,8 +10,8 @@
   }
   .subTitle {
     font-size: 24px;
-    font-weight: 600;
     font-family: $appleSD-font;
+    font-weight: normal;
     text-align: center;
     margin-top: 8px;
     margin-bottom: 62px;
@@ -40,10 +33,6 @@
     }
   }
   @include mobile {
-    width: 100%;
-    margin: 0;
-    padding: 70px 20px 32px 20px;
-    border-radius: 0;
     .title {
       font-size: 36px;
     }
@@ -54,12 +43,6 @@
       margin-bottom: 32px;
     }
     .content {
-      max-height: calc(100vh - 202px);
-      overflow-y: auto;
-      margin: 0 -20px;
-      padding: 0 20px 120px 20px;
-      box-sizing: border-box;
-      -webkit-overflow-scrolling: touch;
       .block {
         &:not(:last-child) {
           margin-bottom: 32px;
@@ -75,22 +58,5 @@
         }
       }
     }
-  }
-}
-
-.container {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s .4s ease-out;
-  overflow: scroll;
-  z-index: 2201;
-  touch-action: none;
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-    transition: opacity .6s ease-out;
-  }
-  @include mobile {
-    overflow: hidden;
   }
 }

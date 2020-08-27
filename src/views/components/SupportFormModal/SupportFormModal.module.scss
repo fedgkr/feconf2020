@@ -2,13 +2,6 @@
 @import 'mixin';
 
 .SupportFormModal {
-  position: relative;
-  max-width: 880px;
-  margin: 96px auto;
-  padding: 64px 140px;
-  box-sizing: border-box;
-  border-radius: 16px;
-  background-color: #232323;
   .title {
     font-size: 48px;
     font-family: $gilroy-font;
@@ -128,11 +121,6 @@
     }
   }
   @include mobile {
-    position: unset;
-    margin: 0;
-    padding: 0 20px 32px 20px;
-    border-radius: 0;
-    background-color: transparent;
     .title {
       font-size: 36px;
     }
@@ -166,55 +154,5 @@
         }
       }
     }
-  }
-}
-
-.wrapper {
-  .closeBtn {
-    display: none;
-  }
-  @include mobile {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding-top: 70px;
-    background-color: #232323;
-    overflow: hidden;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    transform: translate3d(0, 0, 0);
-    .closeBtn {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 70px;
-      display: block;
-      background: #232323;
-    }
-    .overflowWrap {
-      height: 100%;
-      overflow: scroll;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-}
-
-.container {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s .4s ease-out;
-  overflow: scroll;
-  z-index: 2201;
-  &.active {
-    opacity: 1;
-    pointer-events: all;
-    transition: opacity .6s ease-out;
-  }
-  @include mobile {
-    overflow: hidden;
-    touch-action: auto;
   }
 }

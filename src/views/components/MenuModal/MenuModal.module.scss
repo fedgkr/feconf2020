@@ -24,21 +24,28 @@
   }
   @include mobile {
     display: flex;
-    .container {
-      display: block;
-    }
   }
 }
 
 .container {
-  display: none;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity .3s .4s ease-out;
   &.active {
-    opacity: 1;
     pointer-events: all;
     transition: opacity .1s ease-out;
+    .dimmed {
+      opacity: 1;
+    }
+  }
+  .dimmed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .3s ease-out;
   }
   @include mobile {
     display: block;

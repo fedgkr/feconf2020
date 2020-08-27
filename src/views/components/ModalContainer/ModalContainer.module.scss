@@ -1,0 +1,80 @@
+@import 'variables';
+@import 'mixin';
+
+.ModalContainer {
+  .closeBtn {
+    display: none;
+  }
+  .overflowWrap {
+    .wrapper {
+      position: relative;
+      max-width: 880px;
+      margin: 96px auto;
+      padding: 64px 140px;
+      box-sizing: border-box;
+      border-radius: 16px;
+      background-color: #232323;
+    }
+  }
+  @include mobile {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 70px;
+    background-color: #232323;
+    overflow: hidden;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    transform: translate3d(0, 0, 0);
+    .closeBtn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      display: block;
+    }
+    .overflowWrap {
+      height: 100%;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+      .wrapper {
+        position: unset;
+        margin: 0;
+        padding: 0 20px 32px 20px;
+        border-radius: 0;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.container {
+  pointer-events: none;
+  transition: opacity .3s .4s ease-out;
+  overflow: scroll;
+  z-index: 2201;
+  &.active {
+    pointer-events: all;
+    .dimmed {
+      opacity: 1;
+    }
+  }
+  .dimmed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .6s ease-out;
+  }
+  @include mobile {
+    overflow: hidden;
+    touch-action: auto;
+  }
+}

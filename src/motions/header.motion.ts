@@ -13,8 +13,8 @@ const headerMotions = {
       y: '-100%',
       opacity: 1,
       transition: {
-        type: 'spring',
-        delay: .3,
+        type: 'tween',
+        delay: .18,
         staggerChildren: .05,
         staggerDirection: -1,
       },

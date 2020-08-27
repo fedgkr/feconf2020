@@ -2,7 +2,6 @@
 @import "mixin";
 
 .Portal {
-  background: rgba(0, 0, 0, .4);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +9,4 @@
   bottom: 0;
   touch-action: none;
   z-index: 1100;
-  @include mobile {
-
-  }
 }
