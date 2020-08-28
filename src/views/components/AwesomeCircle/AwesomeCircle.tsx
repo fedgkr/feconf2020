@@ -4,7 +4,8 @@ import css from "./AwesomeCircle.module.scss";
 import { useIntersection } from "@utils/hooks/use-intersection";
 
 interface AwesomeCircleProps {
-  type: number;
+  size: number;
+  index: number;
 }
 export default function AwesomeCircle(props: AwesomeCircleProps) {
 
@@ -12,9 +13,9 @@ export default function AwesomeCircle(props: AwesomeCircleProps) {
   const circleRef = React.useRef<HTMLDivElement>();
   const [sceneItem] = React.useState(() => new SceneItem({
     0: {
-      "transform": "translate(-35%, -35%) rotate(0deg)",
+      "transform": "translate(-45%, -45%) rotate(0deg)",
     },
-    20: {
+    [16 + props.size * 2]: {
       "transform": "rotate(360deg)",
     },
   }, {
@@ -40,7 +41,7 @@ export default function AwesomeCircle(props: AwesomeCircleProps) {
 
   return <div className={css.AwesomeCircle} ref={circleRef}>
     <div className={css.circleBackground} ref={circleBackgroundRef} style={{
-      background: firstVisible ? `url("/images/backgrounds/img-gradient-${props.type}.png")` : "none",
+      background: firstVisible ? `url("/images/backgrounds/img-gradient-${props.index}.png")` : "none",
       backgroundSize: firstVisible ? "100% 100%" : "",
     }}></div>
   </div>;

@@ -2,30 +2,25 @@
 
 .LineBackground {
   position: absolute;
-  left: 40px;
-  right: 40px;
-  top: 340px;
+  width: 1448px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 300px;
   pointer-events: none;
   z-index: 1;
   svg {
     position: relative;
-    left: 50%;
-    transform: translate(-600px);
-    width: 1300px;
+    left: 81px;
+    width: 100%;
     height: auto;
   }
   @include mobile {
-    top: 244px;
+    top: 220px;
+    width: 736px;
 
     svg {
-      transform: translate(-295px);
-      width: 675px;
+      left: 50px;
     }
-    svg path {
-      stroke-width: 1.5px;
-    }
-  }
-  @include iphone {
     svg path {
       stroke-width: 2.5px;
     }

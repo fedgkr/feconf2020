@@ -11,26 +11,26 @@ const LINE_BACKGROUND_INFOS = {
   pc: {
     athomeLength: 1550,
     speeds: [
-      { pos: 12100, speed: 0.8 },
+      { pos: 10100, speed: 0.8 },
       { pos: 21400, speed: 1.5 },
     ],
-    stopLength: 28500,
+    stopLength: 28480,
     LinePath: LinePathPC,
-    width: 1278,
-    height: 5874,
+    width: 1448,
+    height: 5823,
     sign: -1,
     scale: 1,
   },
   mobile: {
     athomeLength: 670,
     speeds: [
-      { pos: 12100, speed: 0.8 },
-      { pos: 21400, speed: 1.5 },
+      { pos: 5000, speed: 0.8 },
+      { pos: 12000, speed: 1.4 },
     ],
-    stopLength: 13200,
+    stopLength: 13450,
     LinePath: LinePathMobile,
-    width: 673,
-    height: 4661,
+    width: 736,
+    height: 4744,
     sign: 1,
     scale: 0.6,
   }
@@ -67,6 +67,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     LinePath,
     scale,
   } = LINE_BACKGROUND_INFOS[isMobile ? "mobile" : "pc"];
+
   React.useEffect(() => {
     const linePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}:not(.${LinePathCSS.LinePathGray})`);
     const lineStrokePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LineStrokePath}:not(.${LinePathCSS.LinePathGray})`);
@@ -87,6 +88,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           'stroke-dashoffset': `${athomeLength - sign * athomeLength}`,
           'stroke-dasharray': `${athomeLength} ${totalLength}`
         },
+        10: {},
       },
       [`.${LinePathCSS.LineStrokePath}`]: {
         0.7: {
@@ -101,7 +103,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           opacity: 0,
           transform: {
             translate: () => {
-              const time = Math.max(1.6, scene.getTime());
+              const time = Math.min(2, Math.max(1.6, scene.getIterationTime()));
               const info = getSaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength, sign);
 
               return `${info.x}px, ${info.y}px`;
@@ -117,6 +119,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
         }
       },
     }, {
+      iterationCount: "infinite",
       easing: 'ease-in-out',
       selector: true,
     }).play();
@@ -124,7 +127,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     function onScroll() {
       clearTimeout(playTimer);
 
-      const backgroundTop = innerWidth > 768 ? 450 : 212 + innerWidth * 0.2;
+      const backgroundTop = innerWidth > 768 ? 450 : 212;
       const height = document.body.scrollHeight - innerHeight;
       const scrollTop = document.documentElement.scrollTop;
       const time = height ? Math.max(0, scrollTop - backgroundTop * 0.8) / (height - backgroundTop) * 100 : 0;
@@ -134,7 +137,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
 
       if (time > 0 && !scene.isPaused()) {
         scene.pause();
-        scene.setTime(2);
+        scene.setTime(9.5);
       }
       speeds.forEach(info => {
         if (length > info.pos) {
@@ -182,9 +185,9 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
   }, [isMobile]);
   return <div className={css.LineBackground}>
     <svg xmlns='http://www.w3.org/2000/svg'
-      width={width + 20}
-      height={height + 20}
-      viewBox={`-10 -10 ${width + 10} ${height + 10}`}>
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}>
       <AirPlanePath></AirPlanePath>
       <LinePath isGray={true}></LinePath>
       <LinePath isGray={false}></LinePath>

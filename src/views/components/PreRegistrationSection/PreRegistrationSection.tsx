@@ -21,7 +21,7 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
         variants={preRegistrationMotions.titleContainer}
       >
         <motion.div className={css.circle} variants={preRegistrationMotions.circle}>
-          <AwesomeCircle type={1} />
+          <AwesomeCircle index={1} size={2} />
         </motion.div>
         <div className={css.textContainer}>
           <motion.h2 variants={preRegistrationMotions.text}>PRE-REGISTRATION</motion.h2>

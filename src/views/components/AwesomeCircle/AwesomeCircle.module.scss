@@ -4,17 +4,17 @@
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.4);
+  background: #121212;
   transform: translateZ(0);
 
   .circleBackground {
     position: absolute;
     opacity: 0.4;
     will-change: transform;
-    width: 200%;
-    height: 200%;
+    width: 120%;
+    height: 120%;
     top: 50%;
     left: 50%;
-    transform: translate(-25%, -25%);
+    transform: translate(-45%, -45%);
   }
 }

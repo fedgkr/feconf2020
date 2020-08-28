@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import css from './HomePage.module.scss';
 import Header from "@components/Header/Header";
 import HeroSection from "@components/HeroSection/HeroSection";
@@ -10,16 +10,16 @@ import NoticeSection from "@components/NoticeSection/NoticeSection";
 import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
-import {useSupportState} from "@store/index";
-import {setSupportForm} from "@store/slices/supportSlice";
+import { useSupportState } from "@store/index";
+import { setSupportForm } from "@store/slices/supportSlice";
 import dynamic from "next/dynamic";
-import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
-import {useRouter} from "next/router";
-import {useDispatch} from "react-redux";
+import { useDynamicRender } from "@utils/hooks/use-dynamic-render";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const SupportFormModal = dynamic(() => import("@components/SupportFormModal/SupportFormModal"));
 
-interface HomePageProps {}
+interface HomePageProps { }
 
 const useSupportModal = () => {
   const router = useRouter();
@@ -38,19 +38,19 @@ const HomePage: React.FC<HomePageProps> = () => {
   useSupportModal();
   return (
     <div className={css.HomePage}>
-      <Header/>
+      <Header />
       <div className={css.sections}>
-        <HeroSection/>
-        <AboutSection/>
-        <PreRegistrationSection/>
-        <CallForSpeakerSection/>
-        <CallForSponsorSection/>
-        <NoticeSection/>
-        <RegisterSection/>
         <LineBackground />
+        <HeroSection />
+        <AboutSection />
+        <PreRegistrationSection />
+        <CallForSpeakerSection />
+        <CallForSponsorSection />
+        <NoticeSection />
+        <RegisterSection />
       </div>
-      <Footer/>
-      { renderState ? <SupportFormModal active={supportFormOpen}/> : null }
+      <Footer />
+      {renderState ? <SupportFormModal active={supportFormOpen} /> : null}
     </div>
   );
 }
