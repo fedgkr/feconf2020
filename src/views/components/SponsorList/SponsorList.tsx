@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import css from './SponsorList.module.scss';
 import callForSponsorMotions from "@motions/callforsponsor.motion";
 import {motion} from "framer-motion";
@@ -76,11 +76,18 @@ const sponsorList = [
 const useRotateList = (active: boolean) => {
   const [sponsors, setSponsors] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [mouseOverState, setMouseOverState] = useState(false);
+  const onMouseOver = useCallback(() => {
+    setMouseOverState(true);
+  }, []);
+  const onMouseOut = useCallback(() => {
+    setMouseOverState(false);
+  }, []);
   useEffect(() => {
-    if (active) {
+    if (active && !mouseOverState) {
       let timeout;
       const turnPoint = Math.floor(sponsorList.length / 2);
-      const intervalTime = currentIdx ? 900 : 50;
+      const intervalTime = currentIdx ? 1100 : 50;
       const callNext = () => {
         if (currentIdx > turnPoint) {
           const origin = sponsors.concat([]);
@@ -95,17 +102,17 @@ const useRotateList = (active: boolean) => {
         clearTimeout(timeout);
       };
     }
-  }, [currentIdx, active, sponsors]);
+  }, [currentIdx, active, sponsors, mouseOverState]);
   useEffect(() => {
     setSponsors(shuffle(sponsorList));
   }, []);
-  return { sponsors, currentIdx };
+  return { sponsors, currentIdx, onMouseOver, onMouseOut };
 }
 
 const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
   const sponsorRef = useRef();
   const { visible: sponsorVisible } = useIntersection(sponsorRef, { threshold: .5, bottom: false });
-  const { sponsors, currentIdx } = useRotateList(playable);
+  const { sponsors, currentIdx, onMouseOver, onMouseOut } = useRotateList(playable);
   const listStyle = {
     transform: `translateY(-${currentIdx * 92}px)`,
     transition: currentIdx === 0 ? '' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
@@ -119,7 +126,7 @@ const SponsorList: React.FC<SponsorListProps> = ({ playable = false }) => {
       variants={callForSponsorMotions.sponsorContainer}
     >
       <motion.h4 variants={callForSponsorMotions.sponsorTitle}>지난 후원사</motion.h4>
-      <div className={css.overflowWrap}>
+      <div className={css.overflowWrap} onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
         <div
           className={css.sponsorList}
           style={listStyle}>

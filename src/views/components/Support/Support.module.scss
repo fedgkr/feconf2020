@@ -48,11 +48,10 @@
       font-size: 0;
       .messageItem {
         opacity: .6;
-        transform: scale(.8);
         transition: opacity .5s $easeOutCirc, transform .5s $easeOutCirc;
         &.active {
           opacity: 1;
-          transform: scale(1.1);
+          transform: scale(1);
         }
         &:not(:last-child) {
           margin-bottom: 16px;

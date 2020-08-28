@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import css from './Support.module.scss';
 import {motion} from "framer-motion";
 import preRegistrationMotions from "@motions/pre-registration.motion";
@@ -16,8 +16,15 @@ const useRotateList = (messageList, active: boolean) => {
   const [messages, setMessages] = useState(messageList);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [yOffset, setYOffset] = useState(0);
+  const [mouseOverState, setMouseOverState] = useState(false);
+  const onMouseOver = useCallback(() => {
+    setMouseOverState(true);
+  }, []);
+  const onMouseOut = useCallback(() => {
+    setMouseOverState(false);
+  }, []);
   useEffect(() => {
-    if (active) {
+    if (active && !mouseOverState) {
       let timeout;
       const turnPoint = Math.floor(messageList.length / 2);
       const intervalTime = currentIdx ? 1700 : 50;
@@ -40,12 +47,12 @@ const useRotateList = (messageList, active: boolean) => {
         clearTimeout(timeout);
       };
     }
-  }, [currentIdx, active, messages]);
+  }, [currentIdx, active, messages, mouseOverState]);
   useEffect(() => {
     setMessages(messageList);
     setCurrentIdx(0);
   }, [messageList]);
-  return { listRef, yOffset, messages, currentIdx };
+  return { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut };
 }
 
 const Support: React.FC<SupportProps> = () => {
@@ -53,7 +60,7 @@ const Support: React.FC<SupportProps> = () => {
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
   const renderable = contentVisible && !!metadata.count;
-  const { listRef, yOffset, messages, currentIdx } = useRotateList(messageList, renderable);
+  const { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut } = useRotateList(messageList, renderable);
   const listStyle = {
     transform: `translateY(-${yOffset}px)`,
     transition: currentIdx === 0 ? '' : 'transform .5s cubic-bezier(0, 0.55, 0.45, 1)',
@@ -94,23 +101,24 @@ const Support: React.FC<SupportProps> = () => {
       <motion.div
         className={css.messageContainer}
         variants={preRegistrationMotions.messageList}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
       >
-        <div className={css.overflowWrap}>
+        <motion.div className={css.overflowWrap} variants={preRegistrationMotions.message}>
           <div ref={listRef} style={listStyle}>
             {messages.map((message, idx) => (
-              <motion.div
+              <div
                 key={message.user.id}
                 className={classcat({
                   [css.messageItem]: true,
                   [css.active]: idx === currentIdx,
                 })}
-                variants={preRegistrationMotions.message}
               >
                 <Message message={message}/>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </div>
+        </motion.div>
         <div className={css.dimmed}/>
       </motion.div>
     </motion.div>
