@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import css from "./Footer.module.scss";
 import SafeLink from "@components/SafeLink/SafeLink";
 import { useDispatch } from "react-redux";

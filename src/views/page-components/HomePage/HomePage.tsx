@@ -16,6 +16,7 @@ import dynamic from "next/dynamic";
 import { useDynamicRender } from "@utils/hooks/use-dynamic-render";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import {useFirebase} from "@utils/hooks/use-firebase";
 
 const SupportFormModal = dynamic(() => import("@components/SupportFormModal/SupportFormModal"));
 
@@ -36,6 +37,7 @@ const useSupportModal = () => {
 const HomePage: React.FC<HomePageProps> = () => {
   const { supportFormOpen } = useSupportState();
   const renderState = useDynamicRender(supportFormOpen);
+  useFirebase();
   useSupportModal();
   return (
     <div className={css.HomePage}>
