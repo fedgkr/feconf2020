@@ -17,7 +17,7 @@ interface SupportFormModalProps {
 const defaultSupportMessage = 'FEConf 2020 응원합니다!';
 const maxMessageLength = 140;
 
-const useSubmit = (active: boolean) => {
+const useSubmit = (active: boolean, myMessage) => {
   const postableRef = useRef(true);
   const textRef = useRef<HTMLTextAreaElement>();
   const { fireStoreRef } = useFirebase();
@@ -29,9 +29,12 @@ const useSubmit = (active: boolean) => {
       if (text.length > maxMessageLength) {
         return alert('응원 메세지는 140자 이내로 입력 가능합니다.')
       }
+      if (text === myMessage?.message) {
+        return;
+      }
       fireStoreRef.fireStore?.post(text || defaultSupportMessage);
     }
-  }, []);
+  }, [myMessage]);
   useEffect(() => {
     if (!active) {
       postableRef.current = true;
@@ -40,24 +43,6 @@ const useSubmit = (active: boolean) => {
   return {
     textRef,
     onSubmit,
-  };
-}
-
-const useReregister = (textRef, active: boolean) => {
-  const [reregisterState, setReregisterState] = useState(false);
-  const onReregister = useCallback((evt) => {
-    evt.preventDefault();
-    setReregisterState(true);
-    setTimeout(() => textRef.current.focus(), 100);
-  }, []);
-  useEffect(() => {
-    if (!active) {
-      setReregisterState(false);
-    }
-  }, [active]);
-  return {
-    reregisterState,
-    onReregister,
   };
 }
 
@@ -78,10 +63,8 @@ const useSignIn = () => {
 const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
   const dispatch = useDispatch();
   const { currentUser, myMessage, authenticating } = useSupportState();
-  const { textRef, onSubmit } = useSubmit(active);
+  const { textRef, onSubmit } = useSubmit(active, myMessage);
   const [checked, setChecked] = useState(false);
-  const { reregisterState, onReregister } = useReregister(textRef, active);
-  const isRegistering = !myMessage || reregisterState;
   const needPrivateInfoConfirm = !authenticating && !currentUser;
   const signIn = useSignIn();
   const onClose = useCallback(() => {
@@ -129,15 +112,13 @@ const SupportFormModal: React.FC<SupportFormModalProps> = ({ active }) => {
                 placeholder={defaultSupportMessage}
                 defaultValue={myMessage?.message || ''}
                 maxLength={maxMessageLength}
-                disabled={myMessage && !reregisterState}
               />
             </div>
             <div className={css.buttonWrap}>
               { currentUser &&
-              (isRegistering ?
-                  <button className={css.register} type="submit">사전 등록하기</button> :
-                  <button className={css.reregister} onClick={onReregister}>다시 등록하기</button>
-              )}
+                <button className={css.register} type="submit">
+                  { myMessage ? '응원 메세지 수정하기' : '사전 등록하기' }
+                </button>}
             </div>
           </motion.form> :
           <div>

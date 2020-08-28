@@ -51,6 +51,7 @@ const useRotateList = (messageList, active: boolean) => {
   useEffect(() => {
     setMessages(messageList);
     setCurrentIdx(0);
+    setYOffset(0);
   }, [messageList]);
   return { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut };
 }
