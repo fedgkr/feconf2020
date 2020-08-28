@@ -14,7 +14,7 @@ const LINE_BACKGROUND_INFOS = {
       { pos: 10100, speed: 0.8 },
       { pos: 21400, speed: 1.5 },
     ],
-    stopLength: 28500,
+    stopLength: 28480,
     LinePath: LinePathPC,
     width: 1448,
     height: 5823,
@@ -27,7 +27,7 @@ const LINE_BACKGROUND_INFOS = {
       { pos: 5000, speed: 0.8 },
       { pos: 12000, speed: 1.4 },
     ],
-    stopLength: 13400,
+    stopLength: 13450,
     LinePath: LinePathMobile,
     width: 736,
     height: 4744,
@@ -187,7 +187,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     <svg xmlns='http://www.w3.org/2000/svg'
       width={width}
       height={height}
-      viewBox={`-10 -10 ${width + 10} ${height + 10}`}>
+      viewBox={`0 0 ${width} ${height}`}>
       <AirPlanePath></AirPlanePath>
       <LinePath isGray={true}></LinePath>
       <LinePath isGray={false}></LinePath>
