@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixin';
+@import "variables";
+@import "mixin";
 
 .Support {
   position: relative;
@@ -8,7 +8,7 @@
   justify-content: center;
   .registerContainer {
     max-width: 430px;
-    margin-right: 110px;
+    margin-right: 180px;
     font-size: 16px;
     .messageNumberWrap {
       display: flex;
@@ -35,6 +35,7 @@
   }
   .messageContainer {
     position: relative;
+    z-index: 1000;
     width: 400px;
     height: 302px;
     margin-top: 0;

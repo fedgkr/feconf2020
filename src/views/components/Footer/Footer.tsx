@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import css from './Footer.module.scss';
+import React, { useEffect, useState } from "react";
+import css from "./Footer.module.scss";
 import SafeLink from "@components/SafeLink/SafeLink";
-import {useDispatch} from "react-redux";
-import {setCocState} from "@store/slices/appSlice";
-import {useAppState} from "@store/index";
+import { useDispatch } from "react-redux";
+import { setCocState } from "@store/slices/appSlice";
+import { useAppState } from "@store/index";
 import dynamic from "next/dynamic";
-import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
+import { useDynamicRender } from "@utils/hooks/use-dynamic-render";
 
-const CoCModal = dynamic(() => import('@components/CoCModal/CoCModal'));
+const CoCModal = dynamic(() => import("@components/CoCModal/CoCModal"));
 
 interface FooterProps {}
 
@@ -24,9 +24,7 @@ const Footer: React.FC<FooterProps> = () => {
       <div className={css.container}>
         <ul>
           <li>
-            <SafeLink href="https://2019.feconf.kr/">
-              FEConf 2019
-            </SafeLink>
+            <SafeLink href="https://2019.feconf.kr/">FEConf2019</SafeLink>
           </li>
           <li>
             <SafeLink
@@ -42,11 +40,11 @@ const Footer: React.FC<FooterProps> = () => {
             </SafeLink>
           </li>
         </ul>
-        <span>© FEConf2020 All rights reserved</span>
+        <span>© FEConf2020. All rights reserved.</span>
       </div>
-      {renderState ? <CoCModal active={store.cocOpen}/> : null}
+      {renderState ? <CoCModal active={store.cocOpen} /> : null}
     </div>
   );
-}
+};
 
 export default Footer;
