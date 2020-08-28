@@ -7,6 +7,7 @@ import classcat from "classcat";
 import headerMotions from "@motions/header.motion";
 import {useDispatch} from "react-redux";
 import {setMenuState} from "@store/slices/appSlice";
+import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
 
 interface MenuModalProps {
   active: boolean;
@@ -41,7 +42,7 @@ const MenuModal: React.FC<MenuModalProps> = ({ active, onNavigateTo }) => {
               <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'sponsors')}>Sponsors</motion.a>
               <motion.a href="#" className={css.item} variants={headerMotions.menuItem} onClick={(evt) => onNavigateAndClose(evt, 'notice')}>Notice</motion.a>
               <motion.div className={css.btnWrap} variants={headerMotions.menuItem}>
-                <RegisterButton>사전 등록하기</RegisterButton>
+                <RegisterSupportButton/>
               </motion.div>
             </motion.div>
           ) }
