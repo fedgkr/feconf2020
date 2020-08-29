@@ -23,18 +23,21 @@
     flex-direction: column;
     align-items: center;
     .sponsorWrap {
-      opacity: 0.7;
-      transform: scale(0.8);
-      transition: opacity 0.5s $easeOutCirc, transform 0.5s $easeOutCirc;
+      height: 60px;
       &:not(:last-child) {
         margin-bottom: 32px;
       }
       &.active {
-        opacity: 1;
-        transform: scale(1.05);
+        .sponsor {
+          opacity: 1;
+          transform: scale(1.05);
+        }
       }
       .sponsor {
         display: block;
+        opacity: 0.7;
+        transform: scale(0.8);
+        transition: opacity 0.5s $easeOutCirc, transform 0.5s $easeOutCirc;
         img {
           width: 220px;
           height: 60px;
@@ -60,10 +63,16 @@
       margin-bottom: 24px;
     }
     .sponsorList {
-      overflow: hidden;
-      .sponsor {
+      .sponsorWrap {
+        height: 50px;
         &:not(:last-child) {
           margin-bottom: 32px;
+        }
+        .sponsor {
+          img {
+            width: 180px;
+            height: 50px;
+          }
         }
       }
     }
