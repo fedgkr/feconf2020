@@ -13,7 +13,7 @@ interface SponsorListProps {
 const sponsorList = [
   {
     name: '비바리퍼블리카',
-    link: 'https://toss.im',
+    link: 'https://toss.im/career',
     image: 'toss@2x.png',
   },
   {
