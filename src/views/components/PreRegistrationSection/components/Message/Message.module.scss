@@ -44,12 +44,26 @@
   @include mobile {
     padding: 24px;
     .profileContainer {
+      .profile {
+        .image {
+          width: 40px;
+          height: 40px;
+        }
+        .name {
+          font-size: 16px;
+        }
+      }
       .sns {
         a {
           width: 20px;
           height: 20px;
         }
       }
+    }
+    .textWrap {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
 }

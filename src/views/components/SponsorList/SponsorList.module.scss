@@ -29,18 +29,20 @@
       }
       &.active {
         .sponsor {
-          opacity: 1;
-          transform: scale(1.05);
+          img {
+            opacity: 1;
+            transform: scale(1.05);
+          }
         }
       }
       .sponsor {
         display: block;
-        opacity: 0.7;
-        transform: scale(0.8);
-        transition: opacity 0.5s $easeOutCirc, transform 0.5s $easeOutCirc;
         img {
           width: 220px;
           height: 60px;
+          opacity: 0.7;
+          transform: scale(0.8);
+          transition: opacity 0.5s $easeOutCirc, transform 0.5s $easeOutCirc;
         }
       }
     }
@@ -61,6 +63,9 @@
     h4 {
       font-size: 16px;
       margin-bottom: 24px;
+    }
+    .overflowWrap {
+      height: 296px;
     }
     .sponsorList {
       .sponsorWrap {

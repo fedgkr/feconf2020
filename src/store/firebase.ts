@@ -119,8 +119,8 @@ class FireStore {
         });
       }
     });
-    result.sort((a, b) => b.createdAt - a.createdAt);
-    this.store.dispatch(setMessageList(result));
+    const sortedResult = result.sort((a, b) => b.createdAt - a.createdAt).slice(0, 30);
+    this.store.dispatch(setMessageList(sortedResult));
   };
 
   private onAuthChanged = async (user) => {
