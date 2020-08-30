@@ -14,7 +14,7 @@ function App({Component, pageProps}) {
         <title>FEConf2020 at Home</title>
         <meta
           name="description"
-          content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="국내 최고의 프론트엔드 개발 컨퍼런스. 프론트엔드 개발의 소중한 경험을 공유합니다!"
         />
         <meta
           name="keywords"
@@ -25,14 +25,14 @@ function App({Component, pageProps}) {
         <meta property="og:title" content="FEConf2020 at Home" />
         <meta
           property="og:description"
-          content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="국내 최고의 프론트엔드 개발 컨퍼런스. 프론트엔드 개발의 소중한 경험을 공유합니다!"
         />
         <meta property="og:image" content="https://2020.feconf.kr/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="FEConf2020 at Home" />
         <meta
           name="twitter:description"
-          content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
+          content="국내 최고의 프론트엔드 개발 컨퍼런스. 프론트엔드 개발의 소중한 경험을 공유합니다!"
         />
         <meta name="twitter:creator" content="@codemilli" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"/>
