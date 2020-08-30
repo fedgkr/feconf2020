@@ -5,7 +5,7 @@
   border-radius: 50%;
   overflow: hidden;
   background: #121212;
-  transform: translateZ(0);
+  will-change: transform;
 
   .circleBackground {
     position: absolute;

@@ -9,6 +9,7 @@ import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import dynamic from "next/dynamic";
 import { PAGE } from 'src/constants/page';
 import DashedCircle from "@components/DashedCircle/DashedCircle";
+import { useOffset } from '@utils/hooks/use-window';
 
 const SponsorList = dynamic(() => import("@components/SponsorList/SponsorList"));
 
@@ -20,6 +21,7 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .6, bottom: false });
   const { visible: textContainerVisible } = useIntersection(textContainerRef, { threshold: .5, bottom: false });
   const [renderDynamicComponent, setRenderDynamicComponent] = useState(false);
+  const offsetInfo = useOffset(titleRef, titleVisible);
   useEffect(() => {
     if (!renderDynamicComponent && (titleVisible || textContainerVisible)) {
       setRenderDynamicComponent(true);
@@ -38,10 +40,10 @@ const CallForSponsorSection: React.FC<CallForSponsorSectionProps> = () => {
           BECOME<br/> A SPONSOR
         </motion.h2>
         <motion.div className={cc([css.circle, css.circle1])} variants={callForSponsorMotions.circle1}>
-          <AwesomeCircle index={8} size={1} />
+          <AwesomeCircle index={8} size={1} offsetInfo={offsetInfo} />
         </motion.div>
         <motion.div className={cc([css.circle, css.circle2])} variants={callForSponsorMotions.circle2}>
-        <AwesomeCircle index={10} size={2} />
+        <AwesomeCircle index={10} size={2} offsetInfo={offsetInfo} />
         </motion.div>
         <motion.div className={cc([css.circle, css.dashedCircle])} variants={callForSponsorMotions.dashedCircle}>
           <DashedCircle/>

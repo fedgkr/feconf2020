@@ -7,6 +7,7 @@ import callForSpeakerMotions from "@motions/callforspeaker.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import { PAGE } from 'src/constants/page';
 import DashedCircle from "@components/DashedCircle/DashedCircle";
+import { useOffset } from '@utils/hooks/use-window';
 
 interface CallForSpeakerSectionProps {}
 
@@ -15,6 +16,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
   const contentRef = useRef();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: .4, bottom: false });
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
+  const offsetInfo = useOffset(titleRef, titleVisible);
   return (
     <motion.div
       id="speakers"
@@ -32,7 +34,7 @@ const CallForSpeakerSection: React.FC<CallForSpeakerSectionProps> = () => {
           <motion.h2 variants={callForSpeakerMotions.titleText}>A SPEAKER</motion.h2>
         </div>
         <motion.div className={css.circle} variants={callForSpeakerMotions.circle}>
-          <AwesomeCircle index={3} size={2} />
+          <AwesomeCircle index={3} size={2} offsetInfo={offsetInfo} />
         </motion.div>
         <motion.div className={css.dashedCircle} variants={callForSpeakerMotions.circle}>
           <DashedCircle/>
