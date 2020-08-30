@@ -52,7 +52,7 @@ const GitHubUserMessageForm: React.FC<GitHubUserMessageFormProps> = ({ active })
         </div> :
         <div className={css.userInfo}>
           <img className={css.profileImage} src={currentUser?.photoURL} alt={currentUser?.displayName}/>
-          <strong className={css.displayName}>{currentUser?.displayName}</strong>
+          <strong className={css.displayName}>{currentUser?.displayName || currentUser?.username}</strong>
           <span className={css.username}>
             {currentUser?.username}
           </span>
