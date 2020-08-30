@@ -7,7 +7,7 @@ interface MainLogoProps { }
 const MainLogo: React.FC<MainLogoProps> = () => {
   const imageRef = React.useRef<SVGImageElement>()
   React.useEffect(() => {
-    const scene  = new SceneItem({
+    const item = new SceneItem({
       0: {
         transform: "rotate(0deg)",
       },
@@ -20,9 +20,9 @@ const MainLogo: React.FC<MainLogoProps> = () => {
     }).playCSS();
 
     return () => {
-      scene.clear();
+      item.clear();
     };
-  })
+  }, []);
 
 
   return (
