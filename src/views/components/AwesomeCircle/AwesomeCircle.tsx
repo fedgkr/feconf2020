@@ -2,10 +2,12 @@ import React from "react";
 import { SceneItem } from "scenejs";
 import css from "./AwesomeCircle.module.scss";
 import { useIntersection } from "@utils/hooks/use-intersection";
+import { useWindowScroll } from "@utils/hooks/use-window";
 
 interface AwesomeCircleProps {
   size: number;
   index: number;
+  offsetInfo?: { height: number, top: number };
 }
 export default function AwesomeCircle(props: AwesomeCircleProps) {
 
@@ -38,6 +40,18 @@ export default function AwesomeCircle(props: AwesomeCircleProps) {
       sceneItem.pause();
     }
   });
+  useWindowScroll(({ scroll, height }) => {
+    const offsetInfo = props.offsetInfo;
+    if (!offsetInfo) {
+      return;
+    }
+    const pos
+      = offsetInfo.top + offsetInfo.height / 2
+      - (scroll + height / 2);
+
+    const ratio = pos / height * 50;
+    circleRef.current!.style.transform = `translateY(${ratio}%)`;
+  }, [props.offsetInfo]);
 
   return <div className={css.AwesomeCircle} ref={circleRef}>
     <div className={css.circleBackground} ref={circleBackgroundRef} style={{

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
 import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
@@ -7,12 +7,14 @@ import { useIntersection } from "@utils/hooks/use-intersection";
 import heroMotions from "@motions/hero.motion";
 import AwesomeCircle from '@components/AwesomeCircle/AwesomeCircle';
 import DashedCircle from "@components/DashedCircle/DashedCircle";
+import { useOffset } from '@utils/hooks/use-window';
 
 interface HeroSectionProps { }
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
-  const sectionRef = useRef();
+  const sectionRef = useRef<HTMLDivElement>();
   const { visible } = useIntersection(sectionRef);
+  const offsetInfo = useOffset(sectionRef, visible);
 
   return (
     <motion.div
@@ -33,10 +35,10 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
         </div>
       </div>
       <motion.div className={css.circle} variants={heroMotions.circle}>
-        <AwesomeCircle index={8} size={3} />
+        <AwesomeCircle index={8} size={3} offsetInfo={offsetInfo} />
       </motion.div>
       <motion.div className={css.smallCircle} variants={heroMotions.smallCircle}>
-        <AwesomeCircle index={1} size={1} />
+        <AwesomeCircle index={1} size={1} offsetInfo={offsetInfo} />
       </motion.div>
       <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}>
         <DashedCircle/>

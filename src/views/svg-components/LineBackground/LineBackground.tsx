@@ -6,6 +6,7 @@ import Scene from 'scenejs';
 import LinePathPC from './pc/LinePathPC';
 import LinePathMobile from './mobile/LinePathMobile';
 import AirPlanePath from './AirPlanePath';
+import { useWindowResize, useWindowScroll } from '@utils/hooks/use-window';
 
 const LINE_BACKGROUND_INFOS = {
   pc: {
@@ -56,6 +57,7 @@ interface LineBackgroundProps {
 
 
 const LineBackground: React.FC<LineBackgroundProps> = () => {
+
   const [isMobile, setIsMobile] = React.useState(false);
   const {
     athomeLength,
@@ -67,18 +69,21 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     LinePath,
     scale,
   } = LINE_BACKGROUND_INFOS[isMobile ? "mobile" : "pc"];
+  let linePath: SVGPathElement;
+  let lineStrokePath: SVGPathElement;
+  let grayPath: SVGPathElement;
+  let airplanePath: SVGPathElement;
+  let totalLength = 0;
+  let playTimer = 0;
+  let scene: Scene;
 
   React.useEffect(() => {
-    const linePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}:not(.${LinePathCSS.LinePathGray})`);
-    const lineStrokePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LineStrokePath}:not(.${LinePathCSS.LinePathGray})`);
-    const grayPath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}.${LinePathCSS.LinePathGray}`);
-    const airplanePath = document.querySelector<SVGPathElement>(`.${AirPlaneCSS.AirPlanePath}`);
-    const totalLength = linePath.getTotalLength();
-    let playTimer = 0;
-    let innerWidth = 0;
-    let innerHeight = 0;
-
-    const scene = new Scene({
+    linePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}:not(.${LinePathCSS.LinePathGray})`);
+    lineStrokePath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LineStrokePath}:not(.${LinePathCSS.LinePathGray})`);
+    grayPath = document.querySelector<SVGPathElement>(`.${LinePathCSS.LinePath}.${LinePathCSS.LinePathGray}`);
+    airplanePath = document.querySelector<SVGPathElement>(`.${AirPlaneCSS.AirPlanePath}`);
+    totalLength = linePath.getTotalLength();
+    scene = new Scene({
       [`.${LinePathCSS.LinePath}`]: {
         0: {
           'stroke-dashoffset': `0`,
@@ -122,67 +127,57 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
       iterationCount: "infinite",
       easing: 'ease-in-out',
       selector: true,
-    }).play();
-
-    function onScroll() {
-      clearTimeout(playTimer);
-
-      const backgroundTop = innerWidth > 768 ? 450 : 212;
-      const height = document.body.scrollHeight - innerHeight;
-      const scrollTop = document.documentElement.scrollTop;
-      const time = height ? Math.max(0, scrollTop - backgroundTop * 0.8) / (height - backgroundTop) * 100 : 0;
-
-      const totalTime = totalLength * time / 100;
-      let length = athomeLength + totalTime;
-
-      if (time > 0 && !scene.isPaused()) {
-        scene.pause();
-        scene.setTime(9.5);
-      }
-      speeds.forEach(info => {
-        if (length > info.pos) {
-          length = info.pos + (length - info.pos) * info.speed;
-        }
-      });
-      let lineWidth = Math.max(500, athomeLength - totalTime * totalLength / 10000);
-
-      if (length >= stopLength) {
-        lineWidth += (length - stopLength);
-      }
-      const { x, y, rad } = getSaceShipInfo(linePath, length, totalLength, sign);
-
-      lineStrokePath.style.cssText += `stroke-dashoffset: ${-totalTime}`;
-      grayPath.style.cssText += `stroke-dashoffset: ${length - sign * length};stroke-dasharray: ${length} ${totalLength}`
-      linePath.style.cssText += `stroke-dashoffset: ${lineWidth - sign * length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
-      airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad) scale(${scale})`;
-
-      if (time === 0 && scene.isPaused()) {
-        playTimer = window.setTimeout(() => {
-          scene.play();
-        }, 2000);
-      }
-    }
-    function onResize() {
-      innerWidth = window.innerWidth;
-      innerHeight = window.innerHeight;
-
-      if (!isMobile && innerWidth < 768) {
-        setIsMobile(true);
-      } else if (isMobile && innerWidth > 768) {
-        setIsMobile(false);
-      }
-    }
-    window.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onResize);
-
-    onResize();
-    onScroll();
+    });
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
       scene.clear();
     };
   }, [isMobile]);
+
+  const sizeRef = useWindowResize(({ width }) => {
+    if (!isMobile && width < 768) {
+      setIsMobile(true);
+    } else if (isMobile && width > 768) {
+      setIsMobile(false);
+    }
+  }, [isMobile]);
+
+  useWindowScroll(({ scroll }) => {
+    clearTimeout(playTimer);
+
+    const backgroundTop = isMobile ? 212 : 450;
+    const height = sizeRef.current.scrollHeight - sizeRef.current.height;
+    const time = height ? Math.max(0, scroll - backgroundTop * 0.8) / (height - backgroundTop) * 100 : 0;
+    const totalTime = totalLength * time / 100;
+    let length = athomeLength + totalTime;
+
+    if (time > 0 && !scene.isPaused()) {
+      scene.pause();
+      scene.setTime(9.5);
+    }
+    speeds.forEach(info => {
+      if (length > info.pos) {
+        length = info.pos + (length - info.pos) * info.speed;
+      }
+    });
+    let lineWidth = Math.max(500, athomeLength - totalTime * totalLength / 10000);
+
+    if (length >= stopLength) {
+      lineWidth += (length - stopLength);
+    }
+    const { x, y, rad } = getSaceShipInfo(linePath, length, totalLength, sign);
+
+    lineStrokePath.style.cssText += `stroke-dashoffset: ${-totalTime}`;
+    grayPath.style.cssText += `stroke-dashoffset: ${length - sign * length};stroke-dasharray: ${length} ${totalLength}`
+    linePath.style.cssText += `stroke-dashoffset: ${lineWidth - sign * length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
+    airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad) scale(${scale}); opacity: 1;`;
+
+    if (time === 0 && scene.isPaused()) {
+      playTimer = window.setTimeout(() => {
+        scene.play();
+      }, 2000);
+    }
+  }, [isMobile]);
+
   return <div className={css.LineBackground}>
     <svg xmlns='http://www.w3.org/2000/svg'
       width={width}
