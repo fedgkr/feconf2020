@@ -22,14 +22,14 @@ function App({Component, pageProps}) {
         />
         <meta property="og:url" content="https://2020.feconf.kr/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="2020 FEConf Korea at Home" />
+        <meta property="og:title" content="FEConf2020 at Home" />
         <meta
           property="og:description"
           content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
         <meta property="og:image" content="https://2020.feconf.kr/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="2020 FEConf Korea" />
+        <meta name="twitter:title" content="FEConf2020 at Home" />
         <meta
           name="twitter:description"
           content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
