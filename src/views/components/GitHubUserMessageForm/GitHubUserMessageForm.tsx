@@ -9,7 +9,7 @@ interface GitHubUserMessageFormProps {
   active: boolean;
 }
 
-const defaultSupportMessage = 'FEConf 2020 응원합니다!';
+const defaultSupportMessage = 'FEConf2020 응원합니다!';
 const maxMessageLength = 140;
 
 const useSubmit = (active: boolean, myMessage) => {
