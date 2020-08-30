@@ -22,20 +22,19 @@ function App({Component, pageProps}) {
         />
         <meta property="og:url" content="https://2020.feconf.kr/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="2020 FEConf Korea at Home" />
+        <meta property="og:title" content="FEConf2020 at Home" />
         <meta
           property="og:description"
           content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
-        <meta property="og:image" content="https://feconf2020web.vercel.app/images/og-image.jpg" />
+        <meta property="og:image" content="https://2020.feconf.kr/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="2020 FEConf Korea" />
+        <meta name="twitter:title" content="FEConf2020 at Home" />
         <meta
           name="twitter:description"
           content="FEConf2020 at Home 행사를 응원해주세요. 올해 네번째 열리는 FEConf! 많은 관심과 성원 부탁드립니다."
         />
         <meta name="twitter:creator" content="@codemilli" />
-        <meta name="twitter:image" content="https://fedgkr.github.io/feconf2020/images/og-image.jpg" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"/>
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png"/>
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png"/>
