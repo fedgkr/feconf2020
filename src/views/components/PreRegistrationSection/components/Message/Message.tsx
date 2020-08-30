@@ -8,12 +8,13 @@ interface MessageProps {
 }
 
 const Message: React.FC<MessageProps> = ({ message: { user, message } }) => {
+  const displayName = (user.displayName || user.username) || '';
   return (
     <div className={css.Message}>
       <div className={css.profileContainer}>
         <div className={css.profile}>
-          <img className={css.image} src={user.photoURL} alt={user.displayName}/>
-          <span className={css.name}>{user.displayName}</span>
+          <img className={css.image} src={user.photoURL} alt={displayName}/>
+          <span className={css.name}>{displayName}</span>
         </div>
         <div className={css.sns}>
           <SafeLink href={`https://github.com/${user.username}`}>
