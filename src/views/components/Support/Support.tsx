@@ -11,8 +11,12 @@ import classcat from "classcat";
 
 interface SupportProps {}
 
+const intervalTime = 1700;
+const firstIntervalTime = 2400;
+
 const useRotateList = (messageList, active: boolean) => {
   const listRef = useRef<HTMLDivElement>();
+  const intervalTimeRef = useRef(firstIntervalTime);
   const [messages, setMessages] = useState(messageList);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [yOffset, setYOffset] = useState(0);
@@ -27,13 +31,13 @@ const useRotateList = (messageList, active: boolean) => {
     if (active && !mouseOverState) {
       let timeout;
       const turnPoint = Math.floor(messageList.length / 2);
-      const intervalTime = currentIdx ? 1700 : 50;
       const callNext = () => {
         if (currentIdx > turnPoint) {
           const origin = messages.concat([]);
           const head = origin.splice(0, currentIdx);
           setMessages([...origin, ...head]);
           setYOffset(0);
+          intervalTimeRef.current = 50;
           return setCurrentIdx(0);
         }
         const currentEl = listRef.current.children[currentIdx];
@@ -41,8 +45,9 @@ const useRotateList = (messageList, active: boolean) => {
         const offset = height + 16;
         setYOffset(val => val + offset);
         setCurrentIdx(currentIdx + 1);
+        intervalTimeRef.current = intervalTime;
       };
-      timeout = setTimeout(callNext, intervalTime);
+      timeout = setTimeout(callNext, intervalTimeRef.current);
       return () => {
         clearTimeout(timeout);
       };
@@ -52,6 +57,7 @@ const useRotateList = (messageList, active: boolean) => {
     setMessages(messageList);
     setCurrentIdx(0);
     setYOffset(0);
+    intervalTimeRef.current = firstIntervalTime;
   }, [messageList]);
   return { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut };
 }
