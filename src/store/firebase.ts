@@ -105,7 +105,7 @@ class FireStore {
   }
 
   private listenSupportMessageList = () => {
-    this.supportsCollectionRef.onSnapshot(this.updateMessageList);
+    this.supportsCollectionRef.orderBy('createdAt', 'desc').limit(50).onSnapshot(this.updateMessageList);
   };
 
   private updateMessageList = (snapshot) => {
@@ -119,8 +119,7 @@ class FireStore {
         });
       }
     });
-    const sortedResult = result.sort((a, b) => b.createdAt - a.createdAt).slice(0, 30);
-    this.store.dispatch(setMessageList(sortedResult));
+    this.store.dispatch(setMessageList(result));
   };
 
   private onAuthChanged = async (user) => {
