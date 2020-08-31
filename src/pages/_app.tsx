@@ -49,6 +49,8 @@ function App({Component, pageProps}) {
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
         <link rel="manifest" href="/manifest.json"/>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68676515-5"/>
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-68676515-5');` }}/>
       </Head>
       <Provider store={store}>
         <Component {...pageProps}/>
