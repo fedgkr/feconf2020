@@ -153,6 +153,15 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     if (time > 0 && !scene.isPaused()) {
       scene.pause();
       scene.setTime(9.5);
+    } else if (time === 0) {
+      if (!scene.isPaused()) {
+        return;
+      } else if (scene.getTime() === 0) {
+        playTimer = window.setTimeout(() => {
+          scene.play();
+        }, 500);
+        return;
+      }
     }
     speeds.forEach(info => {
       if (length > info.pos) {
