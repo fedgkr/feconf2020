@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import css from './PrivateInfoConfirmation.module.scss';
 import classcat from "classcat";
 import {useRouter} from "next/router";
@@ -21,6 +21,7 @@ const useSignIn = () => {
 };
 
 const PrivateInfoConfirmation: React.FC<PrivateInfoConfirmationProps> = () => {
+  const inputRef = useRef<HTMLInputElement>();
   const [checked, setChecked] = useState(false);
   const signIn = useSignIn();
   return (
@@ -35,9 +36,9 @@ const PrivateInfoConfirmation: React.FC<PrivateInfoConfirmationProps> = () => {
           3. 보관 기간: 행사 종료 후 즉시 파기
         </p>
         <div className={css.checkWrap}>
-          <input id="cb" type="checkbox" onChange={(evt) => setChecked(evt.target.checked)}/>
+          <input ref={inputRef} id="cb" type="checkbox" checked={checked} onChange={(evt) => setChecked(evt.target.checked)}/>
           <label htmlFor="cb"/>
-          <span>개인정보 수집 및 이용에 동의합니다.</span>
+          <span onClick={() => setChecked(!inputRef.current.checked)}>개인정보 수집 및 이용에 동의합니다.</span>
         </div>
       </div>
       <button className={classcat([css.signInBtn, checked ? css.checked : ''])} onClick={checked ? signIn : null}>
