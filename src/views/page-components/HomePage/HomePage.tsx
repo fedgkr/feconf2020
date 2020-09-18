@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import css from './HomePage.module.scss';
 import Header from "@components/Header/Header";
 import HeroSection from "@components/HeroSection/HeroSection";
@@ -12,10 +15,7 @@ import Footer from "@components/Footer/Footer";
 import LineBackground from '@svgs/LineBackground/LineBackground';
 import { useSupportState } from "@store/index";
 import {setAuthentication, setSupportForm} from "@store/slices/supportSlice";
-import dynamic from "next/dynamic";
 import { useDynamicRender } from "@utils/hooks/use-dynamic-render";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import {useFirebase} from "@utils/hooks/use-firebase";
 
 const SupportFormModal = dynamic(() => import("@components/SupportFormModal/SupportFormModal"));
