@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
 import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
