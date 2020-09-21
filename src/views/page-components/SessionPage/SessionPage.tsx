@@ -5,11 +5,10 @@ import LineBackground from "@svgs/LineBackground/LineBackground";
 import HeroSection from "@components/HeroSection/HeroSection";
 import AboutSection from "@components/AboutSection/AboutSection";
 import PreRegistrationSection from "@components/PreRegistrationSection/PreRegistrationSection";
-import CallForSpeakerSection from "@components/CallForSpeakerSection/CallForSpeakerSection";
-import CallForSponsorSection from "@components/CallForSponsorSection/CallForSponsorSection";
 import NoticeSection from "@components/NoticeSection/NoticeSection";
 import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
+import SpeakerListSection from "@components/SpeakerListSection/SpeakerListSection";
 
 interface SessionPageProps {}
 
@@ -18,9 +17,10 @@ const SessionPage: React.FC<SessionPageProps> = () => {
     <div className={css.SessionPage}>
       <Header />
       <div className={css.sections}>
-        <LineBackground />
+        {/*<LineBackground />*/}
         <HeroSection />
         <AboutSection />
+        <SpeakerListSection/>
         <PreRegistrationSection />
         <NoticeSection />
         <RegisterSection />
