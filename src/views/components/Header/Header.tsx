@@ -8,10 +8,13 @@ import {useAppState} from "@store/index";
 import {setMenuState} from "@store/slices/appSlice";
 import dynamic from "next/dynamic";
 import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
+import headerMotions from "@motions/header.motion";
 
 const MenuModal = dynamic(() => import("@components/MenuModal/MenuModal"));
 
-interface HeaderProps {}
+interface HeaderProps {
+  hasSessions?: boolean;
+}
 
 const useAnimatedHeader = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -39,17 +42,16 @@ const useAnimatedHeader = () => {
 
 const useChangedMenuState = (menuOpen: boolean) => {
   const firstRender = useRef(true);
-  const hasMenuStateChanged = useMemo(() => {
+  return useMemo(() => {
     if (firstRender.current) {
       firstRender.current = false;
       return false;
     }
     return true;
   }, [menuOpen]);
-  return hasMenuStateChanged;
 }
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ hasSessions = true }) => {
   const dispatch = useDispatch();
   const [menuInitialized, initMenu] = useState(false);
   const { menuOpen } = useAppState();
@@ -74,8 +76,14 @@ const Header: React.FC<HeaderProps> = () => {
       <div className={css.menu}>
         <a href="#" onClick={(evt) => onNavigateTo(evt, 'about')}>About</a>
         <a href="#" onClick={(evt) => onNavigateTo(evt, 'speakers')}>Speakers</a>
-        <a href="#" onClick={(evt) => onNavigateTo(evt, 'sponsors')}>Sponsors</a>
-        <a href="#" onClick={(evt) => onNavigateTo(evt, 'notice')}>Notice</a>
+        { hasSessions ?
+          <a href="#" onClick={(evt) => onNavigateTo(evt, 'sessions')}>Sessions</a> :
+          <a href="#" onClick={(evt) => onNavigateTo(evt, 'sponsors')}>Sponsors</a>
+        }
+        { hasSessions ?
+          <a href="#" onClick={(evt) => onNavigateTo(evt, 'sponsors')}>Sponsors</a> :
+          <a href="#" onClick={(evt) => onNavigateTo(evt, 'notice')}>Notice</a>
+        }
         <RegisterSupportButton/>
       </div>
       <motion.div
@@ -85,20 +93,19 @@ const Header: React.FC<HeaderProps> = () => {
       >
         <motion.div
           className={css.bar}
-          variants={{
-            open: { y: [0, 6, 6], rotate: [0, 0, -45], transition: { duration: .3 } },
-            close: { y: [6, 6, 0], rotate:  [-45, 0, 0], transition: { duration: .3 } },
-          }}
+          variants={headerMotions.barLeft}
         />
         <motion.div
           className={css.bar}
-          variants={{
-            open: { y: [0, -6, -6], rotate: [0, 0, 45], transition: { duration: .3 } },
-            close: { y: [-6, -6, 0], rotate:  [45, 0, 0], transition: { duration: .3 } },
-          }}
+          variants={headerMotions.barRight}
         />
       </motion.div>
-      { menuInitialized ? <MenuModal active={menuOpen} onNavigateTo={onNavigateTo}/> : null }
+      { menuInitialized ? (
+        <MenuModal
+          active={menuOpen}
+          hasSessions={hasSessions}
+          onNavigateTo={onNavigateTo}
+        />) : null }
     </motion.div>
   );
 }
