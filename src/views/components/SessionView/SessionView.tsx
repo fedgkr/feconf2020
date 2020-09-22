@@ -11,7 +11,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session }) => {
   return (
     <div className={css.SessionView}>
       <div className={css.iconContainer}>
-
+        <div className={css.circle}/>
       </div>
       <div className={css.infoContainer}>
         <h4 className={css.title}>

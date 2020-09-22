@@ -6,6 +6,12 @@
   .iconContainer {
     width: 140px;
     margin-right: 35px;
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #4c9ae4;
+    }
   }
   .infoContainer {
     display: flex;

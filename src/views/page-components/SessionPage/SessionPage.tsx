@@ -10,6 +10,7 @@ import RegisterSection from "@components/RegisterSection/RegisterSection";
 import Footer from "@components/Footer/Footer";
 import SpeakerListSection from "@components/SpeakerListSection/SpeakerListSection";
 import SessionListSection from "@components/SessionListSection/SessionListSection";
+import SponsorSection from "@components/SponsorSection/SponsorSection";
 
 interface SessionPageProps {}
 
@@ -23,6 +24,7 @@ const SessionPage: React.FC<SessionPageProps> = () => {
         <AboutSection />
         <SpeakerListSection/>
         <SessionListSection/>
+        <SponsorSection/>
         <PreRegistrationSection />
         <NoticeSection />
         <RegisterSection />
