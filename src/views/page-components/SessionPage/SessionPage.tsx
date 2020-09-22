@@ -11,6 +11,7 @@ import Footer from "@components/Footer/Footer";
 import SpeakerListSection from "@components/SpeakerListSection/SpeakerListSection";
 import SessionListSection from "@components/SessionListSection/SessionListSection";
 import SponsorSection from "@components/SponsorSection/SponsorSection";
+import SessionDetailModal from "@components/SessionDetailModal/SessionDetailModal";
 
 interface SessionPageProps {}
 

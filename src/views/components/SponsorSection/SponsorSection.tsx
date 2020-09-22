@@ -78,7 +78,6 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const diamondSponsorList = sponsorList.filter(s => s.grade === Grade.Diamond);
   const platinumSponsorList = sponsorList.filter(s => s.grade === Grade.Platinum);
   const spaceProviderSponsorList = sponsorList.filter(s => s.grade === Grade.SpaceProvider);
-
   return (
     <div ref={sectionRef} className={css.SponsorSection}>
       <div className={css.titleContainer}>
