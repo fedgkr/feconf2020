@@ -1,3 +1,5 @@
+import {Session, Track} from "@constants/types";
+
 export const sessionList: Session[] = [
   {
     title: '실리콘밸리 바로알기!',

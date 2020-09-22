@@ -1,0 +1,46 @@
+.SessionView {
+  display: flex;
+  &:not(:last-child) {
+    margin-bottom: 81px;
+  }
+  .iconContainer {
+    width: 140px;
+    margin-right: 35px;
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 445px;
+    height: 140px;
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+    .detail {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+    .buttonContainer {
+      display: flex;
+      margin-top: 24px;
+      button {
+        padding: 14px 32px;
+        border: 1px solid white;
+        border-radius: 24px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        background-color: transparent;
+        &:first-child {
+          margin-right: 16px;
+        }
+        &.video {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+  }
+}

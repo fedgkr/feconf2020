@@ -46,4 +46,11 @@
       }
     }
   }
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 57px;
+    height: 1466px;
+  }
 }
