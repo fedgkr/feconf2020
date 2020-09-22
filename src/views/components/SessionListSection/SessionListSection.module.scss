@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'mixin';
+
+.SessionListSection {
+  max-width: $page-content-width;
+  margin: 200px auto 0 auto;
+  .title {
+    h2 {
+      font-size: 80px;
+      line-height: 80px;
+      font-weight: 900;
+      text-align: center;
+      font-family: $gilroy-font;
+    }
+  }
+}
