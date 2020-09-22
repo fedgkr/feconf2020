@@ -13,4 +13,37 @@
       font-family: $gilroy-font;
     }
   }
+  .trackSelect {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+    a {
+      position: relative;
+      font-size: 24px;
+      font-weight: 900;
+      font-family: $gilroy-font;
+      color: rgba(255, 255, 255, 0.5);
+      &:first-child {
+        margin-right: 56px;
+      }
+      &.selected {
+        color: rgba(255, 255, 255, 1);
+        .border {
+          opacity: 1;
+          width: 125px;
+        }
+      }
+      .border {
+        position: absolute;
+        left: 50%;
+        bottom: -8px;
+        opacity: 0;
+        width: 0;
+        height: 4px;
+        background-color: white;
+        transform: translateX(-50%);
+        transition: width .15s ease-out, opacity .15s ease-out;
+      }
+    }
+  }
 }
