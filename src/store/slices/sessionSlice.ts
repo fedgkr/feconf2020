@@ -1,14 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Speaker, Track} from "../../constants/types";
+import {Session, Track} from "@constants/types";
+import {sessionList} from "@resources/data";
 
 interface SessionState {
   selectedTrack: Track;
-  speakers: Speaker[];
+  sessions: Session[];
 }
 
 const initialState: SessionState = {
   selectedTrack: Track.A,
-  speakers: [],
+  sessions: sessionList,
 };
 
 export const sessionSlice = createSlice({
