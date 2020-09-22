@@ -24,17 +24,6 @@ export const sessionList: Session[] = [
     },
   },
   {
-    title: 'Dark Mode in WebView',
-    track: Track.A,
-    startTime: '15:30',
-    endTime: '16:10',
-    speaker: {
-      name: '이현섭',
-      company: 'Toss Payments',
-      role: 'Frontend Developer',
-    },
-  },
-  {
     title: '당근마켓은 왜 Relay를 선택했을까? (Relay, 그리고 Declarative에 대해 다시 생각하기)',
     track: Track.A,
     startTime: '14:40',
@@ -42,6 +31,17 @@ export const sessionList: Session[] = [
     speaker: {
       name: '원지혁',
       company: '당근마켓',
+      role: 'Frontend Developer',
+    },
+  },
+  {
+    title: 'Dark Mode in WebView',
+    track: Track.A,
+    startTime: '15:30',
+    endTime: '16:10',
+    speaker: {
+      name: '이현섭',
+      company: 'Toss Payments',
       role: 'Frontend Developer',
     },
   },

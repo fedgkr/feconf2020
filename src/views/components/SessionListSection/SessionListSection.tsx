@@ -5,12 +5,13 @@ import {setTrack} from "@store/slices/sessionSlice";
 import {useDispatch} from "react-redux";
 import {Track} from "@constants/types";
 import SessionView from "@components/SessionView/SessionView";
+import SessionDetailModal from "@components/SessionDetailModal/SessionDetailModal";
 
 interface SessionListSectionProps {}
 
 const SessionListSection: React.FC<SessionListSectionProps> = () => {
   const dispatch = useDispatch();
-  const { sessions, selectedTrack } = useSessionState();
+  const { sessions, selectedTrack, selectedSession } = useSessionState();
   const onTrackClick = useCallback((evt, track) => {
     evt.preventDefault();
     dispatch(setTrack(track));
@@ -40,6 +41,7 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
         {selectedSessionList.map((session, key) =>
           <SessionView key={key} session={session}/>)}
       </div>
+      <SessionDetailModal active={!!selectedSession}/>
     </div>
   );
 }

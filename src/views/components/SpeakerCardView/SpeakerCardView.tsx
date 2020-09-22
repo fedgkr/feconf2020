@@ -6,7 +6,7 @@ interface SpeakerCardViewProps {}
 const SpeakerCardView: React.FC<SpeakerCardViewProps> = () => {
   return (
     <div className={css.SpeakerCardView}>
-      <img src="/images/speakers/1.png" alt=""/>
+      <img src="/images/speakers/이정헌.png" alt=""/>
     </div>
   );
 }

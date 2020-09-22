@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Session} from "@constants/types";
 
 interface AppState {
   menuOpen: boolean;

@@ -9,10 +9,11 @@ import CloseButton from "@components/CloseButton/CloseButton";
 
 interface ModalContainerProps {
   active: boolean;
+  maxWidth?: number;
   onClose: Function;
 }
 
-const ModalContainer: React.FC<ModalContainerProps> = ({ children, active, onClose }) => {
+const ModalContainer: React.FC<ModalContainerProps> = ({ children, active, maxWidth, onClose }) => {
   const ref = useRef<HTMLDivElement>();
   useModal(active, ref);
   return (
@@ -33,7 +34,7 @@ const ModalContainer: React.FC<ModalContainerProps> = ({ children, active, onClo
                 <CloseButton onClick={onClose}/>
               </div>
               <div ref={ref} className={css.overflowWrap}>
-                <div className={css.wrapper}>
+                <div className={css.wrapper} style={ maxWidth ? { maxWidth } : {}}>
                   <CloseButton onClick={onClose}/>
                   {children}
                 </div>
