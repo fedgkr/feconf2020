@@ -5,6 +5,7 @@
       "@components/*": ["src/views/components/*"],
       "@svgs/*": ["src/views/svg-components/*"],
       "@motions/*": ["src/motions/*"],
+      "@constants/*": ["src/constants/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]

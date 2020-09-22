@@ -1,15 +1,15 @@
-enum Track {
+export enum Track {
   A = 'A',
   B = 'B',
 }
 
-interface Speaker {
+export interface Speaker {
   name: string;
   company: string;
   role: string;
 }
 
-interface Session {
+export interface Session {
   title: string;
   speaker: Speaker;
   track: Track;

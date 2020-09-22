@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {Speaker, Track} from "../../constants/types";
 
 interface SessionState {
   selectedTrack: Track;
@@ -21,6 +22,7 @@ export const sessionSlice = createSlice({
 });
 
 export const {
+  setTrack,
 } = sessionSlice.actions;
 
 export default sessionSlice.reducer;
