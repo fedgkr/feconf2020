@@ -12,7 +12,6 @@ const useScroll = (el: MutableRefObject<HTMLDivElement>) => {
   const [isFixed, setFixed] = useState(false);
   const onScroll = useCallback((evt) => {
     const { y, height } = el.current.getBoundingClientRect();
-    console.log('y, height : ', y < 200 && -y < height, y, height);
     setFixed(y < 200 && -y < height);
   }, []);
 
