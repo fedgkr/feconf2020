@@ -47,4 +47,42 @@
       }
     }
   }
+  .mobileSpeakerList {
+    display: none;
+  }
+  @include mobile {
+    margin: 264px auto 0 auto;
+    padding: 0 20px;
+    .titleContainer {
+      .textContainer {
+        padding-left: 0;
+        h2 {
+          font-size: 36px;
+          line-height: 40px;
+        }
+        h4 {
+          font-size: 20px;
+          line-height: 28px;
+          margin-top: 6px;
+        }
+      }
+      .circle {
+        top: -140px;
+        left: 35px;
+        width: 240px;
+        height: 240px;
+      }
+    }
+    .overflowWrap {
+      display: none;
+    }
+    .mobileSpeakerList {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 64px;
+      .column:nth-child(even) {
+        margin-top: 182px;
+      }
+    }
+  }
 }

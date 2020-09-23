@@ -1,6 +1,39 @@
+@import 'variables';
+@import 'mixin';
+
 .SpeakerCardView {
   img {
     width: 230px;
     height: 400px;
+  }
+  .info {
+    display: none;
+  }
+  @include mobile {
+    &:not(:first-child) {
+      margin-top: 42px;
+    }
+    img {
+      width: 160px;
+      height: 278px;
+    }
+    .info {
+      display: block;
+      height: 149px;
+      padding-top: 12px;
+      box-sizing: border-box;
+      font-family: $gilroy-font;
+      .name {
+        font-size: 24px;
+      }
+      .role {
+        font-size: 16px;
+        line-height: 22px;
+        margin-top: 8px;
+        p {
+          word-break: keep-all;
+        }
+      }
+    }
   }
 }
