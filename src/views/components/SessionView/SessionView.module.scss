@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixin';
+
 .SessionView {
   display: flex;
   &:not(:last-child) {
@@ -45,6 +48,43 @@
         &.video {
           background-color: white;
           color: black;
+        }
+      }
+    }
+  }
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    .iconContainer {
+      width: auto;
+      margin-right: 0;
+      margin-bottom: 16px;
+      .circle {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .infoContainer {
+      width: auto;
+      height: auto;
+      .title {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      .detail {
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      .buttonContainer {
+        button {
+          padding: 14px 24px;
+          font-size: 14px;
+          &:first-child {
+            margin-right: 12px;
+          }
         }
       }
     }

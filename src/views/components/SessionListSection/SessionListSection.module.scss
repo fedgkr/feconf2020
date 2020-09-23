@@ -53,4 +53,39 @@
     margin-top: 57px;
     height: 1466px;
   }
+  @include mobile {
+    margin: 128px auto 0 auto;
+    .title {
+      h2 {
+        font-size: 36px;
+        line-height: 44px;
+      }
+    }
+    .trackSelect {
+      margin-top: 24px;
+      a {
+        font-size: 16px;
+        &:first-child {
+          margin-right: 26px;
+        }
+        &.selected {
+          .border {
+            width: 86px;
+          }
+        }
+        .border {
+          bottom: -6px;
+          height: 2px;
+        }
+      }
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin-top: 48px;
+      height: auto;
+      padding: 0 20px;
+    }
+  }
 }

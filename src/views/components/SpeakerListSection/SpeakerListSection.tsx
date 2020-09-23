@@ -5,6 +5,8 @@ import SpeakerCardView from "@components/SpeakerCardView/SpeakerCardView";
 import AwesomeCircle from "@components/AwesomeCircle/AwesomeCircle";
 import {useOffset} from "@utils/hooks/use-window";
 import cc from "classcat";
+import {useSessionState} from "@store/index";
+import {Track} from "@constants/types";
 
 interface SpeakerListSectionProps {}
 
@@ -26,10 +28,13 @@ const useScroll = (el: MutableRefObject<HTMLDivElement>) => {
 }
 
 const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
+  const { sessions } = useSessionState();
   const sectionRef = useRef<HTMLDivElement>();
   const speakerListRef = useRef<HTMLDivElement>();
   const offsetInfo = useOffset(sectionRef, true);
-  const isFixed = useScroll(speakerListRef);
+  const isFixed = useScroll(sectionRef);
+  const trackASessionList = sessions.filter(s => s.track === Track.A);
+  const trackBSessionList = sessions.filter(s => s.track === Track.B);
   return (
     <div ref={sectionRef} className={css.SpeakerListSection}>
       <motion.div className={css.titleContainer}>
@@ -48,13 +53,15 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
         })}
         style={{ height: 2590 }}>
         <div className={css.speakerList} style={{ width: 2590 }}>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
-          <SpeakerCardView/>
+          {sessions.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+        </div>
+      </div>
+      <div className={css.mobileSpeakerList}>
+        <div className={css.column}>
+          {trackASessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+        </div>
+        <div className={css.column}>
+          {trackBSessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
         </div>
       </div>
     </div>
