@@ -73,4 +73,58 @@
       }
     }
   }
+  @include mobile {
+    padding: 0 20px;
+    margin: 298px auto 0 auto;
+    flex-direction: column;
+    .titleContainer {
+      margin-right: 0;
+      h2 {
+        line-height: 36px;
+        font-size: 40px;
+      }
+      h4 {
+        margin-top: 8px;
+        font-size: 20px;
+        line-height: 28px;
+      }
+      .circle {
+        top: -142px;
+        left: -104px;
+        width: 257px;
+        height: 257px;
+      }
+      .dashedCircle {
+        width: 118px;
+        height: 118px;
+        top: -178px;
+        left: 80px;
+      }
+    }
+    .sponsorList {
+      width: auto;
+      margin-top: 80px;
+      .sponsorGradeContainer {
+        &:not(:last-child) {
+          margin-bottom: 61px;
+        }
+        h3 {
+          font-size: 24px;
+        }
+        .list {
+          .row {
+            &:not(:last-child) {
+              margin-bottom: 32px;
+            }
+            img {
+              width: 160px;
+              &:nth-child(even) {
+                margin-left: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
