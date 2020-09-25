@@ -1,4 +1,4 @@
-import React, {MutableRefObject, useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import css from './SpeakerListSection.module.scss';
 import {motion} from "framer-motion";
 import SpeakerCardView from "@components/SpeakerCardView/SpeakerCardView";
@@ -7,6 +7,8 @@ import {useOffset} from "@utils/hooks/use-window";
 import cc from "classcat";
 import {useSessionState} from "@store/index";
 import {Track} from "@constants/types";
+import {useIntersection} from "@utils/hooks/use-intersection";
+import speakerListMotions from "@motions/speakerList.motion";
 
 interface SpeakerListSectionProps {}
 
@@ -38,26 +40,34 @@ const useParallel = (containerRef, offset: number) => {
 
 const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const { sessions } = useSessionState();
+  const titleRef = useRef<HTMLDivElement>();
   const sectionRef = useRef<HTMLDivElement>();
   const speakerListRef = useRef<HTMLDivElement>();
+  const { visible: titleVisible } = useIntersection(titleRef, { threshold: 1, bottom: false });
   const offsetInfo = useOffset(sectionRef, true);
-  const trackASessionList = sessions.filter(s => s.track === Track.A);
-  const trackBSessionList = sessions.filter(s => s.track === Track.B);
+  const trackASessionList = useMemo(() => sessions.filter(s => s.track === Track.A), [sessions]);
+  const trackBSessionList = useMemo(() => sessions.filter(s => s.track === Track.B), [sessions]);
   const { isFixed, scrollProgress } = useParallel(sectionRef, 20);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
   const scrollSize = 5000;
   return (
     <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
-      <div className={cc([css.wrapper, isFixed ? css.fixed : ''])} style={{ opacity: isFixed ? scrollOpacity : 1 }}>
-        <motion.div className={css.titleContainer}>
+      <motion.div
+        className={cc([css.wrapper, isFixed ? css.fixed : ''])}
+        style={{ opacity: isFixed ? scrollOpacity : 1 }}
+        initial="hidden"
+        animate={titleVisible ? 'visible' : 'hidden'}
+        variants={speakerListMotions.container}
+      >
+        <div ref={titleRef} className={css.titleContainer}>
           <div className={css.textContainer}>
-            <motion.h2>SPEAKERS</motion.h2>
-            <motion.h4>FEConf2020을 알차게 채워줄 발표자를 소개합니다!</motion.h4>
+            <motion.h2 variants={speakerListMotions.title}>SPEAKERS</motion.h2>
+            <motion.h4 variants={speakerListMotions.title}>FEConf2020을 알차게 채워줄 발표자를 소개합니다!</motion.h4>
           </div>
           <div className={css.circle}>
             <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
           </div>
-        </motion.div>
+        </div>
         <div ref={speakerListRef} className={css.overflowWrap} style={{ height: scrollSize }}>
           <div className={css.speakerList} style={{
             width: scrollSize,
@@ -75,7 +85,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
             {trackBSessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

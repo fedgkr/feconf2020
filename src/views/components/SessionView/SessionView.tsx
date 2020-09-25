@@ -1,8 +1,10 @@
 import React, {useCallback} from 'react';
 import css from './SessionView.module.scss';
+import {motion} from "framer-motion";
 import {Session} from "@constants/types";
 import {setSession} from "@store/slices/sessionSlice";
 import {useDispatch} from "react-redux";
+import sessionsMotions from "@motions/sessions.motions";
 
 interface SessionViewProps {
   session: Session;
@@ -15,7 +17,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session }) => {
   }, [session]);
   const { title, speaker } = session;
   return (
-    <div className={css.SessionView}>
+    <motion.div className={css.SessionView} variants={sessionsMotions.title}>
       <div className={css.iconContainer}>
         <div className={css.circle}/>
       </div>
@@ -29,7 +31,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session }) => {
           <button className={css.video}>보러가기</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
