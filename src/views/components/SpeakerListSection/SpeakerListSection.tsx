@@ -10,15 +10,16 @@ import {Track} from "@constants/types";
 
 interface SpeakerListSectionProps {}
 
-const useParallel = (containerRef, targetRef, offset: number) => {
+const useParallel = (containerRef, offset: number) => {
   const [isFixed, setFixed] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const onScroll = useCallback(() => {
     requestAnimationFrame(() => {
       const { y, height } = containerRef.current.getBoundingClientRect();
+      const containerY = y - offset;
       const scrollHeight = height - window.innerHeight + 500;
-      const insideOfContainer = y < 0 && y > -scrollHeight;
-      const progress = insideOfContainer ? Math.abs(y / scrollHeight) : 1;
+      const insideOfContainer = containerY < 0 && containerY > -scrollHeight;
+      const progress = insideOfContainer ? Math.abs(containerY / scrollHeight) : 1;
       setFixed(insideOfContainer);
       setScrollProgress(progress * 100);
     });
@@ -42,15 +43,12 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const offsetInfo = useOffset(sectionRef, true);
   const trackASessionList = sessions.filter(s => s.track === Track.A);
   const trackBSessionList = sessions.filter(s => s.track === Track.B);
-  const { isFixed, scrollProgress } = useParallel(sectionRef, speakerListRef, 200);
+  const { isFixed, scrollProgress } = useParallel(sectionRef, 20);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
+  const scrollSize = 5000;
   return (
-    <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: 2590 }}>
-      <div style={{
-        position: isFixed ? 'fixed' : 'relative',
-        top: 0,
-        opacity: isFixed ? scrollOpacity : 1,
-      }}>
+    <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
+      <div className={cc([css.wrapper, isFixed ? css.fixed : ''])} style={{ opacity: isFixed ? scrollOpacity : 1 }}>
         <motion.div className={css.titleContainer}>
           <div className={css.textContainer}>
             <motion.h2>SPEAKERS</motion.h2>
@@ -60,27 +58,22 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
             <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
           </div>
         </motion.div>
-        <div
-          ref={speakerListRef}
-          className={cc({
-            [css.overflowWrap]: true,
-          })}
-          style={{ height: 5000 }}>
+        <div ref={speakerListRef} className={css.overflowWrap} style={{ height: scrollSize }}>
           <div className={css.speakerList} style={{
-            width: 5000,
+            width: scrollSize,
             transform: `translate3d(-${isFixed ? scrollProgress : 0}%, 0, 0)`,
             opacity: isFixed ? scrollOpacity : 1,
           }}>
             {sessions.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
           </div>
         </div>
-      </div>
-      <div className={css.mobileSpeakerList}>
-        <div className={css.column}>
-          {trackASessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
-        </div>
-        <div className={css.column}>
-          {trackBSessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+        <div className={css.mobileSpeakerList}>
+          <div className={css.column}>
+            {trackASessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+          </div>
+          <div className={css.column}>
+            {trackBSessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+          </div>
         </div>
       </div>
     </div>
