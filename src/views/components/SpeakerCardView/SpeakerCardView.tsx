@@ -1,6 +1,8 @@
-import React, {useCallback, useEffect} from 'react';
+import React from 'react';
 import css from './SpeakerCardView.module.scss';
 import {Speaker} from "@constants/types";
+import {motion} from "framer-motion";
+import speakerListMotions from "@motions/speakerList.motion";
 
 interface SpeakerCardViewProps {
   speaker: Speaker;
@@ -8,7 +10,7 @@ interface SpeakerCardViewProps {
 
 const SpeakerCardView: React.FC<SpeakerCardViewProps> = ({ speaker }) => {
   return (
-    <div className={css.SpeakerCardView}>
+    <motion.div className={css.SpeakerCardView} variants={speakerListMotions.item}>
       <img src={`/images/speakers/${speaker.name}.png`} alt={speaker.name} draggable={false}/>
       <div className={css.info}>
         <h4 className={css.name}>{speaker.name}</h4>
@@ -17,7 +19,7 @@ const SpeakerCardView: React.FC<SpeakerCardViewProps> = ({ speaker }) => {
           <p>{speaker.role}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
