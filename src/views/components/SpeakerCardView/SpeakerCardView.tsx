@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import css from './SpeakerCardView.module.scss';
 import {Speaker} from "@constants/types";
 
@@ -9,7 +9,7 @@ interface SpeakerCardViewProps {
 const SpeakerCardView: React.FC<SpeakerCardViewProps> = ({ speaker }) => {
   return (
     <div className={css.SpeakerCardView}>
-      <img src={`/images/speakers/${speaker.name}.png`} alt={speaker.name}/>
+      <img src={`/images/speakers/${speaker.name}.png`} alt={speaker.name} draggable={false}/>
       <div className={css.info}>
         <h4 className={css.name}>{speaker.name}</h4>
         <div className={css.role}>
