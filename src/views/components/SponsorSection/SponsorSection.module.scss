@@ -2,41 +2,50 @@
 @import 'mixin';
 
 .SponsorSection {
+  position: relative;
   max-width: $page-content-width;
   margin: 518px auto 0 auto;
   display: flex;
+  flex-direction: row-reverse;
   .titleContainer {
     position: relative;
+    flex-grow: 1;
     margin-right: 65px;
-    h2 {
-      line-height: 80px;
-      font-size: 80px;
-      font-weight: 900;
-      font-family: $gilroy-font;
-    }
-    h4 {
-      margin-top: 4px;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 24px;
-    }
-    .circle, .dashedCircle {
-      position: absolute;
-      border-radius: 50%;
-      z-index: -1;
-    }
-    .circle {
-      top: -232px;
-      left: -134px;
-      width: 411px;
-      height: 411px;
-      transform: translateZ(0);
-    }
-    .dashedCircle {
-      width: 188px;
-      height: 188px;
-      top: -289px;
-      left: 160px;
+    .wrapper {
+      &.fixed {
+        position: fixed;
+        top: 100px;
+      }
+      h2 {
+        line-height: 80px;
+        font-size: 80px;
+        font-weight: 900;
+        font-family: $gilroy-font;
+      }
+      h4 {
+        margin-top: 4px;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+      .circle, .dashedCircle {
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      .circle {
+        top: -232px;
+        left: -134px;
+        width: 411px;
+        height: 411px;
+        transform: translateZ(0);
+      }
+      .dashedCircle {
+        width: 188px;
+        height: 188px;
+        top: -289px;
+        left: 160px;
+      }
     }
   }
   .sponsorList {
@@ -78,6 +87,7 @@
     margin: 298px auto 0 auto;
     flex-direction: column;
     .titleContainer {
+      position: relative !important;
       margin-right: 0;
       h2 {
         line-height: 36px;
