@@ -8,6 +8,8 @@ import DashedCircle from "@components/DashedCircle/DashedCircle";
 import SafeLink from "@components/SafeLink/SafeLink";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import sponsorMotions from "@motions/sponsor.motions";
+import {useParallel} from "@components/SpeakerListSection/SpeakerListSection";
+import classcat from "classcat";
 
 interface SponsorSectionProps {}
 
@@ -81,25 +83,17 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const diamondSponsorList = sponsorList.filter(s => s.grade === Grade.Diamond);
   const platinumSponsorList = sponsorList.filter(s => s.grade === Grade.Platinum);
   const spaceProviderSponsorList = sponsorList.filter(s => s.grade === Grade.SpaceProvider);
+  const { isFixed, scrollProgress } = useParallel(sectionRef, 100);
+  const scrollOpacity = scrollProgress > 80 ? (100 - scrollProgress) / 20 : 1;
+  console.log('isFixed, scrollProgress : ', scrollOpacity);
   return (
-    <motion.div
-      ref={sectionRef}
-      className={css.SponsorSection}
-      initial="hidden"
-      animate={visible ? 'visible' : 'hidden'}
-      variants={sponsorMotions.container}
-    >
-      <div className={css.titleContainer}>
-        <motion.h2 variants={sponsorMotions.item}>SPONSORS</motion.h2>
-        <motion.h4 variants={sponsorMotions.item}>FEConf2020을 후원하는 파트너입니다</motion.h4>
-        <motion.div className={css.circle}>
-          <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
-        </motion.div>
-        <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}>
-          <DashedCircle/>
-        </motion.div>
-      </div>
-      <div className={css.sponsorList}>
+    <div ref={sectionRef} className={css.SponsorSection}>
+      <motion.div
+        className={css.sponsorList}
+        initial="hidden"
+        animate={visible ? 'visible' : 'hidden'}
+        variants={sponsorMotions.container}
+      >
         <motion.div className={css.sponsorGradeContainer} variants={sponsorMotions.item}>
           <h3>DIAMOND</h3>
           <div className={css.list}>
@@ -150,8 +144,26 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
             </div>
           </div>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+      <motion.div
+        className={css.titleContainer}
+        style={{ opacity: isFixed ? scrollOpacity : 1 }}
+        initial="hidden"
+        animate={visible ? 'visible' : 'hidden'}
+        variants={sponsorMotions.container}
+      >
+        <div className={classcat([css.wrapper, isFixed ? css.fixed : ''])}>
+          <motion.h2 variants={sponsorMotions.item}>SPONSORS</motion.h2>
+          <motion.h4 variants={sponsorMotions.item}>FEConf2020을 후원하는 파트너입니다</motion.h4>
+          <motion.div className={css.circle}>
+            <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
+          </motion.div>
+          <motion.div className={css.dashedCircle} variants={heroMotions.dashedCircle}>
+            <DashedCircle/>
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 

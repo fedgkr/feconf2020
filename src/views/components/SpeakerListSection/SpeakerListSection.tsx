@@ -12,14 +12,14 @@ import speakerListMotions from "@motions/speakerList.motion";
 
 interface SpeakerListSectionProps {}
 
-const useParallel = (containerRef, offset: number) => {
+export const useParallel = (containerRef, offset: number) => {
   const [isFixed, setFixed] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const onScroll = useCallback(() => {
     requestAnimationFrame(() => {
       const { y, height } = containerRef.current.getBoundingClientRect();
       const containerY = y - offset;
-      const scrollHeight = height - window.innerHeight + 500;
+      const scrollHeight = height;
       const insideOfContainer = containerY < 0 && containerY > -scrollHeight;
       const progress = insideOfContainer ? Math.abs(containerY / scrollHeight) : 1;
       setFixed(insideOfContainer);
@@ -74,15 +74,28 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
             transform: `translate3d(-${isFixed ? scrollProgress : 0}%, 0, 0)`,
             opacity: isFixed ? scrollOpacity : 1,
           }}>
-            {sessions.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+            {sessions.map(session =>
+              <SpeakerCardView
+                key={session.title}
+                speaker={session.speaker}
+                variants={speakerListMotions.item}
+              />)}
           </div>
         </div>
         <div className={css.mobileSpeakerList}>
           <div className={css.column}>
-            {trackASessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+            {trackASessionList.map(session =>
+              <SpeakerCardView
+                key={session.title}
+                speaker={session.speaker}
+              />)}
           </div>
           <div className={css.column}>
-            {trackBSessionList.map(session => <SpeakerCardView key={session.title} speaker={session.speaker}/>)}
+            {trackBSessionList.map(session =>
+              <SpeakerCardView
+                key={session.title}
+                speaker={session.speaker}
+              />)}
           </div>
         </div>
       </motion.div>
