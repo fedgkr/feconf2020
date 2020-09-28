@@ -74,10 +74,11 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
             transform: `translate3d(-${isFixed ? scrollProgress : 0}%, 0, 0)`,
             opacity: isFixed ? scrollOpacity : 1,
           }}>
-            {sessions.map(session =>
+            {sessions.map((session, idx) =>
               <SpeakerCardView
                 key={session.title}
                 speaker={session.speaker}
+                order={idx}
                 variants={speakerListMotions.item}
               />)}
           </div>
