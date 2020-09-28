@@ -6,6 +6,9 @@
     width: 230px;
     height: 400px;
     user-select: none;
+    opacity: 0;
+    transform: translate3d(150px, 0, 0) scale(.9);
+    transition: opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   .info {
     display: none;
@@ -17,6 +20,7 @@
     img {
       width: 160px;
       height: 278px;
+      transform: translate3d(0, 0, 0) scale(1);
     }
     .info {
       display: block;
