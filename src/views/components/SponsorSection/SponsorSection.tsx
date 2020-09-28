@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useMemo, useRef} from 'react';
 import css from './SponsorSection.module.scss';
 import {motion} from "framer-motion";
 import AwesomeCircle from "@components/AwesomeCircle/AwesomeCircle";
@@ -76,16 +76,31 @@ const sponsorList = [
   },
 ];
 
+const usePlatinumSponsorList = (sponsorList) => {
+  return useMemo(() => {
+    return sponsorList.filter(s => s.grade === Grade.Platinum).reduce((acc, sponsor) => {
+      const tail = acc[acc.length - 1];
+      if (!tail || tail.length % 2 === 0) {
+        acc.push([]);
+      }
+      if (acc.length % 2 === 0) {
+        acc.push([]);
+      }
+      acc[acc.length - 1].push(sponsor);
+      return acc;
+    }, []);
+  }, [sponsorList]);
+}
+
 const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const sectionRef = useRef<HTMLDivElement>();
   const offsetInfo = useOffset(sectionRef, true);
   const { visible } = useIntersection(sectionRef, { threshold: .4, bottom: false });
   const diamondSponsorList = sponsorList.filter(s => s.grade === Grade.Diamond);
-  const platinumSponsorList = sponsorList.filter(s => s.grade === Grade.Platinum);
+  const platinumSponsorList = usePlatinumSponsorList(sponsorList);
   const spaceProviderSponsorList = sponsorList.filter(s => s.grade === Grade.SpaceProvider);
-  const { isFixed, scrollProgress } = useParallel(sectionRef, 100);
+  const { isFixed, scrollProgress } = useParallel(sectionRef, 200);
   const scrollOpacity = scrollProgress > 80 ? (100 - scrollProgress) / 20 : 1;
-  console.log('isFixed, scrollProgress : ', scrollOpacity);
   return (
     <div ref={sectionRef} className={css.SponsorSection}>
       <motion.div
@@ -109,19 +124,7 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
         <motion.div className={css.sponsorGradeContainer} variants={sponsorMotions.item}>
           <h3>Platinum</h3>
           <div className={css.list}>
-            { platinumSponsorList
-              .reduce((acc, sponsor) => {
-                const tail = acc[acc.length - 1];
-                if (!tail || tail.length % 2 === 0) {
-                  acc.push([]);
-                }
-                if (acc.length % 2 === 0) {
-                  acc.push([]);
-                }
-                acc[acc.length - 1].push(sponsor);
-                return acc;
-              }, [])
-              .map((sponsorPair, key) => (
+            { platinumSponsorList.map((sponsorPair, key) => (
                 <div key={key} className={css.row}>
                   {sponsorPair.map((sponsor, idx) => (
                     <SafeLink key={idx} href={sponsor.link}>
@@ -150,7 +153,7 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
         style={{ opacity: isFixed ? scrollOpacity : 1 }}
         initial="hidden"
         animate={visible ? 'visible' : 'hidden'}
-        variants={sponsorMotions.container}
+        variants={sponsorMotions.titleContainer}
       >
         <div className={classcat([css.wrapper, isFixed ? css.fixed : ''])}>
           <motion.h2 variants={sponsorMotions.item}>SPONSORS</motion.h2>
