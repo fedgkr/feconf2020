@@ -49,4 +49,7 @@
       background-color: white;
     }
   }
+  @include mobile {
+    margin: 0;
+  }
 }
