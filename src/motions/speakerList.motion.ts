@@ -4,7 +4,7 @@ const speakerListMotions = {
   container: {
     visible: {
       transition: {
-        staggerChildren: .12,
+        staggerChildren: .07,
       },
     },
   },

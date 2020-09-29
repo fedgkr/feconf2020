@@ -2,39 +2,97 @@
 @import 'mixin';
 
 .SpeakerCardView {
-  img {
+  position: relative;
+  .imageWrap {
+    position: relative;
     width: 230px;
     height: 400px;
-    user-select: none;
     opacity: 0;
+    background-position: center;
+    background-size: contain;
     transform: translate3d(150px, 0, 0) scale(.9);
     transition: opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      opacity: .2;
+      background-blend-mode: overlay, normal;
+      border-radius: 16px;
+      &.color0 {
+        background-image: linear-gradient(209deg, #6cabfe 100%, #ec20c0 -2%), linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      }
+      &.color1 {
+        background-image: linear-gradient(209deg, #694ad9 100%, #a29cfe -2%), linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      }
+      &.color2 {
+        background-image: linear-gradient(209deg, #f37121 100%, #e91482 -2%), linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      }
+    }
   }
   .info {
-    display: none;
+    position: absolute;
+    top: 110px;
+    left: -78px;
+    .name {
+      font-size: 48px;
+      font-weight: 900;
+    }
+    .role {
+      font-size: 32px;
+      font-family: $gilroy-font;
+      font-weight: 900;
+      line-height: 38px;
+      margin-top: 10px;
+    }
+    .name, .role {
+      opacity: 0;
+      transform: translate3d(0, 12px, 0);
+      transition: opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+  }
+  &:hover {
+    .info {
+      .name, .role {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+      .role {
+        transition-delay: 180ms;
+      }
+    }
   }
   @include mobile {
-    &:not(:first-child) {
-      margin-top: 42px;
-    }
-    img {
+    .imageWrap {
       width: 160px;
       height: 278px;
-      transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1) !important;
     }
     .info {
+      position: relative;
+      top: 0;
+      left: 0;
       display: block;
+      opacity: 1;
       height: 149px;
       padding-top: 12px;
       box-sizing: border-box;
       font-family: $gilroy-font;
+      .name, .role {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: none !important;
+      }
       .name {
         font-size: 24px;
       }
       .role {
         font-size: 16px;
         line-height: 22px;
-        margin-top: 8px;
+        margin-top: 4px;
         p {
           word-break: keep-all;
         }

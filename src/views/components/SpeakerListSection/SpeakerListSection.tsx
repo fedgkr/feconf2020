@@ -85,17 +85,19 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
         </div>
         <div className={css.mobileSpeakerList}>
           <div className={css.column}>
-            {trackASessionList.map(session =>
+            {trackASessionList.map((session, idx) =>
               <SpeakerCardView
                 key={session.title}
                 speaker={session.speaker}
+                order={idx * 2}
               />)}
           </div>
           <div className={css.column}>
-            {trackBSessionList.map(session =>
+            {trackBSessionList.map((session, idx) =>
               <SpeakerCardView
                 key={session.title}
                 speaker={session.speaker}
+                order={idx * 2 + 1}
               />)}
           </div>
         </div>
