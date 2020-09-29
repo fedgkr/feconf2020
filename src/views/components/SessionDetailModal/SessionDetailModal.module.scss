@@ -8,22 +8,27 @@
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      background-color: #4c9ae4;
+      background-position: center;
+      background-size: contain;
     }
   }
   .title {
     font-size: 24px;
     font-weight: 900;
     margin-top: 24px;
+    word-break: keep-all;
   }
   .profile {
     display: flex;
     margin-top: 16px;
-    img {
+    .image {
       width: 48px;
       height: 48px;
       border-radius: 50%;
       margin-right: 16px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .textWrap {
       display: flex;

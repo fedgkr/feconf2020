@@ -2,17 +2,6 @@ import {Session, Track} from "@constants/types";
 
 export const sessionList: Session[] = [
   {
-    title: '실리콘밸리 바로알기!',
-    track: Track.A,
-    startTime: '13:00',
-    endTime: '13:40',
-    speaker: {
-      name: '이정헌',
-      company: 'Cisco',
-      role: 'Frontend Staff Software Engineer',
-    },
-  },
-  {
     title: 'B2B서비스에서 iframe을 이용한 service integration 개발기',
     track: Track.A,
     startTime: '13:50',
