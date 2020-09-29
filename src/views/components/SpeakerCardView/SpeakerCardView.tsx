@@ -2,6 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import css from './SpeakerCardView.module.scss';
 import {Speaker} from "@constants/types";
 import {motion} from "framer-motion";
+import classcat from "classcat";
 
 interface SpeakerCardViewProps {
   speaker: Speaker;
@@ -29,7 +30,7 @@ const useTranslate = (order) => {
     setStyle(style);
   }, []);
   useEffect(() => {
-    const io = new IntersectionObserver(onIntersect, {threshold: .05});
+    const io = new IntersectionObserver(onIntersect, { threshold: .05 });
     io.observe(wrapperEl.current);
     return () => io.disconnect();
   }, [onIntersect]);
@@ -40,11 +41,21 @@ const useTranslate = (order) => {
   return { wrapperEl, style };
 }
 
+const useBGColor = (order?) => {
+  if (order === undefined) {
+    return null;
+  }
+  return css[`color${order % 3}`];
+}
+
 const SpeakerCardView: React.FC<SpeakerCardViewProps> = ({ speaker, order, variants }) => {
   const { wrapperEl, style } = useTranslate(order);
+  const colorClass = useBGColor(order);
   return (
     <motion.div ref={wrapperEl} className={css.SpeakerCardView} variants={variants}>
-      <img style={style} src={`/images/speakers/${speaker.name}.png`} alt={speaker.name} draggable={false}/>
+      <div style={{ ...style, backgroundImage: `url(/images/speakers/${speaker.name}.png)` }} className={css.imageWrap}>
+        <div className={classcat([css.bg, colorClass])}/>
+      </div>
       <div className={css.info}>
         <h4 className={css.name}>{speaker.name}</h4>
         <div className={css.role}>
