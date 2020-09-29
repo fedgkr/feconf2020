@@ -48,7 +48,7 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
       </motion.div>
       <div className={css.list}>
         {selectedSessionList.map((session, key) =>
-          <SessionView key={key} session={session}/>)}
+          <SessionView key={key} session={session} order={key}/>)}
       </div>
       <SessionDetailModal active={!!selectedSession}/>
     </motion.div>

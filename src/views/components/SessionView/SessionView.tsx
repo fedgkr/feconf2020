@@ -8,9 +8,10 @@ import sessionsMotions from "@motions/sessions.motions";
 
 interface SessionViewProps {
   session: Session;
+  order: number;
 }
 
-const SessionView: React.FC<SessionViewProps> = ({ session }) => {
+const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
   const dispatch = useDispatch();
   const onSessionClick = useCallback(() => {
     dispatch(setSession(session));
@@ -19,7 +20,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session }) => {
   return (
     <motion.div className={css.SessionView} variants={sessionsMotions.title}>
       <div className={css.iconContainer}>
-        <div className={css.circle}/>
+        <div className={css.circle} style={{ backgroundImage: `url("/images/backgrounds/img-gradient-${order + 1}.png")` }}/>
       </div>
       <div className={css.infoContainer}>
         <h4 className={css.title}>

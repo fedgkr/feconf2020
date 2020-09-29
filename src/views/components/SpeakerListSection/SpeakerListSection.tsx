@@ -28,8 +28,10 @@ export const useParallel = (containerRef, offset: number) => {
   }, []);
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
   return {
