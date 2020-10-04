@@ -2,6 +2,7 @@
 @import 'mixin';
 
 .ModalContainer {
+  pointer-events: none;
   .closeBtn {
     display: none;
   }
@@ -13,6 +14,7 @@
       padding: 64px 140px;
       box-sizing: border-box;
       border-radius: 16px;
+      pointer-events: all;
       background-color: #232323;
     }
   }

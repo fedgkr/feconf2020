@@ -51,36 +51,6 @@
   .sponsorList {
     width: 460px;
     margin-top: -26px;
-    .sponsorGradeContainer {
-      &:not(:last-child) {
-        margin-bottom: 80px;
-      }
-      h3 {
-        font-size: 32px;
-        font-weight: 900;
-        font-family: $gilroy-font;
-        text-align: center;
-      }
-      .list {
-        display: flex;
-        flex-direction: column;
-        font-size: 0;
-        margin-top: 32px;
-        .row {
-          display: flex;
-          justify-content: center;
-          &:not(:last-child) {
-            margin-bottom: 24px;
-          }
-          img {
-            width: 220px;
-            &:nth-child(even) {
-              margin-left: 20px;
-            }
-          }
-        }
-      }
-    }
   }
   @include mobile {
     padding: 0 20px;
@@ -118,27 +88,6 @@
     .sponsorList {
       width: auto;
       margin-top: 80px;
-      .sponsorGradeContainer {
-        &:not(:last-child) {
-          margin-bottom: 61px;
-        }
-        h3 {
-          font-size: 24px;
-        }
-        .list {
-          .row {
-            &:not(:last-child) {
-              margin-bottom: 32px;
-            }
-            img {
-              width: 160px;
-              &:nth-child(even) {
-                margin-left: 16px;
-              }
-            }
-          }
-        }
-      }
     }
   }
 }

@@ -14,8 +14,8 @@ const defaultCardImageStyle = {
 };
 
 const colorSet = [
-  'linear-gradient(209deg, #6cabfe 100%, #ec20c0 -2%), linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3))',
   'linear-gradient(209deg, #694ad9 100%, #a29cfe -2%), linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3))',
+  'linear-gradient(209deg, #6cabfe 100%, #ec20c0 -2%), linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3))',
   'linear-gradient(209deg, #f37121 100%, #e91482 -2%), linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3))',
 ];
 
@@ -37,7 +37,7 @@ const useTranslatingImage = (order: number, imageUrl: string) => {
     setStyle(style);
   }, []);
   useEffect(() => {
-    const io = new IntersectionObserver(onIntersect, { threshold: .05 });
+    const io = new IntersectionObserver(onIntersect, { threshold: .15 });
     io.observe(wrapperEl.current);
     return () => io.disconnect();
   }, [onIntersect]);
