@@ -1,1 +1,1 @@
-export { default } from "../views/page-components/HomePage/HomePage";
+export { default } from "../views/page-components/SessionPage/SessionPage";
