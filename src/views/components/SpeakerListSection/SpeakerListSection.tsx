@@ -86,22 +86,23 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
           </div>
         </div>
         <div className={css.mobileSpeakerList}>
-          <div className={css.column}>
-            {trackASessionList.map((session, idx) =>
-              <SpeakerCardView
-                key={session.title}
-                speaker={session.speaker}
-                order={idx * 2}
-              />)}
-          </div>
-          <div className={css.column}>
-            {trackBSessionList.map((session, idx) =>
-              <SpeakerCardView
-                key={session.title}
-                speaker={session.speaker}
-                order={idx * 2 + 1}
-              />)}
-          </div>
+          {[trackASessionList, trackBSessionList].map((list, key) => (
+            <motion.div
+              key={key}
+              className={css.column}
+              initial="hidden"
+              animate={titleVisible ? 'visible' : 'hidden'}
+              variants={speakerListMotions.columnContainer}
+            >
+              {list.map((session, idx) =>
+                <SpeakerCardView
+                  key={session.title}
+                  speaker={session.speaker}
+                  order={idx * 2 + key}
+                  variants={speakerListMotions.columnItem}
+                />)}
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </div>

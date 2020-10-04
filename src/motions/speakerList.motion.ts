@@ -8,6 +8,17 @@ const speakerListMotions = {
       },
     },
   },
+  columnContainer: {
+    visible: {
+      transition: {
+        staggerChildren: .17,
+      },
+    },
+  },
+  columnItem: {
+    hidden: motionPresets.fadeInUp.before,
+    visible: motionPresets.fadeInUp.after,
+  },
   title: {
     hidden: motionPresets.fadeInUp.before,
     visible: motionPresets.fadeInUp.after,
