@@ -15,25 +15,6 @@
     background-blend-mode: overlay, normal;
     transform: translate3d(150px, 0, 0) scale(.9);
     transition: opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
-    .bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2;
-      background-blend-mode: overlay, normal;
-      border-radius: 16px;
-      &.color0 {
-        background-image: linear-gradient(209deg, rgba(108, 171, 254, .2) 100%, rgba(236, 32, 192, .2) -2%);
-      }
-      &.color1 {
-        background-image: linear-gradient(209deg, #694ad9 100%, #a29cfe -2%);
-      }
-      &.color2 {
-        background-image: linear-gradient(209deg, #f37121 100%, #e91482 -2%);
-      }
-    }
   }
   .info {
     position: absolute;
@@ -53,17 +34,17 @@
     .name, .role {
       opacity: 0;
       transform: translate3d(0, 12px, 0);
-      transition: opacity .8s cubic-bezier(0.165, 0.84, 0.44, 1), transform .8s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: opacity .6s cubic-bezier(0.165, 0.84, 0.44, 1), transform .6s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
   }
-  &:hover {
+  &.active {
     .info {
       .name, .role {
         opacity: 1;
         transform: translate3d(0, 0, 0);
       }
       .role {
-        transition-delay: 180ms;
+        transition-delay: 80ms;
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useMemo, useRef} from 'react';
 import css from './SpeakerListSection.module.scss';
 import {motion} from "framer-motion";
 import SpeakerCardView from "@components/SpeakerCardView/SpeakerCardView";
@@ -9,35 +9,18 @@ import {useSessionState} from "@store/index";
 import {Track} from "@constants/types";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import speakerListMotions from "@motions/speakerList.motion";
+import {useParallel} from "@utils/hooks/use-parallel";
 
 interface SpeakerListSectionProps {}
 
-export const useParallel = (containerRef, offset: number) => {
-  const [isFixed, setFixed] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const onScroll = useCallback(() => {
-    requestAnimationFrame(() => {
-      const { y, height } = containerRef.current.getBoundingClientRect();
-      const containerY = y - offset;
-      const scrollHeight = height;
-      const insideOfContainer = containerY < 0 && containerY > -scrollHeight;
-      const progress = insideOfContainer ? Math.abs(containerY / scrollHeight) : 1;
-      setFixed(insideOfContainer);
-      setScrollProgress(progress * 100);
-    });
-  }, []);
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, []);
-  return {
-    isFixed,
-    scrollProgress,
-  };
+const useActiveSpeaker = (sessionCnt: number, scrollProgress: number) => {
+  const endProgress = 82;
+  const rawProgress = scrollProgress / endProgress;
+  const progress = Math.min(rawProgress, 1) * 100;
+  const divideCnt = sessionCnt - 1;
+  const eachViewRatio = 100 / divideCnt;
+  const currentIdx = progress / eachViewRatio;
+  return Math.floor(rawProgress === 0 ? 0 : currentIdx + 1);
 }
 
 const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
@@ -52,6 +35,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const { isFixed, scrollProgress } = useParallel(sectionRef, 20);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
   const scrollSize = 5000;
+  const activeSpeakerIndex = useActiveSpeaker(sessions.length, scrollProgress);
   return (
     <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
       <motion.div
@@ -81,6 +65,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
                 key={session.title}
                 speaker={session.speaker}
                 order={idx}
+                active={activeSpeakerIndex === idx}
                 variants={speakerListMotions.item}
               />)}
           </div>
