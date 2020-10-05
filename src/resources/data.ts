@@ -2,8 +2,8 @@ import {Grade, Session, Sponsor, Track} from "@constants/types";
 
 export const sessionList: Session[] = [
   {
-    title: 'iframe을 활용하여 전혀 다른 Service를 통합하기',
-    description: '프론트엔드 개발자로서 실제 운영되고 있는 B2B 서비스에, iframe integration을 구현하기 위한 노력들을 담은 개발기입니다.\n' +
+    title: 'iframe을 활용하여 서로 다른 Service를 통합하기',
+    description: '서로 다른 웹 서비스를 연동할 수 있는 iframe integration을 구현하기 위한 노력을 담은 개발기입니다.\n'+
       '다루기 조금 까다롭지만, 잘 이용하면 재밌는 기능을 만들 수 있는 iframe, 제 발표를 통해 좀 더 친해져 보는 것은 어떨까요?',
     track: Track.A,
     startTime: '13:50',
