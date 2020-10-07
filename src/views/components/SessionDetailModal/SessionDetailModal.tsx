@@ -25,6 +25,7 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
   const { sessions, selectedSession } = useSessionState()
   const dispatch = useDispatch();
   const order = getOrder(sessions, selectedSession);
+  const defaultImagePosition = '50% 50%';
   const onClose = useCallback(() => {
     dispatch(setSession(null));
   }, []);
@@ -38,7 +39,13 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
           {selectedSession?.title || ' '}
         </h3>
         <div className={css.profile}>
-          <div className={css.image} style={{ backgroundImage: `url(/images/speakers/${selectedSession?.speaker.name}.png)` }}/>
+          <div
+            className={css.image}
+            style={{
+              backgroundImage: `url(/images/speakers/${selectedSession?.speaker.name}.png)`,
+              backgroundPosition: selectedSession?.speaker.imagePosition || defaultImagePosition,
+            }}
+          />
           <div className={css.textWrap}>
             <span>{selectedSession?.speaker.name}</span>
             <span>{selectedSession?.speaker.company + ' ' + selectedSession?.speaker.role}</span>
