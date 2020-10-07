@@ -1,6 +1,6 @@
 import { useRef, useEffect, MutableRefObject, useState } from "react";
 
-interface WindowInfo {
+export interface WindowInfo {
   scroll: number;
   width: number;
   height: number;
@@ -89,6 +89,9 @@ export function useWindowScroll(callback: (e: WindowInfo) => any, deps: any[] = 
   }, deps);
 
   return ref;
+}
+export function getWindowInfo() {
+  return windowInfo;
 }
 export function useWindowResize(callback: (e: { width: number, height: number, scrollHeight: number }) => any, deps: any[] = []) {
   const ref = useRef({ width: windowInfo.width, height: windowInfo.height, scrollHeight: windowInfo.scrollHeight });
