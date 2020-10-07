@@ -13,6 +13,7 @@ export const sessionList: Session[] = [
       name: '나윤환',
       company: 'Sendbird',
       role: 'Frontend Engineer',
+      imagePosition: '50% 27%',
     },
   },
   {
@@ -25,6 +26,7 @@ export const sessionList: Session[] = [
       name: '원지혁',
       company: '당근마켓',
       role: 'Frontend Developer',
+      imagePosition: '50% 42%',
     },
   },
   {
@@ -38,6 +40,7 @@ export const sessionList: Session[] = [
       name: '이현섭',
       company: 'Toss Payments',
       role: 'Frontend Developer',
+      imagePosition: '50% 40%',
     },
   },
   {
@@ -50,6 +53,7 @@ export const sessionList: Session[] = [
       name: '최수형',
       company: 'microprotect',
       role: 'Frontend Developer',
+      imagePosition: '50% 30%',
     },
   },
   {
@@ -62,6 +66,7 @@ export const sessionList: Session[] = [
       name: '심흥운',
       company: 'NAVER',
       role: 'Frontend Developer',
+      imagePosition: '50% 30%',
     },
   },
   {
@@ -74,6 +79,7 @@ export const sessionList: Session[] = [
       name: '김성현',
       company: 'tPay',
       role: 'Frontend Developer',
+      imagePosition: '50% 30%',
     },
   },
   {
@@ -101,6 +107,7 @@ export const sessionList: Session[] = [
       name: '이경주',
       company: '',
       role: 'Frontend Developer',
+      imagePosition: '50% 30%',
     },
   },
   {
@@ -125,6 +132,7 @@ export const sessionList: Session[] = [
       name: '최태건',
       company: 'MESH KOREA',
       role: 'Frontend Developer',
+      imagePosition: '50% 30%',
     },
   },
   {
@@ -137,6 +145,7 @@ export const sessionList: Session[] = [
       name: '최종택',
       company: 'dooboolab',
       role: 'Frontend Developer',
+      imagePosition: '50% 10%',
     },
   },
   {
@@ -149,6 +158,7 @@ export const sessionList: Session[] = [
       name: '김혜성',
       company: 'Devsisters',
       role: 'Frontend Developer',
+      imagePosition: '50% 80%',
     },
   },
 ]
