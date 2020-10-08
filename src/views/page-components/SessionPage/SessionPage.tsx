@@ -21,7 +21,7 @@ const SessionPage: React.FC<SessionPageProps> = () => {
     <div className={css.SessionPage}>
       <Header />
       <div className={css.sections}>
-        {/*<LineBackground />*/}
+        <LineBackground />
         <HeroSection />
         <AboutSection />
         <SpeakerListSection/>

@@ -33,7 +33,7 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const diamondSponsorList = useMemo(() => sponsorList.filter(s => s.grade === Grade.Diamond), [sponsorList]);
   const platinumSponsorList = usePlatinumSponsorList(sponsorList);
   const spaceProviderSponsorList = useMemo(() => sponsorList.filter(s => s.grade === Grade.SpaceProvider), [sponsorList]);
-  const { isFixed, scrollProgress } = useParallel(sectionRef, 200);
+  const { isFixed, scrollProgress } = useParallel(sectionRef, 1, 200, 1200);
   const scrollOpacity = scrollProgress > 80 ? (100 - scrollProgress) / 20 : 1;
   return (
     <div ref={sectionRef} className={css.SponsorSection}>
