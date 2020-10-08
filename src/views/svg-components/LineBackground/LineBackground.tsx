@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import css from './LineBackground.module.scss';
 import LinePathCSS from './LinePath.module.scss';
 import AirPlaneCSS from './AirPlanePath.module.scss';
@@ -7,31 +7,35 @@ import LinePathPC from './pc/LinePathPC';
 import LinePathMobile from './mobile/LinePathMobile';
 import AirPlanePath from './AirPlanePath';
 import { useWindowResize, useWindowScroll } from '@utils/hooks/use-window';
+import { useStickyState } from '@store/index';
 
 const LINE_BACKGROUND_INFOS = {
   pc: {
     athomeLength: 1550,
     speeds: [
-      { pos: 10100, speed: 0.8 },
-      { pos: 21400, speed: 1.5 },
+      { pos: 2000, speed: 2 },
+      { pos: 9000, speed: 0.05 },
+      { pos: 10300, speed: 10 },
+      { pos: 21400, speed: 2 },
     ],
     stopLength: 28480,
     LinePath: LinePathPC,
-    width: 1448,
-    height: 5823,
-    sign: -1,
+    width: 1382,
+    height: 7975,
+    sign: 1,
     scale: 1,
   },
   mobile: {
     athomeLength: 670,
     speeds: [
-      { pos: 5000, speed: 0.8 },
-      { pos: 12000, speed: 1.4 },
+      { pos: 0, speed: 1 },
+      // { pos: 5000, speed: 0.8 },
+      // { pos: 12000, speed: 1 },
     ],
-    stopLength: 13450,
+    stopLength: 28100,
     LinePath: LinePathMobile,
-    width: 736,
-    height: 4744,
+    width: 661,
+    height: 9798,
     sign: 1,
     scale: 0.6,
   }
@@ -69,6 +73,17 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     LinePath,
     scale,
   } = LINE_BACKGROUND_INFOS[isMobile ? "mobile" : "pc"];
+  const {
+    offsets,
+  } = useStickyState();
+  const [
+    translate,
+    setTranslate,
+  ] = useState(0);
+  const [
+    isFixed,
+    setFixed,
+  ] = useState(false);
   let linePath: SVGPathElement;
   let lineStrokePath: SVGPathElement;
   let grayPath: SVGPathElement;
@@ -131,7 +146,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     return () => {
       scene.clear();
     };
-  }, [isMobile]);
+  }, [isMobile, offsets]);
 
   const sizeRef = useWindowResize(({ width }) => {
     if (!isMobile && width < 768) {
@@ -139,9 +154,30 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     } else if (isMobile && width > 768) {
       setIsMobile(false);
     }
-  }, [isMobile]);
+  }, [isMobile, offsets]);
 
   useWindowScroll(({ scroll }) => {
+    let nextTranslate = 0;
+    let nextFixed = isFixed;
+
+    if (!isMobile) {
+      offsets.some(({ top: offsetTop, height: offsetHeight, offset, endOffset }) => {
+        const scrollPosition = scroll + offset;
+
+        nextFixed = false;
+        nextTranslate += Math.max(0, Math.min(scrollPosition - offsetTop, offsetHeight - endOffset));
+
+        if (offsetTop < scrollPosition && scrollPosition > offsetTop + offsetHeight - endOffset) {
+          return;
+        } else if (offsetTop < scrollPosition && scrollPosition < offsetTop +  offsetHeight) {
+          nextFixed = true;
+          nextTranslate = 104 + nextTranslate - scroll;
+          return true;
+        }
+      });
+    }
+    setTranslate(nextTranslate);
+    setFixed(nextFixed);
     clearTimeout(playTimer);
 
     const backgroundTop = isMobile ? 212 : 450;
@@ -185,9 +221,13 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
         scene.play();
       }, 2000);
     }
-  }, [isMobile]);
+  }, [isMobile, offsets]);
 
-  return <div className={css.LineBackground}>
+  return <div className={css.LineBackground} style={{
+    position: isFixed ? "fixed" : "absolute",
+    transform: `translate(-50%) translateY(${translate}px)`,
+    width: `${width}px`,
+  }}>
     <svg xmlns='http://www.w3.org/2000/svg'
       width={width}
       height={height}

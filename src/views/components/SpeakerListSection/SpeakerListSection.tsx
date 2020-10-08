@@ -3,37 +3,50 @@ import css from './SpeakerListSection.module.scss';
 import {motion} from "framer-motion";
 import SpeakerCardView from "@components/SpeakerCardView/SpeakerCardView";
 import AwesomeCircle from "@components/AwesomeCircle/AwesomeCircle";
-import {useOffset} from "@utils/hooks/use-window";
+import {getWindowInfo, useOffset, useWindowResize, useWindowScroll} from "@utils/hooks/use-window";
 import cc from "classcat";
-import {useSessionState} from "@store/index";
+import {useSessionState, useStickyState} from "@store/index";
 import {Track} from "@constants/types";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import speakerListMotions from "@motions/speakerList.motion";
+import { setOffset } from '@store/slices/stickySlice';
+import { useDispatch } from 'react-redux';
 
 interface SpeakerListSectionProps {}
 
-export const useParallel = (containerRef, offset: number) => {
+const stickySections = [0, 0];
+export const useParallel = (containerRef, order: number, offset: number, endOffset: number) => {
   const [isFixed, setFixed] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const dispatch = useDispatch();
+  const { offsets } = useStickyState();
+  const { top: offsetTop, height } = offsets[order];
+
   const onScroll = useCallback(() => {
     requestAnimationFrame(() => {
-      const { y, height } = containerRef.current.getBoundingClientRect();
-      const containerY = y - offset;
+      const scrollTop = getWindowInfo().scroll;
+      const containerY = offsetTop - scrollTop - offset;
       const scrollHeight = height;
       const insideOfContainer = containerY < 0 && containerY > -scrollHeight;
       const progress = insideOfContainer ? Math.abs(containerY / scrollHeight) : 1;
+
       setFixed(insideOfContainer);
       setScrollProgress(progress * 100);
     });
-  }, []);
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, []);
+  }, [offsetTop, height]);
+  useWindowResize(() => {
+    const { top, height } = containerRef.current.getBoundingClientRect();
+    const scrollTop = getWindowInfo().scroll;
+
+    dispatch(setOffset([order, {
+      top: top + scrollTop,
+      height,
+      offset,
+      endOffset,
+    }]));
+    onScroll();
+  }, [offsetTop, height]);
+  useWindowScroll(onScroll, [offsetTop, height]);
   return {
     isFixed,
     scrollProgress,
@@ -49,7 +62,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const offsetInfo = useOffset(sectionRef, true);
   const trackASessionList = useMemo(() => sessions.filter(s => s.track === Track.A), [sessions]);
   const trackBSessionList = useMemo(() => sessions.filter(s => s.track === Track.B), [sessions]);
-  const { isFixed, scrollProgress } = useParallel(sectionRef, 20);
+  const { isFixed, scrollProgress } = useParallel(sectionRef, 0, 20, 620);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
   const scrollSize = 5000;
   return (
