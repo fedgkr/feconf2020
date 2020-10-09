@@ -2,9 +2,12 @@ import React, {CSSProperties, useCallback, useEffect, useRef, useState} from 're
 import css from './SpeakerCardView.module.scss';
 import {Speaker} from "@constants/types";
 import {motion} from "framer-motion";
+import classcat from "classcat";
 
 interface SpeakerCardViewProps {
   speaker: Speaker;
+  active?: boolean;
+  preActive?: boolean;
   order?: number;
   variants?: any;
 }
@@ -48,10 +51,18 @@ const useTranslatingImage = (order: number, imageUrl: string) => {
   return { wrapperEl, style };
 }
 
-const SpeakerCardView: React.FC<SpeakerCardViewProps> = React.memo(({ speaker, order, variants }) => {
+const SpeakerCardView: React.FC<SpeakerCardViewProps> = React.memo(({ speaker, active, preActive, order, variants }) => {
   const { wrapperEl, style } = useTranslatingImage(order, `/images/speakers/${speaker.name}.png`);
   return (
-    <motion.div ref={wrapperEl} className={css.SpeakerCardView} variants={variants}>
+    <motion.div
+      ref={wrapperEl}
+      className={classcat({
+        [css.SpeakerCardView]: true,
+        [css.active]: active,
+        [css.preActive]: preActive,
+      })}
+      variants={variants}
+    >
       <div style={style} className={css.imageWrap}/>
       <div className={css.info}>
         <h4 className={css.name}>{speaker.name}</h4>

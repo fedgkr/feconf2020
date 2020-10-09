@@ -5,14 +5,13 @@ import AwesomeCircle from "@components/AwesomeCircle/AwesomeCircle";
 import {useOffset} from "@utils/hooks/use-window";
 import heroMotions from "@motions/hero.motion";
 import DashedCircle from "@components/DashedCircle/DashedCircle";
-import SafeLink from "@components/SafeLink/SafeLink";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import sponsorMotions from "@motions/sponsor.motions";
-import {useParallel} from "@components/SpeakerListSection/SpeakerListSection";
 import classcat from "classcat";
-import {Grade, Sponsor} from "@constants/types";
+import {Grade} from "@constants/types";
 import SponsorGradeContainer from "@components/SponsorGradeContainer/SponsorGradeContainer";
 import {sponsorList} from "@resources/data";
+import {useParallel} from "@utils/hooks/use-parallel";
 
 interface SponsorSectionProps {}
 
