@@ -56,10 +56,10 @@
 .container {
   pointer-events: none;
   transition: opacity .3s .4s ease-out;
-  overflow: scroll;
   z-index: 2201;
   &.active {
     pointer-events: all;
+    overflow: scroll;
     .dimmed {
       opacity: 1;
       transition: opacity 0.6s ease-out;
