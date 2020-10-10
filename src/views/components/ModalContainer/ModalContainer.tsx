@@ -26,7 +26,7 @@ const ModalContainer: React.FC<ModalContainerProps> = ({ children, active, maxWi
               className={css.ModalContainer}
               initial="closed"
               animate="open"
-              exit="closed"
+              exit="exit"
               variants={cocMotions.menu}
               onClick={e => e.stopPropagation()}
             >

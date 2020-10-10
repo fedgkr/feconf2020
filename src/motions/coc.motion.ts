@@ -18,6 +18,15 @@ const cocMotions = {
         staggerDirection: -1,
       },
     },
+    exit: {
+      y: '100%',
+      opacity: 0,
+      transition: {
+        type: 'tween',
+        staggerChildren: .05,
+        staggerDirection: -1,
+      },
+    },
   },
 }
 

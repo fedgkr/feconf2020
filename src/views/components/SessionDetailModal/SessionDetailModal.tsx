@@ -52,9 +52,9 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
           </div>
         </div>
         <p className={css.description} dangerouslySetInnerHTML={{ __html: selectedSession?.description?.replace(/\n/, '<br/>') }}/>
-        <div className={css.buttonWrap}>
-          <button>보러가기</button>
-        </div>
+        {/*<div className={css.buttonWrap}>*/}
+        {/*  <button>보러가기</button>*/}
+        {/*</div>*/}
       </div>
     </ModalContainer>
   );
