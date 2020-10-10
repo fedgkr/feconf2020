@@ -44,14 +44,14 @@ export const sessionList: Session[] = [
     },
   },
   {
-    title: '프런드엔드에서 TDD가 가능하다는 것을 보여드립니다.',
+    title: '프론트엔드에서 TDD가 가능하다는 것을 보여드립니다.',
     description: '브라우저에서 오직 눈으로만 결과물을 확인하고 계신가요? 그것만으론 불안해서 테스트 코드를 작성해보려 했지만 어려움을 겪어 보셨다면 주목해주세요. React에서 테스트 가능한 코드 작성법을 알아보고 프론트엔드 개발에 TDD를 적용하는 방법을 소개합니다.',
     track: Track.A,
     startTime: '16:30',
     endTime: '17:10',
     speaker: {
       name: '최수형',
-      company: 'microprotect',
+      company: 'Microprotect',
       role: 'Frontend Developer',
       imagePosition: '50% 30%',
     },
