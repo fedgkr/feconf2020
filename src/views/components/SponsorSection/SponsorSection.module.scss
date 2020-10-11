@@ -4,7 +4,7 @@
 .SponsorSection {
   position: relative;
   max-width: $page-content-width;
-  margin: 518px auto 0 auto;
+  margin: 440px auto -60px auto;
   display: flex;
   flex-direction: row-reverse;
   .titleContainer {
@@ -54,7 +54,7 @@
   }
   @include mobile {
     padding: 0 20px;
-    margin: 298px auto 0 auto;
+    margin: 420px auto 254px auto;
     flex-direction: column-reverse;
     .titleContainer {
       position: relative;
