@@ -3,6 +3,7 @@
 
 .SessionView {
   display: flex;
+  justify-content: center;
   &:not(:last-child) {
     margin-bottom: 81px;
   }
@@ -42,6 +43,7 @@
         font-size: 16px;
         cursor: pointer;
         color: white;
+        outline: none;
         background-color: transparent;
         &:first-child {
           margin-right: 16px;
@@ -56,6 +58,7 @@
   @include mobile {
     display: flex;
     flex-direction: column;
+    justify-content: normal;
     &:not(:last-child) {
       margin-bottom: 40px;
     }
