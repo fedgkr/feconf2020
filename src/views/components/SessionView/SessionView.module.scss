@@ -56,12 +56,12 @@
   @include mobile {
     display: flex;
     flex-direction: column;
-    height: 247px;
     &:not(:last-child) {
       margin-bottom: 40px;
     }
     .iconContainer {
       width: auto;
+      height: auto;
       margin-right: 0;
       margin-bottom: 16px;
       .circle {

@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getWindowInfo, useWindowResize } from "@utils/hooks/use-window";
-import { RefObject, useEffect } from "react";
 
 interface SectionOffset {
   top: number;
