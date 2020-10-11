@@ -15,8 +15,8 @@ import {useParallel} from "@utils/hooks/use-parallel";
 
 interface SponsorSectionProps {}
 
-const usePlatinumSponsorList = (sponsorList) => {
-  return useMemo(() => sponsorList.filter(s => s.grade === Grade.Platinum).reduce((acc, sponsor) => {
+const useTwoColumnList = (sponsorList, grade: Grade) => {
+  return useMemo(() => sponsorList.filter(s => s.grade === grade).reduce((acc, sponsor) => {
     if (acc.slice().pop().length >= 2) {
       acc.push([]);
     }
@@ -29,8 +29,9 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const sectionRef = useRef<HTMLDivElement>();
   const offsetInfo = useOffset(sectionRef, true);
   const { visible } = useIntersection(sectionRef, { threshold: .2, bottom: false });
-  const diamondSponsorList = useMemo(() => sponsorList.filter(s => s.grade === Grade.Diamond), [sponsorList]);
-  const platinumSponsorList = usePlatinumSponsorList(sponsorList);
+  const diamondSponsorList = useTwoColumnList(sponsorList, Grade.Diamond);
+  const platinumSponsorList = useTwoColumnList(sponsorList, Grade.Platinum);
+  const goldSponsorList = useTwoColumnList(sponsorList, Grade.Gold);
   const spaceProviderSponsorList = useMemo(() => sponsorList.filter(s => s.grade === Grade.SpaceProvider), [sponsorList]);
   const { isFixed, scrollProgress } = useParallel(sectionRef, 1, 200, 1200);
   const scrollOpacity = scrollProgress > 80 ? (100 - scrollProgress) / 20 : 1;
@@ -43,7 +44,8 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
         variants={sponsorMotions.container}
       >
         <SponsorGradeContainer title="DIAMOND" sponsorList={diamondSponsorList}/>
-        <SponsorGradeContainer title="Platinum" sponsorList={platinumSponsorList}/>
+        <SponsorGradeContainer title="PLATINUM" sponsorList={platinumSponsorList}/>
+        <SponsorGradeContainer title="GOLD" sponsorList={goldSponsorList}/>
         <SponsorGradeContainer title="장소지원" sponsorList={spaceProviderSponsorList}/>
       </motion.div>
       <motion.div

@@ -6,6 +6,7 @@ export enum Track {
 export enum Grade {
   Diamond,
   Platinum,
+  Gold,
   SpaceProvider,
 }
 

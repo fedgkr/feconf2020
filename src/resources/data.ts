@@ -171,12 +171,6 @@ export const sponsorList: Sponsor[] = [
     grade: Grade.Diamond,
   },
   {
-    name: '우아한테크코스',
-    link: 'https://woowacourse.github.io',
-    image: 'wooahan-tech@2x.png',
-    grade: Grade.SpaceProvider,
-  },
-  {
     name: '네이버',
     link: 'https://www.navercorp.com',
     image: 'naver@2x.png',
@@ -186,6 +180,18 @@ export const sponsorList: Sponsor[] = [
     name: 'coupang',
     link: 'http://ncsoft.com',
     image: 'coupang@2x.png',
+    grade: Grade.Platinum,
+  },
+  {
+    name: '우아한형제들',
+    link: 'https://www.woowahan.com/',
+    image: 'woowahan@2x.png',
+    grade: Grade.Platinum,
+  },
+  {
+    name: '당근마켓',
+    link: 'https://www.daangn.com/',
+    image: 'carrot@2x.png',
     grade: Grade.Platinum,
   },
   {
@@ -201,21 +207,33 @@ export const sponsorList: Sponsor[] = [
     grade: Grade.Platinum,
   },
   {
-    name: '당근마켓',
-    link: 'https://www.daangn.com/',
-    image: 'carrot@2x.png',
-    grade: Grade.Platinum,
-  },
-  {
     name: 'buzzvil',
     link: 'https://www.buzzvil.com',
     image: 'buzzvil@2x.png',
     grade: Grade.Platinum,
   },
   {
+    name: 'mesh korea',
+    link: 'https://meshkorea.net/kr/index.html',
+    image: 'nc@2x.png',
+    grade: Grade.Gold,
+  },
+  {
+    name: 'sendbird',
+    link: 'https://sendbird.com/',
+    image: 'nc@2x.png',
+    grade: Grade.Gold,
+  },
+  {
     name: 'ncsoft',
     link: 'http://ncsoft.com',
     image: 'nc@2x.png',
-    grade: Grade.Platinum,
+    grade: Grade.Gold,
+  },
+  {
+    name: '우아한테크코스',
+    link: 'https://woowacourse.github.io',
+    image: 'wooahan-tech@2x.png',
+    grade: Grade.SpaceProvider,
   },
 ];
