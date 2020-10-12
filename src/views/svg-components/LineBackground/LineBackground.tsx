@@ -61,7 +61,6 @@ interface LineBackgroundProps {
 
 
 const LineBackground: React.FC<LineBackgroundProps> = () => {
-
   const [isMobile, setIsMobile] = React.useState(false);
   const {
     athomeLength,

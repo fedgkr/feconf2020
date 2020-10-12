@@ -9,6 +9,7 @@ import SessionView from "@components/SessionView/SessionView";
 import SessionDetailModal from "@components/SessionDetailModal/SessionDetailModal";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import sessionsMotions from "@motions/sessions.motions";
+import {keyNote} from "@resources/data";
 
 interface SessionListSectionProps {}
 
@@ -16,7 +17,7 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
   const dispatch = useDispatch();
   const { sessions, selectedTrack, selectedSession } = useSessionState();
   const titleRef = useRef<HTMLDivElement>();
-  const { visible: titleVisible } = useIntersection(titleRef, { threshold: 1, bottom: false });
+  const { visible: titleVisible } = useIntersection(titleRef, { threshold: .1, bottom: false });
   const onTrackClick = useCallback((evt, track) => {
     evt.preventDefault();
     dispatch(setTrack(track));
@@ -24,12 +25,13 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
   const selectedSessionList = sessions.filter(session => session.track === selectedTrack);
   return (
     <motion.div
+      ref={titleRef}
       className={css.SessionListSection}
       initial="hidden"
       animate={titleVisible ? 'visible' : 'hidden'}
       variants={sessionsMotions.container}
     >
-      <motion.div ref={titleRef} className={css.title} variants={sessionsMotions.title}>
+      <motion.div className={css.title} variants={sessionsMotions.title}>
         <h2>SESSIONS</h2>
       </motion.div>
       <motion.div className={css.trackSelect} variants={sessionsMotions.title}>
@@ -47,8 +49,9 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
         </a>
       </motion.div>
       <div className={css.list}>
+        <SessionView session={keyNote} order={0}/>
         {selectedSessionList.map((session, key) =>
-          <SessionView key={key} session={session} order={key}/>)}
+          <SessionView key={key} session={session} order={key + 1}/>)}
       </div>
       <SessionDetailModal active={!!selectedSession}/>
     </motion.div>
