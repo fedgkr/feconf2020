@@ -51,6 +51,7 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
             <span>{selectedSession?.speaker.company + ' ' + selectedSession?.speaker.role}</span>
           </div>
         </div>
+        <div className={css.time}>{selectedSession?.startTime}-{selectedSession?.endTime}</div>
         <p className={css.description} dangerouslySetInnerHTML={{ __html: selectedSession?.description?.replace(/\n/, '<br/>') }}/>
         {/*<div className={css.buttonWrap}>*/}
         {/*  <button>보러가기</button>*/}

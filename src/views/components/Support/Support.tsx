@@ -62,7 +62,7 @@ const useRotateList = (messageList, active: boolean) => {
   return { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut };
 }
 
-const Support: React.FC<SupportProps> = () => {
+const Support: React.FC<SupportProps> = React.memo(() => {
   const { metadata, messageList } = useSupportState();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
@@ -119,6 +119,7 @@ const Support: React.FC<SupportProps> = () => {
                 className={classcat({
                   [css.messageItem]: true,
                   [css.active]: idx === currentIdx,
+                  [css.visible]: Math.abs(idx - currentIdx) <= 2,
                 })}
               >
                 <Message message={message}/>
@@ -130,6 +131,6 @@ const Support: React.FC<SupportProps> = () => {
       </motion.div>
     </motion.div>
   );
-}
+});
 
 export default Support;

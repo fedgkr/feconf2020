@@ -1,4 +1,4 @@
-import React, {useMemo, useRef} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import css from './SpeakerListSection.module.scss';
 import {motion} from "framer-motion";
 import SpeakerCardView from "@components/SpeakerCardView/SpeakerCardView";
@@ -10,6 +10,7 @@ import {Track} from "@constants/types";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import speakerListMotions from "@motions/speakerList.motion";
 import {useParallel} from "@utils/hooks/use-parallel";
+import MobileSpeakerList from "@components/MobileSpeakerList/MobileSpeakerList";
 
 interface SpeakerListSectionProps {}
 
@@ -23,6 +24,14 @@ const useActiveSpeaker = (sessionCnt: number, scrollProgress: number) => {
   return Math.floor(rawProgress === 0 ? 0 : currentIdx + 1);
 }
 
+const useClientRender = () => {
+  const [clientRender, setClientRender] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setClientRender(true), 200);
+  }, []);
+  return clientRender;
+}
+
 const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const { sessions } = useSessionState();
   const titleRef = useRef<HTMLDivElement>();
@@ -30,11 +39,13 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const speakerListRef = useRef<HTMLDivElement>();
   const { visible: titleVisible } = useIntersection(titleRef, { threshold: 1, bottom: false });
   const offsetInfo = useOffset(sectionRef, true);
-  const trackASessionList = useMemo(() => sessions.filter(s => s.track === Track.A), [sessions]);
-  const trackBSessionList = useMemo(() => sessions.filter(s => s.track === Track.B), [sessions]);
+  const speakerSessions = useMemo(() => sessions.filter(s => !s.noDetail), []);
+  const trackASessionList = useMemo(() => speakerSessions.filter(s => s.track === Track.A), []);
+  const trackBSessionList = useMemo(() => speakerSessions.filter(s => s.track === Track.B), []);
   const { isFixed, scrollProgress } = useParallel(sectionRef, 0, 20, 620);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
   const scrollSize = 5000;
+  const clientRender = useClientRender();
   const activeSpeakerIndex = useActiveSpeaker(sessions.length, scrollProgress);
   return (
     <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
@@ -57,10 +68,10 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
         <div ref={speakerListRef} className={css.overflowWrap} style={{ height: scrollSize }}>
           <div className={css.speakerList} style={{
             width: scrollSize,
-            transform: `translate3d(-${isFixed ? scrollProgress : 0}%, 0, 0)`,
+            transform: `translate3d(-${scrollProgress}%, 0, 0)`,
             opacity: isFixed ? scrollOpacity : 1,
           }}>
-            {sessions.map((session, idx) =>
+            {clientRender && speakerSessions.map((session, idx) =>
               <SpeakerCardView
                 key={session.title}
                 speaker={session.speaker}
@@ -71,25 +82,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
               />)}
           </div>
         </div>
-        <div className={css.mobileSpeakerList}>
-          {[trackASessionList, trackBSessionList].map((list, key) => (
-            <motion.div
-              key={key}
-              className={css.column}
-              initial="hidden"
-              animate={titleVisible ? 'visible' : 'hidden'}
-              variants={speakerListMotions.columnContainer}
-            >
-              {list.map((session, idx) =>
-                <SpeakerCardView
-                  key={session.title}
-                  speaker={session.speaker}
-                  order={idx * 2 + key}
-                  variants={speakerListMotions.columnItem}
-                />)}
-            </motion.div>
-          ))}
-        </div>
+        <MobileSpeakerList trackASessionList={trackASessionList} trackBSessionList={trackBSessionList} titleVisible={titleVisible}/>
       </motion.div>
     </div>
   );

@@ -28,13 +28,12 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
         <h4 className={css.title}>
           {title}
         </h4>
-        <p className={css.detail}>{speaker.name} | {speaker.company} {speaker.role}</p>
-          { !noDetail ?
-            <div className={css.buttonContainer}>
-              <button onClick={onSessionClick}>자세히 보기</button>
-              {/*<button className={css.video}>보러가기</button>*/}
-            </div> : null
-          }
+        <p className={css.detail}>{speaker.name} | {speaker.company}</p>
+        <div className={css.time}>{session.startTime}-{session.endTime}</div>
+        <div className={css.buttonContainer}>
+          { !noDetail ? <button onClick={onSessionClick}>자세히 보기</button> : null }
+          {/*<button className={css.video}>보러가기</button>*/}
+        </div>
       </div>
     </motion.div>
   );

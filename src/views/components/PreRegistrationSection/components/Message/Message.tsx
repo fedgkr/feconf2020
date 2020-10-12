@@ -7,7 +7,7 @@ interface MessageProps {
   message: IMessage;
 }
 
-const Message: React.FC<MessageProps> = ({ message: { user, message } }) => {
+const Message: React.FC<MessageProps> = React.memo(({ message: { user, message } }) => {
   const displayName = (user.displayName || user.username) || '';
   return (
     <div className={css.Message}>
@@ -27,6 +27,6 @@ const Message: React.FC<MessageProps> = ({ message: { user, message } }) => {
       </p>
     </div>
   );
-}
+});
 
 export default Message;

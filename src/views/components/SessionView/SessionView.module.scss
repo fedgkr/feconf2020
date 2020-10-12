@@ -4,9 +4,8 @@
 .SessionView {
   display: flex;
   justify-content: center;
-  height: 221px;
   &:not(:last-child) {
-    //margin-bottom: 81px;
+    margin-bottom: 64px;
   }
   .iconContainer {
     width: 140px;
@@ -36,11 +35,21 @@
     .detail {
       font-size: 16px;
       font-weight: 600;
+      margin-top: 8px;
+    }
+    .time {
+      align-self: flex-start;
+      font-size: 14px;
+      line-height: 14px;
+      padding: 6px 16px;
       margin-top: 16px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, .1);
     }
     .buttonContainer {
       display: flex;
       margin-top: 24px;
+      height: 48px;
       button {
         padding: 14px 32px;
         border: 1px solid white;
@@ -62,17 +71,16 @@
   }
   @include mobile {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: normal;
     height: auto;
     &:not(:last-child) {
-      margin-bottom: 40px;
+      margin-bottom: 54px;
     }
     .iconContainer {
       width: auto;
       height: auto;
-      margin-right: 0;
-      margin-bottom: 16px;
+      margin-right: 16px;
       .circle {
         width: 64px;
         height: 64px;
@@ -82,7 +90,7 @@
       width: auto;
       height: auto;
       &.center {
-        height: 50px;
+        height: auto;
       }
       .title {
         font-size: 18px;
@@ -93,6 +101,8 @@
         margin-top: 8px;
       }
       .buttonContainer {
+        margin-top: 18px;
+        height: auto;
         button {
           padding: 14px 24px;
           font-size: 14px;
