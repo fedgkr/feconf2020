@@ -25,6 +25,7 @@ export interface Session {
   track: Track;
   startTime: string;
   endTime: string;
+  noDetail?: boolean;
 }
 
 export interface Sponsor {
