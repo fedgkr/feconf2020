@@ -17,19 +17,19 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
   const onSessionClick = useCallback(() => {
     dispatch(setSession(session));
   }, [session]);
-  const { title, speaker } = session;
-  const isKeynote = session.track === Track.Keynote;
+  const { title, speaker, noDetail } = session;
+
   return (
     <motion.div className={css.SessionView} variants={sessionsMotions.title}>
       <div className={css.iconContainer}>
         <div className={css.circle} style={{ backgroundImage: `url("/images/backgrounds/img-gradient-${order + 1}.png")` }}/>
       </div>
-      <div className={classcat([css.infoContainer, isKeynote ? css.center : ''])}>
+      <div className={classcat([css.infoContainer, noDetail ? css.center : ''])}>
         <h4 className={css.title}>
           {title}
         </h4>
         <p className={css.detail}>{speaker.name} | {speaker.company} {speaker.role}</p>
-          { !isKeynote ?
+          { !noDetail ?
             <div className={css.buttonContainer}>
               <button onClick={onSessionClick}>자세히 보기</button>
               {/*<button className={css.video}>보러가기</button>*/}
