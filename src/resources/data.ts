@@ -1,22 +1,8 @@
 import {Grade, Session, Sponsor, Track} from "@constants/types";
 
-export const keyNote: Session = {
-  title: 'FEConf2020 행사 소개',
-  description: '',
-  track: Track.A,
-  startTime: '13:50',
-  endTime: '14:30',
-  speaker: {
-    name: '김태훈',
-    company: 'FEConf',
-    role: 'Organizer',
-  },
-  noDetail: true,
-};
-
 export const sessionList: Session[] = [
   {
-    title: 'FEConf2020 행사 소개',
+    title: '[Keynote] FEConf2020 at home',
     description: '',
     track: Track.A,
     startTime: '13:50',
@@ -109,15 +95,15 @@ export const sessionList: Session[] = [
   },
 
   {
-    title: '스폰서 세션: 토스 스폰서 세션',
+    title: '[Sponsor] 진짜 궁금해? 토스팀 개발자들의 리얼토크',
     description: '',
     track: Track.B,
     startTime: '13:30',
     endTime: '13:45',
     speaker: {
       name: 'Toss',
-      company: 'FE Chapter',
-      role: 'OOO | OOO | OOO | OOO | OOO',
+      company: 'Frontend Chapter',
+      role: '',
     },
     noDetail: true,
   },
