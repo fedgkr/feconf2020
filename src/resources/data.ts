@@ -3,7 +3,7 @@ import {Grade, Session, Sponsor, Track} from "@constants/types";
 export const keyNote: Session = {
   title: 'FEConf2020 행사 소개',
   description: '',
-  track: Track.Keynote,
+  track: Track.A,
   startTime: '13:50',
   endTime: '14:30',
   speaker: {
@@ -11,9 +11,23 @@ export const keyNote: Session = {
     company: 'FEConf',
     role: 'Organizer',
   },
+  noDetail: true,
 };
 
 export const sessionList: Session[] = [
+  {
+    title: 'FEConf2020 행사 소개',
+    description: '',
+    track: Track.A,
+    startTime: '13:50',
+    endTime: '14:30',
+    speaker: {
+      name: '김태훈',
+      company: 'FEConf',
+      role: 'Organizer',
+    },
+    noDetail: true,
+  },
   {
     title: '웹뷰에서 다크모드 상속받기: 일관성있는 사용자 경험을 위하여',
     description: '최근 들어 각 OS에 다크모드가 탑재되면서 다크모드에 대한 관심이 높아지고 있습니다. 웹에서의 다크모드는 어렵지 않게 구현할 수 있지만, 앱 내 웹뷰에서의 다크모드는 비교적 간단하지 않습니다. 다크모드를 어떻게 구현했는지, 그리고 구현하는 과정에서 만났던 문제를 어떻게 해결했는지 다뤄봅니다.',
@@ -40,7 +54,6 @@ export const sessionList: Session[] = [
       imagePosition: '50% 42%',
     },
   },
-
   {
     title: '한글 파일로부터 우리를 구원해줄 hwp.js',
     description: '한글 파일을 읽고 렌더링하려는 여러번의 시도가 있었습니다.\n' +
@@ -55,7 +68,6 @@ export const sessionList: Session[] = [
       role: 'Frontend Developer',
     },
   },
-
   {
     title: 'React Native에서 Pinch Zoom을 구현하면서 배운것들',
     description: '핀치줌을 직접 구현한 경험을 바탕으로 발표시간 동안 처음부터 같이 구현해보는 시간을 가질 예정입니다. 여기서 구현한 방법이 최적의 방법이 아닐 수 있다고 생각합니다. 하지만 구현하는 과정을 통해서 ReactNative 의 panResponder 나 Animated 에 대한 이해가 깊어졌고 더 잘 사용할 수 있게 되었습니다. ',
@@ -96,6 +108,19 @@ export const sessionList: Session[] = [
     },
   },
 
+  {
+    title: '스폰서 세션: 토스 스폰서 세션',
+    description: '',
+    track: Track.B,
+    startTime: '13:30',
+    endTime: '13:45',
+    speaker: {
+      name: '김태훈',
+      company: 'FEConf',
+      role: 'Organizer',
+    },
+    noDetail: true,
+  },
   {
     title: '확장 가능한 CSS를 재사용하여 스타일링하기',
     description: 'Sass, 어떻게 사용해야 잘 사용하는 걸까요\n' +
