@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback, useMemo, useRef} from 'react';
 import css from './SessionListSection.module.scss';
 import {motion} from "framer-motion";
 import {useSessionState} from "@store/index";
@@ -9,7 +9,6 @@ import SessionView from "@components/SessionView/SessionView";
 import SessionDetailModal from "@components/SessionDetailModal/SessionDetailModal";
 import {useIntersection} from "@utils/hooks/use-intersection";
 import sessionsMotions from "@motions/sessions.motions";
-import {keyNote} from "@resources/data";
 
 interface SessionListSectionProps {}
 
@@ -17,12 +16,12 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
   const dispatch = useDispatch();
   const { sessions, selectedTrack, selectedSession } = useSessionState();
   const titleRef = useRef<HTMLDivElement>();
-  const { visible: titleVisible } = useIntersection(titleRef, { threshold: .1, bottom: false });
+  const { visible: titleVisible } = useIntersection(titleRef, { threshold: .01, bottom: false });
   const onTrackClick = useCallback((evt, track) => {
     evt.preventDefault();
     dispatch(setTrack(track));
   }, []);
-  const selectedSessionList = sessions.filter(session => session.track === selectedTrack);
+  const selectedSessionList = useMemo(() => sessions.filter(session => session.track === selectedTrack), [selectedTrack]);
   return (
     <motion.div
       ref={titleRef}
@@ -50,7 +49,7 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
       </motion.div>
       <div className={css.list}>
         {selectedSessionList.map((session, key) =>
-          <SessionView key={key} session={session} order={key + 1}/>)}
+          <SessionView key={key} session={session} order={key}/>)}
       </div>
       <SessionDetailModal active={!!selectedSession}/>
     </motion.div>

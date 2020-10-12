@@ -5,8 +5,8 @@ export const sessionList: Session[] = [
     title: '[Keynote] FEConf2020 at home',
     description: '',
     track: Track.A,
-    startTime: '13:50',
-    endTime: '14:30',
+    startTime: '13:30',
+    endTime: '13:45',
     speaker: {
       name: '김태훈',
       company: 'FEConf',

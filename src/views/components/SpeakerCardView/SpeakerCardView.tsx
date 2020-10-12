@@ -43,7 +43,7 @@ const useTranslatingImage = (order: number, imageUrl: string) => {
     const io = new IntersectionObserver(onIntersect, { threshold: .15 });
     io.observe(wrapperEl.current);
     return () => io.disconnect();
-  }, [onIntersect]);
+  }, []);
   useEffect(() => {
     const timeout = setTimeout(() => firstEffect.current = false, 500);
     return () => clearTimeout(timeout);

@@ -50,9 +50,6 @@
         }
       }
     }
-    .mobileSpeakerList {
-      display: none;
-    }
   }
   @include mobile {
     margin: 264px auto 0 auto;
@@ -84,14 +81,6 @@
       }
       .overflowWrap {
         display: none;
-      }
-      .mobileSpeakerList {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 64px;
-        .column:nth-child(even) {
-          margin-top: 182px;
-        }
       }
     }
   }

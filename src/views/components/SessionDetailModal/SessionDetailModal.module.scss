@@ -39,8 +39,17 @@
       }
     }
   }
+  .time {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 6px 16px;
+    margin-top: 16px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, .1);
+  }
   .description {
-    margin-top: 32px;
+    margin-top: 24px;
     font-size: 16px;
     line-height: 24px;
     word-break: keep-all;

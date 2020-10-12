@@ -10,12 +10,13 @@
     position: relative;
     left: 50%;
     display: inline-block;
-    margin: 238px 0 0 -16px;
     width: 340px;
+    margin: 238px 0 0 -16px;
     transform: translateX(-100%);
     p {
       display: flex;
       align-items: center;
+      min-width: 100%;
       margin: 41px 0 0;
       font-size: 0;
       font-family: $gilroy-font;

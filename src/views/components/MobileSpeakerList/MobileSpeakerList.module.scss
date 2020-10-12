@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixin';
+
+.MobileSpeakerList {
+  display: none;
+  @include mobile {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+    .column:nth-child(even) {
+      margin-top: 182px;
+    }
+  }
+}
