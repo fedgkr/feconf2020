@@ -1,6 +1,7 @@
 export enum Track {
   A = 'A',
   B = 'B',
+  Keynote = 'Keynote',
 }
 
 export enum Grade {

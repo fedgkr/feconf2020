@@ -4,8 +4,9 @@
 .SessionView {
   display: flex;
   justify-content: center;
+  height: 221px;
   &:not(:last-child) {
-    margin-bottom: 81px;
+    //margin-bottom: 81px;
   }
   .iconContainer {
     width: 140px;
@@ -23,6 +24,10 @@
     display: flex;
     flex-direction: column;
     width: 445px;
+    &.center {
+      height: 140px;
+      justify-content: center;
+    }
     .title {
       font-size: 24px;
       font-weight: 800;
@@ -59,6 +64,7 @@
     display: flex;
     flex-direction: column;
     justify-content: normal;
+    height: auto;
     &:not(:last-child) {
       margin-bottom: 40px;
     }
@@ -75,6 +81,9 @@
     .infoContainer {
       width: auto;
       height: auto;
+      &.center {
+        height: 50px;
+      }
       .title {
         font-size: 18px;
         line-height: 24px;

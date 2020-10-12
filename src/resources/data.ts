@@ -1,5 +1,18 @@
 import {Grade, Session, Sponsor, Track} from "@constants/types";
 
+export const keyNote: Session = {
+  title: 'FEConf2020 행사 소개',
+  description: '',
+  track: Track.Keynote,
+  startTime: '13:50',
+  endTime: '14:30',
+  speaker: {
+    name: '김태훈',
+    company: 'FEConf',
+    role: 'Organizer',
+  },
+};
+
 export const sessionList: Session[] = [
   {
     title: 'iframe을 활용하여 외부 Service를 통합하기',
@@ -215,13 +228,13 @@ export const sponsorList: Sponsor[] = [
   {
     name: 'mesh korea',
     link: 'https://meshkorea.net/kr/index.html',
-    image: 'nc@2x.png',
+    image: 'meshkorea@2x.png',
     grade: Grade.Gold,
   },
   {
     name: 'sendbird',
     link: 'https://sendbird.com/',
-    image: 'nc@2x.png',
+    image: 'sendbird@2x.png',
     grade: Grade.Gold,
   },
   {

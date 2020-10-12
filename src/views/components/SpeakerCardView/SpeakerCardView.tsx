@@ -51,7 +51,7 @@ const useTranslatingImage = (order: number, imageUrl: string) => {
   return { wrapperEl, style };
 }
 
-const SpeakerCardView: React.FC<SpeakerCardViewProps> = React.memo(({ speaker, active, preActive, order, variants }) => {
+const SpeakerCardView: React.FC<SpeakerCardViewProps> = React.memo(({ speaker, active, preActive, order }) => {
   const { wrapperEl, style } = useTranslatingImage(order, `/images/speakers/${speaker.name}.png`);
   return (
     <motion.div
@@ -61,7 +61,6 @@ const SpeakerCardView: React.FC<SpeakerCardViewProps> = React.memo(({ speaker, a
         [css.active]: active,
         [css.preActive]: preActive,
       })}
-      variants={variants}
     >
       <div style={style} className={css.imageWrap}/>
       <div className={css.info}>
