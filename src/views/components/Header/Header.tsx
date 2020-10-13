@@ -60,7 +60,8 @@ const Header: React.FC<HeaderProps> = ({ hasSessions = true }) => {
   const onNavigateTo = useCallback((evt, target: string) => {
     evt.preventDefault();
     const element = document.getElementById(target);
-    element?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    const { top } = element?.getBoundingClientRect()
+    scrollTo(0, top);
   }, []);
   useEffect(() => {
     setTimeout(() => initMenu(true));

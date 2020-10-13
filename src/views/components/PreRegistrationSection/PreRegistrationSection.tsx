@@ -28,8 +28,8 @@ const PreRegistrationSection: React.FC<PreRegistrationSectionProps> = () => {
           <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
         </motion.div>
         <div className={css.textContainer}>
-          <motion.h2 variants={preRegistrationMotions.text}>PRE-REGISTRATION</motion.h2>
-          <motion.h4 variants={preRegistrationMotions.text}>FEConf2020을 응원해주세요</motion.h4>
+          <motion.h2 variants={preRegistrationMotions.text}>Thanks for Pre-registration</motion.h2>
+          {/*<motion.h4 variants={preRegistrationMotions.text}>FEConf2020을 응원해주세요</motion.h4>*/}
         </div>
       </motion.div>
       <div className={css.contentContainer}>

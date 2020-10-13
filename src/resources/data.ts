@@ -1,5 +1,7 @@
 import {Grade, Session, Sponsor, Track} from "@constants/types";
 
+export const youtubeLink = 'https://www.youtube.com/channel/UCWEzfYIpFBIG5jh6laXC6hA';
+
 export const sessionList: Session[] = [
   {
     title: '[Keynote] FEConf2020 at home',
