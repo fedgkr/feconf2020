@@ -44,11 +44,10 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const trackBSessionList = useMemo(() => speakerSessions.filter(s => s.track === Track.B), []);
   const { isFixed, scrollProgress } = useParallel(sectionRef, 0, 20, 620);
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
-  const scrollSize = 5000;
   const clientRender = useClientRender();
   const activeSpeakerIndex = useActiveSpeaker(speakerSessions.length, scrollProgress);
   return (
-    <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
+    <div ref={sectionRef} className={css.SpeakerListSection}>
       <motion.div
         className={cc([css.wrapper, isFixed ? css.fixed : ''])}
         style={{ opacity: isFixed ? scrollOpacity : 1 }}
@@ -65,9 +64,8 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
             <AwesomeCircle index={1} size={2} offsetInfo={offsetInfo} />
           </div>
         </div>
-        <div ref={speakerListRef} className={css.overflowWrap} style={{ height: scrollSize }}>
+        <div ref={speakerListRef} className={css.overflowWrap}>
           <div className={css.speakerList} style={{
-            width: scrollSize,
             transform: `translate3d(-${scrollProgress}%, 0, 0)`,
             opacity: isFixed ? scrollOpacity : 1,
           }}>
