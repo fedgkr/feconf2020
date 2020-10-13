@@ -9,8 +9,8 @@ export const sessionList: Session[] = [
     endTime: '13:40',
     speaker: {
       name: '김태훈',
-      company: 'FEConf',
-      role: 'Organizer',
+      company: 'FEConf Organizer',
+      role: '',
     },
     noDetail: true,
   },
