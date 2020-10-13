@@ -46,7 +46,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const scrollOpacity = scrollProgress > 90 ? (100 - scrollProgress) / 10 : 1;
   const scrollSize = 5000;
   const clientRender = useClientRender();
-  const activeSpeakerIndex = useActiveSpeaker(sessions.length, scrollProgress);
+  const activeSpeakerIndex = useActiveSpeaker(speakerSessions.length, scrollProgress);
   return (
     <div ref={sectionRef} className={css.SpeakerListSection} style={{ height: scrollSize }}>
       <motion.div
