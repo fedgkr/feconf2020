@@ -6,7 +6,7 @@ export const sessionList: Session[] = [
     description: '',
     track: Track.A,
     startTime: '13:30',
-    endTime: '13:45',
+    endTime: '13:40',
     speaker: {
       name: '김태훈',
       company: 'FEConf',
@@ -98,8 +98,8 @@ export const sessionList: Session[] = [
     title: '[Sponsor] 진짜 궁금해? 토스팀 개발자들의 리얼토크',
     description: '',
     track: Track.B,
-    startTime: '13:30',
-    endTime: '13:45',
+    startTime: '(keynote 다음) 13:40',
+    endTime: '13:50',
     speaker: {
       name: 'Toss',
       company: 'Frontend Chapter',

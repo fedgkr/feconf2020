@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import css from './SessionView.module.scss';
 import {motion} from "framer-motion";
-import {Session, Track} from "@constants/types";
+import {Session} from "@constants/types";
 import {setSession} from "@store/slices/sessionSlice";
 import {useDispatch} from "react-redux";
 import sessionsMotions from "@motions/sessions.motions";
