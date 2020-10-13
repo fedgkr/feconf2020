@@ -24,6 +24,7 @@ const SessionListSection: React.FC<SessionListSectionProps> = () => {
   const selectedSessionList = useMemo(() => sessions.filter(session => session.track === selectedTrack), [selectedTrack]);
   return (
     <motion.div
+      id="sessions"
       ref={titleRef}
       className={css.SessionListSection}
       initial="hidden"

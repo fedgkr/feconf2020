@@ -3,6 +3,7 @@ import RegisterButton from "@components/RegisterButton/RegisterButton";
 import {setSupportForm} from "@store/slices/supportSlice";
 import {useDispatch} from "react-redux";
 import {useSupportState} from "@store/index";
+import {youtubeLink} from "@resources/data";
 
 interface RegisterSupportButtonProps {}
 
@@ -11,11 +12,12 @@ const RegisterSupportButton: React.FC<RegisterSupportButtonProps> = React.memo((
   const { currentUser } = useSupportState();
   const onRegister = useCallback((evt) => {
     evt.preventDefault();
-    dispatch(setSupportForm(true));
+    // dispatch(setSupportForm(true));
+    location.href = youtubeLink;
   }, [currentUser]);
   return (
     <RegisterButton onClick={onRegister}>
-      사전 등록하기
+      알림 설정하기
     </RegisterButton>
   );
 });

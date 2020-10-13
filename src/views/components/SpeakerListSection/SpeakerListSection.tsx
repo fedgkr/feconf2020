@@ -47,7 +47,7 @@ const SpeakerListSection: React.FC<SpeakerListSectionProps> = () => {
   const clientRender = useClientRender();
   const activeSpeakerIndex = useActiveSpeaker(speakerSessions.length, scrollProgress);
   return (
-    <div ref={sectionRef} className={css.SpeakerListSection}>
+    <div id="speakers" ref={sectionRef} className={css.SpeakerListSection}>
       <motion.div
         className={cc([css.wrapper, isFixed ? css.fixed : ''])}
         style={{ opacity: isFixed ? scrollOpacity : 1 }}

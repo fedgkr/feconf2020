@@ -1,4 +1,4 @@
-import {MutableRefObject, useCallback, useState} from "react";
+import {MutableRefObject, useCallback, useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {useStickyState} from "@store/index";
 import {getWindowInfo, useWindowResize, useWindowScroll} from "@utils/hooks/use-window";
@@ -13,10 +13,10 @@ export const useParallel = (containerRef: MutableRefObject<HTMLElement>, order: 
 
   const onScroll = useCallback(() => {
     requestAnimationFrame(() => {
-      const { y, height: scrollHeight } = containerRef.current.getBoundingClientRect();
-      const containerY = -(y - offset);
-      const insideOfContainer = containerY > 0 && containerY < scrollHeight;
-      const progress = Math.max(Math.min(containerY / scrollHeight, 1), 0);
+      const scrollTop = getWindowInfo().scroll;
+      const containerY = offsetTop - scrollTop - offset;
+      const insideOfContainer = containerY < 0 && containerY > -height;
+      const progress = Math.max(Math.min(-containerY / height, 1), 0);
 
       setFixed(insideOfContainer);
       setScrollProgress(progress * 100);

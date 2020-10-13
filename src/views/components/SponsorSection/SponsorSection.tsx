@@ -36,7 +36,7 @@ const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const { isFixed, scrollProgress } = useParallel(sectionRef, 1, 200, 1200);
   const scrollOpacity = scrollProgress > 80 ? (100 - scrollProgress) / 20 : 1;
   return (
-    <div ref={sectionRef} className={css.SponsorSection}>
+    <div id="sponsors" ref={sectionRef} className={css.SponsorSection}>
       <motion.div
         className={css.sponsorList}
         initial="hidden"
