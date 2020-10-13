@@ -28,7 +28,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
         <h4 className={css.title}>
           {title}
         </h4>
-        <p className={css.detail}>{speaker.name} | {speaker.company}</p>
+        <p className={css.detail}>{speaker.name} {speaker.company && `| ${speaker.company}`}</p>
         <div className={css.time}>{session.startTime}-{session.endTime}</div>
         <div className={css.buttonContainer}>
           { !noDetail ? <button onClick={onSessionClick}>자세히 보기</button> : null }
