@@ -41,7 +41,7 @@ const LINE_BACKGROUND_INFOS = {
   }
 } as const;
 
-function getSaceShipInfo(linePath: SVGPathElement, length: number, totalLength: number, sign: number,) {
+function getSpaceShipInfo(linePath: SVGPathElement, length: number, totalLength: number, sign: number,) {
   const length1 = sign > 0 ? length : totalLength - length;
   const length2 = sign > 0 ? length1 + 2 : length1 - 2;
   const { x, y } = linePath.getPointAtLength(length1);
@@ -123,7 +123,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           transform: {
             translate: () => {
               const time = Math.min(2, Math.max(1.6, scene.getIterationTime()));
-              const info = getSaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength, sign);
+              const info = getSpaceShipInfo(linePath, athomeLength - 100 + 100 * time / 2, totalLength, sign);
 
               return `${info.x}px, ${info.y}px`;
             },
@@ -148,7 +148,7 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
   }, [isMobile, offsets]);
 
   const sizeRef = useWindowResize(({ width }) => {
-    if (!isMobile && width < 768) {
+    if (!isMobile && width <= 768) {
       setIsMobile(true);
     } else if (isMobile && width > 768) {
       setIsMobile(false);
@@ -208,18 +208,20 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
     if (length >= stopLength) {
       lineWidth += (length - stopLength);
     }
-    const { x, y, rad } = getSaceShipInfo(linePath, length, totalLength, sign);
-
-    lineStrokePath.style.cssText += `stroke-dashoffset: ${-totalTime}`;
-    grayPath.style.cssText += `stroke-dashoffset: ${length - sign * length};stroke-dasharray: ${length} ${totalLength}`
-    linePath.style.cssText += `stroke-dashoffset: ${lineWidth - sign * length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
-    airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad) scale(${scale}); opacity: 1;`;
+    const { x, y, rad } = getSpaceShipInfo(linePath, length, totalLength, sign);
 
     if (time === 0 && scene.isPaused()) {
       playTimer = window.setTimeout(() => {
         scene.play();
       }, 2000);
     }
+
+    return () => {
+      lineStrokePath.style.cssText += `stroke-dashoffset: ${-totalTime}`;
+      grayPath.style.cssText += `stroke-dashoffset: ${length - sign * length};stroke-dasharray: ${length} ${totalLength}`
+      linePath.style.cssText += `stroke-dashoffset: ${lineWidth - sign * length}; stroke-dasharray: ${lineWidth} ${totalLength}`;
+      airplanePath.style.cssText += `transform: translate(${x}px, ${y}px) rotate(${rad}rad) scale(${scale}); opacity: 1;`;
+    };
   }, [isMobile, offsets]);
 
   return <div className={css.LineBackground} style={{

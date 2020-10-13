@@ -14,9 +14,12 @@ export const useParallel = (containerRef: MutableRefObject<HTMLElement>, order: 
   const onScroll = useCallback(() => {
     requestAnimationFrame(() => {
       const scrollTop = getWindowInfo().scroll;
-      const containerY = offsetTop - scrollTop - offset;
-      const insideOfContainer = containerY < 0 && containerY > -height;
-      const progress = Math.max(Math.min(-containerY / height, 1), 0);
+
+      const containerY = -(offsetTop - scrollTop - offset);
+      const scrollHeight = height;
+
+      const insideOfContainer = containerY > 0 && containerY < scrollHeight;
+      const progress = Math.max(Math.min(containerY / scrollHeight, 1), 0);
 
       setFixed(insideOfContainer);
       setScrollProgress(progress * 100);
