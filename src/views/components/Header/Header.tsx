@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {motion, useViewportScroll} from "framer-motion";
+import {motion} from "framer-motion";
 import {useDispatch} from "react-redux";
 import classcat from "classcat";
 import css from './Header.module.scss';
@@ -9,6 +9,7 @@ import {setMenuState} from "@store/slices/appSlice";
 import dynamic from "next/dynamic";
 import RegisterSupportButton from "@components/RegisterSupportButton/RegisterSupportButton";
 import headerMotions from "@motions/header.motion";
+import { useWindowScroll } from '@utils/hooks/use-window';
 
 const MenuModal = dynamic(() => import("@components/MenuModal/MenuModal"));
 
@@ -18,24 +19,19 @@ interface HeaderProps {
 
 const useAnimatedHeader = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const { scrollY } = useViewportScroll();
   const latestScrollYRef = useRef<number>();
-  useEffect(() => {
-    scrollY.onChange((value) => {
-      const offset = 12;
-      const isHeroPosition = value <= 100;
-      const isSwipeUp = !isVisible && (latestScrollYRef.current - offset) > value;
-      const isSwipeDown = isVisible && latestScrollYRef.current < (value - offset);
-      if (isHeroPosition || isSwipeUp) {
-        setIsVisible(true);
-      } else if (isSwipeDown) {
-        setIsVisible(false);
-      }
-      latestScrollYRef.current = value;
-    });
-    return () => {
-      scrollY.clearListeners();
-    };
+
+  useWindowScroll(({ scroll }) => {
+    const offset = 12;
+    const isHeroPosition = scroll <= 100;
+    const isSwipeUp = !isVisible && (latestScrollYRef.current - offset) > scroll;
+    const isSwipeDown = isVisible && latestScrollYRef.current < (scroll - offset);
+    if (isHeroPosition || isSwipeUp) {
+      setIsVisible(true);
+    } else if (isSwipeDown) {
+      setIsVisible(false);
+    }
+    latestScrollYRef.current = scroll;
   }, [isVisible]);
   return { isVisible };
 }

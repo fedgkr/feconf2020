@@ -50,7 +50,9 @@ export default function AwesomeCircle(props: AwesomeCircleProps) {
       - (scroll + height / 2);
 
     const ratio = pos / height * 50;
-    circleRef.current!.style.transform = `translateY(${ratio}%)`;
+    return () => {
+      circleRef.current!.style.transform = `translateY(${ratio}%)`;
+    };
   }, [props.offsetInfo]);
 
   return <div className={css.AwesomeCircle} ref={circleRef}>

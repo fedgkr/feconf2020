@@ -14,7 +14,7 @@ export const windowInfo: WindowInfo = {
 };
 
 const windowCallbacks: {
-  [key: string]: Array<(e: WindowInfo) => void>,
+  [key: string]: Array<(e: WindowInfo) => ((() => void) | undefined)>,
 } = {
   scroll: [],
   resize: [],
@@ -23,8 +23,12 @@ const windowCallbacks: {
 function scrollCallback() {
   const scrollTop = document.documentElement.scrollTop;
   windowInfo.scroll = scrollTop;
-  windowCallbacks.scroll.forEach(callback => {
-    callback({ ...windowInfo });
+  const afterCallbacks = windowCallbacks.scroll.map(callback => {
+    return callback({ ...windowInfo });
+  });
+
+  afterCallbacks.forEach(callback => {
+    callback && callback();
   });
 
   return scrollTop;
@@ -38,8 +42,12 @@ function resizeCallback() {
   windowInfo.height = height;
   windowInfo.scrollHeight = scrollHeight;
 
-  windowCallbacks.resize.forEach(callback => {
-    callback({ ...windowInfo });
+  const afterCallbacks = windowCallbacks.resize.map(callback => {
+    return callback({ ...windowInfo });
+  });
+
+  afterCallbacks.forEach(callback => {
+    callback && callback();
   });
 
   return windowInfo;
@@ -55,7 +63,10 @@ function addWindowEvent(
     defaultCallback();
   }
   callbacks.push(callback);
-  callback({ ...windowInfo });
+  const afterCallback = callback({ ...windowInfo });
+
+
+  afterCallback && afterCallback();
   return { ...windowInfo };
 }
 function removeWindowEvent(
@@ -79,7 +90,7 @@ export function useWindowScroll(callback: (e: WindowInfo) => any, deps: any[] = 
   useEffect(() => {
     function onScroll(e: WindowInfo) {
       ref.current = e;
-      callback(e);
+      return callback(e);
     }
     ref.current = addWindowScroll(onScroll);
 
@@ -99,7 +110,7 @@ export function useWindowResize(callback: (e: { width: number, height: number, s
   useEffect(() => {
     function onResize(e: { width: number, height: number, scrollHeight: number }) {
       ref.current = e;
-      callback(e);
+      return callback(e);
     }
     ref.current = addWindowResize(onResize);
 
