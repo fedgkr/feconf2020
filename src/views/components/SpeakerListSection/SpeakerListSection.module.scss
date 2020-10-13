@@ -1,10 +1,13 @@
 @import 'variables';
 @import 'mixin';
 
+$scroll-size: 5000px;
+
 .SpeakerListSection {
   max-width: $page-content-width;
   margin: 447px auto 0 auto;
   pointer-events: none;
+  height: $scroll-size;
   .wrapper {
     position: relative;
     &.fixed {
@@ -40,10 +43,12 @@
       }
     }
     .overflowWrap {
+      height: $scroll-size;
       overflow: hidden;
       .speakerList {
         position: absolute;
         margin-top: 120px;
+        width: $scroll-size;
         display: flex;
         & > div:not(:last-child) {
           margin-right: 140px;
