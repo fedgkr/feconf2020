@@ -174,6 +174,8 @@ const LineBackground: React.FC<LineBackgroundProps> = () => {
           return true;
         }
       });
+    } else {
+      nextFixed = false;
     }
     setTranslate(nextTranslate);
     setFixed(nextFixed);
