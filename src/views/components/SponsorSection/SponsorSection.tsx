@@ -28,7 +28,7 @@ const useTwoColumnList = (sponsorList, grade: Grade) => {
 const SponsorSection: React.FC<SponsorSectionProps> = () => {
   const sectionRef = useRef<HTMLDivElement>();
   const offsetInfo = useOffset(sectionRef, true);
-  const { visible } = useIntersection(sectionRef, { threshold: .2, bottom: false });
+  const { visible } = useIntersection(sectionRef, { threshold: .1, bottom: false });
   const diamondSponsorList = useTwoColumnList(sponsorList, Grade.Diamond);
   const platinumSponsorList = useTwoColumnList(sponsorList, Grade.Platinum);
   const goldSponsorList = useTwoColumnList(sponsorList, Grade.Gold);

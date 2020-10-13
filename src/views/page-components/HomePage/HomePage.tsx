@@ -22,7 +22,7 @@ const SupportFormModal = dynamic(() => import("@components/SupportFormModal/Supp
 
 interface HomePageProps { }
 
-const useSupportModal = () => {
+export const useSupportModal = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   useEffect(() => {
