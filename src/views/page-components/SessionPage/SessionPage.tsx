@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import css from './SessionPage.module.scss';
 import Header from "@components/Header/Header";
 import LineBackground from "@svgs/LineBackground/LineBackground";
@@ -12,11 +12,18 @@ import SpeakerListSection from "@components/SpeakerListSection/SpeakerListSectio
 import SessionListSection from "@components/SessionListSection/SessionListSection";
 import SponsorSection from "@components/SponsorSection/SponsorSection";
 import {useFirebase} from "@utils/hooks/use-firebase";
+import {useSupportState} from "@store/index";
+import {useDynamicRender} from "@utils/hooks/use-dynamic-render";
+import {useSupportModal} from "../HomePage/HomePage";
+import SupportFormModal from "@components/SupportFormModal/SupportFormModal";
 
 interface SessionPageProps {}
 
 const SessionPage: React.FC<SessionPageProps> = () => {
+  const { supportFormOpen } = useSupportState();
+  const renderState = useDynamicRender(supportFormOpen);
   useFirebase();
+  useSupportModal();
   return (
     <div className={css.SessionPage}>
       <Header />
@@ -32,6 +39,7 @@ const SessionPage: React.FC<SessionPageProps> = () => {
         <RegisterSection />
       </div>
       <Footer />
+      {renderState ? <SupportFormModal active={supportFormOpen} /> : null}
     </div>
   );
 }
