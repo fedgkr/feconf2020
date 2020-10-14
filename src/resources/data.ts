@@ -87,7 +87,7 @@ export const sessionList: Session[] = [
     description: '데브시스터즈에서 다양한 웹 서비스를 개발하면서 다뤘던 크고 작은 상태, 이런 상태들을 효과적으로 관리하고 설명하기 위한 훌륭한 멘탈모델이 되어준 Harel statecharts에 대해서 소개합니다.',
     track: Track.A,
     startTime: '18:10',
-    endTime: '18:40',
+    endTime: '18:50',
     speaker: {
       name: '김혜성',
       company: 'Devsisters',
@@ -181,7 +181,7 @@ export const sessionList: Session[] = [
     description: '최근에 물류 백오피스를 만들면서 많은 Input들을 다뤄야 했습니다. 작업을 진행하면서 Context API만으로 작업을 시작했고 퍼포먼스 문제에 부딪혔습니다. 해당 문제를 해결하기 위해서 어떤 시행착오를 겪고 어떻게 해결했는 지를 경험담을 공유하고자 합니다. 또한 스스로 무의식적으로 사용하던 상태관리 라이브러리의 최적화 방안에 대해서 소개합니다.',
     track: Track.B,
     startTime: '18:10',
-    endTime: '18:40',
+    endTime: '18:50',
     speaker: {
       name: '김성현',
       company: 'tPay',
