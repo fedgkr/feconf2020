@@ -7,7 +7,7 @@ export interface WindowInfo {
   scrollHeight: number;
 }
 export const windowInfo: WindowInfo = {
-  scroll: 0,
+  scroll: typeof document !== "undefined" ? document.documentElement.scrollTop : 0,
   width: 0,
   height: 0,
   scrollHeight: 0,
