@@ -11,7 +11,7 @@
     "firebase": "^7.19.0",
     "framer-motion": "^2.3.0",
     "intersection-observer": "^0.11.0",
-    "next": "^9.5.1",
+    "next": "^9.5.4",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
