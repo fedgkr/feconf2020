@@ -1,0 +1,116 @@
+@import 'variables';
+@import 'mixin';
+
+.SessionView {
+  display: flex;
+  justify-content: center;
+  &:not(:last-child) {
+    margin-bottom: 64px;
+  }
+  .iconContainer {
+    width: 140px;
+    height: 140px;
+    margin-right: 35px;
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 445px;
+    &.center {
+      height: 140px;
+      justify-content: center;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+    .detail {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .time {
+      align-self: flex-start;
+      font-size: 14px;
+      line-height: 14px;
+      padding: 6px 16px;
+      margin-top: 16px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, .1);
+    }
+    .buttonContainer {
+      display: flex;
+      margin-top: 24px;
+      height: 48px;
+      button {
+        padding: 14px 32px;
+        border: 1px solid white;
+        border-radius: 24px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        outline: none;
+        background-color: transparent;
+        &:first-child {
+          margin-right: 16px;
+        }
+        &.video {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+  }
+  @include mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: normal;
+    height: auto;
+    &:not(:last-child) {
+      margin-bottom: 54px;
+    }
+    .iconContainer {
+      width: auto;
+      height: auto;
+      margin-right: 16px;
+      .circle {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .infoContainer {
+      width: auto;
+      height: auto;
+      &.center {
+        height: auto;
+      }
+      .title {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      .detail {
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      .buttonContainer {
+        margin-top: 18px;
+        height: auto;
+        button {
+          padding: 14px 24px;
+          font-size: 14px;
+          &:first-child {
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+  }
+}

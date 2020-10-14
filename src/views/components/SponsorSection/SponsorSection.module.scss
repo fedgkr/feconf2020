@@ -1,0 +1,95 @@
+@import 'variables';
+@import 'mixin';
+
+.SponsorSection {
+  position: relative;
+  max-width: $page-content-width;
+  margin: 340px auto -160px auto;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 1078px;
+  .titleContainer {
+    position: relative;
+    flex-grow: 1;
+    margin-right: 65px;
+    .wrapper {
+      &.fixed {
+        position: fixed;
+        top: 200px;
+      }
+      h2 {
+        line-height: 80px;
+        font-size: 80px;
+        font-weight: 900;
+        font-family: $gilroy-font;
+      }
+      h4 {
+        margin-top: 4px;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+      .circle, .dashedCircle {
+        position: absolute;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      .circle {
+        top: -232px;
+        left: -134px;
+        width: 411px;
+        height: 411px;
+        transform: translateZ(0);
+      }
+      .dashedCircle {
+        width: 188px;
+        height: 188px;
+        top: -210px;
+        left: 160px;
+      }
+    }
+  }
+  .sponsorList {
+    width: 460px;
+    margin-top: -26px;
+  }
+  @include mobile {
+    padding: 0 20px;
+    margin: 420px auto 254px auto;
+    flex-direction: column-reverse;
+    height: 1052px;
+    .titleContainer {
+      position: relative;
+      margin-right: 0;
+      .wrapper {
+        position: relative !important;
+        top: 0 !important;
+        h2 {
+          line-height: 36px;
+          font-size: 40px;
+        }
+        h4 {
+          margin-top: 8px;
+          font-size: 20px;
+          line-height: 28px;
+        }
+        .circle {
+          top: -142px;
+          left: -104px;
+          width: 257px;
+          height: 257px;
+        }
+        .dashedCircle {
+          width: 118px;
+          height: 118px;
+          top: -100px;
+          left: 80px;
+        }
+      }
+    }
+    .sponsorList {
+      width: auto;
+      margin-top: 80px;
+    }
+  }
+}

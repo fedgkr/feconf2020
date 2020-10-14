@@ -62,7 +62,7 @@ const useRotateList = (messageList, active: boolean) => {
   return { listRef, yOffset, messages, currentIdx, onMouseOver, onMouseOut };
 }
 
-const Support: React.FC<SupportProps> = () => {
+const Support: React.FC<SupportProps> = React.memo(() => {
   const { metadata, messageList } = useSupportState();
   const contentRef = useRef();
   const { visible: contentVisible } = useIntersection(contentRef, { threshold: .5, bottom: false });
@@ -81,7 +81,7 @@ const Support: React.FC<SupportProps> = () => {
       variants={preRegistrationMotions.contentContainer}
     >
       <div className={css.registerContainer}>
-        <motion.p variants={preRegistrationMotions.contentText}>지금까지 응원해주신 분들</motion.p>
+        <motion.p variants={preRegistrationMotions.contentText}>응원해주신 분들</motion.p>
         <motion.div
           className={css.messageNumberWrap}
           variants={preRegistrationMotions.contentText}
@@ -95,11 +95,10 @@ const Support: React.FC<SupportProps> = () => {
           <span>명</span>
         </motion.div>
         <motion.p variants={preRegistrationMotions.contentText}>
-          사전 등록으로 FEConf2020을 응원해주세요!
-          <br />
-          여러분들의 응원에 힘입어 더 알찬 FEConf가 찾아갑니다.
-          <br />
-          등록한 이메일로 FEConf 소식을 받을 수 있어요.
+          여러분들의 응원에 힘입어 10월 31일, <br/>
+          더 알찬 FEConf가 찾아갑니다. <br/>
+          FEConf YouTube 채널 알림 설정하고 <br />
+          가장 빠르게 FEConf2020을 만나보세요!
         </motion.p>
         <motion.div variants={preRegistrationMotions.contentText}>
           <RegisterSupportButton/>
@@ -119,6 +118,7 @@ const Support: React.FC<SupportProps> = () => {
                 className={classcat({
                   [css.messageItem]: true,
                   [css.active]: idx === currentIdx,
+                  [css.visible]: Math.abs(idx - currentIdx) <= 2,
                 })}
               >
                 <Message message={message}/>
@@ -130,6 +130,6 @@ const Support: React.FC<SupportProps> = () => {
       </motion.div>
     </motion.div>
   );
-}
+});
 
 export default Support;

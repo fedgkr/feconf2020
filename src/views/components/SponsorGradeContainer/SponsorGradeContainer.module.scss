@@ -1,0 +1,74 @@
+@import 'variables';
+@import 'mixin';
+
+.SponsorGradeContainer {
+  text-align: center;
+  &:not(:last-child) {
+    margin-bottom: 80px;
+  }
+  h3 {
+    position: relative;
+    display: inline-block;
+    font-size: 32px;
+    line-height: 40px;
+    height: 40px;
+    font-weight: 900;
+    font-family: $gilroy-font;
+    text-align: center;
+    &:after {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      bottom: -8px;
+      content: '';
+      background-color: white;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    font-size: 0;
+    margin-top: 32px;
+    .row {
+      display: flex;
+      justify-content: center;
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+      img {
+        width: 220px;
+        &:nth-child(even) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  @include mobile {
+    &:not(:last-child) {
+      margin-bottom: 61px;
+    }
+    h3 {
+      font-size: 24px;
+      line-height: 28px;
+      height: 28px;
+      &:after {
+        height: 2px;
+        bottom: -4px;
+      }
+    }
+    .list {
+      .row {
+        &:not(:last-child) {
+          margin-bottom: 32px;
+        }
+        img {
+          width: 160px;
+          &:nth-child(even) {
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+  }
+}

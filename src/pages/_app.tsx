@@ -27,7 +27,7 @@ function App({Component, pageProps}) {
           property="og:description"
           content="국내 최고의 프론트엔드 개발 컨퍼런스. 프론트엔드 개발의 소중한 경험을 공유합니다!"
         />
-        <meta property="og:image" content="https://2020.feconf.kr/images/og-image.jpg" />
+        <meta property="og:image" content="https://2020.feconf.kr/images/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="FEConf2020 at Home" />
         <meta

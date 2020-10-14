@@ -1,4 +1,4 @@
-import {MutableRefObject, useEffect, useMemo, useRef, useState} from 'react';
+import {MutableRefObject, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 interface IntersectionOption {
   threshold?: number;
@@ -18,6 +18,29 @@ export const useIntersection = (
   const [visible, setVisible] = useState(false);
   const [firstVisible, setFirstVisible] = useState(false);
 
+  const onload = useCallback(() => {
+    if (ref.current && firstRender.current) {
+      setTimeout(() => {
+        const { y } = ref.current.getBoundingClientRect();
+        const scrollBottomWhenFirstRendered = firstRender.current && y <= 0;
+        if (scrollBottomWhenFirstRendered) {
+          setVisible(true);
+          if (!firstVisible) {
+            setFirstVisible(true);
+          }
+        }
+        firstRender.current = false;
+      }, 100);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('load', onload);
+    return () => {
+      window.removeEventListener('load', onload);
+    };
+  }, [option, ref]);
+
   useEffect(() => {
     if (ref.current) {
       const { threshold = 0, top = true, bottom = true } = option;
@@ -30,7 +53,7 @@ export const useIntersection = (
             } = entry;
             const responseToTop = top && y >= 0;
             const responseToBottom = bottom && y <= 0;
-            const scrollBottomWhenFirstRendered = firstRender.current && y <= 0;
+
             if (responseToTop) {
               setVisible(isIntersecting);
               if (!firstVisible && isIntersecting) {
@@ -41,13 +64,7 @@ export const useIntersection = (
               if (!firstVisible && isIntersecting) {
                 setFirstVisible(true);
               }
-            } else if (scrollBottomWhenFirstRendered) {
-              setVisible(true);
-              if (!firstVisible) {
-                setFirstVisible(true);
-              }
             }
-            firstRender.current = false;
           });
         },
         { threshold },

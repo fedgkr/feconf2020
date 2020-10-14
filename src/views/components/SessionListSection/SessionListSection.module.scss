@@ -1,0 +1,89 @@
+@import 'variables';
+@import 'mixin';
+
+.SessionListSection {
+  max-width: $page-content-width;
+  margin: 200px auto 0 auto;
+  height: 1718px;
+  .title {
+    h2 {
+      font-size: 80px;
+      line-height: 80px;
+      font-weight: 900;
+      text-align: center;
+      font-family: $gilroy-font;
+    }
+  }
+  .trackSelect {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+    a {
+      position: relative;
+      font-size: 24px;
+      font-weight: 900;
+      font-family: $gilroy-font;
+      color: rgba(255, 255, 255, 0.5);
+      &:first-child {
+        margin-right: 56px;
+      }
+      &.selected {
+        color: rgba(255, 255, 255, 1);
+        .border {
+          opacity: 1;
+          width: 125px;
+        }
+      }
+      .border {
+        position: absolute;
+        left: 50%;
+        bottom: -8px;
+        opacity: 0;
+        width: 0;
+        height: 4px;
+        background-color: white;
+        transform: translateX(-50%);
+        transition: width .15s ease-out, opacity .15s ease-out;
+      }
+    }
+  }
+  .list {
+    margin-top: 57px;
+  }
+  @include mobile {
+    margin: 310px auto 0 auto;
+    height: 1600px;
+    .title {
+      h2 {
+        font-size: 36px;
+        line-height: 44px;
+      }
+    }
+    .trackSelect {
+      margin-top: 24px;
+      a {
+        font-size: 16px;
+        &:first-child {
+          margin-right: 26px;
+        }
+        &.selected {
+          .border {
+            width: 86px;
+          }
+        }
+        .border {
+          bottom: -6px;
+          height: 2px;
+        }
+      }
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 48px;
+      height: auto;
+      padding: 0 20px;
+    }
+  }
+}

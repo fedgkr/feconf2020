@@ -1,0 +1,19 @@
+@import "variables";
+@import "mixin";
+
+.SessionPage {
+  max-width: $page-max-width;
+  margin: $pc-header-height auto 0 auto;
+  .sections {
+    position: relative;
+    overflow: visible;
+  }
+  @include mobile {
+    margin: $mobile-header-height auto 0 auto;
+    max-width: 375px;
+    overflow: visible;
+    .sections {
+      overflow: visible;
+    }
+  }
+}

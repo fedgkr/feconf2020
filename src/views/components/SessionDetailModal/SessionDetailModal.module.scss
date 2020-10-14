@@ -1,0 +1,72 @@
+@import 'variables';
+@import 'mixin';
+
+.SessionDetailModal {
+  margin: -16px -92px;
+  .iconContainer {
+    .icon {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+  .title {
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 24px;
+    word-break: keep-all;
+  }
+  .profile {
+    display: flex;
+    margin-top: 16px;
+    .image {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 16px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .textWrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      span:first-child {
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .time {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 6px 16px;
+    margin-top: 16px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, .1);
+  }
+  .description {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    word-break: keep-all;
+  }
+  .buttonWrap {
+    margin-top: 60px;
+    button {
+      padding: 14px 32px;
+      border: 1px solid white;
+      border-radius: 24px;
+      font-size: 16px;
+      cursor: pointer;
+      color: black;
+      background-color: white;
+    }
+  }
+  @include mobile {
+    margin: 0;
+  }
+}

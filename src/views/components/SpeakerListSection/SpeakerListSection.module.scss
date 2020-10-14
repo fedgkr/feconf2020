@@ -1,0 +1,92 @@
+@import 'variables';
+@import 'mixin';
+
+$scroll-size: 5000px;
+
+.SpeakerListSection {
+  max-width: $page-content-width;
+  margin: 447px auto 0 auto;
+  pointer-events: none;
+  height: $scroll-size;
+  .wrapper {
+    position: relative;
+    &.fixed {
+      position: fixed;
+      top: 20px;
+    }
+    .titleContainer {
+      position: relative;
+      .textContainer {
+        padding-left: 139px;
+        h2 {
+          font-size: 80px;
+          font-weight: 900;
+          line-height: 80px;
+          font-family: $gilroy-font;
+        }
+        h4 {
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 24px;
+          margin-top: 16px;
+        }
+      }
+      .circle {
+        position: absolute;
+        top: -190px;
+        left: 0;
+        width: 331px;
+        height: 331px;
+        border-radius: 50%;
+        transform: translateZ(0);
+        z-index: -1;
+      }
+    }
+    .overflowWrap {
+      height: $scroll-size;
+      overflow: hidden;
+      .speakerList {
+        position: absolute;
+        margin-top: 120px;
+        width: $scroll-size;
+        display: flex;
+        & > div:not(:last-child) {
+          margin-right: 140px;
+        }
+      }
+    }
+  }
+  @include mobile {
+    margin: 264px auto 0 auto;
+    padding: 0 20px;
+    height: 2910px !important;
+    .wrapper {
+      position: relative !important;
+      opacity: 1 !important;
+      top: 0 !important;
+      .titleContainer {
+        .textContainer {
+          padding-left: 0;
+          h2 {
+            font-size: 36px;
+            line-height: 40px;
+          }
+          h4 {
+            font-size: 20px;
+            line-height: 28px;
+            margin-top: 6px;
+          }
+        }
+        .circle {
+          top: -140px;
+          left: 35px;
+          width: 240px;
+          height: 240px;
+        }
+      }
+      .overflowWrap {
+        display: none;
+      }
+    }
+  }
+}

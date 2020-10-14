@@ -2,6 +2,7 @@
 @import 'mixin';
 
 .ModalContainer {
+  pointer-events: none;
   .closeBtn {
     display: none;
   }
@@ -13,6 +14,7 @@
       padding: 64px 140px;
       box-sizing: border-box;
       border-radius: 16px;
+      pointer-events: all;
       background-color: #232323;
     }
   }
@@ -25,6 +27,7 @@
     padding-top: 70px;
     background-color: #232323;
     overflow: hidden;
+    pointer-events: all;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     transform: translate3d(0, 0, 0);
@@ -54,10 +57,10 @@
 .container {
   pointer-events: none;
   transition: opacity .3s .4s ease-out;
-  overflow: scroll;
   z-index: 2201;
   &.active {
     pointer-events: all;
+    overflow: scroll;
     .dimmed {
       opacity: 1;
       transition: opacity 0.6s ease-out;

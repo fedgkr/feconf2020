@@ -33,7 +33,8 @@
     "build": "next build",
     "export": "yarn build && next export",
     "start": "next start",
-    "deploy:dev": "yarn export && cp -R .vercel ./out/ && now --prod out",
+    "deploy:dev": "yarn export && cp -R .vercel ./out/ && now out",
+    "deploy:prod": "yarn export && cp -R .vercel ./out/ && now --prod out",
     "deploy:functions": "firebase deploy --only functions"
   }
 }

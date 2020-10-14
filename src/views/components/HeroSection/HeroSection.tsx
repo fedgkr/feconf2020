@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import css from './HeroSection.module.scss';
 import MainLogo from "@svgs/MainLogo/MainLogo";
 import ArrowDownIcon from "@svgs/ArrowDownIcon/ArrowDownIcon";
@@ -25,12 +25,12 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
     >
       <div>
         <div className={css.mainLogoWrap}>
-          <motion.div variants={heroMotions.logo}>
+          <motion.div className={css.logoWrap} variants={heroMotions.logo}>
             <MainLogo />
           </motion.div>
           <motion.p variants={heroMotions.text}>
             <img src="/images/icons/youtube@2x.png" alt="YouTube" />
-            <span>2020. 10. Coming Soon</span>
+            <span>2020. 10. 31. Live Streaming</span>
           </motion.p>
         </div>
       </div>
