@@ -1,5 +1,9 @@
 import {Grade, Session, Sponsor, Track} from "@constants/types";
 
+function getTimestamp(time: string) {
+  return +new Date(`Thu Oct 31 2020 ${time}:00 GMT+0900`);
+}
+
 export const youtubeLink = 'https://www.youtube.com/channel/UCWEzfYIpFBIG5jh6laXC6hA';
 
 export const sessionList: Session[] = [
@@ -9,6 +13,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '13:30',
     endTime: '13:35',
+    startTimestamp: getTimestamp('13:30'),
+    endTimestamp: getTimestamp('13:35'),
     speaker: {
       name: '김태훈',
       company: 'FEConf Organizer',
@@ -22,6 +28,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '13:45',
     endTime: '14:30',
+    startTimestamp: getTimestamp('13:45'),
+    endTimestamp: getTimestamp('14:30'),
     speaker: {
       name: '이현섭',
       company: 'Toss Payments',
@@ -37,6 +45,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '14:30',
     endTime: '15:10',
+    startTimestamp: getTimestamp('14:30'),
+    endTimestamp: getTimestamp('15:10'),
     speaker: {
       name: '이한',
       company: 'Toss',
@@ -51,6 +61,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '15:15',
     endTime: '15:40',
+    startTimestamp: getTimestamp('15:15'),
+    endTimestamp: getTimestamp('15:40'),
     speaker: {
       name: '나윤환',
       company: 'Sendbird',
@@ -65,6 +77,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '16:00',
     endTime: '16:40',
+    startTimestamp: getTimestamp('16:00'),
+    endTimestamp: getTimestamp('16:40'),
     speaker: {
       name: '원지혁',
       company: '당근마켓',
@@ -78,6 +92,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '16:45',
     endTime: '17:30',
+    startTimestamp: getTimestamp('16:45'),
+    endTimestamp: getTimestamp('17:30'),
     speaker: {
       name: '최수형',
       company: 'Microprotect',
@@ -91,6 +107,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '17:30',
     endTime: '18:10',
+    startTimestamp: getTimestamp('17:30'),
+    endTimestamp: getTimestamp('18:10'),
     speaker: {
       name: '김혜성',
       company: 'Devsisters',
@@ -108,6 +126,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '(keynote 다음) 13:35',
     endTime: '13:45',
+    startTimestamp: getTimestamp('13:35'),
+    endTimestamp: getTimestamp('13:45'),
     speaker: {
       name: 'Toss',
       company: 'Frontend Chapter',
@@ -121,6 +141,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '13:45',
     endTime: '14:30',
+    startTimestamp: getTimestamp('13:45'),
+    endTimestamp: getTimestamp('14:30'),
     speaker: {
       name: '최종택',
       company: 'dooboolab',
@@ -134,6 +156,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '14:30',
     endTime: '15:10',
+    startTimestamp: getTimestamp('14:30'),
+    endTimestamp: getTimestamp('15:10'),
     speaker: {
       name: '최태건',
       company: 'MESH KOREA',
@@ -148,6 +172,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '15:15',
     endTime: '15:40',
+    startTimestamp: getTimestamp('15:15'),
+    endTimestamp: getTimestamp('15:40'),
     speaker: {
       name: '이경주',
       company: '',
@@ -162,6 +188,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '16:00',
     endTime: '16:40',
+    startTimestamp: getTimestamp('16:00'),
+    endTimestamp: getTimestamp('16:40'),
     speaker: {
       name: '이성원',
       company: 'Buzzvil',
@@ -174,6 +202,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '16:45',
     endTime: '17:30',
+    startTimestamp: getTimestamp('16:45'),
+    endTimestamp: getTimestamp('17:30'),
     speaker: {
       name: '심흥운',
       company: 'NAVER',
@@ -187,6 +217,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '17:30',
     endTime: '18:10',
+    startTimestamp: getTimestamp('17:30'),
+    endTimestamp: getTimestamp('18:10'),
     speaker: {
       name: '김성현',
       company: 'tPay',
@@ -194,7 +226,7 @@ export const sessionList: Session[] = [
       imagePosition: '50% 30%',
     },
   },
-]
+];
 
 export const sponsorList: Sponsor[] = [
   {

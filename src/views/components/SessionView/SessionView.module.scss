@@ -37,14 +37,23 @@
       font-weight: 600;
       margin-top: 8px;
     }
-    .time {
-      align-self: flex-start;
-      font-size: 14px;
-      line-height: 14px;
-      padding: 6px 16px;
+    .timeWrap {
+      display: flex;
+      align-items: center;
       margin-top: 16px;
-      border-radius: 15px;
-      background-color: rgba(255, 255, 255, .1);
+      .time {
+        align-self: flex-start;
+        font-size: 14px;
+        line-height: 14px;
+        padding: 6px 16px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, .1);
+      }
+      img {
+        margin-left: 8px;
+        width: 39px;
+        height: 13px;
+      }
     }
     .buttonContainer {
       display: flex;

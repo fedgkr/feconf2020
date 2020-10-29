@@ -6,6 +6,7 @@ import {setSession} from "@store/slices/sessionSlice";
 import {useDispatch} from "react-redux";
 import sessionsMotions from "@motions/sessions.motions";
 import classcat from "classcat";
+import {useLiveState} from "@utils/hooks/use-liveState";
 
 interface SessionViewProps {
   session: Session;
@@ -18,6 +19,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
     dispatch(setSession(session));
   }, [session]);
   const { title, speaker, noDetail } = session;
+  const isLive = useLiveState(session);
 
   return (
     <motion.div className={css.SessionView} variants={sessionsMotions.title}>
@@ -29,11 +31,18 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
           {title}
         </h4>
         <p className={css.detail}>{speaker.name} {speaker.company && `| ${speaker.company}`}</p>
-        <div className={css.time}>{session.startTime}-{session.endTime}</div>
-        <div className={css.buttonContainer}>
-          { !noDetail ? <button onClick={onSessionClick}>자세히 보기</button> : null }
-          {/*<button className={css.video}>보러가기</button>*/}
+        <div className={css.timeWrap}>
+          <div className={css.time}>
+            <span>{session.startTime}-{session.endTime}</span>
+          </div>
+          {isLive ? <img src="/images/icons/live@2x.png" alt="It is streaming now."/> : null}
         </div>
+        {!noDetail ?
+          <div className={css.buttonContainer}>
+            <button onClick={onSessionClick}>자세히 보기</button>
+            <button className={css.video}>보러가기</button>
+          </div> : null
+        }
       </div>
     </motion.div>
   );

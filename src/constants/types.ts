@@ -25,8 +25,10 @@ export interface Session {
   track: Track;
   startTime: string;
   endTime: string;
-  youtubeLink: string;
-  materialLink: string;
+  startTimestamp?: number;
+  endTimestamp?: number;
+  youtubeLink?: string;
+  materialLink?: string;
   noDetail?: boolean;
 }
 
