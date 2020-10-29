@@ -5,6 +5,8 @@ import ModalContainer from "@components/ModalContainer/ModalContainer";
 import {setSession} from "@store/slices/sessionSlice";
 import {useSessionState} from "@store/index";
 import {Session} from "@constants/types";
+import YoutubeButton from "@components/YoutubeButton/YoutubeButton";
+import SafeLink from "@components/SafeLink/SafeLink";
 
 interface SessionDetailModalProps {
   active: boolean;
@@ -53,9 +55,12 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
         </div>
         <div className={css.time}>{selectedSession?.startTime}-{selectedSession?.endTime}</div>
         <p className={css.description} dangerouslySetInnerHTML={{ __html: selectedSession?.description?.replace(/\n/, '<br/>') }}/>
-        {/*<div className={css.buttonWrap}>*/}
-        {/*  <button>보러가기</button>*/}
-        {/*</div>*/}
+        <div className={css.buttonWrap}>
+          <YoutubeButton link={selectedSession?.youtubeLink}/>
+          <SafeLink href={selectedSession?.materialLink}>
+            <button>발표자료 보기</button>
+          </SafeLink>
+        </div>
       </div>
     </ModalContainer>
   );
