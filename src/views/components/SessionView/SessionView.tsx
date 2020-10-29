@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import sessionsMotions from "@motions/sessions.motions";
 import classcat from "classcat";
 import {useLiveState} from "@utils/hooks/use-liveState";
+import YoutubeButton from "@components/YoutubeButton/YoutubeButton";
 
 interface SessionViewProps {
   session: Session;
@@ -40,7 +41,7 @@ const SessionView: React.FC<SessionViewProps> = ({ session, order }) => {
         {!noDetail ?
           <div className={css.buttonContainer}>
             <button onClick={onSessionClick}>자세히 보기</button>
-            <button className={css.video}>보러가기</button>
+            <YoutubeButton link={session.youtubeLink}/>
           </div> : null
         }
       </div>
