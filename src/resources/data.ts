@@ -30,6 +30,7 @@ export const sessionList: Session[] = [
     endTime: '14:30',
     startTimestamp: getTimestamp('13:45'),
     endTimestamp: getTimestamp('14:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1uJsXrCP-A_Twont7idxQ_f39tvHmNwHZ?usp=sharing',
     speaker: {
       name: '이현섭',
       company: 'Toss Payments',
@@ -47,6 +48,7 @@ export const sessionList: Session[] = [
     endTime: '15:10',
     startTimestamp: getTimestamp('14:30'),
     endTimestamp: getTimestamp('15:10'),
+    materialLink: 'https://drive.google.com/drive/folders/1MMaVcy51MjdfEAwFbNatb0BP_EDKyoK7?usp=sharing',
     speaker: {
       name: '이한',
       company: 'Toss',
@@ -63,6 +65,7 @@ export const sessionList: Session[] = [
     endTime: '15:40',
     startTimestamp: getTimestamp('15:15'),
     endTimestamp: getTimestamp('15:40'),
+    materialLink: 'https://drive.google.com/file/d/1mo8XPs0ZtmaCs7Y3cFz3_hB6PrKFxVNz/view?usp=sharing',
     speaker: {
       name: '나윤환',
       company: 'Sendbird',
@@ -79,6 +82,7 @@ export const sessionList: Session[] = [
     endTime: '16:40',
     startTimestamp: getTimestamp('16:00'),
     endTimestamp: getTimestamp('16:40'),
+    materialLink: 'https://drive.google.com/drive/folders/1cr1cC6LKo6H1PB5RAIqPyUFOB8fp-NHr?usp=sharing',
     speaker: {
       name: '원지혁',
       company: '당근마켓',
@@ -94,6 +98,7 @@ export const sessionList: Session[] = [
     endTime: '17:30',
     startTimestamp: getTimestamp('16:45'),
     endTimestamp: getTimestamp('17:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1Y0dLUroN-togsQ2M9IEfe8_31tTdaXPh?usp=sharing',
     speaker: {
       name: '최수형',
       company: 'Microprotect',
@@ -109,6 +114,7 @@ export const sessionList: Session[] = [
     endTime: '18:10',
     startTimestamp: getTimestamp('17:30'),
     endTimestamp: getTimestamp('18:10'),
+    materialLink: 'https://amazing-davinci-f6f315.netlify.app/',
     speaker: {
       name: '김혜성',
       company: 'Devsisters',
@@ -143,6 +149,7 @@ export const sessionList: Session[] = [
     endTime: '14:30',
     startTimestamp: getTimestamp('13:45'),
     endTimestamp: getTimestamp('14:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1TOeOEA8-fB2uYwnjwWbeFC4Alnjqg-YE?usp=sharing',
     speaker: {
       name: '최종택',
       company: 'dooboolab',
@@ -158,6 +165,7 @@ export const sessionList: Session[] = [
     endTime: '15:10',
     startTimestamp: getTimestamp('14:30'),
     endTimestamp: getTimestamp('15:10'),
+    materialLink: 'https://drive.google.com/drive/folders/16nlVd0NPubVyR04l0tSVJ61R1O7YqEW6?usp=sharing',
     speaker: {
       name: '최태건',
       company: 'MESH KOREA',
@@ -174,6 +182,7 @@ export const sessionList: Session[] = [
     endTime: '15:40',
     startTimestamp: getTimestamp('15:15'),
     endTimestamp: getTimestamp('15:40'),
+    materialLink: 'https://slides.com/jiimy/deck',
     speaker: {
       name: '이경주',
       company: '',
@@ -190,6 +199,7 @@ export const sessionList: Session[] = [
     endTime: '16:40',
     startTimestamp: getTimestamp('16:00'),
     endTimestamp: getTimestamp('16:40'),
+    materialLink: 'https://drive.google.com/drive/folders/1j2V33vFNMRixkkXAArm18qLcziXFfAVO?usp=sharing',
     speaker: {
       name: '이성원',
       company: 'Buzzvil',
@@ -204,6 +214,7 @@ export const sessionList: Session[] = [
     endTime: '17:30',
     startTimestamp: getTimestamp('16:45'),
     endTimestamp: getTimestamp('17:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1LZO4-BpoGS9zNgsBiU_afNrlLYbhpb2v?usp=sharing',
     speaker: {
       name: '심흥운',
       company: 'NAVER',
@@ -219,6 +230,7 @@ export const sessionList: Session[] = [
     endTime: '18:10',
     startTimestamp: getTimestamp('17:30'),
     endTimestamp: getTimestamp('18:10'),
+    materialLink: 'https://drive.google.com/drive/folders/1u9BX-uADmOmWSLqeZ477wySExcGgzi86?usp=sharing',
     speaker: {
       name: '김성현',
       company: 'tPay',
