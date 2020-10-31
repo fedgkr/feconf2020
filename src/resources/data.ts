@@ -30,7 +30,7 @@ export const sessionList: Session[] = [
     endTime: '14:30',
     startTimestamp: getTimestamp('13:45'),
     endTimestamp: getTimestamp('14:30'),
-    materialLink: 'https://drive.google.com/drive/folders/1uJsXrCP-A_Twont7idxQ_f39tvHmNwHZ?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1aoDT-BMsO4rl3imlebdQKlMp4LQt9B1F/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=ElsZ-v4Ow08',
     speaker: {
       name: '이현섭',
@@ -49,7 +49,7 @@ export const sessionList: Session[] = [
     endTime: '15:10',
     startTimestamp: getTimestamp('14:30'),
     endTimestamp: getTimestamp('15:10'),
-    materialLink: 'https://drive.google.com/drive/folders/1MMaVcy51MjdfEAwFbNatb0BP_EDKyoK7?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1aHm6pOgiNLtiwlmeDRX7UIGSsjgbazyW/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=GaAc4J2ST-c',
     speaker: {
       name: '이한',
@@ -85,7 +85,7 @@ export const sessionList: Session[] = [
     endTime: '16:40',
     startTimestamp: getTimestamp('16:00'),
     endTimestamp: getTimestamp('16:40'),
-    materialLink: 'https://drive.google.com/drive/folders/1cr1cC6LKo6H1PB5RAIqPyUFOB8fp-NHr?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/11LBgG_UFmrGNDQHCsL4ane42rLOvWqjN/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=YP7d9ae_VzI',
     speaker: {
       name: '원지혁',
@@ -102,7 +102,7 @@ export const sessionList: Session[] = [
     endTime: '17:30',
     startTimestamp: getTimestamp('16:45'),
     endTimestamp: getTimestamp('17:30'),
-    materialLink: 'https://drive.google.com/drive/folders/1Y0dLUroN-togsQ2M9IEfe8_31tTdaXPh?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1658E_OFq-Iq4f2kCRKxL-afUz3NVmzWL/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=L1dtkLeIz-M',
     speaker: {
       name: '최수형',
@@ -119,7 +119,7 @@ export const sessionList: Session[] = [
     endTime: '18:10',
     startTimestamp: getTimestamp('17:30'),
     endTimestamp: getTimestamp('18:10'),
-    materialLink: 'https://amazing-davinci-f6f315.netlify.app/',
+    materialLink: 'https://statecharts-in-webdev.netlify.app/',
     youtubeLink: 'https://www.youtube.com/watch?v=Hv_PhrfwerQ',
     speaker: {
       name: '김혜성',
@@ -155,7 +155,7 @@ export const sessionList: Session[] = [
     endTime: '14:30',
     startTimestamp: getTimestamp('13:45'),
     endTimestamp: getTimestamp('14:30'),
-    materialLink: 'https://drive.google.com/drive/folders/1TOeOEA8-fB2uYwnjwWbeFC4Alnjqg-YE?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1BQxUjO1ix_pDn8WNeJtMgetOG5WuEyAR/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=ddnr8RXQ9HU',
     speaker: {
       name: '최종택',
@@ -172,7 +172,7 @@ export const sessionList: Session[] = [
     endTime: '15:10',
     startTimestamp: getTimestamp('14:30'),
     endTimestamp: getTimestamp('15:10'),
-    materialLink: 'https://drive.google.com/drive/folders/16nlVd0NPubVyR04l0tSVJ61R1O7YqEW6?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1ZrP6yBdGJTDXZuX67TU0aVaSrF_AgQe6/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=J4JHLESAiFk',
     speaker: {
       name: '최태건',
@@ -208,7 +208,7 @@ export const sessionList: Session[] = [
     endTime: '16:40',
     startTimestamp: getTimestamp('16:00'),
     endTimestamp: getTimestamp('16:40'),
-    materialLink: 'https://drive.google.com/drive/folders/1j2V33vFNMRixkkXAArm18qLcziXFfAVO?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1gf9EkJRqf7yNBy4qHIJessGGUAnsODOp/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=6C9zyLioTOU',
     speaker: {
       name: '이성원',
@@ -224,7 +224,7 @@ export const sessionList: Session[] = [
     endTime: '17:30',
     startTimestamp: getTimestamp('16:45'),
     endTimestamp: getTimestamp('17:30'),
-    materialLink: 'https://drive.google.com/drive/folders/1LZO4-BpoGS9zNgsBiU_afNrlLYbhpb2v?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1STXPLVWizAZEeZSAXBVYOg2U1xLfognT/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=ul_pozst_EU',
     speaker: {
       name: '심흥운',
@@ -241,7 +241,7 @@ export const sessionList: Session[] = [
     endTime: '18:10',
     startTimestamp: getTimestamp('17:30'),
     endTimestamp: getTimestamp('18:10'),
-    materialLink: 'https://drive.google.com/drive/folders/1u9BX-uADmOmWSLqeZ477wySExcGgzi86?usp=sharing',
+    materialLink: 'https://drive.google.com/file/d/1Dnr3JWQlC3NSvS0jZ0NgjTQHJvnqXlLC/view?usp=sharing',
     youtubeLink: 'https://www.youtube.com/watch?v=ycxqVYD2N0w',
     speaker: {
       name: '김성현',
