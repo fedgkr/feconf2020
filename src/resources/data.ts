@@ -1,5 +1,9 @@
 import {Grade, Session, Sponsor, Track} from "@constants/types";
 
+function getTimestamp(time: string) {
+  return +new Date(`Thu Oct 31 2020 ${time}:00 GMT+0900`);
+}
+
 export const youtubeLink = 'https://www.youtube.com/channel/UCWEzfYIpFBIG5jh6laXC6hA';
 
 export const sessionList: Session[] = [
@@ -9,6 +13,8 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '13:30',
     endTime: '13:35',
+    startTimestamp: getTimestamp('13:30'),
+    endTimestamp: getTimestamp('13:35'),
     speaker: {
       name: '김태훈',
       company: 'FEConf Organizer',
@@ -22,6 +28,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '13:45',
     endTime: '14:30',
+    startTimestamp: getTimestamp('13:45'),
+    endTimestamp: getTimestamp('14:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1uJsXrCP-A_Twont7idxQ_f39tvHmNwHZ?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=ElsZ-v4Ow08',
     speaker: {
       name: '이현섭',
       company: 'Toss Payments',
@@ -37,6 +47,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '14:30',
     endTime: '15:10',
+    startTimestamp: getTimestamp('14:30'),
+    endTimestamp: getTimestamp('15:10'),
+    materialLink: 'https://drive.google.com/drive/folders/1MMaVcy51MjdfEAwFbNatb0BP_EDKyoK7?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=GaAc4J2ST-c',
     speaker: {
       name: '이한',
       company: 'Toss',
@@ -51,6 +65,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '15:15',
     endTime: '15:40',
+    startTimestamp: getTimestamp('15:15'),
+    endTimestamp: getTimestamp('15:40'),
+    materialLink: 'https://drive.google.com/file/d/1mo8XPs0ZtmaCs7Y3cFz3_hB6PrKFxVNz/view?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=kZO5PEypjVg',
     speaker: {
       name: '나윤환',
       company: 'Sendbird',
@@ -65,6 +83,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '16:00',
     endTime: '16:40',
+    startTimestamp: getTimestamp('16:00'),
+    endTimestamp: getTimestamp('16:40'),
+    materialLink: 'https://drive.google.com/drive/folders/1cr1cC6LKo6H1PB5RAIqPyUFOB8fp-NHr?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=YP7d9ae_VzI',
     speaker: {
       name: '원지혁',
       company: '당근마켓',
@@ -78,6 +100,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '16:45',
     endTime: '17:30',
+    startTimestamp: getTimestamp('16:45'),
+    endTimestamp: getTimestamp('17:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1Y0dLUroN-togsQ2M9IEfe8_31tTdaXPh?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=L1dtkLeIz-M',
     speaker: {
       name: '최수형',
       company: 'Microprotect',
@@ -91,6 +117,10 @@ export const sessionList: Session[] = [
     track: Track.A,
     startTime: '17:30',
     endTime: '18:10',
+    startTimestamp: getTimestamp('17:30'),
+    endTimestamp: getTimestamp('18:10'),
+    materialLink: 'https://amazing-davinci-f6f315.netlify.app/',
+    youtubeLink: 'https://www.youtube.com/watch?v=Hv_PhrfwerQ',
     speaker: {
       name: '김혜성',
       company: 'Devsisters',
@@ -108,6 +138,8 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '(keynote 다음) 13:35',
     endTime: '13:45',
+    startTimestamp: getTimestamp('13:35'),
+    endTimestamp: getTimestamp('13:45'),
     speaker: {
       name: 'Toss',
       company: 'Frontend Chapter',
@@ -121,6 +153,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '13:45',
     endTime: '14:30',
+    startTimestamp: getTimestamp('13:45'),
+    endTimestamp: getTimestamp('14:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1TOeOEA8-fB2uYwnjwWbeFC4Alnjqg-YE?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=ddnr8RXQ9HU',
     speaker: {
       name: '최종택',
       company: 'dooboolab',
@@ -134,6 +170,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '14:30',
     endTime: '15:10',
+    startTimestamp: getTimestamp('14:30'),
+    endTimestamp: getTimestamp('15:10'),
+    materialLink: 'https://drive.google.com/drive/folders/16nlVd0NPubVyR04l0tSVJ61R1O7YqEW6?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=J4JHLESAiFk',
     speaker: {
       name: '최태건',
       company: 'MESH KOREA',
@@ -148,6 +188,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '15:15',
     endTime: '15:40',
+    startTimestamp: getTimestamp('15:15'),
+    endTimestamp: getTimestamp('15:40'),
+    materialLink: 'https://slides.com/jiimy/deck',
+    youtubeLink: 'https://www.youtube.com/watch?v=is9m-ls4Q_k',
     speaker: {
       name: '이경주',
       company: '',
@@ -162,6 +206,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '16:00',
     endTime: '16:40',
+    startTimestamp: getTimestamp('16:00'),
+    endTimestamp: getTimestamp('16:40'),
+    materialLink: 'https://drive.google.com/drive/folders/1j2V33vFNMRixkkXAArm18qLcziXFfAVO?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=6C9zyLioTOU',
     speaker: {
       name: '이성원',
       company: 'Buzzvil',
@@ -174,6 +222,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '16:45',
     endTime: '17:30',
+    startTimestamp: getTimestamp('16:45'),
+    endTimestamp: getTimestamp('17:30'),
+    materialLink: 'https://drive.google.com/drive/folders/1LZO4-BpoGS9zNgsBiU_afNrlLYbhpb2v?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=ul_pozst_EU',
     speaker: {
       name: '심흥운',
       company: 'NAVER',
@@ -187,6 +239,10 @@ export const sessionList: Session[] = [
     track: Track.B,
     startTime: '17:30',
     endTime: '18:10',
+    startTimestamp: getTimestamp('17:30'),
+    endTimestamp: getTimestamp('18:10'),
+    materialLink: 'https://drive.google.com/drive/folders/1u9BX-uADmOmWSLqeZ477wySExcGgzi86?usp=sharing',
+    youtubeLink: 'https://www.youtube.com/watch?v=ycxqVYD2N0w',
     speaker: {
       name: '김성현',
       company: 'tPay',
@@ -194,7 +250,7 @@ export const sessionList: Session[] = [
       imagePosition: '50% 30%',
     },
   },
-]
+];
 
 export const sponsorList: Sponsor[] = [
   {

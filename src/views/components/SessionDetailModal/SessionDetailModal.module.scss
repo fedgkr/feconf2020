@@ -55,6 +55,7 @@
     word-break: keep-all;
   }
   .buttonWrap {
+    display: flex;
     margin-top: 60px;
     button {
       padding: 14px 32px;
@@ -62,8 +63,14 @@
       border-radius: 24px;
       font-size: 16px;
       cursor: pointer;
-      color: black;
-      background-color: white;
+      color: white;
+      outline: none;
+      background-color: transparent;
+    }
+    a:first-child {
+      button {
+        margin-right: 16px;
+      }
     }
   }
   @include mobile {
