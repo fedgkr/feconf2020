@@ -57,9 +57,9 @@ const SessionDetailModal: React.FC<SessionDetailModalProps> = ({ active }) => {
         <p className={css.description} dangerouslySetInnerHTML={{ __html: selectedSession?.description?.replace(/\n/, '<br/>') }}/>
         <div className={css.buttonWrap}>
           <YoutubeButton link={selectedSession?.youtubeLink}/>
-          <SafeLink href={selectedSession?.materialLink}>
-            <button>발표자료 보기</button>
-          </SafeLink>
+          {/*<SafeLink href={selectedSession?.materialLink}>*/}
+          {/*  <button>발표자료 보기</button>*/}
+          {/*</SafeLink>*/}
         </div>
       </div>
     </ModalContainer>

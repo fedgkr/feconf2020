@@ -12,6 +12,6 @@ export const useLiveState = (session: Session) => {
     return () => {
       clearTimeout(interval);
     };
-  }, []);
+  }, [session]);
   return isLive;
 }
