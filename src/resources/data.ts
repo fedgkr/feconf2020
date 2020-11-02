@@ -267,7 +267,7 @@ export const sponsorList: Sponsor[] = [
   },
   {
     name: 'coupang',
-    link: 'https://rocketyourcareer.kr.coupang.com/',
+    link: 'https://grnh.se/995f172d1us',
     image: 'coupang@2x.png',
     grade: Grade.Platinum,
   },

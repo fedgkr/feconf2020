@@ -4,6 +4,8 @@
   "main": "index.js",
   "author": "codemilli <codemilli@webtoonscorp.com>",
   "license": "MIT",
+  "private": true,
+  "workspaces": ["functions"],
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "body-scroll-lock": "^3.0.3",
